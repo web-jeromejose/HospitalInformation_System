@@ -1,0 +1,299 @@
+﻿/* Legend */
+.IT_custom_legend_box
+ {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 18px;
+    height: 18px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+/*Legend Blocked*/
+.IT_custom_legend_blocked {
+    background-color: rgba(210, 77, 87, 0.3) !important;
+    color: #96281B !important;
+}
+/*Legend Expired*/
+.IT_custom_legend_expired {
+    background-color: #fcf1cb !important;
+    color: #ff8816;
+}
+/*Legend Active*/
+.IT_custom_legend_active {
+    background-color: rgba(255, 255, 255, 1);
+    color: #019875;
+}
+
+.IT_custom_legend_active_reverse {
+    color: #134d3f;
+    background-color: #a2e4d4;
+}
+
+/* LEGEND */
+
+.IT_custom_leg_approved {
+    background-color: #20ba81;
+}
+
+.IT_custom_leg_disapproved {
+    background-color: #d35454;
+}
+
+.IT_custom_leg_cancelled {
+    background-color: #8ad4ed;
+}
+
+.IT_custom_leg_underprocess {
+    background-color: #ffbc5f;
+}
+
+/*Legend Container for Dismissable Alerts*/
+.IT_custom_leg_alert_container {
+    width: 18px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+
+/** {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+* {
+    -moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    border-radius: 0px !important;
+}
+
+
+/*OVERRIDE*/
+.form-group {
+    margin-bottom: 5px;
+}
+
+.IT_font_red {
+    color: #D24D57 !important;
+}
+
+.IT_font_yellow {
+    color: #F4D03F !important;
+}
+
+.IT_make_bold {
+    font-weight: bold !important;
+}
+
+/* COMPANY STATUS */
+
+.IT_comp_active {
+    background-color: #019875;
+    border: none !important;
+}
+
+.IT_com_blocked {
+    background-color: #d96363;
+    border: none !important;
+}
+
+.IT_com_expired {
+    background-color: #f8b449;
+    border: none !important;
+}
+
+
+
+.field-validation-error {
+    color: red;
+}
+
+
+.top5 {
+    margin-top: 5px;
+}
+
+.top7 {
+    margin-top: 7px;
+}
+
+.top10 {
+    margin-top: 10px;
+}
+
+.top15 {
+    margin-top: 15px;
+}
+
+.top17 {
+    margin-top: 17px;
+}
+
+.top30 {
+    margin-top: 30px;
+}
+
+.bottom5 {
+    margin-bottom: 5px;
+}
+
+.bottom7 {
+    margin-bottom: 7px;
+}
+
+.bottom10 {
+    margin-bottom: 10px;
+}
+
+.bottom15 {
+    margin-bottom: 15px;
+}
+
+.bottom17 {
+    margin-bottom: 17px;
+}
+
+.bottom30 {
+    margin-bottom: 30px;
+}
+
+.selectedrow {
+    background-color: #a4d9f9;
+}
+
+.background-yellow {
+    background-color: #ffffcc;
+}
+
+
+/*
+    Force table width to 100%
+    */
+table.table-fixedheader {
+    width: 100%;
+}
+    /*
+    Set table elements to block mode.  (Normally they are inline).
+    This allows a responsive table, such as one where columns can be stacked
+    if the display is narrow.
+    */
+    table.table-fixedheader, table.table-fixedheader > thead, table.table-fixedheader > tbody, table.table-fixedheader > thead > tr, table.table-fixedheader > tbody > tr, table.table-fixedheader > thead > tr > th, table.table-fixedheader > tbody > td {
+        display: block;
+    }
+
+        table.table-fixedheader > thead > tr:after, table.table-fixedheader > tbody > tr:after {
+            content: ' ';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        /*
+    When scrolling the table, actually it is only the tbody portion of the
+    table that scrolls (not the entire table: we want the thead to remain
+    fixed).  We must specify an explicit height for the tbody.  We include
+    100px as a default, but it can be overridden elsewhere.
+
+    Also, we force the scrollbar to always be displayed so that the usable
+    width for the table contents doesn't change (such as becoming narrower
+    when a scrollbar is visible and wider when it is not).
+    */
+        table.table-fixedheader > tbody {
+            overflow-y: scroll;
+            height: 100px;
+        }
+        /*
+    We really don't want to scroll the thead contents, but we want to force
+    a scrollbar to be displayed anyway so that the usable width of the thead
+    will exactly match the tbody.
+    */
+        table.table-fixedheader > thead {
+            overflow-y: scroll;
+        }
+            /*
+    For browsers that support it (webkit), we set the background color of
+    the unneeded scrollbar in the thead to make it invisible.  (Setting
+    visiblity: hidden defeats the purpose, as this alters the usable width
+    of the thead.)
+    */
+            table.table-fixedheader > thead::-webkit-scrollbar {
+                background-color: inherit;
+            }
+
+
+            table.table-fixedheader > thead > tr > th:after, table.table-fixedheader > tbody > tr > td:after {
+                content: ' ';
+                display: table-cell;
+                visibility: hidden;
+                clear: both;
+            }
+
+            /*
+    We want to set <th> and <td> elements to float left.
+    We also must explicitly set the width for each column (both for the <th>
+    and the <td>).  We set to 20% here a default placeholder, but it can be
+    overridden elsewhere.
+    */
+
+            table.table-fixedheader > thead tr th, table.table-fixedheader > tbody tr td {
+                float: left;
+                word-wrap: break-word;
+            }
+
+th.sortable span.glyphicon:hover { 
+    cursor:pointer;
+}
+
+
+#reportWrapper {
+    min-height: 350px;
+    margin-top:15px;
+    background-color: #6C7A89;
+}
+
+.validationMessage {
+   color:red;
+   font-size:0.9em;
+}
+
+.errorcontainer {
+    border: solid 1px red;
+}
+
+.border10 {
+    border: 1px solid #ddd;
+    padding:10px;
+}
+
+.push-right10 {
+    margin-right:10px !important;
+}
+.push-right5 {
+    margin-right:5px !important;
+}
+
+.push-left20 {
+    margin-left:20px !important;
+}
+
+.push-left15 {
+    margin-left:15px !important;
+}
+
+.push-left10 {
+    margin-left:10px !important;
+}
+.push-left5 {
+    margin-left:5px !important;
+}
+
+.border-right {
+    border-right: 1px solid #ddd;
+    padding-right:10px;
+
+}
