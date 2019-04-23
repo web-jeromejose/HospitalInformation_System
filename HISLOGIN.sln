@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Login", "Login", "{485E5930-6ADE-4E53-84E0-9CF6ABD344F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HISLOGIN", "HISLOGIN\HISLOGIN.csproj", "{BECA8FAE-9EF6-458C-B354-46E2AF746DC0}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://130.1.8.180:8080/tfs/his
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DataLayer\\DataLayer.csproj
+		SccProjectTopLevelParentUniqueName1 = HISLOGIN.sln
+		SccProjectName1 = DataLayer
+		SccLocalPath1 = DataLayer
+		SccProjectUniqueName2 = HISLOGIN\\HISLOGIN.csproj
+		SccProjectTopLevelParentUniqueName2 = HISLOGIN.sln
+		SccProjectName2 = HISLOGIN
+		SccLocalPath2 = HISLOGIN
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BECA8FAE-9EF6-458C-B354-46E2AF746DC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECA8FAE-9EF6-458C-B354-46E2AF746DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECA8FAE-9EF6-458C-B354-46E2AF746DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECA8FAE-9EF6-458C-B354-46E2AF746DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D} = {485E5930-6ADE-4E53-84E0-9CF6ABD344F0}
+		{BECA8FAE-9EF6-458C-B354-46E2AF746DC0} = {485E5930-6ADE-4E53-84E0-9CF6ABD344F0}
+	EndGlobalSection
+EndGlobal

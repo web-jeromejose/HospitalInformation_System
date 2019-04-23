@@ -1,0 +1,113 @@
+﻿/* Legend */
+.IT_custom_legend_box
+{
+    background-color:#fff;
+    border:1px solid #ddd;
+    width:18px;
+    height:18px;
+    -webkit-border-radius:50% !important;
+    -moz-border-radius:50% !important;
+    -ms-border-radius:50% !important;
+    border-radius:50% !important;
+}
+
+/*Legend Blocked*/
+.IT_custom_legend_blocked2 {
+    background-color:rgba(210, 77, 87, 1) !important;
+    color:#fff !important;
+}
+/*Legend Blocked*/
+.IT_custom_legend_blocked {
+    background-color:rgba(210, 77, 87, 0.3) !important;
+    color:#96281B !important;
+}
+/*Legend Expired*/
+.IT_custom_legend_expired {
+    background-color:#fcf1cb !important;
+    color:#ff8816;
+}
+/*Legend Active*/
+.IT_custom_legend_active {
+    background-color:rgba(255, 255, 255, 1);
+    color:#019875;
+}
+.IT_custom_legend_active_reverse {
+    color:#134d3f;
+    background-color:#a2e4d4;
+}
+
+/* LEGEND */
+
+.IT_custom_leg_approved {
+    background-color:#20ba81;
+}
+.IT_custom_leg_disapproved {
+    background-color:#d35454;
+}
+.IT_custom_leg_cancelled {
+    background-color:#8ad4ed;
+}
+.IT_custom_leg_underprocess {
+    background-color:#ffbc5f;
+}
+
+/*Legend Container for Dismissable Alerts*/
+.IT_custom_leg_alert_container{
+    width:18px;
+    display:inline-block;
+    margin-left:10px;
+    margin-right:5px;
+}
+
+
+/** {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+
+
+/*OVERRIDE*/
+.form-group {
+    margin-bottom:5px;
+}
+
+.IT_font_red {
+    color:#D24D57 !important;
+}
+.IT_font_yellow {
+    color:#F4D03F !important;
+}
+
+.IT_make_bold {
+    font-weight:bold !important;
+}
+
+.IT_make_zeroamtcolor {
+    color:#D24D57 !important;
+}
+
+.IT_make_moneycolor {
+    color:#019875 !important;
+}
+
+/* COMPANY STATUS */
+
+.IT_comp_active {
+    background-color:#019875;
+    border:none !important;
+}
+.IT_com_blocked {
+    background-color:#d96363;
+    border:none !important;
+}
+.IT_com_expired {
+    background-color:#f8b449;
+    border:none !important;
+}
+
+
+

@@ -1,0 +1,6 @@
+deploy in
+1. sharjah live ONLY 
+2.db and domain
+  string SQlDataSource = "Data Source=172.29.6.18";
+        string DomainName = "172.29.6.19";
+ 

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/sghfav.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Styles/plugins/global")
+    @*@Styles.Render("~/Styles/global")*@
+    @Styles.Render("~/Styles/custom")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/plugins/global")
+    @Scripts.Render("~/Scripts/global")
+    @Scripts.Render("~/Scripts/custom")
+    @Scripts.Render("~/Scripts/jqlogin")
+    <link rel="stylesheet" href="@Url.Content("~/Content/plugins/adminlte/css/AdminLTE.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/dist/bower_components/font-awesome/css/font-awesome.min.css")">
+</head>
+<body>
+    <div>
+        <div id="mainiframe"
+                data-urlsecure="@Url.Action("SecurityFeature", "Base", new { area = "" })" 
+                data-urlfunction="@Url.Action("SecurityFunction", "Base", new { area = "" })"
+                data-appmenu="@Url.Action("GetMenu", "Home", new { area = "" })" 
+                data-appissue="@Url.Action("GetApplicationIssue", "Home", new { area = "" })"
+                data-stationlist="@Url.Action("StationList", "Base", new { area = "" })"
+                data-st="@Url.Action("ChangeStation", "Home", new { area = "" })"
+                data-lockscreen="@Url.Action("SecurityUser", "Base", new { area = "" })"
+                >
+            @RenderBody()
+        </div>
+  
+    </div>
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("styles", required: false)
+</body>
+</html>
+

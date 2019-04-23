@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @{
+        FormsIdentity id = (FormsIdentity)User.Identity;
+        FormsAuthenticationTicket ticket = id.Ticket;
+        var d = ticket.UserData.Split('|');
+    }
+    <meta charset="utf-8" />
+    <title>HISLogin-@ViewBag.Title</title>
+    <link href="~/sghfav.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Styles/plugins/global")
+    @Styles.Render("~/Styles/custom")
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="@Url.Content("~/Scripts/jqSecurity.js?ver=2020")"></script>
+
+    @Scripts.Render("~/Scripts/plugins/global")
+
+    @Scripts.Render("~/Scripts/global")
+    @Scripts.Render("~/Scripts/custom")
+
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/plugins/adminlte/css/AdminLTE.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/dist/bower_components/font-awesome/css/font-awesome.min.css")">
+    <link href="@Url.Content("~/Content/dist/bower_components/PACE/themes/green/pace-theme-minimal.css")" rel="stylesheet" />
+
+
+    <!-- ChartJS -->
+    <script src="~/Content/dist/bower_components/chart.js/Chart.js"></script>
+    <script src="@Url.Content("~/Content/dist/bower_components/jquery.hotkeys-master/jquery.hotkeys.js")"></script>
+    <script src="@Url.Content("~/Content/plugins/blockui/jquery.blockUI.js")"></script>
+    <script src="@Url.Content("~/Content/dist/bower_components/PACE/pace.js")"></script>
+</head>
+<body class="hold-transition skin-red-light sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="#" class="logo">
+                <span class="logo-mini"><b><i class="fa fa-hospital-o"></i>SGH</b></span>
+                <span class="logo-lg"><b>  @ViewBag.ApplicationName</b></span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+
+                </a>
+
+
+
+                <h4 class="col-md-5" style="color: white; top: 5px;"><span class="logo-lg"><b> Login الصفحة الرئيسية الرئيسية</b></span></h4>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 4 notifications</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-warning text-yellow"></i> Use your own acct for safety.
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-users text-red"></i> Change password every 3 months.
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-user text-red"></i> Logout regularly.
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-warning text-blue"></i>Problem?مشكلة ? مكالمة call 3137,3136..
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="footer"><a href="#"> </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Content/dist/img/saudi-avatar.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@d[2].ToString()</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @*  <li class="user-header" style="height: 100px;">
+                                        <div class="pull-left image customImg" style="max-width: 70px;">
+                                            <center><i class="glyphicon glyphicon-user" style="font-size:50px;"></i></center>
+                                        </div>
+                                        <p>
+                                            @d[2].ToString()
+                                            <br />
+                                            <small>Employee ID : @d[1].ToString()</small>
+                                        </p>
+                                    </li>*@
+
+                                <li class="user-header">
+                                    <img src="~/Content/dist/img/saudi-avatar.png" class="img-circle" alt="User Image" style="height: 40px; width: 40px;">
+                                    <p style="font-size: 10px !important;">
+
+                                        <small>Employee ID : @d[1].ToString()</small>
+                                        <br />
+                                        <span>CONNECTED SERVER: @Html.Raw(ViewBag.ConServer)</span>
+                                        <br />
+                                        <span>IP ADDRESS: <span class="AR_my_IP_add">@ViewBag.LocalIPAddress</span></span>
+                                        <br />
+                                        <span>VERSION: </span>@ViewBag.VersionID
+                                        <br />
+                                        <span>DEV. BY: <span class="AR_dept_color">@ViewBag.Developer</span></span>
+                                    </p>
+                                </li>
+
+
+                                @*   <li class="user-footer">
+                                        <div class="pull-right">
+                                            <a id="lockscreen" class="btn btn-warning btn-flat"><span class="glyphicon glyphicon-warning-sign"></span>Lock Screen</a>
+                                            <a href="@Url.Action("LogOff", "Home", new { area = "" })" class="btn btn-danger btn-flat"><span class="glyphicon glyphicon-off"></span>Log out</a>
+                                        </div>
+                                    </li>*@
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a  class="btn btn-danger btn-flat lockscreenLINK"><span class="glyphicon glyphicon-lock"></span>Lock</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        @*<a href="@Url.Action("LogOff", "Home", new { area = "" }, null)" class="btn btn-default btn-flat"> Sign out</a>*@
+                                        <a href="/HISLOGIN/Home/LogOff" class="btn btn-danger btn-flat"><span class="glyphicon glyphicon-off"></span>Log out</a>
+
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><span class="glyphicon glyphicon-cog"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/Content/dist/img/saudi-avatar.png" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>@d[2].ToString()</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+                    </div>
+                </div>
+
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MAIN NAVIGATION</li>
+
+                    <li data-toggle="modal" data-target="#div-changepass" id="changepassbtn">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-cog"></i><span>PASSWORD</span>
+                            <span class="pull-right-container">                             
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class=" lockscreenLINK" >
+                         <a href="#">
+                            <i class="glyphicon glyphicon-lock"></i><span>LOCK SCREEN</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-green">new</small>
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="@Url.Action("LogOff", "Home", new { area = "" })">
+                            <i class="fa fa-arrow-circle-up" style="color: #dd4b39 !important;"></i><span>LOG OUT</span>
+                        </a>
+                    </li>
+
+
+
+                    @*  <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-share"></i><span>Multilevel</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i>Level One</a></li>
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-circle-o"></i>Level One
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Level Two</a></li>
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-circle-o"></i>Level Two
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i>Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i>Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>Level One</a></li>
+                </ul>
+            </li>
+            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+            <li class="header">LABELS</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i><span>Important</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i><span>Warning</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i><span>Information</span></a></li>*@
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+
+
+        <div class="content-wrapper">
+            <div id="mainiframe"
+                 data-urlsecure="@Url.Action("SecurityFeature", "Base", new { area = "" })"
+                 data-urlfunction="@Url.Action("SecurityFunction", "Base", new { area = "" })"
+                 data-appmenu="@Url.Action("GetMenu", "Home", new { area = "" })"
+                 data-appissue="@Url.Action("GetApplicationIssue", "Home", new { area = "" })"
+                 data-stationlist="@Url.Action("StationList", "Base", new { area = "" })"
+                 data-st="@Url.Action("ChangeStation", "Home", new { area = "" })"
+                 data-lockscreen="@Url.Action("SecurityUser", "Base", new { area = "" })">
+                @RenderBody()
+            </div>
+        </div>
+
+        <aside class="control-sidebar control-sidebar-dark">
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li class="active"><a href="#control-sidebar-settings-tab" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span></a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="control-sidebar-settings-tab" class="tab-pane active">
+                    <div>
+                        <h4 class="control-sidebar-heading">Skins</h4>
+                        <ul class="list-unstyled clearfix">
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin">Blue</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display: block; width: 20%; float: left; height: 7px; background: #fefefe;"></span><span style="display: block; width: 80%; float: left; height: 7px; background: #fefefe;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #222;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin">Black</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin">Purple</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin">Green</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin">Red</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #222d32;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin">Yellow</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px; background: #367fa9;"></span><span class="bg-light-blue" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin" style="font-size: 12px">Blue Light</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display: block; width: 20%; float: left; height: 7px; background: #fefefe;"></span><span style="display: block; width: 80%; float: left; height: 7px; background: #fefefe;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin" style="font-size: 12px">Black Light</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin" style="font-size: 12px">Purple Light</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a href="javascript:void(0);" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin" style="font-size: 12px">Green Light</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a id="Red-Light" href="javascript:void(0);" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin" style="font-size: 12px">Red Light</p>
+                            </li>
+                            <li style="float: left; width: 33.33333%; padding: 5px;">
+                                <a id="Yellow-Light" href="javascript:void(0);" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
+                                    <div><span style="display: block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display: block; width: 80%; float: left; height: 7px;"></span></div>
+                                    <div><span style="display: block; width: 20%; float: left; height: 20px; background: #f9fafc;"></span><span style="display: block; width: 80%; float: left; height: 20px; background: #f4f5f7;"></span></div>
+                                </a>
+                                <p class="text-center no-margin" style="font-size: 12px;">Yellow Light</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <input type="text" style="display:none;">
+        <footer class="main-footer" style="padding: 20px !important;">
+
+
+            <div class="col-xs-11">
+
+                @*<div data-toggle="tooltip" data-original-title="@ViewBag.Description" class="pull-right hidden-xs">
+                        <b>Version</b> @ViewBag.VersionID
+                    </div>*@
+                <strong class="pull-left" data-toggle="tooltip" data-original-title="@ViewBag.Address">@ViewBag.CopyRight <a href="#">@ViewBag.BranchName</a>.</strong>
+            </div>
+            <div class="col-xs-1 pull-right">
+                <span class="label label-danger" id="clock" style="background-color: #307354 !important;"> </span>
+            </div>
+        </footer>
+    </div>
+    <div id="lockscreenpg" style="display: none;">@RenderPage("_LockScreen.cshtml")</div>
+
+
+    <div id="LoadingMessageBlockUI" style="display:none;">
+        <div class="row">
+            <div id=" " class="col-md-6  pull-left">
+                <div id="spinningSquaresG_1" class="spinningSquaresG"></div>
+                <div id="spinningSquaresG_2" class="spinningSquaresG"></div>
+                <div id="spinningSquaresG_3" class="spinningSquaresG"></div>
+            </div>
+            <div id=" " class=" col-md-6 pull-right">
+                <div id="spinningSquaresG_5" class="spinningSquaresG"> </div>
+                <div id="spinningSquaresG_6" class="spinningSquaresG"></div>
+                <div id="spinningSquaresG_7" class="spinningSquaresG"></div>
+            </div>
+        </div>
+        <div class="row">
+            <small style="font-size: 95%;">WAIT. انتظر لحظة Please be patient.</small>
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("styles", required: false)
+
+
+    <script src="~/Content/plugins/moment/moment.js"></script>
+    <script src="~/Content/plugins/moment/moment-hijri.js"></script>
+    <script src="~/Content/plugins/moment/locale/ar-sa.js"></script>
+    <script src="~/Content/plugins/moment/locale/en-gb.js"></script>
+
+
+    <script type="text/javascript">
+
+        function showTime() {
+            // to get current time/ date.
+            var date = new Date();
+            // to get the current hour
+            var h = date.getHours();
+            // to get the current minutes
+            var m = date.getMinutes();
+            //to get the current second
+            var s = date.getSeconds();
+            // AM, PM setting
+            var session = "AM";
+
+            //conditions for times behavior
+            if (h == 0) {
+                h = 12;
+            }
+            if (h >= 12) {
+                session = "PM";
+            }
+
+            if (h > 12) {
+                h = h - 12;
+            }
+            m = (m < 10) ? m = "0" + m : m;
+            s = (s < 10) ? s = "0" + s : s;
+
+            //putting time in one variable
+            var time = h + ":" + m + ":" + s + " " + session;
+            //putting time in our div
+            $('#clock').html(time);
+            //to change time in every seconds
+            setTimeout(showTime, 1000);
+        }
+        showTime();
+
+
+        $(document).bind('keypress', 'alt+i+shift', function () {
+            console.log('shift+alt+i');
+
+        });
+        $(document).bind('keydown', 'alt+i', function () {
+            console.log('alt+i');
+
+        });
+
+    </script>
+
+
+</body>
+</html>

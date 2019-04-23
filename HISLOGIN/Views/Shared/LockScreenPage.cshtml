@@ -1,0 +1,26 @@
+﻿@model List<DataLayer.UserModules>
+@{
+    FormsIdentity id = (FormsIdentity)User.Identity;
+    FormsAuthenticationTicket ticket = id.Ticket;
+    var d = ticket.UserData.Split('|');
+    var userid = d[0];
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<div>
+        @RenderPage("_LockScreen.cshtml")
+    </div>*@
+
+
+<script type="text/javascript">
+    $.blockUI({
+        message: $("#lockscreenpg").html(),
+        css: {
+            backgroundColor: "#C7C8CA", 'z-index': '1050', padding: 0, margin: 0, top: 0, left: 0, width: '100%', height: '100%', textAlign: 'center', border: 'none', cursor: 'not-allowed'
+        }
+    });
+
+</script>

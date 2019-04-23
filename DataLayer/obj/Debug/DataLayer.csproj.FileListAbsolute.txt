@@ -1,0 +1,8 @@
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\bin\Debug\DataLayer.dll
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\bin\Debug\DataLayer.pdb
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\bin\Debug\HISCommonUtilities.dll
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\obj\Debug\DataLayer.dll
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\obj\Debug\DataLayer.pdb
+D:\PROJECTS\Login\STAGINGNEW\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache

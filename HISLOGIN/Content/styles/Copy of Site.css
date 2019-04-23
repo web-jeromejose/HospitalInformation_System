@@ -1,0 +1,434 @@
+﻿/******Customize CSS-Style per programmer-global-function******/
+select {
+    height:28px !important;
+}
+table.tbl-legend tr td {
+    border: 1px solid black;
+    width:50px;
+}
+table.tbl-legend th {
+    padding-left:5px;
+    padding-right:5px;
+}
+tr.sm_font {
+    font-size:10px !important;
+}
+
+._coldiv {
+    cursor:pointer;
+
+}
+@media print {
+    .myDivToPrint {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+._print-format > * {
+    font-size:10px !important
+}
+._table-sm tbody tr td {
+    font-size:10px !important;
+}
+.sel {
+    width:100%;
+}
+td.tdcenter {
+        text-align: center;
+        vertical-align:middle;
+}
+span.spbtn {
+    width:30px;
+}
+.dt {
+    cursor:pointer;
+}
+._ipbtn {
+    display:none;
+}
+.navbar-fixed-top {
+    z-index:100 !important;
+}
+input[readonly=true] {
+    border:1px solid #7d7b7b !important;
+    background-color: #DEDEDE !important;
+}
+.table-view {
+    /*background-color:rgba(108, 122, 137, 1);*/
+    /*background-color:#337ab7;*/
+    background-color:rgb(245, 245, 245)!important;
+    /*background-color:rgba(218, 223, 225, 1);*/
+    font-size:12px;
+    color:black;
+}
+    .table-view th {
+        border-color:rgba(44, 62, 80, 0.5)  !important;
+        /*border-bottom:1px solid #ddd !important;*/
+    }
+
+
+td.btnEdit {
+    /*background: url("/ClinicalTraining/Images/report.png") no-repeat center center;*/
+    background: url("/Images/edit.png") no-repeat center center;
+    cursor: pointer;
+    background-size: 22px 22px;
+}
+
+.row_green tr {
+    background-color: #B3FFB3  !important;
+}
+.row_gray {
+    background-color: #e0dfdf  !important;
+}
+
+.priceeditor table.dataTable td {
+    text-align: center;
+}
+.row_red {
+    background-color: #FFB3B3;
+}
+
+.row_yellow {
+    background-color: #FFFFB3;
+}
+.row_plum {
+    background-color: #B58FF1;
+}
+.row_green {
+    background-color: #B3FFB3;
+}
+
+.row_orange tr {
+    background-color: #FFB300;
+}
+
+.row_blue {
+    background-color: #91E1FF;
+}
+
+.datepicker {
+    z-index: 1151 !important;
+}
+
+.row_red {
+    background-color: #FFB3B3;
+}
+
+.row_yellow {
+    background-color: #FFFFB3;
+}
+
+.row_green {
+    background-color: #B3FFB3;
+}
+
+.row_orange {
+    background-color: #FFB300;
+}
+
+.bed {
+    width: 70px;
+    height: 70px;
+}
+
+.bed-cont {
+    text-align: center;
+    cursor: pointer;
+}
+
+.priceeditor {
+    text-align: center;
+}
+.code-td {
+    width:80px;height: 28px;padding-top:0px;padding-bottom:0px;
+}
+.integer-td {
+    width:80px;height: 28px;padding-top:0px;padding-bottom:0px;
+    text-align: center;
+}
+
+.remarks-td {
+    width:200px;height: 28px;padding-top:0px;padding-bottom:0px;
+    text-align: left;
+}
+.unit-td {
+    width:100px;height: 28px;padding-top:0px;padding-bottom:0px;
+    text-align: left;
+}
+td.price-td {
+    width:80px;height: 28px;padding-top:0px;padding-bottom:0px;
+    text-align: right;
+}
+.numericformat {
+    text-align: center;
+}
+.table-bordered {
+    width: 100%;
+    cursor: pointer;
+}
+.rdio {
+    cursor:pointer;
+    width:17px;
+    height:17px;
+}
+
+.select2-hidden-accessible {
+    display: none;
+}
+
+
+.table-print tbody tr td {
+        font-size: 10px!important;
+        padding:0px!important;
+
+}
+
+input._enlargetxt {
+     font-family: Courier New; font-size: 14px; white-space: pre-wrap; font-weight: 800;
+}
+
+#sidebar {
+  /* for the animation */
+  transition: margin 0.3s ease;
+}
+
+.collapsed {
+  /* hide it for small displays*/
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .collapsed {
+    display: block;
+    /* same width as sidebar */
+    margin-left: -25%;
+  }
+}
+
+#row-main {
+  /* necessary to hide collapsed sidebar */
+  overflow-x: hidden;
+}
+
+#content {
+  /* for the animation */
+  transition: width 0.3s ease;
+}
+
+
+/**********LOADING*/
+
+.sk-folding-cube {
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
+
+tr.row_select {
+    background-color:#d9edf7;
+    font-weight:600;
+}
+.nav > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background-color:#c2c3c4 !important;
+    color:black;
+    font-weight:600 !important;
+    font-size:14px;
+}
+
+.nav-stacked > li.active > a,
+.nav-stacked > li.active > a:hover,
+.nav-stacked > li.active > a:focus {
+  background-color:#c2c3c4 !important;
+  font-weight:600 !important;
+  border-color: black !important;
+  border-radius:4px;
+  font-size:14px;
+  color:black;
+}
+
+.panel-body {
+    background-color:rgba(228, 228, 228, 0.21);
+}
+a, .nav-tabs {
+    color: black;
+}
+
+.nav {
+    border-bottom:1px solid #585858 !important;
+}
+.nav-tabs > li > a {
+    border : 1px solid #585858 !important;
+}
+
+textarea {
+    border-radius:10px;
+    border-color:black;
+}
+
+
+
+.form-control {
+    color:black !important;
+    border-radius:5px;
+    border-color:#505050;
+    margin-bottom:2px;
+}
+
+.panel-dm-hist {
+  border-color: rgb(212, 63, 58);
+}
+.panel-dm-hist > .panel-heading {
+  color: #fff;
+  background-color: rgb(212, 63, 58);
+  border-color: rgb(212, 63, 58) !important;
+}
+.panel-dm-hist > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: rgb(212, 63, 58);
+}
+.panel-dm-hist > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
+.panel-dm-hist > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: rgb(212, 63, 58);
+}
+
+.panel-dm-histsub {
+  border-color: rgb(212, 162, 160);
+}
+.panel-dm-histsub > .panel-heading {
+  color: black;
+  background-color: rgb(255, 185, 182);
+  border-color:  rgb(255, 185, 182);
+}
+.panel-dm-histsub > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: rgb(255, 185, 182);
+}
+.panel-dm-histsub > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
+.panel-dm-histsub > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: rgb(212, 63, 58);
+}
+
+
+.panel-dm-phyexm {
+  border-color: #0091bb;
+}
+.panel-dm-phyexm > .panel-heading {
+  color: #fff;
+  background-color: #0091bb;
+  border-color: #0091bb !important;
+}
+.panel-dm-phyexm > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: rgb(212, 63, 58);
+}
+.panel-dm-phyexm > .panel-heading .badge {
+  color: #0091bb;
+  background-color: #0091bb;
+}
+.panel-dm-phyexm > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: rgb(212, 63, 58);
+}
+
+
+.dmtxt {
+    font-family: Courier New; font-size: 14px; white-space: pre-wrap; font-weight: 800;
+}
+
+.sweet-alert p {
+    max-height:200px !important;
+    overflow : auto !important;
+}

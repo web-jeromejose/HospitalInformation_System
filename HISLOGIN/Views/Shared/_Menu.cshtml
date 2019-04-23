@@ -1,0 +1,65 @@
+﻿@model List<DataLayer.ApplicationMenuModel>
+@{
+    int maxI = Convert.ToInt16(Model.Max(x => x.MenuLevel));
+    string parentID = "0";
+    int ctr = 1;
+    var dis = "";
+    var sLink = "";
+}
+<li class="header">MAIN NAVIGATION</li>
+<li>
+    <a href="~/">
+        <i class="fa glyphicon glyphicon-home" style="color:#357ca5 !important;"></i><span>Home</span>
+    </a>
+</li>
+@{
+    foreach (var file in Model.GroupBy(x => new { x.ParentName, x.ParentID, x.ParentSequence }).OrderBy(x => x.Key.ParentSequence))
+    {
+    <li class="treeview _parentlink _parentlink_@file.Key.ParentID">
+        <a href="#">
+            <i class="fa glyphicon glyphicon-th-list"></i>
+            <span> @file.Key.ParentName</span>
+        </a>
+        <ul class="treeview-menu _parentmenu _parentmenu_@file.Key.ParentID @(file.Key.ParentID == "58" ? "_changestation": "")">
+            @foreach (var menu in Model.Where(x => x.ParentID == file.Key.ParentID).OrderBy(x => x.ParentSequence))
+            {
+                dis = "";
+                sLink = menu.MenuURL;
+                if (menu.Access == "0")
+                {
+                    dis = "disabled";
+                    sLink = "#";
+                }
+
+                if (menu.NewWindow != "True" && file.Key.ParentID != "58")
+                {
+                @:<li class="featlink @dis" data-featid="@menu.ID" data-isshow="@menu.ShowNewIssue" data-search="@menu.MenuName.ToLower()" data-parentid="@menu.ParentID" ><a href="@sLink" ><i class="fa glyphicon glyphicon-chevron-right"></i>@menu.MenuName</a></li>
+                }
+                else if (menu.NewWindow == "True") {
+                    @:<li class="featlink _iframeload @dis" data-featid="@menu.ID" data-url="@sLink" data-search="@menu.MenuName.ToLower()  data-parentid="@menu.ParentID" data-isshow="@menu.ShowNewIssue" ><a href="#" >@menu.MenuName</a></li>
+                
+                }
+                else if (file.Key.ParentID != "58")
+                {
+                @:<li class="featlink _iframeload @dis _link" data-featid="@menu.ID" data-url="@sLink" data-search="@menu.MenuName.ToLower() data-parentid="@menu.ParentID" data-isshow="@menu.ShowNewIssue" ><a href="@sLink"><span> @menu.MenuName</span></a></li>
+                    }
+                    
+            }
+
+        </ul>
+    </li>
+    }
+}
+
+<li>
+    <a href="/HISLOGIN/">
+        <i class="fa glyphicon glyphicon-repeat" style="color:#008d4c !important;"></i><span>Back to Main</span>
+    </a>
+</li>
+
+<li>
+    <a href="@Url.Action("LogOff", "Login", new { area = "" })">
+        <i class="fa glyphicon glyphicon-off" style="color:#dd4b39 !important;"></i><span>Log Out</span>
+    </a>
+</li>
+

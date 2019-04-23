@@ -1,0 +1,210 @@
+﻿.newItemDTColor {
+    color:rgba(214, 69, 65, 0.8) !important;
+}
+
+#billdisptable input{
+    min-width:100%;
+    max-width:100%;
+    width:100%;
+    text-align:center !important;
+}
+
+
+.def_datepicker {
+    text-align:center !important;
+    font-size:12px !important;
+}
+
+.IT_custom_table_header tbody > tr > td{
+    border: 1px solid #ddd !important;
+}
+
+#itemdisptable_filter, #catdisptable_filter{
+    width: 50% !important;
+    float: left !important;
+    text-align: left !important;
+}
+
+th, td { 
+    text-wrap:none;
+    white-space: nowrap; overflow: hidden; 
+}
+
+/* Tri - State */
+
+.sgh-tristate, .sgh-duostate, .sgh-duostate2, .sgh-dstate, .sgh-legend-guide
+{
+   width:16px;
+   height:16px;
+   background:#f2f2f2;
+   padding:1px;
+   
+   /*border:1px solid #2574A9;*/
+   background-color:rgba(37, 116, 169, 0.8);
+   color:#fff;
+   margin:auto;
+   text-align:center !important;
+   line-height:16px !important;
+   font-size:10px !important;
+   /*-moz-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    -webkit-border-radius: 3px !important;
+    border-radius: 3px !important;*/
+   /*
+   -webkit-border-radius:60px;
+    -moz-border-radius:60px;
+    -ms-border-radius:60px;
+    border-radius:60px;*/
+    
+   /*
+   -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    border-radius:50%;*/
+}
+.sgh-distate
+{
+    width:0;
+    height:0;
+    margin:auto;
+}
+.sgh-tristate:hover, .sgh-duostate:hover, .sgh-duostate2:hover
+{
+    cursor:pointer;
+    /*
+   -webkit-border-radius:1px;
+    -moz-border-radius:1px;
+    -ms-border-radius:1px;
+    border-radius:1px;*/
+}
+/*Success*/
+.sgh-tristate-1
+{
+    border-color:#019875 !important;
+    /*color:#1BBC9B !important;*/
+    background-color:rgba(1, 152, 117, 0.8);
+}
+.sgh-tristate-2
+{
+    border-color:#19B5FE !important; 
+    /*color:#19B5FE !important;*/
+    background-color:rgba(25, 181, 254, 0.8);
+}
+.sgh-tristate-3
+{
+    border-color:#D64541 !important;
+    /*color:#D64541 !important;*/
+    background-color:rgba(214, 69, 65, 0.8);
+}
+
+.sgh-tristate-default
+{
+    border-color:#979797 !important;
+    /*color:#D64541 !important;*/
+    background-color:#c7c7c7;
+}
+
+.sgh-tristate-defaultx {
+     border-color:#D64541 !important;
+    /*color:#D64541 !important;*/
+    background-color:rgba(214, 69, 65, 0.8);
+}
+
+.sgh-tristate-en
+{
+    /*border-color:#019875 !important;
+    font-weight:bold !important;
+    background-color:rgba(1, 152, 117, 0.7);*/
+    border-top:6px solid transparent;
+    border-left: 12px solid #2574A9;
+    border-bottom: 6px solid transparent;
+}
+.sgh-tristate-ds
+{
+    border-top:6px solid transparent;
+    border-left: 12px solid #D64541;
+    border-bottom: 6px solid transparent;
+}
+
+.sgh-tristate-en:hover 
+{
+    border-top:6px solid transparent;
+    border-left: 12px solid #2574A9;
+    border-bottom: 6px solid transparent; 
+}
+.sgh-tristate-ds:hover
+{
+    border-top:6px solid transparent;
+    border-left: 12px solid #D64541;
+    border-bottom: 6px solid transparent;
+}
+
+
+
+/*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+ 
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+ 
+
+::-webkit-scrollbar-thumb {
+    background:#808080;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #ddd
+}*/
+
+
+#pdAmount {
+    font-weight:bold;
+    font-size:12px;
+    color:rgb(0, 95, 73);
+}
+
+
+/* side navigation fix */
+#opbillmaintab li {
+    border: none;
+    
+}
+    #opbillmaintab li:hover {
+       background-color:#eee;
+       border:none;
+    }
+#opbillmaintab a {
+    width:100%;
+    border: none;
+        margin-right: 0px;
+}
+#opbillmaintab a:hover {
+   border: none;
+}
+
+#opbillmaintab .active > a {
+    background-color:#2980b9;
+    color:#fff;
+}
+
+/* NO SELECTION */
+
+#conlistofdoctor,
+#conlistofseldoctor,
+#invlistofitems,
+#invlistofselitems {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+
+
+

@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="login-box">
+    <div class="login-logo">
+        <div class="sgh-logo"></div>
+    </div>
+    <div class="login-box-body">
+        <form action="@Url.Action("Login")" method='POST' class="form">
+   
+            <div class="form-group has-feedback">
+                <input type="text" id="txtusername" name="Username" required="required" class="form-control" value="@ViewBag.sUsername" placeholder="Employee ID">
+                <span class=" glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" required="required" id="txtpassword" name="Password" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button id="btn-login" type="submit" class="btn btn-success btn-block">Sign In</button>
+                </div>
+            </div>
+            <div class="row">
+                @if (!String.IsNullOrEmpty(ViewBag.Error))
+                {
+                    <div class="col-sm-12 ">
+                        <br />
+                        <div class="alert alert-danger">
+                            <h5>@ViewBag.Error</h5>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </form>
+        @*     <a href="#"><b>I forgot my password</b></a>*@
+        <br>
+
+        <img src="/HISLOGIN/Images/megamind.png" style="width: auto;">
+    </div>
+
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("form").submit(function () {
+
+            if ($("#txtusername").val() == "") {
+                $("#txtusername").focus();
+                alert('Enter your Employee ID!!');
+                return false;
+            }
+            if ($("#txtpassword").val() == "") {
+                $("#txtpassword").focus();
+                alert('Enter your password!!');
+                return false;
+            }
+            $(".login-box").fadeOut(500);
+
+        });
+
+        $(document).on("click", "#btn-login", function () {
+
+        });
+
+    });
+
+</script>
