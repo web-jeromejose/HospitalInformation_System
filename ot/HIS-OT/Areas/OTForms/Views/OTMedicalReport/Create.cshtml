@@ -1,0 +1,485 @@
+﻿@model OTEf.Core.Model.OTMedicalReport
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">OT Medical Report</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <button id="btn-create" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-check"></span>Save
+        </button>
+        <button id="btn-clear" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span>Clear
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span>Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input id="@Html.IdFor(m => m.RegistrationNo)" name="@Html.NameFor(m => m.RegistrationNo)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.PatientName)
+            @Html.HiddenFor(m => m.IssueAuthorityCode)
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Entry Date / Time</label>
+            <div class="input-group">
+                <input id="@Html.IdFor(m => m.MedicalReportDate)" name="@Html.NameFor(m => m.MedicalReportDate)" class="form-control RequiredField input-sm datepicker" />
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">Age</label>
+            <input type="number" id="@Html.IdFor(m => m.Age)" name="@Html.NameFor(m => m.Age)" class="form-control input-sm select2" />
+         </div>
+        <div class="col-md-1">
+            <label class="control-label">Gender</label>
+            <input id="@Html.IdFor(m => m.GenderId)" name="@Html.NameFor(m => m.GenderId)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.GenderName)
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Nationality</label>
+            <input id="@Html.IdFor(m => m.NationalityId)" name="@Html.NameFor(m => m.NationalityId)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.NationalityName)
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+              <label class="control-label">Complaints</label>
+            <input id="@Html.IdFor(m => m.Complaints)" name="@Html.NameFor(m => m.Complaints)" class="form-control input-sm select2" />
+        </div>
+         <div class="col-md-12">
+              <label class="control-label">Examination</label>
+            <input id="@Html.IdFor(m => m.Examination)" name="@Html.NameFor(m => m.Examination)" class="form-control input-sm select2" />
+        </div>
+          <div class="col-md-12">
+              <label class="control-label">Investigations</label>
+            <input id="@Html.IdFor(m => m.Investigations)" name="@Html.NameFor(m => m.Investigations)" class="form-control input-sm select2" />
+        </div>
+         <div class="col-md-12">
+              <label class="control-label">Treatment</label>
+            <input id="@Html.IdFor(m => m.Treatment)" name="@Html.NameFor(m => m.Treatment)" class="form-control input-sm select2" />
+        </div>
+          <div class="col-md-12">
+              <label class="control-label">Prescription</label>
+            <input id="@Html.IdFor(m => m.Prescription)" name="@Html.NameFor(m => m.Prescription)" class="form-control input-sm select2" />
+        </div>
+          <div class="col-md-7">
+              <label class="control-label">Initial / Final Diagnosis</label>
+            <input id="@Html.IdFor(m => m.InitialFinalDiagnosis)" name="@Html.NameFor(m => m.InitialFinalDiagnosis)" class="form-control input-sm select2" />
+        </div>
+          <div class="col-md-5">
+              <label class="control-label">ICD10</label>
+            <input id="@Html.IdFor(m => m.Icd)" name="@Html.NameFor(m => m.Icd)" class="form-control input-sm select2" />
+        </div>
+          <div class="col-md-12">
+              <label class="control-label">Recommendation</label>
+            <input id="@Html.IdFor(m => m.Recommendation)" name="@Html.NameFor(m => m.Recommendation)" class="form-control input-sm select2" />
+        </div>
+         <div class="col-md-8">
+                                <label class="control-label">Doctor's Name</label>
+                                <input id="@Html.IdFor(m => m.DoctorId)" name="@Html.NameFor(m => m.DoctorId)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.DoctorName, new { @class = "hidden-prop" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.DoctorDateTime)" name="@Html.NameFor(m => m.DoctorDateTime)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+
+
+    </div>
+
+
+    </div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+        var dtitems;
+        var dtbasicinstrument;
+        var dtseparateinstrument;
+        var Select2IsClicked;
+        $(document).ready(function () {
+
+            InitPlugins();
+            InitEvents()
+
+        });
+
+
+        function Valid() {
+            var errortext = "";
+            var errors = [];
+            if ($("#RegistrationNo").select2('val') == "") {
+
+                errors.push("Patient PIN / name is required");
+            }
+
+
+            //if (new Date($("#EntryDateTime").val()) == "Invalid Date") {
+
+            //    errors.push("Screening date is required");
+            //}
+
+            //if ($("#LocationId").select2('val') == "") {
+
+            //    errors.push("Location is required");
+            //}
+
+            if ($("#DoctorId").select2('val') == "") {
+
+                errors.push("Doctor is required");
+            }
+
+
+            if (errors.length > 0) {
+
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error", errortext);
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        function Clear() {
+
+            $(".select2").select2('data', null);
+            $(".hidden-prop").val('');
+
+
+            $(".datepicker").val('');
+
+            $(".switch").lcs_off();
+
+            dtitems.clear().draw();
+            dtbasicinstrument.clear().draw();
+            dtseparateinstrument.clear().draw();
+
+        }
+
+
+        function Save() {
+ 
+            var model = {
+                Id: $("#Id").val(),
+                RegistrationNo: $("#RegistrationNo").select2('val'),
+                MedicalReportDate: (new Date($("#MedicalReportDate").val()) == "Invalid Date") ? null : $("#MedicalReportDate").val(),
+                DoctorDateTime: (new Date($("#DoctorDateTime").val()) == "Invalid Date") ? null : $("#DoctorDateTime").val(),
+                PatientName: $("#PatientName").val(),
+                IssueAuthorityCode: $("#IssueAuthorityCode").val(),
+                Age: $("#Age").val(),
+                GenderId: $("#GenderId").val(),
+                GenderName: $("#GenderName").val(),
+                NationalityId: $("#NationalityId").val(),
+                NationalityName: $("#NationalityName").val(),
+                Complaints: $("#Complaints").val(),
+                Examination: $("#Examination").val(),
+                Investigations: $("#Investigations").val(),
+                Treatment: $("#Treatment").val(),
+                Prescription: $("#Prescription").val(),
+                InitialFinalDiagnosis: $("#InitialFinalDiagnosis").val(),
+                Icd: $("#Icd").val(),
+                Recommendation: $("#Recommendation").val(),
+                DoctorName: $("#DoctorName").val(), 
+                DoctorId: $("#DoctorId").select2('val'),
+
+                
+ 
+            };
+
+            console.log(model);
+           $.ajax(
+                {
+                    url: "@Url.Action("Create")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(model),
+
+                    success: function (data) {
+                        window.location = '@Url.Action("Detail", "OTMedicalReport")/' + data.id;
+                    },
+                    error: function (data) {
+                        swal({ type: "error", title: "Server Error", text: data });
+                    }
+                }
+            ); 
+
+        }
+        function InitEvents() {
+
+            //buttons
+
+            $("#btn-create").click(function () {
+                if (Valid()) {
+                    Save();
+                }
+            });
+
+            $("#btn-clear").click(function () {
+                Clear();
+            });
+
+            $("#btn-removeitem").click(function () {
+
+                if ($(".cb-item:checked").length > 0) {
+                    $(".cb-item:checked").each(function () {
+                        dtitems.row($(this).closest('tr')).remove().draw();
+                    });
+                    $("#cb-all").removeProp("checked");
+                } else {
+                    swal({ title: "No selected data to remove", type: "info" });
+                }
+            });
+
+            $("#btn-additem").click(function () {
+                dtitems.row.add(
+                    {
+                        Id: 0,
+                        OTUnitOfMeasurementId: 0,
+                        OTItemId: 0,
+                        OTRoomCountSheetId: 0,
+                        FirstCount: 0,
+                        SecondCount: 0,
+                        ThirdCount: 0,
+                        FirstAddition: 0,
+                        SecondAddition: 0,
+                        ThirdAddition: 0,
+                        FinalCount: 0,
+                        Unit: { Id: 0, Name: "" },
+                        Item: { Id: 0, Name: "" },
+                    }
+                ).draw();
+
+                InitEditables();
+                $("#cb-all").removeProp("checked");
+
+            });
+
+            $("#btn-removebasicinstru").click(function () {
+
+                if ($(".cb-basicinstru:checked").length > 0) {
+                    $(".cb-basicinstru:checked").each(function () {
+                        dtbasicinstrument.row($(this).closest('tr')).remove().draw();
+                    });
+                    $("#cb-allbasicInstru").removeProp("checked");
+                } else {
+                    swal({ title: "No selected data to remove", type: "info" });
+                }
+            });
+
+            $("#btn-addbasicinstru").click(function () {
+                dtbasicinstrument.row.add(
+                    {
+                        Id: 0,
+                        OTInstrumentId: 0,
+                        OTItemId: 0,
+                        InitialCount: 0,
+                        SecondCount: 0,
+                        FinalCount: 0,
+                        Instrument: { Id: 0, Name: "" },
+                        OTRoomCountSheetId: 0
+                    }
+                ).draw();
+
+                InitEditables();
+                $("#cb-allbasicInstru").removeProp("checked");
+
+            });
+
+
+            $("#btn-removeseparateinstru").click(function () {
+
+                if ($(".cb-separateInstru:checked").length > 0) {
+                    $(".cb-separateInstru:checked").each(function () {
+                        dtseparateinstrument.row($(this).closest('tr')).remove().draw();
+                    });
+                    $("#cb-allseparateInstru").removeProp("checked");
+                } else {
+                    swal({ title: "No selected data to remove", type: "info" });
+                }
+            });
+
+            $("#btn-addseparateinstru").click(function () {
+                dtseparateinstrument.row.add(
+                    {
+                        Id: 0,
+                        OTInstrumentId: 0,
+                        OTItemId: 0,
+                        InitialCount: 0,
+                        FirstAddition: 0,
+                        SecondCount: 0,
+                        SecondAddition: 0,
+                        FinalCount: 0,
+                        Instrument: { Id: 0, Name: "" },
+                        OTRoomCountSheetId: 0,
+                    }
+                ).draw();
+
+                InitEditables();
+                $("#cb-allseparateInstru").removeProp("checked");
+
+            });
+
+            //checkboxes
+
+            $("#cb-all").change(function (e, i) {
+                if ($(e.target).is(":checked")) {
+
+                    $(".cb-item").prop("checked", this.checked);
+                    $(".cb-item").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-item").removeProp("checked");
+                    $(".cb-item").closest("tr").removeClass("selected");
+                }
+            });
+
+            $("#cb-allbasicInstru").on('change', function (e) {
+                if ($(e.target).is(":checked")) {
+                    $(".cb-basicinstru").prop("checked", this.checked);
+                    $(".cb-basicinstru").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-basicinstru").removeProp("checked");
+                    $(".cb-basicinstru").closest("tr").removeClass("selected");
+                }
+            });
+
+
+            $("#cb-allbasicInstru").on('change', function (e) {
+                if ($(e.target).is(":checked")) {
+                    $(".cb-basicinstru").prop("checked", this.checked);
+                    $(".cb-basicinstru").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-basicinstru").removeProp("checked");
+                    $(".cb-basicinstru").closest("tr").removeClass("selected");
+                }
+            });
+
+            $("#cb-allseparateInstru").on('change', function (e) {
+                if ($(e.target).is(":checked")) {
+                    $(".cb-separateInstru").prop("checked", this.checked);
+                    $(".cb-separateInstru").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-separateInstru").removeProp("checked");
+                    $(".cb-separateInstru").closest("tr").removeClass("selected");
+                }
+            });
+
+        }
+
+        function InitPlugins() {
+            InitDatePlugins();
+            InitSelect2();
+            InitLCSwitch();
+          
+        };
+
+        function InitLCSwitch() {
+
+            $(".switch").lc_switch("YES", "NO");
+        };
+
+        function InitSelect2() {
+
+            $("#RegistrationNo").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 1,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("select2PIN", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        $.each(data.Results, function (i, item) {
+                            item.text += " - " + item.patientname;
+                        });
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#PatientName").val(e.added.patientname);
+                $("#IssueAuthorityCode").val(e.added.issueathoritycode);
+            });
+
+
+            $("#DoctorId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2MedicalSurgeon", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#DoctorName").val(e.added.text);
+            });
+
+          
+
+        }
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+        };
+         
+  
+
+    </script>
+}
+

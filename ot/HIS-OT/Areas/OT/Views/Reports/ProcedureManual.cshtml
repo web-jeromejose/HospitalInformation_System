@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "ProcedureManual";
+  //  Layout = "~/Areas/OT/Views/Shared/_Layout.cshtml";
+}
+ <input type="hidden" id="url"
+@*data-getrequisition="@Url.Action("RequisitionDashboard")"
+data-getfindings="@Url.Action("FetchRequisitionDetails")"*@
+@*data-getfindings="@Url.Action("GetFetchFindingsDetails")"*@
+data-printpreview="@Url.Action("Report")"
+data-alldoctors="@Url.Action("Select2Doctor")"
+data-allwards="@Url.Action("Select2Wards")"
+data-save="@Url.Action("Save")"
+/>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-5">
+            <h4><b class="navbar-header">Schedule Wise</b></h4>
+         </div>
+      </div>
+          
+   </div>
+   <div class="panel-body">
+      <div class="form-horizontal">
+         <div class="form-group">
+            <div class="col-sm-1">
+               <label class="control-label col-xs-4">From</label>
+            </div>
+           <div class="col-sm-2">
+               <div id="dtFrom" class="input-group date">
+                  <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+               </div>
+            </div>
+           <div class="form-group">
+            <div class="col-sm-1">
+               <label class="control-label col-xs-4">To</label>
+            </div>
+            <div class="col-sm-2">
+               <div id="dtTo" class="input-group date">
+                  <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")" />
+                  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+               </div>
+           
+            </div>
+             <div class="col-xs-2">
+                 <button type="button" class="btn btn-sm btn-default button-width" id="btnPreview">
+               <span class="glyphicon glyphicon-th-list"></span> View
+               </button>
+ 
+            </div>
+         </div>
+           <div class="col-sm-1">
+               <label class="control-label col-sm-1">Ward</label>
+            </div>
+           <div class="col-sm-3">
+               <input type="text" class="form-control" id="Select2Ward">
+            </div>
+           <div class="col-sm-1">
+               <label class="control-label col-sm-1">Doctor</label>
+            </div>
+            <div class="col-sm-3">
+               <input type="text" class="form-control" id="Select2Doctor">
+            </div>
+
+           
+         </div>
+      </div>
+    
+ 
+   </div>
+</div>
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg" style="width:98%;height:auto !important;">
+      <div class="modal-content">
+         <div class="modal-header">
+      
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              
+            <h3 class="modal-title" id="myModalLabel">Schedule Wise Reports</h3>
+
+           <button type="button" class="btn btn-sm btn-default button-width" id="btnRefesh">
+                    <span class="glyphicon glyphicon-th-list"></span> Refesh 
+            </button>
+         </div>
+         <div class="modal-body">
+            @*                
+            <div id="report-container">
+               <iframe id="myReport2" ></iframe>
+            </div>
+            <div class="clear-botn"></div>
+            *@
+            <form role="form" class="form-horizontal">
+               <div class="col-xs-12">
+                  <div class = "form-group">
+                     <div id="loadingpdf" class="col-xs-12" style="background-color: white; display:none; z-index: 999; position:absolute; height:100%; width:100%; opacity: .50;">
+                        <div style="width: 200px; height: 200px; position: absolute; left: 50%; top: 50%; background-repeat: no-repeat; background-position: center; margin: -100px 0 0 -100px;">
+                           <div id="spinningSquaresG">
+                              <div id="spinningSquaresG_1" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_2" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_3" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_4" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_5" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_6" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_7" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_8" class="spinningSquaresG">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div  id="PreviewInPDF" class="col-xs-12 border" style="background-color:Gray; height:600px;">
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+@section scripts{
+<script src="~/Scripts/Reports/ScheduleWiseReports.js"></script>
+
+}

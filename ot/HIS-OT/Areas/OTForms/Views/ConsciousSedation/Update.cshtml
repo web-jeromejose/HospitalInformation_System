@@ -1,0 +1,398 @@
+﻿@model OTEf.Core.Model.ConsciousSedationRecord
+
+@{
+    ViewBag.Title = "Conscious Sedation / Analgesia Record";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">UPDATE SEDATION RECORD</label>
+    </div>
+
+   
+      <a  class="btn btn-sm btn-success button-width pull-right" style="margin-top:5px;" href="@Url.Action("Detail", new { id = Model.Id })">
+            <span class="glyphicon glyphicon-arrow-left "></span> Back
+        </a>
+
+    
+</div>
+
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">Date</label>
+            <input id="@Html.IdFor(m => m.CreatedAt)" name="@Html.NameFor(m => m.CreatedAt)" value ="@Model.CreatedAt.ToString("dd-MMM-yyyy")" class="form-control input-sm select2 " readonly="true" />
+
+        </div>
+
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+             <input id="@Html.IdFor(m => m.RegistrationNo)" name="@Html.NameFor(m => m.RegistrationNo)"  class="form-control input-sm select2" />
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">Age</label>
+            @Html.TextBoxFor(m=>m.Age, new { @class="form-control input-sm" ,@readonly="true"})
+        </div>
+        <div class="col-md-2">
+
+            <input id="@Html.IdFor(m => m.AgeTypeId)" name="@Html.NameFor(m => m.AgeTypeId)"  class="form-control input-sm" style="margin-top:24px;"  readonly/>
+            @Html.HiddenFor(m => m.AgeType)
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Gender</label>
+            <input id="@Html.IdFor(m => m.SexId)" name="@Html.NameFor(m => m.SexId)"  class="form-control input-sm" readonly />
+            @Html.HiddenFor(m => m.Sex)
+        </div>
+
+    </div>
+    <hr />
+       <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Pre Conscious Sedation / Analgesia Record</a> </li>
+        <li><a href="#tab2" data-toggle="tab">Monitoring Chart During Procedure</a></li>
+        <li><a href="#tab3" data-toggle="tab">Recovery Room Record</a></li>
+    </ul>
+
+      <div class="tab-content" style="background-color: #d2de96;">
+        <div class="form-group tab-pane fade in active" id="tab1">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px">
+                @if(Model.PreSedation == null){
+                   @Html.Partial("_CreatePresedation", new OTEf.Core.Model.PreSedation())
+                }
+                else{
+                    @Html.Partial("_UpdatePresedation", Model.PreSedation)
+                }
+                
+            </div>
+
+        </div>
+
+        <div class="form-group tab-pane fade" id="tab2">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+            aaaaa
+            </div>
+
+        </div>
+        <div class="form-group tab-pane fade" id="tab3">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+               afadfad
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+ 
+        $(document).ready(function () {
+            InitPlugins();
+            InitEvents();
+            InitValues();
+        });
+
+
+        function Valid() {
+            var errortext = "";
+            var errors = [];
+          
+
+            if (errors.length > 0) {
+
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error", errortext);
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        function Clear() {
+
+            $(".select2").select2('data', null);
+            $(".hidden-prop").val('');
+
+
+            $(".datepicker").val('');
+
+            $(".switch").lcs_off();
+
+            dtCheckItems.clear().draw();
+            dtChartEvaluation.clear().draw();
+            dtMedications.clear().draw();
+
+        }
+
+
+        function Save() {
+
+          
+         }
+         function InitEvents() {
+
+             //buttons
+
+             $("#btn-create").click(function () {
+                 if (Valid()) {
+                     Save();
+                 }
+             });
+
+             $("#btn-clear").click(function () {
+                 Clear();
+             });
+             $("#btn-removeitemmedication").click(function () {
+
+                 if ($(".cb-medication:checked").length > 0) {
+                     $(".cb-medication:checked").each(function () {
+                         dtMedications.row($(this).closest('tr')).remove().draw();
+                     });
+                     $("#cb-allMedication").removeProp("checked");
+                 } else {
+                     swal({ title: "No selected data to remove", type: "info" });
+                 }
+             });
+
+             $("#btn-additemmedication").click(function () {
+                 dtMedications.row.add(
+                     {
+
+                         IsGiven: null,
+                         PreOperativeMedicationId: { Id: 0, Name: "" },
+                         Medication: { Id: 0, Name: "" },
+                     }
+                 ).draw();
+
+                 InitEditables();
+                 $("#cb-allMedication").removeProp("checked");
+
+             });
+
+             $("#btn-removeitemCheck").click(function () {
+
+                 if ($(".cb-item:checked").length > 0) {
+                     $(".cb-item:checked").each(function () {
+                         dtCheckItems.row($(this).closest('tr')).remove().draw();
+                     });
+                     $("#cb-allItem").removeProp("checked");
+                 } else {
+                     swal({ title: "No selected data to remove", type: "info" });
+                 }
+             });
+
+             $("#btn-additemCheck").click(function () {
+                 dtCheckItems.row.add(
+                     {
+
+                         isPerformed: null,
+                         CheckItem: { Id: 0, Name: "" },
+                         PreOperativeCheckId: { Id: 0, Name: "" },
+                     }
+                 ).draw();
+
+                 InitEditables();
+                 $("#cb-allItem").removeProp("checked");
+
+             });
+
+
+             $("#btn-removeitemChart").click(function () {
+
+                 if ($(".cb-chart:checked").length > 0) {
+                     $(".cb-chart:checked").each(function () {
+                         dtChartEvaluation.row($(this).closest('tr')).remove().draw();
+                     });
+                     $("#cb-allChart").removeProp("checked");
+                 } else {
+                     swal({ title: "No selected data to remove", type: "info" });
+                 }
+             });
+
+             $("#btn-additemChart").click(function () {
+                 dtChartEvaluation.row.add(
+                     {
+
+                         IsCorrect: null,
+                         Chart: { Id: 0, Name: "" },
+                         PreOperativeChartId: { Id: 0, Name: "" },
+                     }
+                 ).draw();
+
+                 InitEditables();
+                 $("#cb-allChart").removeProp("checked");
+
+             });
+
+
+
+             //checkboxes
+
+             $("#cb-all").change(function (e, i) {
+                 if ($(e.target).is(":checked")) {
+
+                     $(".cb-item").prop("checked", this.checked);
+                     $(".cb-item").closest("tr").addClass("selected");
+                 } else {
+                     $(".cb-item").removeProp("checked");
+                     $(".cb-item").closest("tr").removeClass("selected");
+                 }
+             });
+
+             $("#cb-allbasicInstru").on('change', function (e) {
+                 if ($(e.target).is(":checked")) {
+                     $(".cb-basicinstru").prop("checked", this.checked);
+                     $(".cb-basicinstru").closest("tr").addClass("selected");
+                 } else {
+                     $(".cb-basicinstru").removeProp("checked");
+                     $(".cb-basicinstru").closest("tr").removeClass("selected");
+                 }
+             });
+
+
+             $("#cb-allbasicInstru").on('change', function (e) {
+                 if ($(e.target).is(":checked")) {
+                     $(".cb-basicinstru").prop("checked", this.checked);
+                     $(".cb-basicinstru").closest("tr").addClass("selected");
+                 } else {
+                     $(".cb-basicinstru").removeProp("checked");
+                     $(".cb-basicinstru").closest("tr").removeClass("selected");
+                 }
+             });
+
+             $("#cb-allmedication").on('change', function (e) {
+                 if ($(e.target).is(":checked")) {
+                     $(".cb-medication").prop("checked", this.checked);
+                     $(".cb-medication").closest("tr").addClass("selected");
+                 } else {
+                     $(".cb-medication").removeProp("checked");
+                     $(".cb-medication").closest("tr").removeClass("selected");
+                 }
+             });
+
+         }
+
+         function InitPlugins() {
+             InitDatePlugins();
+             InitDataTable();
+             InitSelect2();
+             InitLCSwitch();
+             InitEditables();
+         };
+
+         function InitLCSwitch() {
+         };
+
+         function InitSelect2() {
+
+             $("#RegistrationNo").select2({
+                 containerCssClass: "RequiredField",
+                 minimumInputLength: 1,
+                 placeholder: 'Search . . . .',
+                 allowClear: true,
+                 ajax: {
+                     quietMillis: 150,
+                     url: '@Url.Action("select2PIN", "Common", new { Area = "OTForms" })',
+                            dataType: 'jsonp',
+                            cache: false,
+                            data: function (term) {
+                                return {
+
+                                    searchTerm: term
+                                };
+                            },
+                            results: function (data) {
+                                $.each(data.Results, function (i, item) {
+                                    item.text += " - " + item.patientname;
+                                });
+                                return { results: data.Results };
+                            }
+                        }
+             }).change(function (e) {
+                 $("#SexId").select2('val', e.added?e.added.sex:null);
+                 $("#AgeTypeId").select2('val', e.added?e.added.agetype:null);
+                 $("#Age").val(e.added?e.added.age:null);
+                    });
+
+                    $("#SexId").select2({
+                        minimumInputLength: 0,
+                        data: JSON.parse('@Html.Raw(Json.Encode(ViewBag.Sexes))')
+                    }).change(function (e) {
+                        $("#Sex").val(e.added ? e.added.name : "");
+                    });
+
+             $("#AgeTypeId").select2({
+                 minimumInputLength: 0,
+                 data: JSON.parse('@Html.Raw(Json.Encode(ViewBag.AgeTypes))')
+                    }).change(function (e) {
+                        $("#AgeType").val(e.added ? e.added.name : "");
+             });
+        };
+
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+        };
+
+        function InitDataTable() {
+
+
+        };
+
+        function InitEditables() {
+            SetEditableType();
+            SetEditable();
+        }
+
+        function SetEditableType() {
+
+
+        };
+
+        function SetEditable() {
+
+        };
+
+        function InitValues() {
+
+            $("#RegistrationNo").select2('data', {
+
+                id :'@Model.RegistrationNo',
+                text : '@Model.PIN' + ' - '+ '@Model.PatientName',
+                age : '@Model.Age',
+                agetype : '@Model.AgeTypeId',
+                sex : '@Model.SexId',
+                patientname : '@Model.PatientName',
+                issueathoritycode : '@Model.IssueAuthorityCode'
+            });
+
+
+            $("#AgeTypeId").select2('val', '@Model.AgeTypeId');
+
+            $("#SexId").select2('val', '@Model.SexId');
+            
+        };
+
+    </script>
+
+
+}

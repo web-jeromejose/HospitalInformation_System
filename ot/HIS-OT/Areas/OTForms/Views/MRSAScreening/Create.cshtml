@@ -1,0 +1,269 @@
+﻿@model OTEf.Core.Model.MRSAScreening
+
+@{
+    ViewBag.Title = "New MRSA Screening";
+}
+
+
+
+    <div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>        
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">NEW SCREENING</label>
+    </div>
+    <div class="pull-right" style="margin-top:3px;">
+        <button id="btn-create" class="btn btn-sm btn-success button-width" >
+            <span class="glyphicon glyphicon-check"></span> Save
+        </button>
+          <button id="btn-clear" class="btn btn-sm btn-success button-width" >
+            <span class="glyphicon glyphicon-remove-sign"></span> Clear
+        </button>
+
+         <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span> Back to list
+        </a>
+
+    </div>
+</div>
+    <div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+      @using (Html.BeginForm("Create", "MRSAScreening", FormMethod.Post, new { id = "FormCreate" })){
+     <div class="form-group">
+         <div class="col-md-4">
+         <label class="control-label">Pin / Patient</label>
+         <input id="@Html.IdFor(m=>m.RegistrationNo)" name="@Html.NameFor(m=>m.RegistrationNo)" class="form-control" />
+             @Html.HiddenFor(m => m.PatientName)
+             @Html.HiddenFor(m=>m.IssueAuthorityCode)
+         </div>
+
+         <div class="col-md-2">
+         <label class="control-label">Screening Date</label>
+         <div class="input-group">
+               <input id="@Html.IdFor(m=>m.ScreeningDate)" name="@Html.NameFor(m=>m.ScreeningDate)" class="form-control RequiredField" />
+               <span class="input-group-addon" ><i class="glyphicon glyphicon-calendar"></i></span>
+         </div>
+
+       
+         </div>
+
+         <div class="col-md-3">
+         <label class="control-label">Location</label>
+         <input id="@Html.IdFor(m=>m.LocationId)" name="@Html.NameFor(m=>m.LocationId)" class="form-control" />
+           @Html.HiddenFor(m => m.LocationName)
+         </div>
+         <div class="col-md-3">
+         <label class="control-label">Observer</label>
+         <input id="@Html.IdFor(m=>m.ObserverId)" name="@Html.NameFor(m=>m.ObserverId)" class="form-control" />
+           @Html.HiddenFor(m => m.ObserverName)
+         </div>
+
+         <div class="col-md-12" style="margin-top:20px;font-size:12px;">
+             <table class="table table-condensed  dataTable">
+                 <thead class="cAR-tlist-header">
+                     <tr>
+                         <th style="font-size:14px;"> Patients admitted to SGH must be screened at the time of admission for possible colonization / infection if :</th>
+                         <th> YES / NO </th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                      <tr>
+                         <td> 1. Patients with history of admission/transfer from other hospitals within the past <mark><b>3 months</b></mark> </td>
+                         <td> @Html.CheckBoxFor(m => m.HasPrev_ADM_TRF_OTH_HOSP_Past3Mo, new { @class = "switch" }) </td>
+                     </tr>
+                      <tr>
+                         <td> 2. Patients <mark><b>previously known positive for MRSA</b></mark> infection or colonization.  </td>
+                         <td>  @Html.CheckBoxFor(m => m.Prev_MRSA_Positive, new { @class = "switch" }) </td>
+                     </tr>
+
+                      <tr>
+                         <td colspan="2"> 3.  Screen all high-risk patients with culture of colonized and any active infection sites upon admission. </td>
+                     </tr>
+                      <tr>
+                         <td> <span class="col-md-12">a. History of nursing home residence </span> </td>
+                         <td>  @Html.CheckBoxFor(m => m.HasHomeNursingHistory, new { @class = "switch" }) </td>
+                     </tr>
+
+                       <tr>
+                         <td> <span class="col-md-12">b. Age of 75 years or older </span> </td>
+                         <td>  @Html.CheckBoxFor(m => m.Above69YrsOld, new { @class = "switch" }) </td>
+                     </tr>
+                       <tr>
+                         <td> <span class="col-md-12">c. Indwelling devices (Urinary catheter, central line, tracheostomy, gastrostomy etc.)</span> </td>
+                         <td>  @Html.CheckBoxFor(m => m.HasIndwellingDevices, new { @class = "switch" }) </td>
+                     </tr>
+                       <tr>
+                         <td> <span class="col-md-12">d. Underlying diseases or severe illnesses (bedsore, wound infections etc.)</span> </td>
+                         <td>  @Html.CheckBoxFor(m => m.HasDiseaseOrIllness, new { @class = "switch" }) </td>
+                     </tr>
+                 </tbody>
+             </table>
+
+         </div>
+
+         <div class="col-md-12" style="margin-top:20px;font-size:13px;">
+             <div class="col-md-12">
+             <p><b>If YES : </b> Patient should be screen for MRSA. Test request must be made by the treating physician.  </p>
+             <p>Swabbing site :  Anterior nares   </p>  
+             <p>One culture swab is to be inserted into the anterior nares of each nostril and rotated with pressure 3-5 times.   </p>  
+             <p>Samples must be collected from any broken skin such as, tracheostomy site, gastrostomy sites, bedsore, open surgical wounds, burn sites, CVC site if applicable etc.</p>  
+             <p><b>Note : </b>No need to collect specimen from axilla or groin.</p> 
+         </div>
+             </div>
+
+        
+     </div>
+    
+      }
+    </div>
+
+
+@section styles{
+<link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+ }
+@section scripts{
+    
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+        $(document).ready(function () {
+            $(".switch").lc_switch("YES", "NO");
+
+            $("#RegistrationNo").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 1,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("select2PIN", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+              
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        $.each(data.Results, function (i, item) {
+                            item.text += " - " + item.patientname;
+                        });
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#PatientName").val(e.added.patientname);
+                $("#IssueAuthorityCode").val(e.added.issueathoritycode);
+            });
+
+            $("#LocationId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(ViewBag.Locations))')
+            }).change(function (e) {
+                $("#LocationName").val(e.added.name);
+            });
+
+            $("#ObserverId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2MedicalEmployee", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#ObserverName").val(e.added.name);
+            });
+
+           
+
+            $('#ScreeningDate').datetimepicker({
+                pickTime: false,
+                maxDate: new Date()
+            });
+
+            $("#btn-create").click(function () {
+
+                if (Valid()) {
+                    $("#FormCreate").submit();
+                }
+
+            });
+
+            $("#btn-clear").click(function () {
+
+                $("#RegistrationNo").select2('data', null);
+                $("#ObserverId").select2('data', null);
+                $("#LocationId").select2('val', "");
+                $("#ScreeningDate").val("");
+
+                $("#HasPrev_ADM_TRF_OTH_HOSP_Past3Mo").lcs_off();
+                $("#Prev_MRSA_Positive").lcs_off();
+                $("#HasHomeNursingHistory").lcs_off();
+                $("#Above69YrsOld").lcs_off();
+                $("#HasIndwellingDevices").lcs_off();
+                $("#HasDiseaseOrIllness").lcs_off();
+                
+            });
+
+        });
+
+
+        function Valid() {
+            var errortext = "";
+            var errors = [];
+
+
+
+            if ($("#RegistrationNo").select2('val') == "") {
+
+                errors.push("Patient PIN / name is required");
+            }
+
+
+            if (new Date($("#ScreeningDate").val()) == "Invalid Date") {
+
+                errors.push("Screening date is required");
+            }
+
+            if ($("#LocationId").select2('val') == "") {
+
+                errors.push("Location is required");
+            }
+
+            if ($("#ObserverId").select2('val') == "") {
+
+                errors.push("Observer is required");
+            }
+
+
+            if (errors.length > 0) {
+
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error",errortext);
+                return false;
+            }
+
+
+            return true;
+        }
+     
+    </script>
+}
+

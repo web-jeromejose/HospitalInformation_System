@@ -1,0 +1,1030 @@
+﻿@model OTEf.Core.Model.TimeoutForm
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<link href="~/Content/adminlte.css" rel="stylesheet" />
+<style>
+    .nav-tabs-custom > .nav-tabs > li.active {
+        border-top-color: #3c8dbc;
+    }
+
+        .nav-tabs-custom > .nav-tabs > li.active > a {
+            border-top-color: transparent;
+            border-left-color: green;
+            border-right-color: #f4f4f4;
+            background-color: #D2DE96;
+        }
+
+    .checkbox {
+        font-size: 12px;
+    }
+</style>
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">TIMEOUT FORM FOR VERIFICATION PROCESS</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <button id="btn-create" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-check"></span>Save
+        </button>
+        <button id="btn-clear" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span>Clear
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span>Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        <div class="col-md-12 ">
+            <div class=" " style="background-color: forestgreen !important; font-size: 18px; text-align: center;">
+                <label class="label center">BE USED FOR SURGICAL AND OTHER INVASIVE PROCEDURES WHICH REQUIRES INFORMED CONSENT</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="control-label">Pin / Patient :</label>
+            <input id="@Html.IdFor(m => m.RegistrationNo)" name="@Html.NameFor(m => m.RegistrationNo)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.PatientName)
+            @Html.HiddenFor(m => m.IssueAuthorityCode)
+        </div>
+        <div class="col-md-6">
+            <label class="control-label">MRN : </label>
+            <input id="@Html.IdFor(m => m.MRN)" name="@Html.NameFor(m => m.MRN)" value="@Model.MRN" class="form-control input-sm select2" />
+        </div>
+
+
+    </div>
+
+</div>
+<div id=" " class="col-xs-12 form-horizontal standardborder">
+
+    <div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs">
+            <li class="active" style="width: 420px;">
+                 @Html.CheckBoxFor(m => m.CheckSignIn, new { @class = "main-switch "  })
+                <a href="#tab_1" data-toggle="tab" aria-expanded="true">
+
+                    <b style="font-size: 18px;">SIGN IN </b>
+                    <i style="font-size: 10px;">(to be read out loud)</i> <i class="pull-right glyphicon glyphicon-chevron-right" style="font-size: 40px;"></i>
+                    <br />
+                    <label class="label" style="background-color: lightskyblue !important;">Before induction on anesthesia</label>
+
+                </a></li>
+            <li class="" style="width: 420px;">
+                 @Html.CheckBoxFor(m => m.CheckTimeOut, new { @class = "main-switch "  })
+                <a href="#tab_2" data-toggle="tab" aria-expanded="false"><b style="font-size: 18px;">TIME OUT </b>
+                    <i style="font-size: 10px;">(to be read out loud) </i><i class="pull-right glyphicon glyphicon-chevron-right" style="font-size: 40px;"></i>
+                    <br />
+                    <label class="label" style="background-color: lightskyblue !important;">Before skin incision</label>
+                </a></li>
+            <li class="" style="width: 420px;">
+                 
+                 @Html.CheckBoxFor(m => m.CheckSignOut, new { @class = "main-switch "  })
+                <a href="#tab_3" data-toggle="tab" aria-expanded="false"><b style="font-size: 18px;">SIGN OUT</b>
+                    <i style="font-size: 10px;">(to be read out loud) </i>
+                    <br />
+                    <label class="label" style="background-color: lightskyblue !important;">Before patient leaves OT</label>
+
+                </a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+                <br />
+                <hr />
+                <div class="col-md-12" style="text-align: center;">
+                    <b style="font-size: 18px; color: Green;" class="center text-center">SIGN IN </b>
+
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Patient has confirmed?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.PatientConfirmISIdentify, new { @class = "switch" }) Identity
+                        </div>
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.PatientConfirmISSite, new { @class = "switch" }) Site
+                        </div>
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.PatientConfirmISProcedure, new { @class = "switch" })  Procedure Name
+                                <input type="text" value="@Model.PatientConfirmProcedureOther"  id="@Html.IdFor(m => m.PatientConfirmProcedureOther)" name="@Html.NameFor(m => m.PatientConfirmProcedureOther)" class="form-control input-sm" disabled >
+                        </div>
+                        <div class="checkbox">
+
+                            @Html.CheckBoxFor(m => m.PatientConfirmISSurgicalConsent, new { @class = "switch" })   Surgical Consent
+                        
+                        </div>
+                        <div class="checkbox">
+
+                            @Html.CheckBoxFor(m => m.PatientConfirmISAnesthesiaConsent, new { @class = "switch" })
+                            Anesthesia Consent
+                          
+                        </div>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.PatientConfirmISLocationProcedure, new { @class = "switch" })
+                            Location of performed procedure
+                                <input type="text" value="@Model.PatientConfirmLocationProcedureOther"  id="@Html.IdFor(m => m.PatientConfirmLocationProcedureOther)" name="@Html.NameFor(m => m.PatientConfirmLocationProcedureOther)" class="form-control input-sm"  disabled >
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Is the surgical site marked?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.SurgicalSiteISMark, new { @class = "switch" })
+                        </div>
+
+                        <div class="checkbox">
+
+                            @Html.CheckBoxFor(m => m.SurgicalSiteISPatientRefuse, new { @class = "switch" })  Patient refused because:
+                                 <input type="text"   value="@Model.SurgicalSiteOther"  id="@Html.IdFor(m => m.SurgicalSiteOther)" name="@Html.NameFor(m => m.SurgicalSiteOther)" class="form-control input-sm" disabled >
+                        </div>
+                        <small>*Site marking confirmed on the surgical site diagram.</small>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Is the patient on pulse oximeter?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isPulseOximeter, new { @class = "switch" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Is the anesthesia machine and medication checking complete?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isAnesthesiaMachine, new { @class = "switch" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Does the patient have a known allergy?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isPatientAllergy, new { @class = "switch" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Difficult airway/aspiration risk?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isAirway, new { @class = "switch" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <br />
+                        <label class="control-label"><b>Risk of >500ml blood loss(&ml/kg in children)?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RiskBloodLossIS, new { @class = "switch" })
+                        </div>
+
+                        <div class="checkbox">
+
+                            @Html.CheckBoxFor(m => m.RiskBloodLossCurrentHistory, new { @class = "switch" })  <b>Current History and Physical examination</b>
+
+                        </div>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RiskBloodLossAvailability, new { @class = "switch" })  <b>Availability of Implants,Special equipment and Prothesis are verified by the surgeon.</b>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <br />
+                        <label class="control-label"><b>SignIn Date / Time : </b></label>
+                        <br />
+                        <div class="input-group">
+                            <input id="@Html.IdFor(m => m.SigninDateTime)" value="@Model.SigninDateTime" name="@Html.NameFor(m => m.SigninDateTime)" class="form-control RequiredField input-sm datepicker" />
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                        <br />
+                        <label class="control-label"><b>Location : </b></label>
+                        <br />
+                        <input type="text" value="@Model.Location"   id="@Html.IdFor(m => m.Location)" name="@Html.NameFor(m => m.Location)"  class="form-control input-sm" >
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="tab-pane " id="tab_2">
+                <br />
+                <hr />
+                <div class="col-md-12" style="text-align: center;">
+                    <b style="font-size: 18px; color: Green;" class="center text-center">TIME OUT </b>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Have all team members introduces themselves by name and role?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isTeamIntroduce, new { @class = "switch" })
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Surgeon, Anesthesist and Registered Nurse verbally confirm?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.SurgeonRegisterIS, new { @class = "switch" })    Patient identification comparing file and ID band                           
+                        </div>
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.SurgeonRegisterISProcedure, new { @class = "switch" })   What procedure, site and position are planned?
+                                 <input type="text" value="@Model.SurgeonRegisterProcedureOther"  id="@Html.IdFor(m => m.SurgeonRegisterProcedureOther)" name="@Html.NameFor(m => m.SurgeonRegisterProcedureOther)" class="form-control input-sm" disabled >
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Anticipated critical events Surgeon:</b></label>
+                        <br />
+                        <div class="checkbox">
+
+                            @Html.CheckBoxFor(m => m.AnticipatedSurgeonBloodlossIS, new { @class = "switch" })   How much blood loss is anticipated?
+                                <input type="text"  value="@Model.AnticipatedSurgeonBloodlossOther"  id="@Html.IdFor(m => m.AnticipatedSurgeonBloodlossOther)" name="@Html.NameFor(m => m.AnticipatedSurgeonBloodlossOther)" class="form-control input-sm" disabled >
+                        </div>
+
+                        <div class="checkbox">
+
+                            @Html.CheckBoxFor(m => m.AnticipatedSurgeonEquipIS, new { @class = "switch" })    Are there specific equipment requirements or special investigations?
+                                 <input type="text" value="@Model.AnticipatedSurgeonEquipOther"  id="@Html.IdFor(m => m.AnticipatedSurgeonEquipOther)" name="@Html.NameFor(m => m.AnticipatedSurgeonEquipOther)" class="form-control input-sm" disabled >
+                        </div>
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.AnticipatedSurgeonCriticalIS, new { @class = "switch" })
+                            Are there any critical or unexpected steps you want the team to know about?
+                                 <input type="text" value="@Model.AnticipatedSurgeonCriticalOther"  id="@Html.IdFor(m => m.AnticipatedSurgeonCriticalOther)" name="@Html.NameFor(m => m.AnticipatedSurgeonCriticalOther)" class="form-control input-sm" disabled >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Anesthetist:</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.AnesthetistConcernIS, new { @class = "switch" })     Are there any patient specific concerns?
+                                 <input type="text" value="@Model.AnesthetistConcernOther"  id="@Html.IdFor(m => m.AnesthetistConcernOther)" name="@Html.NameFor(m => m.AnesthetistConcernOther)" class="form-control input-sm" disabled >
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Nurse/ODP:</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.NurseOdpSterileIS, new { @class = "switch" })   Has the sterililty of the instrument been confirmed (including indicator results)?
+                         
+                        </div>
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.NurseOdpSterileISEquipment, new { @class = "switch" })   Are there any patient specific concerns?
+                                 <input type="text" value="@Model.NurseOdpSterileEquipmentOther"  id="@Html.IdFor(m => m.NurseOdpSterileEquipmentOther)" name="@Html.NameFor(m => m.NurseOdpSterileEquipmentOther)" class="form-control input-sm" disabled >
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Has the prophylactic antibiotics been given?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isProphylactic, new { @class = "switch" })
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Has the prophylactic antibiotics been given within the last 60 minutes?</b></label>
+                        <br />
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isProphylacticGiven60mins, new { @class = "switch" })
+
+                            <div class="input-group">
+                                <input id="@Html.IdFor(m => m.ProphylacticGiven60minsDateTime)" value="@Model.ProphylacticGiven60minsDateTime" name="@Html.NameFor(m => m.ProphylacticGiven60minsDateTime)" class="form-control RequiredField input-sm datepicker" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Is essential imaging displayed?</b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.isImagingDisplay, new { @class = "switch" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Time Out Details :</b></label>
+                        <br />
+                        Date/ Time : 
+                                 <div class="input-group">
+                                     <input id="@Html.IdFor(m => m.TimeoutDateTime)" value="@Model.TimeoutDateTime" name="@Html.NameFor(m => m.TimeoutDateTime)" class="form-control RequiredField input-sm datepicker" />
+                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                 </div>
+                        Team present during Time Out:
+                         <input type="text" value="@Model.TeamPresent"   id="@Html.IdFor(m => m.TeamPresent)" name="@Html.NameFor(m => m.TeamPresent)" class="form-control input-sm"  >
+
+                        <label class="control-label">Surgeon/Physician</label>
+                        <input id="@Html.IdFor(m => m.SurgeonId)"  name="@Html.NameFor(m => m.SurgeonId)" class="form-control input-sm select2" />
+                        @Html.HiddenFor(m => m.SurgeonName)
+
+                        <label class="control-label">Anesthesiologist</label>
+                        <input id="@Html.IdFor(m => m.AnesthesiologistId)"  name="@Html.NameFor(m => m.AnesthesiologistId)" class="form-control input-sm select2" />
+                        @Html.HiddenFor(m => m.AnesthesiologistName)
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Time Out Details :</b></label>
+                        <br />
+                        <label class="control-label">Technician</label>
+                        <input id="@Html.IdFor(m => m.TechnicianId)"    name="@Html.NameFor(m => m.TechnicianId)" class="form-control input-sm select2" />
+                        @Html.HiddenFor(m => m.TechnicianName)
+
+                        <label class="control-label">Nurse</label>
+                        <input id="@Html.IdFor(m => m.NurseTimeOutId)"   name="@Html.NameFor(m => m.NurseTimeOutId)" class="form-control input-sm select2" />
+                        @Html.HiddenFor(m => m.NurseTimeOutName)
+
+
+                        <label class="control-label">Scrub/Circulating Nurse</label>
+                        <input id="@Html.IdFor(m => m.ScrubTimeOutId)"  name="@Html.NameFor(m => m.ScrubTimeOutId)" class="form-control input-sm select2" />
+                        @Html.HiddenFor(m => m.ScrubTimeOutName)
+
+                        <label class="control-label">Others:</label>
+                        <input id="@Html.IdFor(m => m.OthersTimeOut)"    name="@Html.NameFor(m => m.OthersTimeOut)" class="form-control input-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab_3">
+                <br />
+                <hr />
+                <div class="col-md-12" style="text-align: center;">
+                    <b style="font-size: 18px; color: Green;" class="center text-center">SIGN OUT </b>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Registered Nurse verbally confirms the team : </b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.NurseIntroduceProcedure, new { @class = "switch" })   The name of the procedure recorded
+                         
+                        </div>
+
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.NurseIntroduceInstrument, new { @class = "switch" })    That instrument, sponge  and needle counts are complete (or not applicable)
+                         
+                        </div>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.NurseIntroduceSpecimen, new { @class = "switch" })   How the specimen is labeled (including patient name) Read Aloud.
+                       
+                        </div>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.NurseIntroduceEquipProblems, new { @class = "switch" })   Whether there are equipment problmes to be addressed
+                        
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Surgeon,Anesthesist and Registered Nurse : </b></label>
+                        <br />
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.SurgeonNurseRegisterdSignOutIS, new { @class = "switch" })
+                            What are the key concerns for recovery and management of this patient?
+                                 <input id="@Html.IdFor(m => m.SurgeonNurseRegisterdSignOutOther)" value="@Model.SurgeonNurseRegisterdSignOutOther"  name="@Html.NameFor(m => m.SurgeonNurseRegisterdSignOutOther)" class="form-control  input-sm " disabled/>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>Time Out Details: </b></label>
+                        <br />
+                        <label class="control-label">Date /Time</label>
+                        <div class="input-group">
+                            <input id="@Html.IdFor(m => m.SignoutDateTime)" value="@Model.SignoutDateTime"  name="@Html.NameFor(m => m.SignoutDateTime)" class="form-control input-sm datepicker" />
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+
+                        <label class="control-label">Nurse</label>
+
+                        <input id="@Html.IdFor(m => m.NurseSignoutId)" value="@Model.NurseSignoutId"  name="@Html.NameFor(m => m.NurseSignoutId)" class="form-control input-sm select2" />
+                        @Html.HiddenFor(m => m.NurseSignoutName, new { @class = "hidden-prop" })
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+        var dtitems;
+        var dtbasicinstrument;
+        var dtseparateinstrument;
+        var Select2IsClicked;
+        $(document).ready(function () {
+            InitPlugins();
+            InitEvents();
+            initInitialValues();
+        });
+
+        function InitPlugins() {
+            InitDatePlugins();
+            InitDataTable();
+            InitSelect2();
+            InitLCSwitch();
+            InitEditables();
+            InitCheckBox();
+           
+        };
+       
+        function initInitialValues() {
+            $("#RegistrationNo").select2('data', { id: '@Model.RegistrationNo', text: '@Model.PIN - @Model.PatientName' });
+
+
+
+            if ('@Model.SurgeonId' > 0)
+                $("#SurgeonId").select2('data', { id: '@Model.SurgeonId', text: '@Model.SurgeonName' })
+
+            if ('@Model.AnesthesiologistId' > 0)
+                $("#AnesthesiologistId").select2('data', { id: '@Model.AnesthesiologistId', text: '@Model.AnesthesiologistName' });
+            if ('@Model.TechnicianId' > 0)
+                $("#TechnicianId").select2('data', { id: '@Model.TechnicianId', text: '@Model.TechnicianName' });
+            if ('@Model.NurseTimeOutId' > 0)
+                $("#NurseTimeOutId").select2('data', { id: '@Model.NurseTimeOutId', text: '@Model.NurseTimeOutName' });
+            if ('@Model.NurseSignoutId' > 0)
+                $("#NurseSignoutId").select2('data', { id: '@Model.NurseSignoutId', text: '@Model.NurseSignoutName' });
+            if ('@Model.ScrubTimeOutId' > 0)
+                $("#ScrubTimeOutId").select2('data', { id: '@Model.ScrubTimeOutId', text: '@Model.ScrubTimeOutName' });
+
+
+        };
+
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+
+            $("#ProphylacticGiven60minsDateTime").prop("disabled", true);
+        };
+
+        function InitEvents() {
+
+            //buttons
+
+            $("#btn-create").click(function () {
+
+                if (!$("#CheckSignIn").is(":checked") && !$("#CheckTimeOut").is(":checked") && !$("#CheckSignOut").is(":checked")) {
+                    c.MessageBoxErr("Validation Error", "Please select a procedure. SignIn, TimeOut or SignOut.");
+                } else {
+                    if (Valid($("#CheckSignIn").is(":checked"), $("#CheckTimeOut").is(":checked"), $("#CheckSignOut").is(":checked"))) {
+                        Save();
+                    };
+                }
+
+
+
+            });
+
+
+
+        }
+        function Valid(signin, timeout, signout) {
+            var errortext = "";
+            var errors = [];
+            if (signin) {
+                if ($("#RegistrationNo").select2('val') == "") {
+                    errors.push("Patient PIN / name is required");
+                }
+                if (new Date($("#SigninDateTime").val()) == "Invalid Date") {
+                    errors.push("Sign in date is required");
+                }
+            }
+            if (timeout) {
+
+                if ($("#RegistrationNo").select2('val') == "") {
+                    errors.push("Patient PIN / name is required");
+                }
+                if (new Date($("#TimeoutDateTime").val()) == "Invalid Date") {
+                    errors.push("TimeOut date is required");
+                }
+                if ($("#SurgeonId").select2('val') == "") {
+                    errors.push("Surgeon/Physician is required");
+                }
+                if ($("#AnesthesiologistId").select2('val') == "") {
+                    errors.push("Anesthesiologist is required");
+                }
+                if ($("#TechnicianId").select2('val') == "") {
+                    errors.push("Technician is required");
+                }
+                if ($("#NurseTimeOutId").select2('val') == "") {
+                    errors.push("Nurse is required");
+                }
+                if ($("#ScrubTimeOutId").select2('val') == "") {
+                    errors.push("Scrub/Circulating Nurse is required");
+                }
+            }
+            if (signout) {
+                if ($("#RegistrationNo").select2('val') == "") {
+                    errors.push("Patient PIN / name is required");
+                }
+                if (new Date($("#SignoutDateTime").val()) == "Invalid Date") {
+                    errors.push("Sign Out date is required");
+                }
+                if ($("#NurseSignoutId").select2('val') == "") {
+                    errors.push("SignOut Nurse is required");
+                }
+
+            }
+
+
+            if (errors.length > 0) {
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error", errortext);
+                return false;
+            }
+            return true;
+        }
+
+
+
+        function Save() {
+
+            var model = {
+                Id: $("#Id").val(),
+                MRN: $("#MRN").val(),
+                RegistrationNo: $("#RegistrationNo").select2('val'),
+                CheckSignIn: $("#CheckSignIn").is(":checked"),
+                CheckTimeOut: $("#CheckTimeOut").is(":checked"),
+                CheckSignOut: $("#CheckSignOut").is(":checked"),
+                PatientName: $("#PatientName").val(),
+
+                //signin
+                PatientConfirmISIdentify: $("#PatientConfirmISIdentify").is(":checked"),
+                PatientConfirmISSite: $("#PatientConfirmISSite").is(":checked"),
+                PatientConfirmISProcedure: $("#PatientConfirmISProcedure").is(":checked"),
+                PatientConfirmProcedureOther: $("#PatientConfirmProcedureOther").val(),
+                PatientConfirmISSurgicalConsent: $("#PatientConfirmISSurgicalConsent").is(":checked"),
+                PatientConfirmISAnesthesiaConsent: $("#PatientConfirmISAnesthesiaConsent").is(":checked"),
+                PatientConfirmISLocationProcedure: $("#PatientConfirmISLocationProcedure").is(":checked"),
+                PatientConfirmLocationProcedureOther: $("#PatientConfirmLocationProcedureOther").val(),
+
+                SurgicalSiteISMark: $("#SurgicalSiteISMark").is(":checked"),
+                SurgicalSiteISPatientRefuse: $("#SurgicalSiteISPatientRefuse").is(":checked"),
+                SurgicalSiteOther: $("#SurgicalSiteOther").val(),
+
+                isPulseOximeter: $("#isPulseOximeter").is(":checked"),
+                isAnesthesiaMachine: $("#isAnesthesiaMachine").is(":checked"),
+                isPatientAllergy: $("#isPatientAllergy").is(":checked"),
+                isAirway: $("#isAirway").is(":checked"),
+
+                RiskBloodLossIS: $("#RiskBloodLossIS").is(":checked"),
+                RiskBloodLossCurrentHistory: $("#RiskBloodLossCurrentHistory").is(":checked"),
+                RiskBloodLossAvailability: $("#RiskBloodLossAvailability").is(":checked"),
+
+                SigninDateTime: (new Date($("#SigninDateTime").val()) == "Invalid Date") ? null : $("#SigninDateTime").val(),
+                Location: $("#Location").val(),
+
+                //timeout
+                isTeamIntroduce: $("#isTeamIntroduce").is(":checked"),
+                SurgeonRegisterIS: $("#SurgeonRegisterIS").is(":checked"),
+                SurgeonRegisterISProcedure: $("#SurgeonRegisterISProcedure").is(":checked"),
+                SurgeonRegisterProcedureOther: $("#SurgeonRegisterProcedureOther").val(),
+
+                AnticipatedSurgeonBloodlossIS: $("#AnticipatedSurgeonBloodlossIS").is(":checked"),
+                AnticipatedSurgeonBloodlossOther: $("#AnticipatedSurgeonBloodlossOther").val(),
+                AnticipatedSurgeonEquipIS: $("#AnticipatedSurgeonEquipIS").is(":checked"),
+                AnticipatedSurgeonEquipOther: $("#AnticipatedSurgeonEquipOther").val(),
+                AnticipatedSurgeonCriticalIS: $("#AnticipatedSurgeonCriticalIS").is(":checked"),
+                AnticipatedSurgeonCriticalOther: $("#AnticipatedSurgeonCriticalOther").val(),
+
+                AnesthetistConcernIS: $("#AnesthetistConcernIS").is(":checked"),
+                AnesthetistConcernOther: $("#AnesthetistConcernOther").val(),
+
+                NurseOdpSterileIS: $("#NurseOdpSterileIS").is(":checked"),
+                NurseOdpSterileISEquipment: $("#NurseOdpSterileISEquipment").is(":checked"),
+                NurseOdpSterileEquipmentOther: $("#NurseOdpSterileEquipmentOther").val(),
+
+                isProphylactic: $("#isProphylactic").is(":checked"),
+                isProphylacticGiven60mins: $("#PatientConfirmISSite").is(":checked"),
+                ProphylacticGiven60minsDateTime: (new Date($("#ProphylacticGiven60minsDateTime").val()) == "Invalid Date") ? null : $("#ProphylacticGiven60minsDateTime").val(),
+                isImagingDisplay: $("#isImagingDisplay").is(":checked"),
+
+                TimeoutDateTime: (new Date($("#TimeoutDateTime").val()) == "Invalid Date") ? null : $("#TimeoutDateTime").val(),
+                TeamPresent: $("#TeamPresent").val(),
+                SurgeonId: $("#SurgeonId").select2('val'),
+                SurgeonName: $("#SurgeonName").val(),
+                AnesthesiologistId: $("#AnesthesiologistId").select2('val'),
+                AnesthesiologistName: $("#AnesthesiologistName").val(),
+                TechnicianId: $("#TechnicianId").select2('val'),
+                TechnicianName: $("#TechnicianName").val(),
+                NurseTimeOutId: $("#NurseTimeOutId").select2('val'),
+                NurseTimeOutName: $("#NurseTimeOutName").val(),
+                ScrubTimeOutId: $("#ScrubTimeOutId").select2('val'),
+                ScrubTimeOutName: $("#ScrubTimeOutName").val(),
+                OthersTimeOut: $("#OthersTimeOut").val(),
+                //signout
+
+                NurseIntroduceProcedure: $("#NurseIntroduceProcedure").is(":checked"),
+                NurseIntroduceInstrument: $("#NurseIntroduceInstrument").is(":checked"),
+                NurseIntroduceSpecimen: $("#NurseIntroduceSpecimen").is(":checked"),
+                NurseIntroduceEquipProblems: $("#NurseIntroduceEquipProblems").is(":checked"),
+
+                SurgeonNurseRegisterdSignOutIS: $("#SurgeonNurseRegisterdSignOutIS").is(":checked"),
+                SurgeonNurseRegisterdSignOutOther: $("#SurgeonNurseRegisterdSignOutOther").val(),
+                SignoutDateTime: (new Date($("#SignoutDateTime").val()) == "Invalid Date") ? null : $("#SignoutDateTime").val(),
+                NurseSignoutId: $("#NurseSignoutId").select2('val'),
+                NurseSignoutName: $("#NurseSignoutName").val(),
+
+            };
+
+
+            if ($("#Id").val() == 0) {
+                $.ajax(
+               {
+                   url: "@Url.Action("Create")",
+                   type: "post",
+                   contentType: "application/json",
+                   dataType: "json",
+                   data: JSON.stringify(model),
+
+                   success: function (data) {
+                       $('#Id').val(data.id);
+                       swal({ type: "success", title: "Create Process Id", text: 'Create Record #' + data.id });
+                   },
+                   error: function (data) {
+                       swal({ type: "error", title: "Server Error", text: data });
+                   }
+               }
+            );
+            } else {
+
+                $.ajax(
+                   {
+                       url: "@Url.Action("Update")",
+                       type: "post",
+                       contentType: "application/json",
+                       dataType: "json",
+                       data: JSON.stringify(model),
+
+                       success: function (data) {
+
+                           swal({ type: "success", title: "Update Form", text: ' Record #' + $('#Id').val() });
+
+                       },
+                       error: function (data) {
+                           swal({ type: "error", title: "Server Error", text: data });
+                       }
+                   }
+                );
+            }
+        }
+
+
+
+
+
+        function InitLCSwitch() {
+
+            $(".switch").lc_switch("YES", "NO");
+            $(".main-switch").lc_switch("DONE", "NO");
+        };
+
+        function InitEditables() {
+            SetEditableType();
+            SetEditable();
+        }
+
+        function InitDataTable() {
+        }
+
+        function SetEditableType() {
+        }
+        function SetEditable() {
+        }
+
+
+        function InitCheckBox() {
+
+
+            $('body').delegate('#PatientConfirmISProcedure', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#PatientConfirmProcedureOther').prop('disabled', false);
+                } else {
+                    $('#PatientConfirmProcedureOther').prop('disabled', true);
+                }
+            });
+
+
+            $('body').delegate('#PatientConfirmISLocationProcedure', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#PatientConfirmLocationProcedureOther').prop('disabled', false);
+                } else {
+                    $('#PatientConfirmLocationProcedureOther').prop('disabled', true);
+                }
+            });
+
+
+
+            $('body').delegate('#SurgicalSiteISPatientRefuse', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#SurgicalSiteOther').prop('disabled', false);
+                } else {
+                    $('#SurgicalSiteOther').prop('disabled', true);
+                }
+            });
+
+            $('body').delegate('#AnesthetistConcernIS', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#AnesthetistConcernOther').prop('disabled', false);
+                } else {
+                    $('#AnesthetistConcernOther').prop('disabled', true);
+                }
+            });
+
+
+            $('body').delegate('#SurgeonRegisterISProcedure', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#SurgeonRegisterProcedureOther').prop('disabled', false);
+                } else {
+                    $('#SurgeonRegisterProcedureOther').prop('disabled', true);
+                }
+            });
+
+
+            $('body').delegate('#NurseOdpSterileISEquipment', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#NurseOdpSterileEquipmentOther').prop('disabled', false);
+                } else {
+                    $('#NurseOdpSterileEquipmentOther').prop('disabled', true);
+                }
+            });
+
+            $('body').delegate('#AnticipatedSurgeonBloodlossIS', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#AnticipatedSurgeonBloodlossOther').prop('disabled', false);
+                } else {
+                    $('#AnticipatedSurgeonBloodlossOther').prop('disabled', true);
+                }
+            });
+
+
+            $('body').delegate('#AnticipatedSurgeonEquipIS', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#AnticipatedSurgeonEquipOther').prop('disabled', false);
+                } else {
+                    $('#AnticipatedSurgeonEquipOther').prop('disabled', true);
+                }
+            });
+
+
+            $('body').delegate('#AnticipatedSurgeonCriticalIS', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#AnticipatedSurgeonCriticalOther').prop('disabled', false);
+                } else {
+                    $('#AnticipatedSurgeonCriticalOther').prop('disabled', true);
+                }
+            });
+
+            $('body').delegate('#isProphylacticGiven60mins', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#ProphylacticGiven60minsDateTime').prop('disabled', false);
+                } else {
+                    $('#ProphylacticGiven60minsDateTime').prop('disabled', true);
+                }
+            });
+
+
+            //$(document).on("click", "input:radio[name='isProphylacticGiven60mins']", function () {
+            //    if ($(this).attr("id") == "isProphylacticGiven60mins") {
+            //        $("#ProphylacticGiven60minsDateTime").prop("disabled", false);
+            //    } else {
+            //        $("#ProphylacticGiven60minsDateTime").prop("disabled", true);
+            //    }
+            //});
+
+            $('body').delegate('#SurgeonNurseRegisterdSignOutIS', 'lcs-statuschange', function () {
+                if ($(this).is(':checked')) {
+                    $('#SurgeonNurseRegisterdSignOutOther').prop('disabled', false);
+                } else {
+                    $('#SurgeonNurseRegisterdSignOutOther').prop('disabled', true);
+                }
+            });
+
+
+
+
+        }
+        function InitSelect2() {
+
+            $("#RegistrationNo").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 1,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("select2PIN", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        $.each(data.Results, function (i, item) {
+                            item.text += " - " + item.patientname;
+                        });
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#PatientName").val(e.added.patientname);
+                $("#IssueAuthorityCode").val(e.added.issueathoritycode);
+            });
+
+            $("#SurgeonId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2MedicalSurgeon", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#SurgeonName").val(e.added.text);
+            });
+
+            $("#AnesthesiologistId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2MedicalSurgeon", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#AnesthesiologistName").val(e.added.text);
+            });
+
+            $("#TechnicianId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2MedicalSurgeon", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#TechnicianName").val(e.added.text);
+            });
+
+            $("#NurseTimeOutId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#NurseTimeOutName").val(e.added.text);
+            });
+
+            $("#ScrubTimeOutId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#ScrubTimeOutName").val(e.added.text);
+            });
+
+            $("#NurseSignoutId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#NurseSignoutName").val(e.added.text);
+            });
+        }
+
+    </script>
+}

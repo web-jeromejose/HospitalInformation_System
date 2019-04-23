@@ -1,0 +1,77 @@
+﻿<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-dashboard" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;"> CONSCIOUS SEDATION / ANALGESIA RECORD </label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Create")">
+            <span class="glyphicon glyphicon-pencil"></span> New Record
+        </a>
+    </div>
+</div>
+
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    <table id="tbl-list" class="table table-nomargin table-condensed table-striped">
+        <thead class="cAR-tlist-header">
+             <tr>
+                 <th>Id</th>
+                 <th>PIN</th>
+                 <th>Patient Name</th>
+                 <th>Date Created</th>
+                 <th>Date Updated</th>
+                 <th> </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+@section scripts {
+
+    
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+           var tbl =  $("#tbl-list").DataTable({
+                processing: true,
+                serverSide: true,
+                destroy: true,
+                //scrollY: "400px",
+                ajax: {
+                    url: "@Url.Action("GetConsciousSedationList")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: function (data) {
+                        return JSON.stringify(data);
+                    }
+                },
+                language: {
+                    search: "",
+                    searchPlaceholder: "Search . . ."
+                },
+                columns: [
+                 { data: "Id", visible: false },
+                 { data: "PIN", width: "10%" },
+                 { data: "PatientName" },
+                 { data: "CreatedAt", width: "10%" },
+                 { data: "ModifiedAt", width: "10%" },
+                 {
+                     data: "Id", "render": function (data) {
+
+                          var action = '@Url.Action("Detail")';
+ 
+                         return '<a href="' + action + '/' + data + '" style="color: #049372;">VIEW <span class="glyphicon glyphicon-search"/></a>';
+
+                     }, className: 'text-center',  searchable: false, orderable:false, width: "5%"
+                 }
+                ]
+
+           });
+
+        });
+    </script>
+
+}

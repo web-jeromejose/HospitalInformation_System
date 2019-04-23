@@ -1,0 +1,531 @@
+﻿@{
+    ViewBag.Title = "OT - Scheduler";
+    Layout = "~/Areas/OT/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">OT - SCHEDULER</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top:3px; display:none;">
+
+        <a id="btnCalendar1" class="btnCalendar btn btn-sm btn-success NotUse" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-calendar"></span> Calendar
+        </a>
+        <button id="btnNewEntry" class="btn btn-sm btn-success button-width func-btn" data-funcid="48" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </button>
+        <a id="btnView" class="btn btn-sm btn-success button-width NotUse" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+@*        <a id="btnFilter" class="btn btn-sm btn-success NotUse">
+            <span class="glyphicon glyphicon-filter"></span> Filter
+        </a>*@
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top:3px; display:none;">
+
+        <a id="btnNew" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnSave" class="btn btn-sm btn-success  button-width HideOnAdd HideOnView ShowOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a>
+        <a id="btnReserve" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnView HideOnEdit HideOnDelete func-btn" data-funcid="20">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Reserve
+        </a>
+        <a id="btnConfirm" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnView HideOnEdit HideOnDelete func-btn" data-funcid="21">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Confirm
+        </a>
+        <a id="btnPrint" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-print"></span> Print
+        </a>
+        <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        <a id="btnCancel" class="btn btn-sm btn-success button-width HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-trash"></span> Cancel
+        </a>
+        <a id="btnClear" class="btn btn-sm btn-success button-width ShowOnAdd ShowOnView ShowOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-stop"></span> Clear
+        </a>
+        <a id="btnClose" class="btn btn-sm btn-danger button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-remove"></span> Close
+        </a>
+
+    </div>
+    <div id="ButtonsOnFilter" class="pull-right" style="margin-top:3px;">
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder HideOnView HideOnAdd HideOnEdit HideOnDelete">
+    <div class="panel-body form-horizontal"> 
+        <div class="row">
+       
+            <div class="col-xs-3">
+                <input id="select2OperationTheatreIdSearch" name="" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="Calendar" class="dhx_cal_container" style='width:100%; height:550px; border: .2em solid #CECECE !important;'>
+                    <div class="dhx_cal_navline">
+                        <div class="dhx_cal_prev_button">&nbsp;</div>
+                        <div class="dhx_cal_next_button">&nbsp;</div>
+                        <div class="dhx_cal_today_button"></div>
+                        <div class="dhx_cal_date"></div>
+                        <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+                        <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+                        <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+                    </div>
+                    <div class="dhx_cal_header"></div>
+                    <div class="dhx_cal_data"></div>       
+                </div>                                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label border" style="text-align:center; width:100%;">Free</label>
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label border" style="text-align:center; width:100%; background-color:#ffffd9;">Reserved</label>
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label border" style="text-align:center; width:100%; background-color:#d9ffec;">Confirmed</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Entry" class="col-xs-12 form-horizontal standardborder ShowOnView ShowOnAdd ShowOnEdit">
+    <input id="Action" name="" type="hidden" class="form-control">
+    <input id="Id" name="" type="hidden" class="form-control">
+    <input id="IssueAuthorityCode" name="" type="hidden" class="form-control">
+    <input id="ReservedConfirmed" name="" type="hidden" class="form-control">
+
+    <div class="row">
+        <div class="panel-body form-horizontal">             
+            <div class="col-xs-6">
+			    <div class="row">
+				    <div class="col-xs-4">
+					    <label class="control-label">Operation Theatre</label>
+				    </div>                                        
+				    <div class="col-xs-8">
+					    <input id="select2OperationTheatreId" name="" type="text" class="form-control">
+				    </div>                              
+			    </div>
+			    <div class="row">
+				    <div class="col-xs-4">
+					    <label class="control-label">Anaesthetia Type</label>
+				    </div>                                        
+				    <div class="col-xs-8">
+					    <input id="select2AnaesthetiaType" name="" type="text" class="form-control">
+				    </div>                              
+			    </div>
+			    <div class="row">
+				    <div class="col-xs-4">
+					    <label class="control-label">SurgeryDate</label>
+				    </div>                                        
+				    <div class="col-xs-8">
+					    <div id="dtSurgeryDate" class="input-group date">
+						    <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView RequiredField"/>
+							    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+						    </span>
+					    </div>
+				    </div>                              
+			    </div>
+            </div>
+            <div class="col-xs-6">
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">SurgeryTime From-To</label>
+					</div>                                        
+					<div class="col-xs-4">
+						<div id="dtSurgeryTimeFrom" class="input-group date">
+							<input data-date-format="HH:mm" type='text' class="form-control DisableOnView RequiredField"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+							</span>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div id="dtSurgeryTimeTo" class="input-group date">
+							<input data-date-format="HH:mm" type='text' class="form-control DisableOnView RequiredField"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Duration / Status</label>
+					</div>                                        
+					<div class="col-xs-4">
+						<input id="txtDuration" name="" type="text" class="form-control">
+					</div>
+					<div class="col-xs-4">
+						@*<input id="txtStatus" name="" type="text" class="form-control">*@
+              @*          <input type="text" id="Select2Type" class="sel" />*@
+                        <input id="Select2Status" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Operator</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="txtOperator" name="" type="text" class="form-control">
+					</div>
+				</div>
+            </div>            
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel-body form-horizontal">
+            <div class="col-xs-6">
+
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Patient Type</label>
+					</div>                                        
+					<div class="col-xs-7">
+						<input id="select2PatientType" name="" type="text" class="form-control">
+					</div>
+					<div class="col-xs-1" style="padding:0px;">
+						<a id="btnFindPatient" class="btn btn-sm btn-success HideOnView">
+							<span class="glyphicon glyphicon-user"></span>
+						</a>                                
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">PIN</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="select2PIN" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Name</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="select2Name" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Bed</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="select2BedNo" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Ward</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="txtWard" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Age / Gender</label>
+					</div>                                        
+					<div class="col-xs-4">
+						<input id="txtAge" name="" type="text" class="form-control">
+					</div>
+					<div class="col-xs-4">
+						<input id="txtGender" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Category</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="txtCategory" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Package</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="txtPackage" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Company</label>
+					</div>                                        
+					<div class="col-xs-8">
+						<input id="txtCompany" name="" type="text" class="form-control">
+					</div>
+				</div>
+
+            </div>
+            <div class="col-xs-6">
+
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Surgery</label>                                            
+					</div>
+					<div class="col-xs-8">
+						<input id="select2TSurgery" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Surgeon</label>
+					</div>
+					<div class="col-xs-8">
+						<input id="select2TSurgeon" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Assistant Surgeon</label>                                            
+					</div>
+					<div class="col-xs-8">
+						<input id="select2TAssistantSurgeon" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Anaesthetist</label>                                            
+					</div>
+					<div class="col-xs-8">
+						<input id="select2TAnaesthetist" name="" type="text" class="form-control">                                            
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Equipment</label>                                                                            
+					</div>
+					<div class="col-xs-8">
+						<input id="select2TEquipment" name="" type="text" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Disease</label>                                                                            
+					</div>
+					<div class="col-xs-8">
+						<textarea id="txtDisease" class="form-control" rows="3" cols="5"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">Remarks</label>                                                                            
+					</div>
+					<div class="col-xs-8">
+						<textarea id="txtRemarks" class="form-control" rows="3" cols="5"></textarea>
+					</div>
+				</div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="FrmFindPatient" class="col-xs-12 form-horizontal standardborder">
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#sectionFilter">Fields</a></li>
+        <li><a data-toggle="tab" href="#sectionFilterResult">Results</a></li>
+                <div class="pull-right">
+                    <a id="btnPatientFilterClose" class="btn btn-sm btn-danger pull-right pull-right-margin button-width">
+                        <span class="glyphicon glyphicon-remove"></span> Close
+                    </a>
+                    <a id="btnPatientFilterOK" class="btn btn-sm btn-success pull-right pull-right-margin button-width">
+                        <span class="glyphicon glyphicon-check"></span> OK
+                    </a>               
+                    <a id="btnPatientFilterSearch" class="btn btn-sm btn-success pull-right pull-right-margin button-width">
+                        <span class="glyphicon glyphicon-check"></span> Search
+                    </a>  
+                </div>
+    </ul>
+    <div class="tab-content">
+        
+
+            <div id="sectionFilter" class="tab-pane fade in active">
+                <div class="panel-body">
+                                
+                    <div class="col-xs-4">
+                        <div class="row">
+					        <div class="col-xs-4">
+                                <label class="control-label">First Name</label>						                
+					        </div>
+                            <div class="col-xs-8">
+                                <input id="txtFirstName" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">   
+                                <label class="control-label">Middle Name</label>                                         
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="txtMiddleName" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Last Name</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="txtLastName" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Family Name</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="txtFamilyName" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Father / Husband</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="txtFather" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Age</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="txtAgeF" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Gender</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="select2Gender" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Date From-To</label>
+					        </div>
+                            <div class="col-xs-4">                                            
+					            <div id="dtRegDateTimeF" class="input-group date">
+						            <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+							            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+						            </span>
+					            </div>                                            
+                            </div>
+                            <div class="col-xs-4">                                            
+					            <div id="dtRegDateTimeT" class="input-group date">
+						            <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+							            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+						            </span>
+					            </div>                                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Place</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="select2Cities" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+					        <div class="col-xs-4">                                            
+                                <label class="control-label">Country</label>
+					        </div>
+                            <div class="col-xs-8">                                            
+                                <input id="select2Country" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="sectionFilterResult" class="tab-pane fade in">
+                <div class="panel-body">
+                    <div id="grid" class="col-xs-12" >
+                        <table id="gridResults" class="Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                            <thead class="cAR-tlist-header">
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>PIN</th>
+                                    <th>Date</th>
+                                    <th>PatientName</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Place</th>
+                                    <th>Phone</th>
+                                    <th>CategoryCode</th>
+                                    <th>CompanyCode</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        
+        <div class="row">
+            <div class="col-xs-12">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal modalSmall" id="FrmReason" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Reason of cancelling</h4>
+            </div>
+
+            <div class="modal-body form-horizontal">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <textarea id="txtReasonCancelled" class="form-control" rows="20" cols="5"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                
+                <a id="btnCloseReason" class="btn btn-sm btn-danger pull-right pull-right-margin button-width">
+                    <span class="glyphicon glyphicon-remove"></span> Close
+                </a>
+                <a id="btnSaveReason" class="btn btn-sm btn-success pull-right pull-right-margin button-width">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> OK
+                </a>               
+
+            </div>
+
+        </div>
+    </div>
+</div>
+ 
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/OT/OTScheduler.js")" type="text/javascript"></script>    
+}
+

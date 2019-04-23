@@ -1,0 +1,163 @@
+﻿<link href="~/Content/adminlte.css" rel="stylesheet" />
+<section class="content-header">
+    <h1>OPERATING THEATRE FORMS</h1>
+
+</section>
+
+<section class="content">
+    <div class="box box-success">
+        <div class="box-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-12">
+
+                        <div class="col-sm-12">
+                            <input id="txtfind" class="form-control" placeholder="Search" />
+                            <br />
+                        </div>
+                        <div class="col-sm-12">
+
+                             <a class="menucontainer imgModule" href="/HISOT/OTForms/PreOperativeChecklist/" data-search="mr0106 pre operative checklist form">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0106
+                                    <br />
+                                    Pre Operative Checklist
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/TimeOutForm/" data-search="mr0107 timeout form">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0107
+                                    <br />
+                                    TimeOut Form
+                                </section>
+                            </a>
+
+                          
+
+                             <a class="menucontainer imgModule" href="/HISOT/OTForms/OTRoomCount/" data-search="mr0109 operative room count form">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0109
+                                    <br />
+                                     Operative Room Count Sheet
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/OTMedicalReport/" data-search="mr0010 medical report form">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0010
+                                    <br />
+                                       Medical Report
+                                </section>
+                            </a>
+                         
+                            
+                            <a class="menucontainer imgModule" href="/HISOT/OT/OTForms/OperativeReport" data-search="mr0110 operative report form">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0110
+                                <br />
+                                    Operative Report Form 
+
+                                </section>
+                            </a>
+ 
+
+                            
+                            
+                              <a class="menucontainer imgModule" href="/HISOT/OTForms/ConsciousSedation/" data-search="mr0117 conscious sedation analgesia record form">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0117
+                                    <br />
+                                       Conscious Sedation Analgesia Record
+                                </section>
+                            </a>
+
+
+                              <a class="menucontainer imgModule" href="/HISOT/OTForms/MRSAScreening/" data-search="mr0390 mrsa screening">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0390
+                                    <br />
+                                       MRSA screening
+                                </section>
+                            </a>
+
+
+                              <a class="menucontainer imgModule" href="/HISOT/OT/OTForms/UTIBundle" data-search="mr0395 uti bundle">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0395
+                                    <br />
+                                    UTI Bundle Foley Catheter Insertion
+                                </section>
+                            </a>
+                           
+
+
+
+                        </div>
+
+
+                        @*@foreach (var item in Model)
+                        {
+
+                            string i = "/HISLOGIN/Images/icons/module_" + @item.ModuleID + ".png";
+                            <div class="col-sm-2 imgModule" data-urlink="@item.URLLink" data-moduleid="@item.ModuleID" data-search=" @item.Name.ToString().ToLower()" style="height:200px;">
+                                <span class="hintModal">
+                                    <a href="#" data-urlink="@item.URLLink" data-moduleid="@item.ModuleID"  >
+
+                                       
+                                        <img src="@i"  class="profile-user-img img-responsive img-circle"    data-emptysource="/HISLOGIN/Images/icons/No-image.png" onerror="this.onerror=null;this.src='/HISLOGIN/Images/icons/No-image.png'" data-imagepath="/HISLOGIN/Images/icons" data-onerror="this.onerror=null;this.src='/HISLOGIN/Images/icons/No-image.png'" alt="" width="90" height="90">
+
+                                        <h4 class="text-center"><b>@item.Name.ToUpper()</b></h4>
+
+
+
+                                    </a>
+                                    <span class="hintModal_container" style="min-width: 500px !important;">
+                                        <div>
+                                            <div class="col-sm-6">
+                                                <h2>@item.Name</h2>
+                                                <p>Description Here</p>
+                                            </div>
+                                            <div class="col-sm-6 ">
+                                                <img src="@i" alt="" class="img-responsive pull-right" style="width:200px;height:200px;">
+                                            </div>
+                                        </div>
+                                    </span>
+                                </span>
+
+                            </div>}*@
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on("keyup", "#txtfind", function () {
+                $(".imgModule").hide();
+                // var i = $(this).val().toLowerCase();
+                var i = $(this).val();
+                console.log(i);
+                $("a[data-search*='" + i + "']").show();
+                if (i == "") {
+                    $(".imgModule").show();
+                }
+            });
+        });
+    </script>
+
+}
+

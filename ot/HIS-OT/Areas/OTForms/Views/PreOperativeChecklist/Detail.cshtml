@@ -1,0 +1,435 @@
+﻿@model OTEf.Core.Model.PreOperativeChecklist
+@using Newtonsoft.Json
+
+@{
+    ViewBag.Title = "Pre Operative Checklist";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">PRE-OPERATIVE CHECKLIST DETAIL</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <a id="btn-update" class="btn btn-sm btn-success button-width" href="@Url.Action("Update", new { id = Model.Id })">
+            <span class="glyphicon glyphicon-upload"></span>Update
+        </a>
+        <button id="btn-delete" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span>Delete
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span>Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+
+
+
+    @using (Html.BeginForm("Delete", "PreOperativeChecklist", new { id = Model.Id }, FormMethod.Post, new { id = "FormDelete" })) { }
+    <div class="form-group">
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input  class="form-control input-sm" readonly="true" value ="@(Model.IssueAuthorityCode + " - " + Model.PatientName)"/>
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Entry Date / Time</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.CreatedAt, new { @class = "form-control input-sm", @readonly = "readonly" })
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <label class="control-label">Procedure</label>
+            @Html.TextBoxFor(m => m.ProcedureName, new { @class = "form-control input-sm", @readonly = "readonly" })
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Procedure Date / Time</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.ProcedureDate, new { @class = "form-control input-sm", @readonly = "readonly" })
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </div>
+
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tabchart" data-toggle="tab">Correct and on Chart</a> </li>
+        <li><a href="#tabcheckitem" data-toggle="tab">Checks Performed</a></li>
+        <li><a href="#tabmedicationgiven" data-toggle="tab">Medications Given</a>  </li>
+    </ul>
+    <div class="tab-content">
+
+         <div class="form-group tab-pane fade in active" id="tabchart">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <table id="tbl-charteval" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="form-group tab-pane fade" id="tabcheckitem">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <table id="tbl-checkitems" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="form-group tab-pane fade" id="tabmedicationgiven">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <table id="tbl-medication" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+
+        </div>
+         
+
+        
+
+        
+
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th colspan="5" class="text-center">Pre-Operative Vital Signs : </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="font-size: 14px;">
+                        <td>
+                            <label class="control-label">BP</label>
+                            @Html.TextBoxFor(m => m.BloodPressure, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            <label class="control-label">Pulse</label>
+                            @Html.TextBoxFor(m => m.Pulse, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            <label class="control-label">Temperature</label>
+                            @Html.TextBoxFor(m => m.Temperature, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            <label class="control-label">Respiratory Rate</label>
+                            @Html.TextBoxFor(m => m.ResperatoryRate, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                        <td>
+                            <label class="control-label">Time</label>
+
+
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.VitalSignEvalDatetime, new { @class = "form-control input-sm", @readonly = "readonly" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th colspan="4" class="text-center">Pain Score: </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="font-size: 14px;">
+                        <td colspan="4">
+                            <label class="control-label">Pain Score</label>
+                            @Html.TextBoxFor(m => m.PainScore, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label">NPO since (Time): </label>
+                             >
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.NPO_StartDatetime, new { @class = "form-control input-sm", @readonly = "readonly" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+
+                        </td>
+                        <td>
+                            <label class="control-label">Voided since (Time): </label>
+                             
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.Voided_StartDatetime, new { @class = "form-control input-sm", @readonly = "readonly" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <label class="control-label">Time Transferred to OR: </label>
+                            
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.ORTrasferDatetime, new { @class = "form-control input-sm", @readonly = "readonly" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <label class="control-label">Special Comments for OR Staff: </label>
+                            @Html.TextBoxFor(m => m.ORStaffComment, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="col-md-8">
+                                <label class="control-label">Ward Nurse</label>
+                                @Html.TextBoxFor(m => m.WardNurseName, new { @class = "form-control input-sm", @readonly = "readonly" })
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                 
+                                <div class="input-group">
+                                @Html.TextBoxFor(m => m.ORWard_AcknowledgeDateTime, new { @class = "form-control input-sm", @readonly = "readonly" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+
+                            </div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="col-md-8">
+                                <label class="control-label">OR Nurse</label>
+                                @Html.TextBoxFor(m => m.ORNurseName, new { @class = "form-control input-sm", @readonly = "readonly" })
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                
+                                <div class="input-group">
+                                @Html.TextBoxFor(m => m.ORNurse_AcknowledgeDateTime, new { @class = "form-control input-sm", @readonly = "readonly" })
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+     <script type="text/javascript">
+        var c = new Common();
+        var dtChartEvaluation;
+        var dtCheckItems;
+        var dtMedications;
+        var Select2IsClicked;
+        $(document).ready(function () {
+            InitPlugins();
+            InitEvents()
+
+        });
+
+
+        function Valid() {
+        }
+
+
+        function Clear() {
+        }
+
+
+        function Save() {
+
+        }
+        function InitEvents() {
+
+            //buttons
+
+            $("#btn-delete").click(function () {
+                swal({
+                    title: 'Confirmation',
+                    text: "Are you sure you want to delete this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    closeOnConfirm: true,
+                    allowOutsideClick: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $("#FormDelete").submit();
+                    }
+                });
+            });
+
+            //checkboxes
+
+        }
+
+        function InitPlugins() {
+            InitDatePlugins();
+            InitDataTable();
+            InitSelect2();
+            InitLCSwitch();
+            InitEditables();
+        };
+
+        function InitLCSwitch() {
+
+            $(".switch").lc_switch("YES", "NO");
+        };
+
+        function InitSelect2() {
+
+        };
+
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+        };
+
+        function InitDataTable() {
+           dtChartEvaluation = $("#tbl-charteval").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.ChartEvaluations.ToList()))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [1], data: "Chart", title: 'Correct and on Chart', className: '   ', visible: true, searchable: true, width: "20%", render: function (data) { return data.Name } },
+                     { targets: [2], data: "IsCorrect", title: 'Options', className: '  text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data == 0 ? "No" : data == 1 ? "Yes" : "N/A" ; } },
+                     { targets: [3], data: "PreOperativeChartId", title: ' ', className: '  text-right', visible: false, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     //{ targets: [5], data: "IsCorrect", title: '', className: ' text-right', visible: false, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+               
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(0)', row).html(index + 1);
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+
+                }
+            });
+
+
+          dtCheckItems = $("#tbl-checkitems").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.CheckedItems.ToList()))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [1], data: "CheckItem", title: 'Checks Performed', className: ' ', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [2], data: "isPerformed", title: 'Options', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data == 0 ? "No" : data == 1 ? "Yes" : "N/A"; } },
+                     { targets: [3], data: "PreOperativeCheckId", title: ' ', className: 'editableinput text-right', visible: false, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+               
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(0)', row).html(index + 1);
+                   
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+
+
+                }
+            });
+
+
+
+            dtMedications = $("#tbl-medication").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.Medications.ToList()))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [1], data: "Medication", title: 'Medications Given', className: ' ', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [2], data: "IsGiven", title: 'Options', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data == 0 ? "No" : data == 1 ? "Yes" : "N/A"; } },
+                     { targets: [3], data: "PreOperativeMedicationId", title: ' ', className: 'editableinput text-right', visible: false, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                
+                ],
+                fnCreatedRow: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+                }
+            }); 
+        };
+
+        function InitEditables() {
+            SetEditableType();
+            SetEditable();
+        }
+
+        function SetEditableType() {
+
+        };
+
+        function SetEditable() {
+
+          
+        };
+
+    </script> 
+}
+

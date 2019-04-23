@@ -1,0 +1,168 @@
+﻿@model OTEf.Core.Model.MRSAScreening
+
+@{
+    ViewBag.Title = "MRSA Screening Details";
+}
+
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="col-md-6">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">NEW SCREENING</label>
+    </div>
+    <div class="col-md-6" style="margin-top: 3px;">
+        <a  class="btn btn-sm btn-success pull-right" href="@Url.Action("Index")" style="margin-left:4px;"> 
+            <span class="glyphicon glyphicon-refresh"></span> Back to list
+        </a>
+     
+            <button id="btn-delete" type="submit" class="btn btn-sm btn-success button-width pull-right" style="margin-left:4px;" >
+                <span class="glyphicon glyphicon-remove"></span> Delete
+            </button>
+
+        <a id="btnUpdate"  class="btn btn-sm btn-success button-width pull-right" href="@Url.Action("Update", "MRSAScreening", new { Id = Model.Id })" >
+            <span class="glyphicon glyphicon-upload"></span> Update
+        </a>
+        @using (Html.BeginForm("Delete", "MRSAScreening", new { Area = "OTForms", Id = Model.Id }, FormMethod.Post, new { @id = "FormDelete" })) { }
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    <div class="form-group">
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input value="@(@Model.PIN + " - " + Model.PatientName)" class="form-control" readonly="readonly" />
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Screening Date</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.ScreeningDate, new { @class = "form-control", @readonly = "readonly" })
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <label class="control-label">Location</label>
+            @Html.TextBoxFor(m => m.LocationName, new { @class = "form-control", @readonly = "readonly" })
+
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Observer</label>
+            @Html.TextBoxFor(m => m.ObserverName, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+            <table class="table table-condensed  dataTable">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th style="font-size: 14px;">Patients admitted to SGH must be screened at the time of admission for possible colonization / infection if :</th>
+                        <th>YES / NO </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Patients with history of admission/transfer from other hospitals within the past <mark><b>3 months</b></mark> </td>
+                        <td>@Html.CheckBoxFor(m => m.HasPrev_ADM_TRF_OTH_HOSP_Past3Mo, new { @class = "switch", disabled = "disabled" }) </td>
+                    </tr>
+                    <tr>
+                        <td>2. Patients <mark><b>previously known positive for MRSA</b></mark> infection or colonization.  </td>
+                        <td>@Html.CheckBoxFor(m => m.Prev_MRSA_Positive, new { @class = "switch", disabled = "disabled" }) </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">3.  Screen all high-risk patients with culture of colonized and any active infection sites upon admission. </td>
+                    </tr>
+                    <tr>
+                        <td><span class="col-md-12">a. History of nursing home residence </span></td>
+                        <td>@Html.CheckBoxFor(m => m.HasHomeNursingHistory, new { @class = "switch", disabled = "disabled" }) </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="col-md-12">b. Age of 75 years or older </span></td>
+                        <td>@Html.CheckBoxFor(m => m.Above69YrsOld, new { @class = "switch", disabled = "disabled" }) </td>
+                    </tr>
+                    <tr>
+                        <td><span class="col-md-12">c. Indwelling devices (Urinary catheter, central line, tracheostomy, gastrostomy etc.)</span> </td>
+                        <td>@Html.CheckBoxFor(m => m.HasIndwellingDevices, new { @class = "switch", disabled = "disabled" }) </td>
+                    </tr>
+                    <tr>
+                        <td><span class="col-md-12">d. Underlying diseases or severe illnesses (bedsore, wound infections etc.)</span> </td>
+                        <td>@Html.CheckBoxFor(m => m.HasDiseaseOrIllness, new { @class = "switch", disabled = "disabled" }) </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-md-12" style="margin-top: 20px; font-size: 13px;">
+            <div class="col-md-12">
+                <p><b>If YES : </b>Patient should be screen for MRSA. Test request must be made by the treating physician.  </p>
+                <p>Swabbing site :  Anterior nares   </p>
+                <p>One culture swab is to be inserted into the anterior nares of each nostril and rotated with pressure 3-5 times.   </p>
+                <p>Samples must be collected from any broken skin such as, tracheostomy site, gastrostomy sites, bedsore, open surgical wounds, burn sites, CVC site if applicable etc.</p>
+                <p><b>Note : </b>No need to collect specimen from axilla or groin.</p>
+            </div>
+        </div>
+
+
+        <div class="col-md-12" style="margin-top: 20px; font-size: 13px;">
+            <div class="col-md-3">
+                @if (Model.ModifiedById  == 0)
+                {
+                    @Html.Label("Created by:", new { @class = "control-label" })
+                    <br />
+                    <span>@Model.CreatedByName</span>
+                    <br />
+                    <small>@Model.CreatedAt.ToString("dd-MMM-yyyy")</small>
+                }
+                else
+                {
+                    @Html.Label("Modified by:", new { @class = "control-label" })
+                    <br />
+                    <span>@Model.ModifiedByName</span>
+                    <br />
+                    <small>@Model.ModifiedAt.Value.ToString("dd-MMM-yyyy")</small>
+                }
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".switch").lc_switch("YES", "NO");
+
+            $("#btn-delete").click(function (e) {
+
+                swal({
+                    title: 'Confirmation',
+                    text: "Are you sure you want to delete this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    closeOnConfirm: true,
+                    allowOutsideClick: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $("#FormDelete").submit();
+                    } 
+                });
+            });
+        });
+
+    </script>
+}
+

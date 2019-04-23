@@ -1,0 +1,307 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">IP DRUG RETURN</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right" style="margin-top:3px;">
+        <a id="btnNew" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnView" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+    @*<div id="ButtonsOnEntry" class="pull-right " style="margin-top:3px; display:none;">
+
+            <a id="btnNew" class="btn btn-sm btn-success  button-width ">
+                <span class="glyphicon glyphicon-file"></span> New
+            </a>
+            <a id="btnSave" class="btn btn-sm btn-success  button-width ">
+                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+            </a>
+            <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </a>
+            <a id="btnDelete" class="btn btn-sm btn-success">
+                <span class="glyphicon glyphicon-trash"></span> Cancel Order
+            </a>
+            <a id="btnClear" class="btn btn-sm btn-success button-width">
+                <span class="glyphicon glyphicon-stop"></span> Clear
+            </a>
+            <a id="btnClose" class="btn btn-sm btn-danger button-width">
+                <span class="glyphicon glyphicon-remove"></span> Close
+            </a>
+        </div>*@
+</div>
+
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    <div class="panel-body border-below">
+        <div class="row">
+            <div id="grid" class="col-xs-12">
+                <table id="gridList" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:2000px !important;">
+                    <thead class="cAR-tlist-header">
+                        <tr>
+                            <th>Id</th>
+                            <th>OrderNo</th>
+                            <th>Status</th>
+                            <th>Date Time</th>
+                            <th>PIN</th>
+                            <th>PatientName</th>
+                            <th>Operator</th>
+                            <th>Bed No</th>
+                            @*<th>stationslno</th>
+                                <th>prefix</th>
+                                <th>Dispatched</th>
+                                <th>Station</th>
+                                <th>Acknowledged</th>
+                                <th>operatorid</th>
+                                <th>DocName</th>
+                                <th>IPID</th>*@
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    @*<div class="panel-body">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label class="control-label border" style="background-color:#fcc9c9;text-align:center; width:100%;">
+                        New
+                    </label>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label border" style="background-color:#ffffd9;text-align:center; width:100%;">
+                        Dispatched
+                    </label>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label border" style="background-color:#aaffc8;text-align:center; width:100%;">
+                        Received
+                    </label>
+                </div>
+                <div class="col-xs-2">
+                    <label class="control-label border" style="background-color:#ffc342;text-align:center; width:100%;">
+                        Delayed Acknowledge
+                    </label>
+                </div>
+
+            </div>
+        </div>*@
+
+</div>
+
+<div class="modal modalLarge" id="modalEntry" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <input type="hidden" id="hdIsEdit" drugreturnid="0" data-userid="@ViewBag.empId" data-username="@ViewBag.empName" data-action="" />
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">
+                        <span class="glyphicon glyphicon-check" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;">DRUG RETURN</h4>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+                        <a id="btnClose" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-remove"></span> Close
+                        </a>
+                        <a id="btnCancel" class="button-width btn btn-sm btn-default pull-right pull-right-margin" style="display:none">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </a>
+                        <a id="btnSave" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+                <div class="border">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="border">
+                                    <div class="panel-body border-below">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">OrderNo</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtOrderNo" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label required">PIN</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2PIN" name="" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label required">Name</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2Name" name="" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label required">D/Order No</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2OrderNo" name="" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label required">Bed No</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtBedNo" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Age</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtAge" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Gender</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtGender" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Blood Group</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtBloodGroup" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Doctor</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2Doctor" name="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">DateTime</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtDateTime" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Company Name</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtCompany" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Package</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="txtPackage" name="" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="border">
+                                    @*<div class="panel-body border-below">
+                                        </div>*@
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <table id="tbl-drugItems" class="table table-condensed table-low-bordered">
+                                                    <thead>
+                                                        <tr class="_tbl_th">
+                                                            <th style="display:none">ServiceId</th>
+                                                            <th>Drug</th>
+                                                            <th>Units</th>
+                                                            <th>Qty</th>
+                                                            <th>R/Qty</th>
+                                                            <th>Remarks</th>
+                                                            <th>Batch</th>
+                                                            <th style="display:none">BatchId</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modalXSmall" tabindex="-1" role="dialog" id="modalLogin" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Login Required!</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <div class='col-sm-12'>
+                        <div class='form-group'>
+                            <lable for='empid'>Employee Id</lable>
+                            <div>
+                                <input id='empid' type='text' class='form-control' />
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <lable for='emppw'>Password</lable>
+                            <div>
+                                <input id='emppw' type='password' class='form-control' />
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCloseLogin" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="btnLogin" type="button" class="btn btn-primary" data-transsign="@Url.Action("Login", "BloodDemand", new { area = "OT" })">Login</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/OT/IPDrugReturns.js")" type="text/javascript"></script>
+} 

@@ -1,0 +1,214 @@
+﻿@{
+    ViewBag.Title = "Other Procedure";
+    
+}
+
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">OTHER PROCEDURE</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top:3px; display:none;">
+        <a id="btnNewEntry"  data-toggle="tooltip" data-original-title="Alt + n" title="Alt + n" class="button-width btn btn-sm btn-success" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnView" class="button-width btn btn-sm btn-success" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+        <a id="btnRefresh" data-toggle="tooltip" data-original-title="Alt + r" class="button-width btn btn-sm btn-success">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top:3px;display:none;">
+
+        <a id="btnClose" data-toggle="tooltip" data-original-title="Alt + c" class="button-width btn btn-sm btn-danger pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-remove"></span> Close
+        </a>
+        <a id="btnClear" class="button-width btn btn-sm btn-success pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-stop"></span> Clear
+        </a>
+        <a id="btnDelete" class="btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-trash"></span> Cancel Order
+        </a>
+        <a id="btnEdit" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        <a id="btnPrint" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-print"></span> Print
+        </a>
+        <a id="btnSave"  data-toggle="tooltip" data-original-title="Alt + s"  class="button-width btn btn-sm btn-success pull-right pull-right-margin ShowOnAdd HideOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a>
+        <a id="btnNew" data-toggle="tooltip" data-original-title="Alt + n"  class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+
+    </div>
+
+</div>
+<div id="DashBoard" style="display:none;" class="col-xs-12 standardborder HideOnView HideOnAdd HideOnEdit HideOnDelete">
+    <div class="row">
+        @*<div id="grid" class="col-xs-12" style="visibility:hidden;">*@
+        <div id="grid" class="col-xs-12">
+            <table id="gridList" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100%!important;">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th>ID</th>
+                        <th>W</th>
+                        <th>OrderNo</th>
+                        <th>PatientName</th>
+                        <th>PIN</th>
+                        <th>Bed</th>
+                        <th>Doctor</th>
+                        <th>Operator</th>
+                        <th>DateTime</th>
+                        <th>Is24</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="Entry" class="col-xs-12 standardborder ShowOnView ShowOnAdd ShowOnEdit" style="display:none;">
+    <input id="Action" name="" type="hidden" class="form-control">
+    <input id="Id" name="" type="hidden" class="form-control">
+    <input id="Is24" name="" type="hidden" class="form-control">
+
+
+
+                    
+        <div class="panel-body border-below">
+            <div class="row">
+                <div class="col-xs-1">
+                    <label class="control-label">PIN / Name</label>
+                </div>
+                <div class="col-xs-3">
+                    <input id="select2PIN" name="" type="text" class="form-control">
+                </div>
+                <div class="col-xs-4">
+                    <input id="select2Name" name="" type="text" class="form-control">
+                </div>
+                <div class="col-xs-1">
+                    <label class="control-label">Bed No</label>
+                </div>
+                <div class="col-xs-2">
+                    <input id="select2BedNo" name="" type="text" class="form-control">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel-body"> 
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel-body border-below">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">OrderNo</label>
+                            </div>                                        
+                            <div class="col-xs-9">
+                                <input id="txtOrderNo" name="" type="text" class="form-control">
+                            </div>                                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Operator</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtOperator" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">DateTime</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtDateTime" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Doctor</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="select2Doctor" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Drug Allergies</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtDrugAllergies" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Age</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtAge" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Gender</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtGender" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Blood Group</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtBloodGroup" name="" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row rowMarginTop">
+                        <div class="col-xs-12 gridReadOnly">
+                            <table id="gridSelectedProcedure" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width:600px !important;">
+                                <thead class="cAR-tlist-header">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>#</th>
+                                        <th>Procedure</th>
+                                        <th>Qty</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>                        
+                    <div class="row">
+                        <div class="col-xs-9 pull-right">
+
+                            <a id="btnRemoveProcedure" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                <span class="glyphicon glyphicon-minus"></span> Remove
+                            </a>   
+                            <a id="btnAddProcedure" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                <span class="glyphicon glyphicon-plus"></span> Add
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/OT/OtherProcedure.js")" type="text/javascript"></script>
+}

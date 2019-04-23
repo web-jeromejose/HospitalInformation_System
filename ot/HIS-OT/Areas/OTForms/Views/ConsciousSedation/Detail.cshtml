@@ -1,0 +1,127 @@
+﻿@model OTEf.Core.Model.ConsciousSedationRecord
+
+@{
+    ViewBag.Title = "Conscious Sedation / Analgesia Record";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">CONSCIOUS SEDATION DETAIL</label>
+    </div>
+
+
+        <a  class="btn btn-sm btn-success pull-right" style="margin-top:5px; " href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span> Back to list
+        </a>
+
+
+      <button id="btn-delete" class="btn btn-sm btn-success pull-right" style="margin-top:5px;margin-right: 5px;">
+            <span class="glyphicon glyphicon-remove-sign"></span> Delete
+       </button>
+
+        <a  class="btn btn-sm btn-success pull-right" style="margin-top:5px;margin-right: 5px;" href="@Url.Action("Update", new { id = Model.Id })">
+            <span class="glyphicon glyphicon-upload"></span> Update
+       </a>
+   
+      @using (Html.BeginForm("Delete", "ConsciousSedation", new { id = Model.Id }, FormMethod.Post, new { id = "FormDelete" })){}
+    
+</div>
+
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        <div class="col-md-2">
+            <label class="control-label">Date</label>
+             @Html.TextBox("CreatedDateDisplay", @Model.CreatedAt.ToString("dd-MMM-yyyy"), new { @class = "form-control input-sm", @readonly = true })
+        </div>
+
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            @Html.TextBox("PatientDisplay", @Model.PIN + " - " + @Model.PatientName, new { @class = "form-control input-sm", @readonly = true })
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">Age</label>
+                @Html.TextBox("AgeDisplay", @Model.Age, new { @class = "form-control input-sm", @readonly = true })
+        </div>
+        <div class="col-md-2" style ="margin-top:24px;">
+            @Html.TextBox("AgeTypeDisplay", @Model.AgeType, new { @class = "form-control input-sm", @readonly = true })
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Gender</label>
+             @Html.TextBox("SexDisplay", @Model.Sex, new { @class = "form-control input-sm", @readonly = true })
+        </div>
+
+    </div>
+    <hr />
+       <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Pre Conscious Sedation / Analgesia Record</a> </li>
+        <li><a href="#tab2" data-toggle="tab">Monitoring Chart During Procedure</a></li>
+        <li><a href="#tab3" data-toggle="tab">Recovery Room Record</a></li>
+    </ul>
+
+      <div class="tab-content" style="background-color: #d2de96;">
+        <div class="form-group tab-pane fade in active" id="tab1">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+               @Html.Partial("_DetailPresedation", Model.PreSedation)
+            </div>
+
+        </div>
+
+        <div class="form-group tab-pane fade" id="tab2">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+            aaaaa
+            </div>
+
+        </div>
+        <div class="form-group tab-pane fade" id="tab3">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+               afadfad
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+ 
+        $(document).ready(function () {
+            initEvents();
+        });
+
+        function initEvents() {
+
+            $("#btn-delete").click(function () {
+                swal({
+                    title: 'Confirmation',
+                    text: "Are you sure you want to delete this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    closeOnConfirm: true,
+                    allowOutsideClick: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $("#FormDelete").submit();
+                    }
+                });
+
+            });
+        };
+       
+    </script>
+
+
+}

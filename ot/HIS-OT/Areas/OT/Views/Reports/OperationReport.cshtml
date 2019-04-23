@@ -1,0 +1,52 @@
+﻿@{
+  //  Layout = "~/Areas/OT/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b>Operation Report</b></h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">From</label>
+                <div class="col-sm-2">
+                      <div id="dtFrom" class="input-group date">
+                  <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+               </div>
+                </div>
+                <div class="col-sm-2">
+                      <div id="dtTo" class="input-group date">
+                  <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+               </div>
+                </div>
+                <label class="col-sm-1 control-label">PIN</label>
+                <div class="col-sm-3">
+                    <input id="txtpinref"  type="text" class="form-control" />
+                </div>
+                <div class="col-sm-1">
+                    <button id="btn-reportcollec" type="button" class="btn btn-success btn-sm" >
+                        <span class="glyphicon glyphicon-file"></span> View</button>
+                </div>
+            </div>
+        </div>
+        <iframe id="rrpt" width="100%" style="overflow: auto !important; min-height: 800px; border: 1px solid #D4D0C8;"></iframe>
+    </div>
+</div>
+
+<input type="hidden" id="url" 
+    data-urllink="@Url.Content("~/Areas/IPBILL/Report/IPCashierCollection.aspx")" 
+     />
+
+@Scripts.Render("~/Scripts/jqoperationreport")
+<script src="~/Content/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<link href="~/Content/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />

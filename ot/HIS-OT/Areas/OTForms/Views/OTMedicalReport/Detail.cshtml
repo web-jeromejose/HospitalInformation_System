@@ -1,0 +1,159 @@
+﻿@model OTEf.Core.Model.OTMedicalReport
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">OT MEDICAL REPORT</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <a id="btn-update" class="btn btn-sm btn-success button-width" href="@Url.Action("Update",new {id=Model.Id})">
+            <span class="glyphicon glyphicon-upload"></span> Update
+        </a>
+        <button id="btn-delete" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span> Delete
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span> Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @using (Html.BeginForm("Delete", "OTMedicalReport", new { id = Model.Id }, FormMethod.Post, new { id = "FormDelete" })) { }
+  
+    <div class="form-group">
+
+          <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input  class="form-control input-sm" readonly="true" value ="@(Model.IssueAuthorityCode + " - " + Model.PatientName)"/>
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Entry Date / Time</label>
+            <div class="input-group">
+                 @Html.TextBoxFor(m=>m.MedicalReportDate, new {@class="form-control input-sm", @readonly ="readonly"})
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <label class="control-label">Age</label>
+            @Html.TextBoxFor(m=>m.Age, new {@class="form-control input-sm", @readonly ="readonly"})
+         </div>
+        <div class="col-md-1">
+            <label class="control-label">Gender</label>
+             @Html.TextBoxFor(m=>m.GenderId, new {@class="form-control input-sm", @readonly ="readonly"})
+           
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Nationality</label>
+              @Html.TextBoxFor(m=>m.NationalityId, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+              <label class="control-label">Complaints</label>
+             @Html.TextBoxFor(m=>m.Complaints, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+         <div class="col-md-12">
+              <label class="control-label">Examination</label>
+              @Html.TextBoxFor(m=>m.Examination, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+          <div class="col-md-12">
+              <label class="control-label">Investigations</label>
+            @Html.TextBoxFor(m=>m.Investigations, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+         <div class="col-md-12">
+              <label class="control-label">Treatment</label>
+             @Html.TextBoxFor(m=>m.Treatment, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+          <div class="col-md-12">
+              <label class="control-label">Prescription</label>
+             @Html.TextBoxFor(m=>m.Prescription, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+          <div class="col-md-7">
+              <label class="control-label">Initial / Final Diagnosis</label>
+             @Html.TextBoxFor(m=>m.InitialFinalDiagnosis, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+          <div class="col-md-5">
+              <label class="control-label">ICD10</label>
+             @Html.TextBoxFor(m=>m.Icd, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+          <div class="col-md-12">
+              <label class="control-label">Recommendation</label>
+             @Html.TextBoxFor(m=>m.Recommendation, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+         <div class="col-md-8">
+                                <label class="control-label">Doctor's Name</label>
+                                  @Html.TextBoxFor(m=>m.DoctorName, new {@class="form-control input-sm", @readonly ="readonly"})
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                   @Html.TextBoxFor(m=>m.DoctorDateTime, new {@class="form-control input-sm", @readonly ="readonly"})
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+
+
+    </div>
+
+
+    </div>
+
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+ 
+        $(document).ready(function () {
+          
+            InitEvents();
+
+        });
+
+        function InitEvents() {
+
+            //buttons
+
+            $("#btn-delete").click(function () {
+                swal({
+                    title: 'Confirmation',
+                    text: "Are you sure you want to delete this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    closeOnConfirm: true,
+                    allowOutsideClick: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $("#FormDelete").submit();
+                    }
+                });
+            });
+
+            //checkboxes
+
+        }
+
+
+
+
+            </script>
+}

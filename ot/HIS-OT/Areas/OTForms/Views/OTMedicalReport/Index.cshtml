@@ -1,0 +1,80 @@
+﻿<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-dashboard" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;"> OT Medical Report </label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Create")">
+            <span class="glyphicon glyphicon-pencil"></span> New Medical Report
+        </a>
+    </div>
+</div>
+
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    <table id="tbl-list" class="table table-nomargin table-condensed table-striped">
+        <thead class="cAR-tlist-header">
+             <tr>
+                 <th>Id</th>
+                 <th>PIN</th>
+                 <th>Patient Name</th>
+                 <th>Procedure Date</th>
+                 <th>Procedure Name</th>
+          
+                 <th> </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+@section scripts {
+
+    
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+           var tbl =  $("#tbl-list").DataTable({
+                processing: true,
+                serverSide: true,
+                destroy: true,
+                //scrollY: "400px",
+                ajax: {
+                    url: "@Url.Action("GetOTMedicalReport")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: function (data) {
+                        return JSON.stringify(data);
+                    }
+                },
+                language: {
+                    search: "",
+                    searchPlaceholder: "Search . . ."
+                },
+                columns: [
+                 { data: "Id", visible: false },
+                // { data: "EntryDateTime",width: "4%" },
+                { data: "PIN", width: "5%" },
+                 { data: "PatientName" },
+                 { data: "MedicalReportDate" },
+                 { data: "Complaints" },
+                
+                 {
+                     data: "Id", "render": function (data) {
+
+                          var action = '@Url.Action("Detail")';
+ 
+                         return '<a href="' + action + '/' + data + '" style="color: #049372;">VIEW <span class="glyphicon glyphicon-search"/></a>';
+
+                     }, className: 'text-center',  searchable: false, orderable:false, width: "5%"
+                 }
+                ]
+
+           });
+
+        });
+    </script>
+
+}

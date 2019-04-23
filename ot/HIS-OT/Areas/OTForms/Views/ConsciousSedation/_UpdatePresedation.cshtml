@@ -1,0 +1,598 @@
+﻿@model OTEf.Core.Model.PreSedation
+
+<div class="col-md-12">
+    <input id="presidateId" class="hidden" value="@Model.Id" />
+    <div class="col-md-2">
+        <label class="control-label">Weight</label>
+        <div class="input-group">
+            @Html.TextBoxFor(m => m.Weight, new { @class = "form-control input-sm text-right", @type = "number" })
+            <span class="input-group-addon">Kg </span>
+        </div>
+
+    </div>
+
+    <div class="col-md-2">
+        <label class="control-label">BP</label>
+        <div class="input-group">
+            @Html.TextBoxFor(m => m.BP, new { @class = "form-control input-sm text-right" })
+            <span class="input-group-addon">mmHg </span>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <label class="control-label">HR</label>
+        <div class="input-group">
+            @Html.TextBoxFor(m => m.HR, new { @class = "form-control input-sm text-right", @type = "number" })
+            <span class="input-group-addon">/min </span>
+        </div>
+    </div>
+
+
+    <div class="col-md-2">
+        <label class="control-label">RR</label>
+        <div class="input-group">
+            @Html.TextBoxFor(m => m.RR, new { @class = "form-control input-sm text-right", @type = "number" })
+            <span class="input-group-addon">/min </span>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <label class="control-label">Temperature</label>
+        <div class="input-group">
+            @Html.TextBoxFor(m => m.Temperature, new { @class = "form-control input-sm text-right", @type = "number" })
+            <span class="input-group-addon">&#8451;</span>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <hr />
+    </div>
+
+</div>
+
+<div class="col-md-12">
+    <div class="col-md-3">
+        <label class="control-label">Ward / Clinic</label>
+        <input id="@Html.IdFor(m => m.StationId)" name="@Html.NameFor(m => m.StationId)"  class="form-control input-sm" />
+        <label class="control-label">Consultant</label>
+        <input id="@Html.IdFor(m => m.ConsultantId)" name="@Html.NameFor(m => m.ConsultantId)"  class="form-control input-sm" />
+    </div>
+    <div class="col-md-4">
+        <label class="control-label">Pre-procedure Diagnosis</label>
+        @Html.TextAreaFor(m => m.PreProcedureDiagnosis, new { @class = "form-control", @rows = "4" ,@placeholder="Type here . . ."})
+
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Proposed Procedure</label>
+        @Html.TextBox("Sel2ProposedProcedures", "", new { @class = "form-control input-sm select2", @rows = "4" })
+
+    </div>
+    <div class="col-md-2" style="background-color: #c6cea1; padding: 5px;">
+        <div class="checkbox">
+            <label class="col-md-12">
+                @Html.RadioButtonFor(m => m.SedationType, (int)OTEf.Core.Enum.SedationType.ELECTIVE, new { id = "rbelective" }) Elective
+            </label>
+
+            <label class="col-md-12">
+                @Html.RadioButtonFor(m => m.SedationType, (int)OTEf.Core.Enum.SedationType.URGENT, new { id = "rburgent" }) Urgent
+            </label>
+
+            <label class="col-md-12">
+                @Html.RadioButtonFor(m => m.SedationType, (int)OTEf.Core.Enum.SedationType.EMERGENCY, new { id = "rbemergency" }) Emergency
+            </label>
+            <label class="col-md-12">
+                @Html.RadioButtonFor(m => m.SedationType, (int)OTEf.Core.Enum.SedationType.REOPERATIVE, new { id = "rbreoperative" }) Re-operative
+            </label>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+
+    <div class="col-md-6">
+        <label class="control-label">Clinical History</label>
+        @Html.TextAreaFor(m => m.ClinicalHistory, new { @class = "form-control", @rows = "5" ,@placeholder="Type here . . ."})
+        <label class="control-label">Current Medication & Therapy</label>
+        @Html.TextAreaFor(m => m.CurrentMedicationTherapy, new { @class = "form-control", @rows = "5" ,@placeholder="Type here . . ."})
+    </div>
+    <div class="col-md-6" style="margin-top: 20px; background-color: #c6cea1; padding: 7px;">
+        <div class="col-md-6">
+            <label class="col-md-6"><b>Smoking  :</b>  </label>
+            <div class="col-md-6">
+                @Html.CheckBoxFor(m => m.IsSmoker, new { @class = "presedate-switch" })
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.CigarettesPerDay, new { @class = "form-control input-sm text-right", @readonly = "true" , @type="number"})
+                <span class="input-group-addon">cig. stick / day </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="col-md-6"><b>Alcohol  :</b>  </label>
+            <div class="col-md-6">
+                @Html.CheckBoxFor(m => m.IsAlcoholic, new { @class = "presedate-switch" })
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.LiquorIntakePerML, new { @class = "form-control input-sm text-right", type = "number", @readonly = "true" })
+                <span class="input-group-addon">ml / day </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="col-md-6"><b>Allergies  :</b>   </label>
+            <div class="col-md-6">
+                @Html.CheckBoxFor(m => m.HasAllergies, new { @class = "presedate-switch" })
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            @Html.TextBoxFor(m => m.Allergies, new { @class = "form-control input-sm", @readonly = "true" })
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label class="control-label">Previous Anesthetic / Surgical History & Complications</label>
+        @Html.TextAreaFor(m => m.PrevMedicalHistory, new { @class = "form-control", @rows = "5", @placeholder="Type here . . ." })
+    </div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="col-md-4">
+        <label class="control-label">Physical Examination</label>
+        @Html.TextBoxFor(m => m.PhysicalExam, new { @class = "form-control input-sm" })
+        <label class="control-label">CVS : </label>
+        @Html.TextBoxFor(m => m.CVS, new { @class = "form-control input-sm" })
+
+        <label class="control-label">RS : </label>
+        @Html.TextBoxFor(m => m.RS, new { @class = "form-control input-sm" })
+        <label class="control-label">CNS : </label>
+        @Html.TextBoxFor(m => m.CNS, new { @class = "form-control input-sm" })
+    </div>
+    <div class="col-md-5">
+        <label class="control-label">Investigations</label>
+        @Html.TextAreaFor(m => m.Investigations, new { @class = "form-control", @rows = "5", @placeholder="Type here . . ."})
+
+        <label class="control-label">Plan of Care</label>
+        @Html.TextAreaFor(m => m.PlanCare, new { @class = "form-control", @rows = "4" ,@placeholder="Type here . . ."})
+    </div>
+
+    <div class="col-md-3" style="background-color: #c6cea1; padding: 5px; margin-top: 25px; padding-bottom: 43px;">
+        <label class="col-md-12" style="margin-top: 5px;"><b>MONITORING</b></label>
+        <div class="col-md-12">
+            <div class="checkbox">
+                <label class="col-md-12" style="margin-top: 3px;">
+                    @Html.CheckBoxFor(m => m.MonitorNIBP, new { @style = "margin-top:-2px;" }) NIBP
+                </label>
+
+                <label class="col-md-12" style="margin-top: 3px;">
+                    @Html.CheckBoxFor(m => m.MonitorECG, new { @style = "margin-top:-2px;" }) ECG
+                </label>
+
+                <label class="col-md-12" style="margin-top: 3px;">
+                    @Html.CheckBoxFor(m => m.MonitorPulseOxymetry, new { @style = "margin-top:-2px;" }) Pulse Oxymetry
+                </label>
+                <label class="col-md-12" style="margin-top: 3px;">
+                    @Html.CheckBoxFor(m => m.MonitorRespiratoryRate, new { @style = "margin-top:-2px;" }) Respiratory Rate
+                </label>
+
+                <label class="col-md-12" style="margin-top: 3px;">
+                    @Html.CheckBoxFor(m => m.MonitorTemperature, new { @style = "margin-top:-2px;" }) Temperature
+                </label>
+
+                <label class="col-md-12" style="margin-top: 3px;">
+                    @Html.CheckBoxFor(m => m.MonitorETC02, new { @style = "margin-top:-2px;" }) ET-C02
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="col-md-4">
+        <label class="control-label">IV - Lines</label>
+        @Html.TextBoxFor(m => m.IVLines, new { @class = "form-control input-sm" })
+
+    </div>
+    <div class="col-md-4">
+        <label class="control-label">Others</label>
+        @Html.TextAreaFor(m => m.OtherPreSedateData, new { @class = "form-control", rows = 5, @placeholder="Type here . . ."})
+
+    </div>
+
+    <div class="col-md-4">
+        <label class="control-label">Physician</label>
+        <input id="@Html.IdFor(m => m.PhysicianId)" name="@Html.NameFor(m => m.PhysicianId)"  class="form-control input-sm" />
+    </div>
+
+    <div class="col-md-12">
+        <hr />
+    </div>
+</div>
+
+<div class="col-md-12" style="margin-bottom: 15px;">
+    <button id="btn-create-presedate" class="btn btn-sm btn-success" onclick="presedate.Update()">
+        <span class="glyphicon glyphicon-check"></span>Save Changes
+    </button>
+
+</div>
+<style>
+    #s2id_Sel2ProposedProcedures {
+        height: 80px !important;
+        overflow: auto;
+    }
+
+        #s2id_Sel2ProposedProcedures .select2-choices div {
+            font-size: 9px !important;
+            text-overflow: ellipsis !important;
+            word-wrap: break-word;
+            max-height: 13px;
+            display: block;
+            overflow: hidden;
+        }
+
+        #s2id_Sel2ProposedProcedures .select2-choices li {
+            width: 98% !important;
+        }
+
+    .sel2dropdowncss .select2-results .select2-result-label {
+        font-size: 9px !important;
+    }
+
+
+    #s2id_ConsultantId .select2-chosen, #s2id_StationId .select2-chosen, #s2id_PhysicianId .select2-chosen {
+        font-size: 9px !important;
+    }
+</style>
+<script>
+
+    var presedate;
+    $(document).ready(function () {
+        presedate = new PreSedation();
+        presedate.init();
+    });
+
+
+    function PreSedation() {
+        self = this;
+        self.init = function () {
+            self.plugins();
+            self.events();
+            self.InitValues();
+        };
+        self.events = function () {
+
+            $('body').delegate('#IsSmoker', 'lcs-statuschange', function () {
+                if ($(this).is(":checked")) {
+                    $("#CigarettesPerDay").removeProp("readonly");
+                    $("#CigarettesPerDay").focus();
+                } else {
+                    $("#CigarettesPerDay").prop("readonly", "true");
+                }
+                $("#CigarettesPerDay").val("");
+            });
+
+            $('body').delegate('#IsAlcoholic', 'lcs-statuschange', function () {
+                if ($(this).is(":checked")) {
+                    $("#LiquorIntakePerML").removeProp("readonly");
+                    $("#LiquorIntakePerML").focus();
+                } else {
+                    $("#LiquorIntakePerML").prop("readonly", "true");
+                }
+                $("#LiquorIntakePerML").val("");
+            });
+
+            $('body').delegate('#HasAllergies', 'lcs-statuschange', function () {
+                if ($(this).is(":checked")) {
+                    $("#Allergies").removeProp("readonly");
+                    $("#Allergies").focus();
+                } else {
+                    $("#Allergies").prop("readonly", "true");
+                }
+                $("#Allergies").val("");
+            });
+
+        };
+
+        self.Update = function () {
+        
+            if (self.Valid()) {
+                var patientdata = $("#RegistrationNo").select2('data');
+                var agetypedata = $("#AgeTypeId").select2('data');
+                var sexdata = $("#SexId").select2('data');
+                var consultantdata = $("#ConsultantId").select2('data');
+                var physiciandata = $("#PhysicianId").select2('data');
+                var stationdata = $("#StationId").select2('data');
+                var proposedprocedure = [];
+
+                $.each($("#Sel2ProposedProcedures").select2('data'), function (index, data) {
+                    proposedprocedure.push({
+                        TestId: data.id,
+                        TestName: data.name,
+                        TestCode: data.code
+                    })
+                });
+
+                var presedation = {
+                    Weight: $("#Weight").val(),
+                    BP: $("#BP").val(),
+                    HR: $("#HR").val(),
+                    RR: $("#RR").val(),
+                    Temperature: $("#Temperature").val(),
+                    StationId: stationdata ? stationdata.id : 0,
+                    StationName: stationdata ? stationdata.name : "",
+                    ConsultantId: consultantdata ? consultantdata.id : 0,
+                    ConsultantName: consultantdata ? consultantdata.name : "",
+                    PreProcedureDiagnosis: $("#PreProcedureDiagnosis").val(),
+                    ProposedProcedure: proposedprocedure,
+                    SedationType: $("input[name='SedationType']:checked").val(),
+                    ClinicalHistory: $("#ClinicalHistory").val(),
+                    IsSmoker: $("#IsSmoker").is(":checked"),
+                    IsAlcoholic: $("#IsAlcoholic").is(":checked"),
+                    HasAllergies: $("#HasAllergies").is(":checked"),
+                    CigarettesPerDay: $("#CigarettesPerDay").val(),
+                    LiquorIntakePerML: $("#LiquorIntakePerML").val(),
+                    Allergies: $("#Allergies").val(),
+                    CurrentMedicationTherapy: $("#CurrentMedicationTherapy").val(),
+                    PrevMedicalHistory: $("#PrevMedicalHistory").val(),
+                    PhysicalExam: $("#PhysicalExam").val(),
+                    CVS: $("#CVS").val(),
+                    RS: $("#RS").val(),
+                    CNS: $("#CNS").val(),
+                    Investigations: $("#Investigations").val(),
+                    PlanCare: $("#PlanCare").val(),
+                    MonitorNIBP: $("#MonitorNIBP").is(":checked"),
+                    MonitorECG: $("#MonitorECG").is(":checked"),
+                    MonitorPulseOxymetry: $("#MonitorPulseOxymetry").is(":checked"),
+                    MonitorRespiratoryRate: $("#MonitorRespiratoryRate").is(":checked"),
+                    MonitorTemperature: $("#MonitorTemperature").is(":checked"),
+                    MonitorETC02: $("#MonitorETC02").is(":checked"),
+                    IVLines: $("#IVLines").val(),
+                    OtherPreSedateData: $("#OtherPreSedateData").val(),
+                    PhysicianId: physiciandata ? physiciandata.id : 0,
+                    PhysicianName: physiciandata ? physiciandata.name : ""
+                };
+
+                var consciousDedation = {
+                    Id: $("#Id").val(),
+                    RegistrationNo: patientdata.id,
+                    IssueAuthorityCode: patientdata.issueathoritycode,
+                    PatientName: patientdata.patientname,
+                    Age: patientdata.age,
+                    AgeTypeId: patientdata.agetype,
+                    SexId: sexdata.id,
+                    Sex: sexdata.text,
+                    AgeType: agetypedata.text,
+                    PreSedation: presedation
+                };
+
+
+                $.ajax(
+                {
+                    url: "@Url.Action("UpdatePresedation")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(consciousDedation),
+
+                    success: function (data) {
+                        window.location = '@Url.Action("Detail")/' + data.id;
+                    },
+                    error: function (data) {
+                        swal({ type: "error", title: "Server Error", text: data });
+                    }
+                }
+                );
+            }
+
+        };
+
+        self.plugins = function () {
+            self.select2();
+            self.switch();
+        }
+        self.select2 = function () {
+            $("#Sel2ProposedProcedures").select2({
+                minimumInputLength: 0,
+                placeholder: 'Search here . . . .',
+                multiple: true,
+                allowClear: true,
+                dropdownCssClass: "sel2dropdowncss",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2TestProcedure", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            });
+
+            $("#StationId").select2({
+                minimumInputLength: -1,
+                allowClear: true,
+                placeholder: 'Search . . . .',
+                dropdownCssClass: "sel2dropdowncss",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2StationByType", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            typeid: 3
+                        }
+
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            });
+
+
+            $("#ConsultantId").select2({
+                minimumInputLength: 2,
+                allowClear: true,
+                placeholder: 'Search . . . .',
+                dropdownCssClass: "sel2dropdowncss",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2Doctor", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        }
+
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            });
+            $("#PhysicianId").select2({
+                minimumInputLength: 2,
+                placeholder: 'Search . . .',
+                allowClear: true,
+                dropdownCssClass: "sel2dropdowncss",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2Doctor", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        }
+
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            });
+        }
+
+        self.switch = function () {
+            $(".presedate-switch").lc_switch("YES", "NO");
+        }
+
+
+        self.Valid = function () {
+            var errortext = "";
+            var errors = [];
+            if ($("#RegistrationNo").select2('val') == "") {
+
+                errors.push("Patient PIN / name is required");
+            }
+
+            if ($("#StationId").select2('val') == "") {
+
+                errors.push("Station is required");
+            }
+
+            if ($("#ConsultantId").select2('val') == "") {
+
+                errors.push("Consultant is required");
+            }
+            if ($("#PhysicianId").select2('val') == "") {
+
+                errors.push("Physician is required");
+            }
+
+
+            if ($("#Sel2ProposedProcedures").select2('val') == "") {
+
+                errors.push("Proposed procedures is required");
+            }
+            
+
+
+
+            if (errors.length > 0) {
+
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error", errortext);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        self.InitValues = function () {
+            var proposedProcedure = JSON.parse('@Html.Raw(Json.Encode(Model.ProposedProcedure))');
+            var selectedprocedures = [];
+
+            $.each(proposedProcedure, function (index,data) {
+                selectedprocedures.push({
+                    id: data.TestId,
+                    text: data.TestCode + ' - ' + data.TestName,
+                    code: data.TestCode,
+                    name: data.TestName
+                });
+            });
+
+            $("#ConsultantId").select2('data', {
+                id: '@Model.ConsultantId',
+                text: '@Model.ConsultantName',
+                name: '@Model.ConsultantName'
+            });
+
+            $("#StationId").select2('data', {
+                id: '@Model.StationId',
+                   text: '@Model.StationName',
+                 name: '@Model.StationName'
+            });
+
+            $("#PhysicianId").select2('data', {
+                  id: '@Model.PhysicianId',
+                  text: '@Model.PhysicianName',
+                  name: '@Model.PhysicianName'
+            });
+
+
+            $("#Sel2ProposedProcedures").select2('data', selectedprocedures);
+
+        
+        }
+    };
+
+ 
+
+
+</script>

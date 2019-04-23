@@ -1,0 +1,277 @@
+﻿@model List<DataLayer.ApplicationMenuModel>
+@{
+    int maxI = Convert.ToInt16(Model.Max(x => x.MenuLevel));
+    string parentID = "0";
+    int ctr = 1;
+    int ctrAll = 1;
+    var dis = "";
+    var sLink = "";
+}
+
+
+<style>
+    .bg-homepage {
+        background-color: #357d59d1 !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Mostly Used Options</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool homeclose" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-wrench"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+
+
+
+                    @{
+                        foreach (var menu in Model.OrderBy(x => x.ParentSequence))
+                        {
+
+                            @*if (menu.ID == 554)
+                {
+                @:<div class="col-md-4">
+                <div class="info-box bg-homepage">
+                <span class="info-box-icon"><i class="ion ion-android-expand"></i></span><div class="info-box-content">
+                @:<a style="color:white;" href="@menu.MenuURL">
+                <span class="info-box-text">Tariff</span>
+                @:<span class="info-box-number">IP</span>
+                @:<div class="progress"><div class="progress-bar" style="width: 20%"></div></div>
+                @:<span class="progress-description">IP Tariff</span> </a>
+                @:</div></div></div>
+                }*@
+
+
+                            if (menu.ID == 128)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-ios-calendar"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Operating Theatre</span>
+                                                @:<span class="info-box-number">Scheduler</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 77%"></div></div>
+                                                @:<span class="progress-description">OT Scheduler</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+                            if (menu.ID == 253)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion ion-ios-medical"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Investigation</span>
+                                                @:<span class="info-box-number">IP Investigation</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 20%"></div></div>
+                                                @:<span class="progress-description">Inpatient Investigation</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+                            if (menu.ID == 1403)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-ios-paper"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Procedural</span>
+                                                @:<span class="info-box-number">Other Procedure</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
+                                                @:<span class="progress-description">Services Procedure</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+                            if (menu.ID == 1472)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-ios-paper"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Patient</span>
+                                                @:<span class="info-box-number">Surgery Record</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 50%"></div></div>
+                                                @:<span class="progress-description">Patient Surgery</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+
+                            if (menu.ID == 2795)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-ios-browsers"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Procedure</span>
+                                                @:<span class="info-box-number">Nursing Administration</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 15%"></div></div>
+                                                @:<span class="progress-description">Nursing Procedure</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+                            if (menu.ID == 2796)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-ios-flask"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Request</span>
+                                                @:<span class="info-box-number">Blood Requisition</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 69%"></div></div>
+                                                @:<span class="progress-description">Blood Request</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+
+                            if (menu.ID == 2797)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-waterdrop"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Demand</span>
+                                                @:<span class="info-box-number">Blood Demand</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 25%"></div></div>
+                                                @:<span class="progress-description">Blood Approval</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+                            if (menu.ID == 2802)
+                            {
+                                @:<div class="col-md-4">
+                                    @:<div class="info-box bg-homepage">
+                                        @:<span class="info-box-icon"><i class="ion ion-ios-locked"></i></span><div class="info-box-content">
+                                            @:<a style="color:white;" href="@menu.MenuURL">
+                                                @:<span class="info-box-text">Drugs </span>
+                                                @:<span class="info-box-number">Drug Order</span>
+                                                @:<div class="progress"><div class="progress-bar" style="width: 25%"></div></div>
+                                                @:<span class="progress-description">CST/Drugs</span>
+                                            @:</a>
+                                            @:
+                                        @: </div>
+                                    @:</div>
+                                @:</div>
+                            }
+
+
+                        }
+                    }
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+   
+    setTimeout(function () {
+        $('.homeclose').trigger('click');
+    }, 500);
+
+    setTimeout(function () {
+        $('.homeclose').trigger('click');
+    }, 1500);
+ 
+</script>
+
+
+@*@{
+    FormsIdentity id = (FormsIdentity)User.Identity;
+    FormsAuthenticationTicket ticket = id.Ticket;
+    var d = ticket.UserData.Split('|');
+
+
+    }*@
+@*<button class="btn btn-primary" id="test">COOKIE</button>
+    <h1><b>@Session["HIS_SESSION_NAME"]</b>
+    </h1>
+    <script>
+    $(document).ready(function () {
+    $("#test").click(function () {
+    alert("@d[2].ToString()" + "new");
+    });
+    });
+
+    function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
+    }
+    function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+    }
+    function checkCookie() {
+    if (getCookie('CMdateFrom') != '') {
+    $('#txtDateFrom').val(getCookie('CMdateFrom'));
+    }
+
+    if (getCookie('CMdateTo') != '') {
+    $('#txtDateTo').val(getCookie('CMdateTo'));
+    }
+    }
+    </script>*@
+

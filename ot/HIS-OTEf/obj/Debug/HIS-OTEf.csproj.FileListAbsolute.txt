@@ -1,0 +1,14 @@
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\OTEf.dll.config
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\OTEf.dll
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\OTEf.pdb
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\EntityFramework.dll
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\Newtonsoft.Json.dll
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\EntityFramework.xml
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\bin\Debug\Newtonsoft.Json.xml
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\obj\Debug\HIS-OTEf.csprojAssemblyReference.cache
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\obj\Debug\HIS-OTEf.csproj.CoreCompileInputs.cache
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\obj\Debug\HIS-OTEf.csproj.CopyComplete
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\obj\Debug\OTEf.dll
+D:\PROJECTS\OT\Staging2018\HIS-OTEf\obj\Debug\OTEf.pdb

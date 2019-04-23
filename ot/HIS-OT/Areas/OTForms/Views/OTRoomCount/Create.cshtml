@@ -1,0 +1,1258 @@
+﻿@model OTEf.Core.Model.OTRoomCountSheet
+
+@{
+    ViewBag.Title = "OT ROOM COUNT";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">NEW OPERATING ROOM COUNT SHEET</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <button id="btn-create" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-check"></span>Save
+        </button>
+        <button id="btn-clear" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span>Clear
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span>Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input id="@Html.IdFor(m => m.RegistrationNo)" name="@Html.NameFor(m => m.RegistrationNo)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.PatientName)
+            @Html.HiddenFor(m => m.IssueAuthorityCode)
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Entry Date / Time</label>
+            <div class="input-group">
+                <input id="@Html.IdFor(m => m.EntryDateTime)" name="@Html.NameFor(m => m.EntryDateTime)" class="form-control RequiredField input-sm datepicker" />
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <label class="control-label">Procedure</label>
+            <input id="@Html.IdFor(m => m.ProcedureId)" name="@Html.NameFor(m => m.ProcedureId)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.ProcedureName)
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Surgeon</label>
+            <input id="@Html.IdFor(m => m.SurgeonId)" name="@Html.NameFor(m => m.SurgeonId)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.SurgeonName)
+        </div>
+
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tabitem" data-toggle="tab">Items</a> </li>
+        <li><a href="#binstrument" data-toggle="tab">Basic Instruments</a></li>
+        <li><a href="#sinstrument" data-toggle="tab">Separate Instruments</a>  </li>
+    </ul>
+    <div class="tab-content">
+        <div class="form-group tab-pane fade in active" id="tabitem">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <button id="btn-additem" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                <button id="btn-removeitem" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                <table id="tbl-items" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="form-group tab-pane fade" id="binstrument">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <button id="btn-addbasicinstru" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                <button id="btn-removebasicinstru" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                <table id="tbl-basicinstru" class="table table-condensed table-hover  dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group tab-pane fade" id="sinstrument">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <button id="btn-addseparateinstru" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                <button id="btn-removeseparateinstru" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                <table id="tbl-separateinstru" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th class="text-center">Circulating Nurse </th>
+
+                        <th class="text-center">Scrub Nurse </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="font-size: 14px;">
+                        <td class="text-center" style="width: 50%;"><mark>Initial Count</mark></td>
+                        <td class="text-center" style="width: 50%;"><mark>Initial Count</mark></td>
+                    </tr>
+
+                    <tr style="font-size: 14px;">
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+
+                                <input id="@Html.IdFor(m => m.INT_CIRC_Nurse_CTR_Id)" name="@Html.NameFor(m => m.INT_CIRC_Nurse_CTR_Id)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.INT_CIRC_Nurse_CTR_Name, new { @class = "hidden-prop" })
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.INT_CIRC_Nurse_CTR_Date)" name="@Html.NameFor(m => m.INT_CIRC_Nurse_CTR_Date)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+                                <input id="@Html.IdFor(m => m.INT_ScrubNurse_CTR_Id)" name="@Html.NameFor(m => m.INT_ScrubNurse_CTR_Id)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.INT_ScrubNurse_CTR_Name, new { @class = "hidden-prop" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.INT_ScrubNurse_CTR_Date)" name="@Html.NameFor(m => m.INT_ScrubNurse_CTR_Date)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="font-size: 14px;">
+                        <td class="text-center" style="width: 50%;"><mark>Final Count</mark></td>
+                        <td class="text-center" style="width: 50%;"><mark>Final Count</mark></td>
+                    </tr>
+
+                    <tr style="font-size: 14px;">
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+
+                                <input id="@Html.IdFor(m => m.FNL_CIRC_Nurse_CTR_Id)" name="@Html.NameFor(m => m.FNL_CIRC_Nurse_CTR_Id)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.FNL_CIRC_Nurse_CTR_Name, new { @class = "hidden-prop" })
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.FNL_CIRC_Nurse_CTR_Date)" name="@Html.NameFor(m => m.FNL_CIRC_Nurse_CTR_Date)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+                                <input id="@Html.IdFor(m => m.FNL_ScrubNurse_CTR_Id)" name="@Html.NameFor(m => m.FNL_ScrubNurse_CTR_Id)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.FNL_ScrubNurse_CTR_Name, new { @class = "hidden-prop" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.FNL_ScrubNurse_CTR_Date)" name="@Html.NameFor(m => m.FNL_ScrubNurse_CTR_Date)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <h6 style="margin-left: 10px;"><b>If count is incorrect</b> (<i>All must be completed</i>)</h6>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">1. Count Again 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.Recount, new { @class = "switch" })
+                    </div>
+                </li>
+                <li class="list-group-item">4. Obtain X-ray 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.ObtainXray, new { @class = "switch" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">2. Informed Surgeon
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedSurgeon, new { @class = "switch" })
+                    </div>
+                </li>
+                <li class="list-group-item">5. Completed Incident Report 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.CompleteIncidentRpt, new { @class = "switch" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">3. Informed OT Nurse Manager
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedOTNurseMngr, new { @class = "switch" })
+                    </div>
+                </li>
+                <li class="list-group-item">6. Informed Director of Nursing  
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedNurseDir, new { @class = "switch" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-12">
+            <pre style="background-color:#f9f6eb;"><b>Guidelines :</b>
+Item Count must be taken per piece.
+Cavity Count must be taken immediately before cavity closure.
+              </pre>
+        </div>
+    </div>
+
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+        var dtitems;
+        var dtbasicinstrument;
+        var dtseparateinstrument;
+        var Select2IsClicked;
+        $(document).ready(function () {
+
+            InitPlugins();
+            InitEvents()
+
+        });
+
+
+        function Valid() {
+            var errortext = "";
+            var errors = [];
+            if ($("#RegistrationNo").select2('val') == "") {
+
+                errors.push("Patient PIN / name is required");
+            }
+
+
+            if (new Date($("#EntryDateTime").val()) == "Invalid Date") {
+
+                errors.push("Screening date is required");
+            }
+
+            if ($("#LocationId").select2('val') == "") {
+
+                errors.push("Location is required");
+            }
+
+            if ($("#ObserverId").select2('val') == "") {
+
+                errors.push("Observer is required");
+            }
+
+
+            if (errors.length > 0) {
+
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error", errortext);
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        function Clear() {
+
+            $(".select2").select2('data', null);
+            $(".hidden-prop").val('');
+
+
+            $(".datepicker").val('');
+
+            $(".switch").lcs_off();
+
+            dtitems.clear().draw();
+            dtbasicinstrument.clear().draw();
+            dtseparateinstrument.clear().draw();
+
+        }
+
+
+        function Save() {
+
+            var otitems = [];
+            var basicinstruments = [];
+            var separateinstruments = [];
+
+            $.each(dtitems.rows().data(), function (i, data) {
+                otitems.push(data);
+            });
+
+            $.each(dtbasicinstrument.rows().data(), function (i, data) {
+                basicinstruments.push(data);
+            });
+
+            $.each(dtseparateinstrument.rows().data(), function (i, data) {
+                separateinstruments.push(data);
+            });
+
+
+            var model = {
+                Id: $("#Id").val(),
+                RegistrationNo: $("#RegistrationNo").select2('val'),
+                SurgeonId: $("#SurgeonId").select2('val'),
+                ProcedureId: $("#ProcedureId").select2('val'),
+                OTItemCountId: $("#OTItemCountId").val(),
+                OTBasicInstrumentCountId: $("#OTBasicInstrumentCountId").val(),
+                OTSeparateInstrumentCountId: $("#OTSeparateInstrumentCountId").val(),
+
+                INT_CIRC_Nurse_CTR_Id: $("#INT_CIRC_Nurse_CTR_Id").select2('val'),
+                INT_ScrubNurse_CTR_Id: $("#INT_ScrubNurse_CTR_Id").select2('val'),
+                FNL_CIRC_Nurse_CTR_Id: $("#FNL_CIRC_Nurse_CTR_Id").select2('val'),
+                FNL_ScrubNurse_CTR_Id: $("#FNL_ScrubNurse_CTR_Id").select2('val'),
+
+                PatientName: $("#PatientName").val(),
+                IssueAuthorityCode: $("#IssueAuthorityCode").val(),
+                SurgeonName: $("#SurgeonName").val(),
+                ProcedureName: $("#ProcedureName").val(),
+                INT_CIRC_Nurse_CTR_Name: $("#INT_CIRC_Nurse_CTR_Name").val(),
+                INT_ScrubNurse_CTR_Name: $("#INT_ScrubNurse_CTR_Name").val(),
+                FNL_CIRC_Nurse_CTR_Name: $("#FNL_CIRC_Nurse_CTR_Name").val(),
+                FNL_ScrubNurse_CTR_Name: $("#FNL_ScrubNurse_CTR_Name").val(),
+
+                Recount: $("#Recount").is(":checked"),
+                InformedSurgeon: $("#InformedSurgeon").is(":checked"),
+                InformedOTNurseMngr: $("#InformedOTNurseMngr").is(":checked"),
+                ObtainXray: $("#ObtainXray").is(":checked"),
+                CompleteIncidentRpt: $("#CompleteIncidentRpt").is(":checked"),
+                InformedNurseDir: $("#InformedNurseDir").is(":checked"),
+
+                EntryDateTime: (new Date($("#EntryDateTime").val()) == "Invalid Date") ? null : $("#EntryDateTime").val(),
+                INT_CIRC_Nurse_CTR_Date: (new Date($("#INT_CIRC_Nurse_CTR_Date").val()) == "Invalid Date") ? null : $("#INT_CIRC_Nurse_CTR_Date").val(),
+                INT_ScrubNurse_CTR_Date: (new Date($("#INT_ScrubNurse_CTR_Date").val()) == "Invalid Date") ? null : $("#INT_ScrubNurse_CTR_Date").val(),
+                FNL_CIRC_Nurse_CTR_Date: (new Date($("#FNL_CIRC_Nurse_CTR_Date").val()) == "Invalid Date") ? null : $("#FNL_CIRC_Nurse_CTR_Date").val(),
+                FNL_ScrubNurse_CTR_Date: (new Date($("#FNL_ScrubNurse_CTR_Date").val()) == "Invalid Date") ? null : $("#FNL_ScrubNurse_CTR_Date").val(),
+
+                OTItems: otitems,
+                BasicInstruments: basicinstruments,
+                SepareteInstruments: separateinstruments
+            };
+
+
+            $.ajax(
+                {
+                    url: "@Url.Action("Create")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(model),
+
+                    success: function (data) {
+                        window.location = '@Url.Action("Detail", "OTRoomCount")/' + data.id;
+                    },
+                    error: function (data) {
+                        swal({ type: "error", title: "Server Error", text: data });
+                    }
+                }
+            );
+
+        }
+        function InitEvents() {
+
+            //buttons
+
+            $("#btn-create").click(function () {
+                if (Valid()) {
+                    Save();
+                }
+            });
+
+            $("#btn-clear").click(function () {
+                Clear();
+            });
+
+            $("#btn-removeitem").click(function () {
+
+                if ($(".cb-item:checked").length > 0) {
+                    $(".cb-item:checked").each(function () {
+                        dtitems.row($(this).closest('tr')).remove().draw();
+                    });
+                    $("#cb-all").removeProp("checked");
+                } else {
+                    swal({ title: "No selected data to remove", type: "info" });
+                }
+            });
+
+            $("#btn-additem").click(function () {
+                dtitems.row.add(
+                    {
+                        Id: 0,
+                        OTUnitOfMeasurementId: 0,
+                        OTItemId: 0,
+                        OTRoomCountSheetId: 0,
+                        FirstCount: 0,
+                        SecondCount: 0,
+                        ThirdCount: 0,
+                        FirstAddition: 0,
+                        SecondAddition: 0,
+                        ThirdAddition: 0,
+                        FinalCount: 0,
+                        Unit: { Id: 0, Name: "" },
+                        Item: { Id: 0, Name: "" },
+                    }
+                ).draw();
+
+                InitEditables();
+                $("#cb-all").removeProp("checked");
+
+            });
+
+            $("#btn-removebasicinstru").click(function () {
+
+                if ($(".cb-basicinstru:checked").length > 0) {
+                    $(".cb-basicinstru:checked").each(function () {
+                        dtbasicinstrument.row($(this).closest('tr')).remove().draw();
+                    });
+                    $("#cb-allbasicInstru").removeProp("checked");
+                } else {
+                    swal({ title: "No selected data to remove", type: "info" });
+                }
+            });
+
+            $("#btn-addbasicinstru").click(function () {
+                dtbasicinstrument.row.add(
+                    {
+                        Id: 0,
+                        OTInstrumentId: 0,
+                        OTItemId: 0,
+                        InitialCount: 0,
+                        SecondCount: 0,
+                        FinalCount: 0,
+                        Instrument: { Id: 0, Name: "" },
+                        OTRoomCountSheetId: 0
+                    }
+                ).draw();
+
+                InitEditables();
+                $("#cb-allbasicInstru").removeProp("checked");
+
+            });
+
+
+            $("#btn-removeseparateinstru").click(function () {
+
+                if ($(".cb-separateInstru:checked").length > 0) {
+                    $(".cb-separateInstru:checked").each(function () {
+                        dtseparateinstrument.row($(this).closest('tr')).remove().draw();
+                    });
+                    $("#cb-allseparateInstru").removeProp("checked");
+                } else {
+                    swal({ title: "No selected data to remove", type: "info" });
+                }
+            });
+
+            $("#btn-addseparateinstru").click(function () {
+                dtseparateinstrument.row.add(
+                    {
+                        Id: 0,
+                        OTInstrumentId: 0,
+                        OTItemId: 0,
+                        InitialCount: 0,
+                        FirstAddition: 0,
+                        SecondCount: 0,
+                        SecondAddition: 0,
+                        FinalCount: 0,
+                        Instrument: { Id: 0, Name: "" },
+                        OTRoomCountSheetId: 0,
+                    }
+                ).draw();
+
+                InitEditables();
+                $("#cb-allseparateInstru").removeProp("checked");
+
+            });
+
+            //checkboxes
+
+            $("#cb-all").change(function (e, i) {
+                if ($(e.target).is(":checked")) {
+
+                    $(".cb-item").prop("checked", this.checked);
+                    $(".cb-item").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-item").removeProp("checked");
+                    $(".cb-item").closest("tr").removeClass("selected");
+                }
+            });
+
+            $("#cb-allbasicInstru").on('change', function (e) {
+                if ($(e.target).is(":checked")) {
+                    $(".cb-basicinstru").prop("checked", this.checked);
+                    $(".cb-basicinstru").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-basicinstru").removeProp("checked");
+                    $(".cb-basicinstru").closest("tr").removeClass("selected");
+                }
+            });
+
+
+            $("#cb-allbasicInstru").on('change', function (e) {
+                if ($(e.target).is(":checked")) {
+                    $(".cb-basicinstru").prop("checked", this.checked);
+                    $(".cb-basicinstru").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-basicinstru").removeProp("checked");
+                    $(".cb-basicinstru").closest("tr").removeClass("selected");
+                }
+            });
+
+            $("#cb-allseparateInstru").on('change', function (e) {
+                if ($(e.target).is(":checked")) {
+                    $(".cb-separateInstru").prop("checked", this.checked);
+                    $(".cb-separateInstru").closest("tr").addClass("selected");
+                } else {
+                    $(".cb-separateInstru").removeProp("checked");
+                    $(".cb-separateInstru").closest("tr").removeClass("selected");
+                }
+            });
+
+        }
+
+        function InitPlugins() {
+            InitDatePlugins();
+            InitDataTable();
+            InitSelect2();
+            InitLCSwitch();
+            InitEditables();
+        };
+
+        function InitLCSwitch() {
+
+            $(".switch").lc_switch("YES", "NO");
+        };
+
+        function InitSelect2() {
+
+            $("#RegistrationNo").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 1,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("select2PIN", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        $.each(data.Results, function (i, item) {
+                            item.text += " - " + item.patientname;
+                        });
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#PatientName").val(e.added.patientname);
+                $("#IssueAuthorityCode").val(e.added.issueathoritycode);
+            });
+
+
+            $("#ProcedureId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2TestProcedure", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#ProcedureName").val(e.added.text);
+            });
+
+            $("#SurgeonId").select2({
+                containerCssClass: "RequiredField",
+                minimumInputLength: 0,
+                allowClear: true,
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2MedicalSurgeon", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#SurgeonName").val(e.added.text);
+            });
+
+
+
+            $("#INT_CIRC_Nurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#INT_CIRC_Nurse_CTR_Name").val(e.added?e.added.name:"");
+            });
+
+
+            $("#INT_ScrubNurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2ScrubNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#INT_ScrubNurse_CTR_Name").val(e.added?e.added.name:"");
+            });
+
+
+
+            $("#FNL_CIRC_Nurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#FNL_CIRC_Nurse_CTR_Name").val(e.added ? e.added.name : "");
+            });
+
+
+            $("#FNL_ScrubNurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2ScrubNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#FNL_ScrubNurse_CTR_Name").val(e.added?e.added.name:"");
+            });
+
+
+        };
+
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+        };
+
+        function InitDataTable() {
+
+            dtitems = $("#tbl-items").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(Model.OTItems))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '<input type="checkbox" id="cb-all">', className: 'text-left', visible: true, searchable: false, width: "2%", render: function () { return '<input type="checkbox" class="cb-item">' } },
+                     { targets: [1], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [2], data: "Item", title: 'Item', className: 'dtS2Items', visible: true, searchable: true, width: "20%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "Unit", title: 'Unit', className: 'dtS2Unit', visible: true, searchable: true, width: "10%", render: function (data) { return data.Name } },
+                     { targets: [4], data: "FirstCount", title: 'First Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [5], data: "FirstAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [6], data: "SecondCount", title: 'Second Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [7], data: "SecondAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [8], data: "ThirdCount", title: 'Third Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [9], data: "ThirdAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [10], data: "FinalCount", title: 'Final Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(1)', row).html(index + 1);
+
+                    $(row).find(".cb-item").on("change", function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(e.target).closest("tr").addClass("selected");
+                        } else {
+                            $("#cb-all").removeProp("checked");
+                            $(e.target).closest("tr").removeClass("selected");
+                        }
+                    });
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+
+                }
+            });
+
+
+            dtbasicinstrument = $("#tbl-basicinstru").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(Model.BasicInstruments))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '<input type="checkbox" id="cb-allbasicInstru">', className: 'text-left', visible: true, searchable: false, width: "2%", render: function () { return '<input type="checkbox" class="cb-basicinstru">' } },
+                     { targets: [1], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [2], data: "Instrument", title: 'Instrument', className: 'dtS2BasicInstru', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "InitialCount", title: 'Initial Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "SecondCount", title: 'Second Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [5], data: "FinalCount", title: 'Final Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(1)', row).html(index + 1);
+                    $(row).find(".cb-basicinstru").on("change", function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(e.target).closest("tr").addClass("selected");
+                        } else {
+                            $("#cb-allbasicInstru").removeProp("checked");
+                            $(e.target).closest("tr").removeClass("selected");
+                        }
+                    });
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+
+
+                }
+            });
+
+
+
+            dtseparateinstrument = $("#tbl-separateinstru").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(Model.SepareteInstruments))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '<input type="checkbox" id="cb-allseparateInstru">', className: 'text-left', visible: true, searchable: false, width: "2%", render: function () { return '<input type="checkbox" class="cb-separateInstru">' } },
+                     { targets: [1], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [2], data: "Instrument", title: 'Instrument', className: 'dtS2SeparateInstru', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "InitialCount", title: 'Initial Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "FirstAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [5], data: "SecondCount", title: 'Second Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [6], data: "SecondAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [7], data: "FinalCount", title: 'Final Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+                    $(row).find(".cb-separateInstru").on("change", function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(e.target).closest("tr").addClass("selected");
+                        } else {
+                            $("#cb-allseparateInstru").removeProp("checked");
+                            $(e.target).closest("tr").removeClass("selected");
+                        }
+                    });
+
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+                }
+            });
+        };
+
+        function InitEditables() {
+            SetEditableType();
+            SetEditable();
+        }
+
+        function SetEditableType() {
+
+            $.editable.addInputType('EditableNumber', {
+                element: function (settings, original) {
+                    var input = $('<input type ="number" class="form-control input-sm text-right">');
+                    $(this).append(input);
+
+                    return (input);
+                }
+            });
+
+            $.editable.addInputType('EditableSelect2Unit', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Unit" type="text" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Unit').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2UnitOFMeasurement", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Unit").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Unit").closest('form').submit(); }
+                        else { $("#dtSelect2Unit").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtitems.row($(this).closest('tr')).data();
+                        $("#dtSelect2Unit").select2("data", { id: rowdata.Unit.Id, text: rowdata.Unit.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Unit", this).select2('val') != null && $("#dtSelect2Unit", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Unit", this).select2("data").text);
+
+                    }
+                }
+            });
+
+            $.editable.addInputType('EditableSelect2Items', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Items" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Items').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2OTRoomItems", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Items").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Items").closest('form').submit(); }
+                        else { $("#dtSelect2Items").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtitems.row($(this).closest('tr')).data();
+                        $("#dtSelect2Items").select2("data", { id: rowdata.Item.Id, text: rowdata.Item.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Items", this).select2('val') != null && $("#dtSelect2Items", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Items", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+            $.editable.addInputType('EditableSelect2BasicInstrument', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2BasicInstruments" class="select2 form-control col-md-8 input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2BasicInstruments').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2OTInstrument", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2BasicInstruments").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2BasicInstruments").closest('form').submit(); }
+                        else { $("#dtSelect2BasicInstruments").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtbasicinstrument.row($(this).closest('tr')).data();
+                        $("#dtSelect2BasicInstruments").select2("data", { id: rowdata.Instrument.Id, text: rowdata.Instrument.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2BasicInstruments", this).select2('val') != null && $("#dtSelect2BasicInstruments", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2BasicInstruments", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+            $.editable.addInputType('EditableSelect2SeparateInstrument', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2BasicInstruments" class="select2 form-control col-md-8 input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2BasicInstruments').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2OTInstrument", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2BasicInstruments").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2BasicInstruments").closest('form').submit(); }
+                        else { $("#dtSelect2BasicInstruments").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtseparateinstrument.row($(this).closest('tr')).data();
+                        $("#dtSelect2BasicInstruments").select2("data", { id: rowdata.Instrument.Id, text: rowdata.Instrument.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2BasicInstruments", this).select2('val') != null && $("#dtSelect2BasicInstruments", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2BasicInstruments", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+        };
+
+        function SetEditable() {
+
+            $('.editableinput', dtitems.rows().nodes()).editable(function (sVal, settings) {
+
+                sVal = sVal <= 0 ? "" : sVal;
+                var cell = dtitems.cell($(this).closest('td')).index();
+                dtitems.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+            {
+                "type": 'EditableNumber', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+
+
+            $('.editableinput', dtbasicinstrument.rows().nodes()).editable(function (sVal, settings) {
+
+                sVal = sVal <= 0 ? "" : sVal;
+                var cell = dtbasicinstrument.cell($(this).closest('td')).index();
+                dtbasicinstrument.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+          {
+              "type": 'EditableNumber', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+              "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+          });
+
+
+            $('.editableinput', dtseparateinstrument.rows().nodes()).editable(function (sVal, settings) {
+
+                sVal = sVal <= 0 ? "" : sVal;
+                var cell = dtseparateinstrument.cell($(this).closest('td')).index();
+                dtseparateinstrument.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+           {
+               "type": 'EditableNumber', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+               "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+           });
+
+            $('.dtS2Unit', dtitems.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Unit").select2('data');
+
+                var rowdata = dtitems.row($(this).parent()).data()
+
+                rowdata.OTUnitOfMeasurementId = selecteddata.id;
+                rowdata.Unit.Id = selecteddata.id;
+                rowdata.Unit.Name = selecteddata.text;
+
+                dtitems.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+            {
+                "type": 'EditableSelect2Unit', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+
+            $('.dtS2Items', dtitems.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Items").select2('data');
+
+                var rowdata = dtitems.row($(this).parent()).data()
+
+                rowdata.OTItemId = selecteddata.id;
+                rowdata.Item.Id = selecteddata.id;
+                rowdata.Item.Name = selecteddata.text;
+
+                dtitems.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+           {
+               "type": 'EditableSelect2Items', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+               "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+           });
+
+
+            $('.dtS2BasicInstru', dtbasicinstrument.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2BasicInstruments").select2('data');
+
+                var rowdata = dtbasicinstrument.row($(this).parent()).data()
+
+                rowdata.OTInstrumentId = selecteddata.id;
+                rowdata.Instrument.Id = selecteddata.id;
+                rowdata.Instrument.Name = selecteddata.text;
+
+                dtbasicinstrument.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+              {
+                  "type": 'EditableSelect2BasicInstrument', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                  "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+              });
+
+
+            $('.dtS2SeparateInstru', dtseparateinstrument.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2BasicInstruments").select2('data');
+
+                var rowdata = dtseparateinstrument.row($(this).parent()).data()
+
+                rowdata.OTInstrumentId = selecteddata.id;
+                rowdata.Instrument.Id = selecteddata.id;
+                rowdata.Instrument.Name = selecteddata.text;
+
+                dtseparateinstrument.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+           {
+               "type": 'EditableSelect2SeparateInstrument', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+               "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+           });
+
+        };
+
+    </script>
+}
+

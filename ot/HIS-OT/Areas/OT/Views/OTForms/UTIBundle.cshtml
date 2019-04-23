@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "UTIBundle";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="headerMain" class="col-sm-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;"> UTI BUNDLE</label>
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top:3px; ">
+
+        <a id="btnNew" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit" style="display:none;">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnSave" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a>
+       <a id="btnDelete" class="btn btn-sm btn-success HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+        </a>
+        <a id="btnClear" class="btn btn-sm btn-success button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-stop"></span> Clear
+        </a>
+
+        <a id="btnPrint" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView ShowOnEdit NotUse" style="display:none;">
+            <span class="glyphicon glyphicon-print"></span> Print
+        </a>
+        <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit" style="display:none;">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        
+    </div>
+ </div>
+
+<div id="Entry" class="col-sm-12 standardborder ShowOnView ShowOnAdd ShowOnEdit">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-2">
+                <label>PIN</label>
+                <input class="form-control" id="txt_pin" title="Enter PIN" type="text" tabindex="1" />
+                <a id="btn_get_records" style="margin-top: 3px;" tabindex="2" class="btn btn-sm btn-success HideOnAdd ShowOnView HideOnEdit" title="Click to get records">
+                    <span class="glyphicon glyphicon-search"></span>Submit
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <label>Admission No</label>
+                <input id="txt_ipid" type="text" class="form-control sel" title="Admission No" />
+            </div>
+            <div class="col-sm-5">
+                <label>Patient Name</label>
+                <input id="txt_patient_name" type="text" class="form-control" title="Patient Name" disabled="disabled" />
+            </div>
+            <div class="col-sm-1">
+                <label>Age</label>
+                <input type="text" id="txt_age" class="form-control" title="Patient Age" disabled="disabled" />
+            </div>
+            <div class="col-sm-1">
+                <label>Sex</label>
+                <input type="text" id="txt_sex" class="form-control" title="Patient Sex" disabled="disabled" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Catheter Inserted DateTime</label>
+                <input type="text" class="form-control" id="txt_date" style="margin-top:5px;margin-bottom:5px;">
+            </div>
+            <div class="col-sm-12">
+                <table id="tbl_post_op_diag" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width: 100% !important;">
+                    <thead class="cAR-tlist-header">
+                        <tr>
+                            <th>UTL Bundle</th>
+                            <th>Y/N</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Catheter inserted by properly trained personnel?</td>
+                            <td>
+                                <input type="radio" name="ByTrainedPerson" id="rdo_ByTrainedPerson_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="ByTrainedPerson" id="rdo_ByTrainedPerson_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" id="txt_ByTrainedPerson" cols="50" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Catheter indication, date and time of catheter insertion, individual who performed catheter insertion, and date and time of catheter removal are documented?</td>
+                            <td>
+                                <input type="radio" name="CatheterIndication" id="rdo_CatheterIndication_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="CatheterIndication" id="rdo_CatheterIndication_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" id="txt_CatheterIndication" cols="50" class="form-control"></textarea></td>
+                        </tr>   
+                        <tr>
+                            <td>Hand hygiene performed?</td>
+                            <td>
+                                <input type="radio" name="HandHygiene" id="rdo_HandHygiene_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="HandHygiene" id="rdo_HandHygiene_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" id="txt_HandHygiene" cols="50" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Gloves worn?</td>
+                            <td>
+                                <input type="radio" name="GlovesWorn" id="rdo_GlovesWorn_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="GlovesWorn" id="rdo_GlovesWorn_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_GlovesWorn" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Patient covered with a drape?</td>
+                            <td>
+                                <input type="radio" name="PatientCovered" id="rdo_PatientCovered_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="PatientCovered" id="rdo_PatientCovered_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_PatientCovered" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Insertion site cleaned with sterile solution and sponge?</td>
+                            <td>
+                                <input type="radio" name="InsertionSiteCleaned" id="rdo_InsertionSiteCleaned_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="InsertionSiteCleaned" id="rdo_InsertionSiteCleaned_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_InsertionSiteCleaned" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Site lubricated with sterile, single-use jelly?</td>
+                            <td>
+                                <input type="radio" name="SiteLubricated" id="rdo_SiteLubricated_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="SiteLubricated" id="rdo_SiteLubricated_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_SiteLubricated" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Appropriate size of catheter used?</td>
+                            <td>
+                                <input type="radio" name="AppropriateSize" id="rdo_AppropriateSize_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="AppropriateSize" id="rdo_AppropriateSize_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_AppropriateSize" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Closed system maintained and junction of tubing/catheter sealed?</td>
+                            <td>
+                                <input type="radio" name="ClosedSystem" id="rdo_ClosedSystem_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="ClosedSystem" id="rdo_ClosedSystem_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_ClosedSystem" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Draining bag attached to the side of the bed and below the level of the bladder?</td>
+                            <td>
+                                <input type="radio" name="DrainageBagAttached" id="rdo_DrainageBagAttached_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="DrainageBagAttached" id="rdo_DrainageBagAttached_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_DrainageBagAttached" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Drainage bag and tubing are off the floor?</td>
+                            <td>
+                                <input type="radio" name="DrainageBagOffFloor" id="rdo_DrainageBagOffFloor_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="DrainageBagOffFloor" id="rdo_DrainageBagOffFloor_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_DrainageBagOffFloor" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Catheter secured?</td>
+                            <td>
+                                <input type="radio" name="CatheterSecured" id="rdo_CatheterSecured_yes" value="true" class="inline-radio"/> Yes
+                                <input type="radio" name="CatheterSecured" id="rdo_CatheterSecured_no" value="false" class="inline-radio" /> No 
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_CatheterSecured" class="form-control"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Tubing secured?</td>
+                            <td>
+                                <label><input type="radio" name="TubingSecured" id="rdo_TubingSecured_yes" value="true" class="inline-radio"/> Yes</label>
+                                <label><input type="radio" name="TubingSecured" id="rdo_TubingSecured_no" value="false" class="inline-radio" /> No </label>
+                            </td>
+                            <td><textarea rows="1" cols="50" id="txt_TubingSecured" class="form-control"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+        <script defer src="@Url.Content("~/Scripts/OTForms/UTIBundle.js")" type="text/javascript"></script>
+} 

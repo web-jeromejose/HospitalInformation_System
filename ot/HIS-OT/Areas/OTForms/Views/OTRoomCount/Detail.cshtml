@@ -1,0 +1,446 @@
+﻿@model OTEf.Core.Model.OTRoomCountSheet
+@using Newtonsoft.Json
+
+@{
+    ViewBag.Title = "OT ROOM COUNT";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">OPERATING ROOM COUNT SHEET DETAIL</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <a id="btn-update" class="btn btn-sm btn-success button-width" href="@Url.Action("Update",new {id=Model.Id})">
+            <span class="glyphicon glyphicon-upload"></span> Update
+        </a>
+        <button id="btn-delete" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span> Delete
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span> Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+   
+
+     
+    @using (Html.BeginForm("Delete", "OTRoomCount", new { id = Model.Id }, FormMethod.Post, new { id = "FormDelete" })) { }
+    <div class="form-group">
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input  class="form-control input-sm" readonly="true" value ="@(Model.IssueAuthorityCode + " - " + Model.PatientName)"/>
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Entry Date / Time</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m=>m.EntryDateTime, new {@class="form-control input-sm", @readonly ="readonly"})
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <label class="control-label">Procedure</label>
+              @Html.TextBoxFor(m=>m.ProcedureName, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+        <div class="col-md-3">
+            <label class="control-label">Surgeon</label>
+          @Html.TextBoxFor(m=>m.SurgeonName, new {@class="form-control input-sm", @readonly ="readonly"})
+        </div>
+
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tabitem" data-toggle="tab">Items</a> </li>
+        <li><a href="#binstrument" data-toggle="tab">Basic Instruments</a></li>
+        <li><a href="#sinstrument" data-toggle="tab">Separate Instruments</a>  </li>
+    </ul>
+    <div class="tab-content">
+        <div class="form-group tab-pane fade in active" id="tabitem">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <table id="tbl-items" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="form-group tab-pane fade" id="binstrument">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <table id="tbl-basicinstru" class="table table-condensed table-hover  dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group tab-pane fade" id="sinstrument">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <table id="tbl-separateinstru" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th class="text-center">Circulating Nurse </th>
+
+                        <th class="text-center">Scrub Nurse </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="font-size: 14px;">
+                        <td class="text-center" style="width: 50%;"><mark>Initial Count</mark></td>
+                        <td class="text-center" style="width: 50%;"><mark>Initial Count</mark></td>
+                    </tr>
+
+                    <tr style="font-size: 14px;">
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+                                 @Html.TextBoxFor(m=>m.INT_CIRC_Nurse_CTR_Name, new {@class="form-control input-sm", @readonly ="readonly"})
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                      @Html.TextBoxFor(m=>m.INT_CIRC_Nurse_CTR_Date, new {@class="form-control input-sm", @readonly ="readonly"})
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+                                 @Html.TextBoxFor(m=>m.INT_ScrubNurse_CTR_Name, new {@class="form-control input-sm", @readonly ="readonly"})
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                     @Html.TextBoxFor(m=>m.INT_ScrubNurse_CTR_Date, new {@class="form-control input-sm", @readonly ="readonly"})
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="font-size: 14px;">
+                        <td class="text-center" style="width: 50%;"><mark>Final Count</mark></td>
+                        <td class="text-center" style="width: 50%;"><mark>Final Count</mark></td>
+                    </tr>
+
+                    <tr style="font-size: 14px;">
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+                                    @Html.TextBoxFor(m=>m.FNL_CIRC_Nurse_CTR_Name, new {@class="form-control input-sm", @readonly ="readonly"})
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                   @Html.TextBoxFor(m=>m.FNL_CIRC_Nurse_CTR_Date, new {@class="form-control input-sm", @readonly ="readonly"})
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-8">
+                                <label class="control-label">Nurse</label>
+                                @Html.TextBoxFor(m=>m.FNL_ScrubNurse_CTR_Name, new {@class="form-control input-sm", @readonly ="readonly"})
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                     @Html.TextBoxFor(m=>m.FNL_ScrubNurse_CTR_Date, new {@class="form-control input-sm", @readonly ="readonly"})
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <h6 style="margin-left: 10px;"><b>If count is incorrect</b> (<i>All must be completed</i>)</h6>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">1. Count Again 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.Recount, new { @class = "switch" ,disabled="disabled"})
+                    </div>
+                </li>
+                <li class="list-group-item">4. Obtain X-ray 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.ObtainXray, new { @class = "switch" ,disabled="disabled"})
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">2. Informed Surgeon
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedSurgeon, new { @class = "switch",disabled="disabled" })
+                    </div>
+                </li>
+                <li class="list-group-item">5. Completed Incident Report 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.CompleteIncidentRpt, new { @class = "switch",disabled="disabled" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">3. Informed OT Nurse Manager
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedOTNurseMngr, new { @class = "switch" ,disabled="disabled"})
+                    </div>
+                </li>
+                <li class="list-group-item">6. Informed Director of Nursing  
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedNurseDir, new { @class = "switch" ,disabled="disabled"})
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-12">
+            <pre style="background-color:#f9f6eb;"><b>Guidelines :</b>
+Item Count must be taken per piece.
+Cavity Count must be taken immediately before cavity closure.
+              </pre>
+        </div>
+    </div>
+
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+        var dtitems;
+        var dtbasicinstrument;
+        var dtseparateinstrument;
+        var Select2IsClicked;
+        $(document).ready(function () {
+            InitPlugins();
+            InitEvents()
+
+        });
+
+
+        function Valid() {
+        }
+
+
+        function Clear() {
+        }
+
+
+        function Save() {
+
+        }
+        function InitEvents() {
+
+            //buttons
+
+            $("#btn-delete").click(function () {
+                swal({
+                    title: 'Confirmation',
+                    text: "Are you sure you want to delete this record?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    closeOnConfirm: true,
+                    allowOutsideClick: false
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $("#FormDelete").submit();
+                    }
+                });
+            });
+
+            //checkboxes
+
+        }
+
+        function InitPlugins() {
+            InitDatePlugins();
+            InitDataTable();
+            InitSelect2();
+            InitLCSwitch();
+            InitEditables();
+        };
+
+        function InitLCSwitch() {
+
+            $(".switch").lc_switch("YES", "NO");
+        };
+
+        function InitSelect2() {
+
+        };
+
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+        };
+
+        function InitDataTable() {
+
+            dtitems = $("#tbl-items").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.OTItems))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [1], data: "Item", title: 'Item', className: 'dtS2Items', visible: true, searchable: true, width: "20%", render: function (data) { return data.Name } },
+                     { targets: [2], data: "Unit", title: 'Unit', className: 'dtS2Unit', visible: true, searchable: true, width: "10%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "FirstCount", title: 'First Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "FirstAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [5], data: "SecondCount", title: 'Second Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [6], data: "SecondAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [7], data: "ThirdCount", title: 'Third Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [8], data: "ThirdAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [9], data: "FinalCount", title: 'Final Count', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(0)', row).html(index + 1);
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+
+                }
+            });
+
+
+            dtbasicinstrument = $("#tbl-basicinstru").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.BasicInstruments))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [1], data: "Instrument", title: 'Instrument', className: 'dtS2BasicInstru', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [2], data: "InitialCount", title: 'Initial Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [3], data: "SecondCount", title: 'Second Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "FinalCount", title: 'Final Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(0)', row).html(index + 1);
+                   
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+
+
+                }
+            });
+
+
+
+            dtseparateinstrument = $("#tbl-separateinstru").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(JsonConvert.SerializeObject(Model.SepareteInstruments))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [1], data: "Instrument", title: 'Instrument', className: 'dtS2SeparateInstru', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [2], data: "InitialCount", title: 'Initial Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [3], data: "FirstAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "SecondCount", title: 'Second Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [5], data: "SecondAddition", title: 'Addition', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [6], data: "FinalCount", title: 'Final Count', className: 'editableinput text-right', visible: true, searchable: true, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(0)', row).html(index + 1);
+                }
+            });
+        };
+
+        function InitEditables() {
+            SetEditableType();
+            SetEditable();
+        }
+
+        function SetEditableType() {
+
+        };
+
+        function SetEditable() {
+
+          
+        };
+
+    </script>
+}
+

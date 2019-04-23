@@ -1,0 +1,101 @@
+﻿<link href="~/Content/adminlte.css" rel="stylesheet" />
+<section class="content-header">
+    <h1>OPERATING THEATRE MASTER FILE FORMS</h1>
+
+</section>
+ 
+<section class="content">
+    <div class="box box-success">
+        <div class="box-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-12">
+
+                        <div class="col-sm-12">
+                            <input id="txtfind" class="form-control" placeholder="Search" />
+                            <br />
+                        </div>
+                        <div class="col-sm-12">
+
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/MasterFile/OTItemList" data-search="mr0109-operating room count sheet - item list">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                      MR0109
+                                    <br />Room Count-Item List
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/MasterFile/OTUOMList" data-search="mr0109-operating room count sheet - unit of measurement">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0109
+                                    <br />Room Count-Unit of Measurement
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/MasterFile/OTInstrumentList" data-search="mr0109-operating room count sheet -instrument">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                     MR0109
+                                    <br />Room Count-Instrument
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/MasterFile/PreOperativeMedicationList" data-search="mr0106-pre operative checklist - medication">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0106
+                                    <br />Pre Operative Checklist-Medication
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/MasterFile/PreOperativeCheckList" data-search="mr0106-pre operative checklist -checklist">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                    MR0106
+                                    <br />Pre Operative - CheckList
+                                </section>
+                            </a>
+
+                            <a class="menucontainer imgModule" href="/HISOT/OTForms/MasterFile/PreOperativeChartList" data-search="mr0106-pre operative checklist -chartlist">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <section>
+                                      MR0106
+                                    <br />Pre Operative CheckList- Chartlist 
+                                </section>
+                            </a>
+
+
+                            
+
+
+                        </div>
+ 
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on("keyup", "#txtfind", function () {
+                $(".imgModule").hide();
+                var i = $(this).val().toLowerCase();
+             
+                $("a[data-search*='" + i + "']").show();
+                if (i == "") {
+                    $(".imgModule").show();
+                }
+              
+            });
+        });
+    </script>
+
+}
+

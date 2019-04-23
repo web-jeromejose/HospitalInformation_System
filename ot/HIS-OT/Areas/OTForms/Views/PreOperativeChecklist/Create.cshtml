@@ -1,0 +1,1671 @@
+﻿@model OTEf.Core.Model.PreOperativeChecklist
+
+@{
+    ViewBag.Title = "Pre-Operative Checklist";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">NEW CHECKLIST</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+        <button id="btn-create" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-check"></span>Save
+        </button>
+        <button id="btn-clear" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-remove-sign"></span>Clear
+        </button>
+
+        <a  class="btn btn-sm btn-success" href="@Url.Action("Index")">
+            <span class="glyphicon glyphicon-refresh"></span>Back to list
+        </a>
+
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <label class="control-label">Pin / Patient</label>
+            <input id="@Html.IdFor(m => m.RegistrationNo)" name="@Html.NameFor(m => m.RegistrationNo)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.PatientName)
+            @Html.HiddenFor(m => m.IssueAuthorityCode)
+        </div>
+
+
+        <div class="col-md-4">
+            <label class="control-label">Procedure</label>
+            <input id="@Html.IdFor(m => m.ProcedureId)" name="@Html.NameFor(m => m.ProcedureId)" class="form-control input-sm select2" />
+            @Html.HiddenFor(m => m.ProcedureName)
+        </div>
+
+        <div class="col-md-2">
+            <label class="control-label">Procedure Date/Time</label>
+            <div class="input-group">
+                <input id="@Html.IdFor(m => m.ProcedureDate)" name="@Html.NameFor(m => m.ProcedureDate)" class="form-control RequiredField input-sm datepicker" />
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+
+
+        </div>
+
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tabchart" data-toggle="tab">Correct and on Chart</a> </li>
+        <li><a href="#tabcheckitem" data-toggle="tab">Checks Performed</a></li>
+        <li><a href="#tabmedicationgiven" data-toggle="tab">Medication Given</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="form-group tab-pane fade in active" id="tabchart">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <button id="btn-additemChart" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                <button id="btn-removeitemChart" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                <table id="tbl-charteval" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="form-group tab-pane fade" id="tabcheckitem">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <button id="btn-additemCheck" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                <button id="btn-removeitemCheck" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                <table id="tbl-checkitems" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="form-group tab-pane fade" id="tabmedicationgiven">
+            <div class="col-md-12" style="margin-top: 20px; font-size: 12px;">
+                <button id="btn-additemmedication" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                <button id="btn-removeitemmedication" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                <table id="tbl-medication" class="table table-condensed table-hover dataTable">
+                    <thead class="cAR-tlist-header">
+                    </thead>
+                    <tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th colspan="5" class="text-center">Pre-Operative Vital Signs : </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="font-size: 14px;">
+                        <td>
+                            <label class="control-label">BP</label>
+                            <input id="@Html.IdFor(m => m.BloodPressure)" name="@Html.NameFor(m => m.BloodPressure)" class="form-control input-sm" />
+                        </td>
+                        <td>
+                            <label class="control-label">Pulse</label>
+                            <input type="number" id="@Html.IdFor(m => m.Pulse)" name="@Html.NameFor(m => m.Pulse)" class="form-control input-sm" />
+                        </td>
+                        <td>
+                            <label class="control-label">Temperature</label>
+                            <input type="number" id="@Html.IdFor(m => m.Temperature)" name="@Html.NameFor(m => m.Temperature)" class="form-control input-sm" />
+                        </td>
+                         <td>
+                            <label class="control-label">Respiratory Rate</label>
+                            <input type="number"  id="@Html.IdFor(m => m.ResperatoryRate)" name="@Html.NameFor(m => m.ResperatoryRate)" class="form-control input-sm" />
+                        </td>
+                        <td>
+                            <label class="control-label">Time</label>
+                            <div class="input-group">
+                                <input id="@Html.IdFor(m => m.VitalSignEvalDatetime)" name="@Html.NameFor(m => m.VitalSignEvalDatetime)" class="form-control input-sm datepicker" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th colspan="4" class="text-center">Pain Score: </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr style="font-size: 14px;">
+                        <td colspan="4">
+                            <label class="control-label">Pain Score</label>
+                            <input type="number" id="@Html.IdFor(m => m.PainScore)" name="@Html.NameFor(m => m.PainScore)" class="form-control input-sm" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label">NPO since (Time): </label>
+                            <div class="input-group">
+                                <input id="@Html.IdFor(m => m.NPO_StartDatetime)" name="@Html.NameFor(m => m.NPO_StartDatetime)" class="form-control input-sm datepicker" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </td>
+                        <td>
+                            <label class="control-label">Voided since (Time): </label>
+                            <div class="input-group">
+                                <input id="@Html.IdFor(m => m.Voided_StartDatetime)" name="@Html.NameFor(m => m.Voided_StartDatetime)" class="form-control input-sm datepicker" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </td>
+                        <td>
+                            <label class="control-label">Time Transferred to OR: </label>
+                            <div class="input-group">
+                                <input id="@Html.IdFor(m => m.ORTrasferDatetime)" name="@Html.NameFor(m => m.ORTrasferDatetime)" class="form-control input-sm datepicker" />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <label class="control-label">Special Comments for OR Staff: </label>
+                            <input  id="@Html.IdFor(m => m.ORStaffComment)" name="@Html.NameFor(m => m.ORStaffComment)" class="form-control input-sm" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="col-md-8">
+                                <label class="control-label">Ward Nurse</label>
+                                <input id="@Html.IdFor(m => m.WardNurseId)" name="@Html.NameFor(m => m.WardNurseId)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.WardNurseName, new { @class = "hidden-prop" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.ORWard_AcknowledgeDateTime)" name="@Html.NameFor(m => m.ORWard_AcknowledgeDateTime)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="col-md-8">
+                                <label class="control-label">OR Nurse</label>
+                                <input id="@Html.IdFor(m => m.ORNurseId)" name="@Html.NameFor(m => m.ORNurseId)" class="form-control input-sm select2" />
+                                @Html.HiddenFor(m => m.ORNurseName, new { @class = "hidden-prop" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="control-label">Date /Time</label>
+                                <div class="input-group">
+                                    <input id="@Html.IdFor(m => m.ORNurse_AcknowledgeDateTime)" name="@Html.NameFor(m => m.ORNurse_AcknowledgeDateTime)" class="form-control input-sm datepicker" />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    @*  *@
+    @*    <div class="form-group">
+        <div class="col-md-12">
+            <h6 style="margin-left: 10px;"><b>If count is incorrect</b> (<i>All must be completed</i>)</h6>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">1. Count Again 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.Recount, new { @class = "switch" })
+                    </div>
+                </li>
+                <li class="list-group-item">4. Obtain X-ray 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.ObtainXray, new { @class = "switch" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">2. Informed Surgeon
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedSurgeon, new { @class = "switch" })
+                    </div>
+                </li>
+                <li class="list-group-item">5. Completed Incident Report 
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.CompleteIncidentRpt, new { @class = "switch" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul class="list-group" style="font-size: 11px;">
+                <li class="list-group-item">3. Informed OT Nurse Manager
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedOTNurseMngr, new { @class = "switch" })
+                    </div>
+                </li>
+                <li class="list-group-item">6. Informed Director of Nursing  
+                    <div style="float: right; margin-top: -6px;">
+                        @Html.CheckBoxFor(m => m.InformedNurseDir, new { @class = "switch" })
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-12">
+            <pre style="background-color:#f9f6eb;"><b>Guidelines :</b>
+Item Count must be taken per piece.
+Cavity Count must be taken immediately before cavity closure.
+              </pre>
+        </div>
+    </div>*@
+
+</div>
+
+
+@section styles{
+    <link href="~/Content/lcswitch/css/lc_switch.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+    <script src="~/Content/lcswitch/js/lc_switch.js"></script>
+    <script type="text/javascript">
+        var c = new Common();
+        var dtCheckItems;
+        var dtChartEvaluation;
+        var dtMedications;
+        var Select2IsClicked;
+        $(document).ready(function () {
+
+            InitPlugins();
+            InitEvents()
+
+        });
+
+
+        function Valid() {
+            var errortext = "";
+            var errors = [];
+            if ($("#RegistrationNo").select2('val') == "") {
+
+                errors.push("Patient PIN / name is required");
+            }
+            if ($("#ProcedureId").select2('val') == "") {
+
+                errors.push("Procedure is required");
+            }
+
+
+            if (new Date($("#ProcedureDate").val()) == "Invalid Date") {
+
+                errors.push("Procedure date is required");
+            }
+
+           
+
+
+            if (errors.length > 0) {
+
+                errortext += "<ul>";
+                $.each(errors, function (i, item) {
+                    errortext += "<li>" + item + "</li>";
+                });
+
+                errortext += "</ul>";
+                c.MessageBoxErr("Validation Error", errortext);
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        function Clear() {
+
+            $(".select2").select2('data', null);
+            $(".hidden-prop").val('');
+
+
+            $(".datepicker").val('');
+
+            $(".switch").lcs_off();
+
+            dtCheckItems.clear().draw();
+            dtChartEvaluation.clear().draw();
+            dtMedications.clear().draw();
+
+        }
+
+
+        function Save() {
+
+            var ChartEvaluations = [];
+            var CheckedItems = [];
+            var Medications = [];
+
+            $.each(dtChartEvaluation.rows().data(), function (i, data) {
+                data.IsCorrect = (data.IsCorrect == "Yes" ? 1 : data.IsCorrect == "No" ? 0 : null)
+                ChartEvaluations.push(data);
+            });
+            $.each(dtCheckItems.rows().data(), function (i, data) {
+                data.isPerformed = (data.isPerformed == "Yes" ? 1 : data.isPerformed == "No" ? 0 : null)
+                CheckedItems.push(data);
+            });
+            $.each(dtMedications.rows().data(), function (i, data) {
+                data.IsGiven = (data.IsGiven == "Yes" ? 1 : data.IsGiven == "No" ? 0 : null)
+                Medications.push(data);
+            });
+          
+            //console.log(CheckedItems);
+            //console.log(Medications);
+            //var rowcollection = dtChartEvaluation.$("#checkisChart:checked", { "page": "all" });
+            //rowcollection.each(function (index, elem) {
+            //    var tr = $(elem).closest('tr');
+            //    var row = dtChartEvaluation.row(tr);
+            //    var rowdata = row.data();
+                
+            //    ChartEvaluations.push({
+            //        PreOperativeChartId: rowdata.PreOperativeChartId
+            //        , IsCorrect: (rowdata.IsCorrect == "Yes" ? 1 : rowdata.IsCorrect == "No" ? 0 : null ) 
+            //    });
+            //});
+            //var rowcollection = dtCheckItems.$("#checkisCheck:checked", { "page": "all" });
+            //rowcollection.each(function (index, elem) {
+            //    var tr = $(elem).closest('tr');
+            //    var row = dtCheckItems.row(tr);
+            //    var rowdata = row.data();
+
+            //    CheckedItems.push({
+            //        PreOperativeCheckId: rowdata.PreOperativeCheckId
+            //        , isPerformed: (rowdata.isPerformed == "Yes" ? 1 : rowdata.isPerformed == "No" ? 0 : null)
+            //    });
+            //});
+
+            //var rowcollection = dtMedications.$("#checkisMedication:checked", { "page": "all" });
+            //rowcollection.each(function (index, elem) {
+            //    var tr = $(elem).closest('tr');
+            //    var row = dtMedications.row(tr);
+            //    var rowdata = row.data();
+
+            //    Medications.push({
+            //        PreOperativeMedicationId: rowdata.PreOperativeMedicationId
+            //        , IsGiven: (rowdata.IsGiven == "Yes" ? 1 : rowdata.IsGiven == "No" ? 0 : null)
+            //    });
+            //});
+
+           
+            var model = {
+                Id: $("#Id").val(),
+                RegistrationNo: $("#RegistrationNo").select2('val'),
+                //SurgeonId: $("#SurgeonId").select2('val'),
+                ProcedureId: $("#ProcedureId").select2('val'),
+                ProcedureDate: (new Date($("#ProcedureDate").val()) == "Invalid Date") ? null : $("#ProcedureDate").val(),
+                BloodPressure: $("#BloodPressure").val(),
+                Pulse: $("#Pulse").val(),
+                Temperature: $("#Temperature").val(),
+                ResperatoryRate: $("#ResperatoryRate").val(),
+                VitalSignEvalDatetime: (new Date($("#VitalSignEvalDatetime").val()) == "Invalid Date") ? null : $("#VitalSignEvalDatetime").val(),
+                PainScore: $("#PainScore").val(),
+                NPO_StartDatetime: (new Date($("#NPO_StartDatetime").val()) == "Invalid Date") ? null : $("#NPO_StartDatetime").val(),
+                Voided_StartDatetime: (new Date($("#Voided_StartDatetime").val()) == "Invalid Date") ? null : $("#Voided_StartDatetime").val(),
+                ORTrasferDatetime: (new Date($("#ORTrasferDatetime").val()) == "Invalid Date") ? null : $("#ORTrasferDatetime").val(),
+                ORStaffComment: $("#ORStaffComment").val(),
+
+             
+                WardNurseId: $("#WardNurseId").select2('val'),
+                ORNurseId: $("#ORNurseId").select2('val'),
+                ORNurse_AcknowledgeDateTime: (new Date($("#ORNurse_AcknowledgeDateTime").val()) == "Invalid Date") ? null : $("#ORNurse_AcknowledgeDateTime").val(),
+                ORWard_AcknowledgeDateTime: (new Date($("#ORWard_AcknowledgeDateTime").val()) == "Invalid Date") ? null : $("#ORWard_AcknowledgeDateTime").val(),
+   
+                PatientName: $("#PatientName").val(),
+                IssueAuthorityCode: $("#IssueAuthorityCode").val(),
+                SurgeonName: $("#SurgeonName").val(),
+                ProcedureName: $("#ProcedureName").val(),
+                ORNurseName: $("#ORNurseName").val(),
+                WardNurseName: $("#WardNurseName").val(),
+                //INT_CIRC_Nurse_CTR_Name: $("#INT_CIRC_Nurse_CTR_Name").val(),
+                //INT_ScrubNurse_CTR_Name: $("#INT_ScrubNurse_CTR_Name").val(),
+                //FNL_CIRC_Nurse_CTR_Name: $("#FNL_CIRC_Nurse_CTR_Name").val(),
+                //FNL_ScrubNurse_CTR_Name: $("#FNL_ScrubNurse_CTR_Name").val(),
+
+                //Recount: $("#Recount").is(":checked"),
+                //InformedSurgeon: $("#InformedSurgeon").is(":checked"),
+                //InformedOTNurseMngr: $("#InformedOTNurseMngr").is(":checked"),
+                //ObtainXray: $("#ObtainXray").is(":checked"),
+                //CompleteIncidentRpt: $("#CompleteIncidentRpt").is(":checked"),
+                //InformedNurseDir: $("#InformedNurseDir").is(":checked"),
+
+                //EntryDateTime: (new Date($("#EntryDateTime").val()) == "Invalid Date") ? null : $("#EntryDateTime").val(),
+                //INT_CIRC_Nurse_CTR_Date: (new Date($("#INT_CIRC_Nurse_CTR_Date").val()) == "Invalid Date") ? null : $("#INT_CIRC_Nurse_CTR_Date").val(),
+                //INT_ScrubNurse_CTR_Date: (new Date($("#INT_ScrubNurse_CTR_Date").val()) == "Invalid Date") ? null : $("#INT_ScrubNurse_CTR_Date").val(),
+                //FNL_CIRC_Nurse_CTR_Date: (new Date($("#FNL_CIRC_Nurse_CTR_Date").val()) == "Invalid Date") ? null : $("#FNL_CIRC_Nurse_CTR_Date").val(),
+                //FNL_ScrubNurse_CTR_Date: (new Date($("#FNL_ScrubNurse_CTR_Date").val()) == "Invalid Date") ? null : $("#FNL_ScrubNurse_CTR_Date").val(),
+
+                ChartEvaluations: ChartEvaluations,
+                CheckedItems: CheckedItems,
+                Medications: Medications
+            };
+
+            console.log(model);
+             $.ajax(
+                {
+                    url: "@Url.Action("Create")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(model),
+
+                    success: function (data) {
+                       // window.location = '@Url.Action("Detail", "PreOperativeChecklist")/' + data.id;
+                    },
+                    error: function (data) {
+                        swal({ type: "error", title: "Server Error", text: data });
+                    }
+                }
+            ); 
+                }
+                function InitEvents() {
+
+                    //buttons
+
+                    $("#btn-create").click(function () {
+                         if (Valid()) {
+                            Save();
+                        }
+                    });
+
+                    $("#btn-clear").click(function () {
+                        Clear();
+                    });
+                    $("#btn-removeitemmedication").click(function () {
+
+                        if ($(".cb-medication:checked").length > 0) {
+                            $(".cb-medication:checked").each(function () {
+                                dtMedications.row($(this).closest('tr')).remove().draw();
+                            });
+                            $("#cb-allMedication").removeProp("checked");
+                        } else {
+                            swal({ title: "No selected data to remove", type: "info" });
+                        }
+                    });
+
+                    $("#btn-additemmedication").click(function () {
+                        dtMedications.row.add(
+                            {
+
+                                IsGiven: null,
+                                PreOperativeMedicationId: { Id: 0, Name: "" },
+                                Medication: { Id: 0, Name: "" },
+                            }
+                        ).draw();
+
+                        InitEditables();
+                        $("#cb-allMedication").removeProp("checked");
+
+                    });
+
+                    $("#btn-removeitemCheck").click(function () {
+
+                        if ($(".cb-item:checked").length > 0) {
+                            $(".cb-item:checked").each(function () {
+                                dtCheckItems.row($(this).closest('tr')).remove().draw();
+                            });
+                            $("#cb-allItem").removeProp("checked");
+                        } else {
+                            swal({ title: "No selected data to remove", type: "info" });
+                        }
+                    });
+
+                    $("#btn-additemCheck").click(function () {
+                        dtCheckItems.row.add(
+                            {
+
+                                isPerformed: null,
+                                CheckItem: { Id: 0, Name: "" },
+                                PreOperativeCheckId: { Id: 0, Name: "" },
+                            }
+                        ).draw();
+
+                        InitEditables();
+                        $("#cb-allItem").removeProp("checked");
+
+                    });
+
+
+                    $("#btn-removeitemChart").click(function () {
+
+                        if ($(".cb-chart:checked").length > 0) {
+                            $(".cb-chart:checked").each(function () {
+                                dtChartEvaluation.row($(this).closest('tr')).remove().draw();
+                            });
+                            $("#cb-allChart").removeProp("checked");
+                        } else {
+                            swal({ title: "No selected data to remove", type: "info" });
+                        }
+                    });
+
+                    $("#btn-additemChart").click(function () {
+                        dtChartEvaluation.row.add(
+                            {
+
+                                IsCorrect: null,
+                                Chart: { Id: 0, Name: "" },
+                                PreOperativeChartId: { Id: 0, Name: "" },
+                            }
+                        ).draw();
+
+                        InitEditables();
+                        $("#cb-allChart").removeProp("checked");
+
+                    });
+
+                    
+
+                    //checkboxes
+
+                    $("#cb-all").change(function (e, i) {
+                        if ($(e.target).is(":checked")) {
+
+                            $(".cb-item").prop("checked", this.checked);
+                            $(".cb-item").closest("tr").addClass("selected");
+                        } else {
+                            $(".cb-item").removeProp("checked");
+                            $(".cb-item").closest("tr").removeClass("selected");
+                        }
+                    });
+
+                    $("#cb-allbasicInstru").on('change', function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(".cb-basicinstru").prop("checked", this.checked);
+                            $(".cb-basicinstru").closest("tr").addClass("selected");
+                        } else {
+                            $(".cb-basicinstru").removeProp("checked");
+                            $(".cb-basicinstru").closest("tr").removeClass("selected");
+                        }
+                    });
+
+
+                    $("#cb-allbasicInstru").on('change', function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(".cb-basicinstru").prop("checked", this.checked);
+                            $(".cb-basicinstru").closest("tr").addClass("selected");
+                        } else {
+                            $(".cb-basicinstru").removeProp("checked");
+                            $(".cb-basicinstru").closest("tr").removeClass("selected");
+                        }
+                    });
+
+                    $("#cb-allmedication").on('change', function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(".cb-medication").prop("checked", this.checked);
+                            $(".cb-medication").closest("tr").addClass("selected");
+                        } else {
+                            $(".cb-medication").removeProp("checked");
+                            $(".cb-medication").closest("tr").removeClass("selected");
+                        }
+                    });
+
+                }
+
+                function InitPlugins() {
+                    InitDatePlugins();
+                    InitDataTable();
+                    InitSelect2();
+                    InitLCSwitch();
+                    InitEditables();
+                };
+
+                function InitLCSwitch() {
+
+                    $(".switch").lc_switch("YES", "NO");
+                };
+
+                function InitSelect2() {
+
+                    $("#RegistrationNo").select2({
+                        containerCssClass: "RequiredField",
+                        minimumInputLength: 1,
+                        allowClear: true,
+                        ajax: {
+                            quietMillis: 150,
+                            url: '@Url.Action("select2PIN", "Common", new { Area = "OTForms" })',
+                            dataType: 'jsonp',
+                            cache: false,
+                            data: function (term) {
+                                return {
+
+                                    searchTerm: term
+                                };
+                            },
+                            results: function (data) {
+                                $.each(data.Results, function (i, item) {
+                                    item.text += " - " + item.patientname;
+                                });
+                                return { results: data.Results };
+                            }
+                        }
+                    }).change(function (e) {
+                        $("#PatientName").val(e.added.patientname);
+                        $("#IssueAuthorityCode").val(e.added.issueathoritycode);
+                    });
+
+
+                    $("#ProcedureId").select2({
+                        containerCssClass: "RequiredField",
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            quietMillis: 150,
+                            url: '@Url.Action("Select2TestProcedure", "Common", new { Area = "OTForms" })',
+                            dataType: 'jsonp',
+                            cache: false,
+                            data: function (term) {
+                                return {
+
+                                    searchTerm: term
+                                };
+                            },
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        }
+                    }).change(function (e) {
+                        $("#ProcedureName").val(e.added.text);
+                    });
+
+
+                    $("#WardNurseId").select2({
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        placeholder: "Search Nurse",
+                        ajax: {
+                            quietMillis: 150,
+                            url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                            dataType: 'jsonp',
+                            cache: false,
+                            data: function (term) {
+                                return {
+
+                                    searchTerm: term
+                                };
+                            },
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        }
+                    }).change(function (e) {
+                        console.log('change');
+                        console.log(e.added);
+                        $("#WardNurseName").val(e.added ? e.added.name : "");
+                    });
+
+                    $("#ORNurseId").select2({
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        placeholder: "Search Nurse",
+                        ajax: {
+                            quietMillis: 150,
+                            url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                            dataType: 'jsonp',
+                            cache: false,
+                            data: function (term) {
+                                return {
+
+                                    searchTerm: term
+                                };
+                            },
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        }
+                    }).change(function (e) {
+                        $("#ORNurseName").val(e.added ? e.added.name : "");
+                    });
+
+
+                    $("#SurgeonId").select2({
+                        containerCssClass: "RequiredField",
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            quietMillis: 150,
+                            url: '@Url.Action("Select2MedicalSurgeon", "Common", new { Area = "OTForms" })',
+                            dataType: 'jsonp',
+                            cache: false,
+                            data: function (term) {
+                                return {
+
+                                    searchTerm: term
+                                };
+                            },
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        }
+                    }).change(function (e) {
+                        $("#SurgeonName").val(e.added.text);
+                    });
+
+
+
+                    $("#INT_CIRC_Nurse_CTR_Id").select2({
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        placeholder: "Search Nurse",
+                        ajax: {
+                            quietMillis: 150,
+                            url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#INT_CIRC_Nurse_CTR_Name").val(e.added ? e.added.name : "");
+            });
+
+
+            $("#INT_ScrubNurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2ScrubNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#INT_ScrubNurse_CTR_Name").val(e.added ? e.added.name : "");
+            });
+
+
+
+            $("#FNL_CIRC_Nurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2CirculatoryNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#FNL_CIRC_Nurse_CTR_Name").val(e.added ? e.added.name : "");
+            });
+
+
+            $("#FNL_ScrubNurse_CTR_Id").select2({
+                minimumInputLength: 0,
+                allowClear: true,
+                placeholder: "Search Nurse",
+                ajax: {
+                    quietMillis: 150,
+                    url: '@Url.Action("Select2ScrubNurse", "Common", new { Area = "OTForms" })',
+                    dataType: 'jsonp',
+                    cache: false,
+                    data: function (term) {
+                        return {
+
+                            searchTerm: term
+                        };
+                    },
+                    results: function (data) {
+                        return { results: data.Results };
+                    }
+                }
+            }).change(function (e) {
+                $("#FNL_ScrubNurse_CTR_Name").val(e.added ? e.added.name : "");
+            });
+
+
+        };
+
+        function InitDatePlugins() {
+            $('.datepicker').datetimepicker({
+                maxDate: new Date()
+            });
+        };
+
+        function InitDataTable() {
+             
+            dtCheckItems = $("#tbl-checkitems").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(Model.CheckedItems))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '<input type="checkbox" id="cb-allItem">', className: 'text-left', visible: true, searchable: false, width: "2%", render: function () { return '<input type="checkbox" class="cb-item"   >' } },
+                     { targets: [1], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [2], data: "CheckItem", title: 'Checks Performed', className: ' dtS2Checks ', visible: true, searchable: true, width: "20%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "isPerformed", title: 'Options', className: 'ClassYesorNoCheck text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "PreOperativeCheckId", title: ' ', className: '  text-right', visible: false, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     //{ targets: [5], data: null, title: 'N/A', className: 'editableinput text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(1)', row).html(index + 1);
+
+                    $(row).find(".cb-item").on("change", function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(e.target).closest("tr").addClass("selected");
+                        } else {
+                            $("#cb-all").removeProp("checked");
+                            $(e.target).closest("tr").removeClass("selected");
+                        }
+                    });
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+
+                }
+            });
+
+
+            dtChartEvaluation = $("#tbl-charteval").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(Model.ChartEvaluations))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+
+                
+
+                columns: [
+                     { targets: [0], data: null, title: '<input type="checkbox" id="cb-allChart">', className: 'text-left', visible: true, searchable: false, width: "2%", render: function () { return '<input type="checkbox" class="cb-chart">' } },
+                     { targets: [1], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [2], data: "Chart", title: 'Correct and on Chart', className: ' dtS2Charts ', visible: true, searchable: true, width: "20%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "IsCorrect", title: 'Options', className: 'ClassYesorNoChart text-right', visible: true, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     { targets: [4], data: "PreOperativeChartId", title: ' ', className: '  text-right', visible: false, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                     //{ targets: [5], data: "IsCorrect", title: '', className: ' text-right', visible: false, searchable: true, width: "9%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+
+                    $('td:eq(1)', row).html(index + 1);
+
+                    $(row).find(".cb-chart").on("change", function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(e.target).closest("tr").addClass("selected");
+                        } else {
+                            $("#cb-allChart").removeProp("checked");
+                            $(e.target).closest("tr").removeClass("selected");
+                        }
+                    });
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+
+                }
+            });
+
+
+
+            dtMedications = $("#tbl-medication").DataTable({
+                destroy: true,
+                data: JSON.parse('@Html.Raw(Json.Encode(Model.Medications))'),
+                paging: false,
+                ordering: false,
+                searching: false,
+                info: true,
+                sScrollXInner: "99.9%",
+                processing: true,
+                autoWidth: false,
+                lengthChange: false,
+                dom: '<"top"i>rt<"buttom"<"#itembtn">flp><"clear">',
+                columns: [
+                     { targets: [0], data: null, title: '<input type="checkbox" id="cb-allMedication">', className: 'text-left', visible: true, searchable: false, width: "2%", render: function () { return '<input type="checkbox" class="cb-medication"  id="checkisMedication" >' } },
+                     { targets: [1], data: null, title: '#', className: 'text-left', visible: true, searchable: false, width: "2%" },
+                     { targets: [2], data: "Medication", title: 'Medications Given', className: 'dtS2Medications ', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     //{ targets: [3], data: "OperationalValue", title: 'Value', className: '', visible: true, searchable: true, width: "30%", render: function (data) { return data.Name } },
+                     { targets: [3], data: "IsGiven", title: 'Options', className: ' ClassYesorNoMedication  text-center', visible: true, searchable: false, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                      { targets: [4], data: "PreOperativeMedicationId", title: '', className: 'text-center', visible: false, searchable: false, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                     //{ targets: [5], data: null, title: 'N/A', className: 'text-center', visible: true, searchable: false, width: "8%", render: function (data) { return data <= 0 ? "" : data; } },
+                ],
+                fnCreatedRow: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+                    $(row).find(".cb-medication").on("change", function (e) {
+                        if ($(e.target).is(":checked")) {
+                            $(e.target).closest("tr").addClass("selected");
+                        } else {
+                            $("#cb-allMedication").removeProp("checked");
+                            $(e.target).closest("tr").removeClass("selected");
+                        }
+                    });
+
+                },
+                fnRowCallback: function (row, aData, index) {
+                    $('td:eq(1)', row).html(index + 1);
+                }
+            });
+        };
+
+        function InitEditables() {
+            SetEditableType();
+            SetEditable();
+        }
+
+        function SetEditableType() {
+
+            $.editable.addInputType('EditableNumber', {
+                element: function (settings, original) {
+                    var input = $('<input type ="number" class="form-control input-sm text-right">');
+                    $(this).append(input);
+
+                    return (input);
+                }
+            });
+
+            $.editable.addInputType('EditableSelect2Unit', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Unit" type="text" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Unit').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2UnitOFMeasurement", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Unit").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Unit").closest('form').submit(); }
+                        else { $("#dtSelect2Unit").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtCheckItems.row($(this).closest('tr')).data();
+                        $("#dtSelect2Unit").select2("data", { id: rowdata.Unit.Id, text: rowdata.Unit.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Unit", this).select2('val') != null && $("#dtSelect2Unit", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Unit", this).select2("data").text);
+
+                    }
+                }
+            });
+
+            $.editable.addInputType('EditableSelect2Items', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Items" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Items').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2OTRoomItems", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Items").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Items").closest('form').submit(); }
+                        else { $("#dtSelect2Items").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtCheckItems.row($(this).closest('tr')).data();
+                        $("#dtSelect2Items").select2("data", { id: rowdata.Item.Id, text: rowdata.Item.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Items", this).select2('val') != null && $("#dtSelect2Items", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Items", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+            $.editable.addInputType('EditableSelect2BasicInstrument', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2BasicInstruments" class="select2 form-control col-md-8 input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2BasicInstruments').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2OTInstrument", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2BasicInstruments").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2BasicInstruments").closest('form').submit(); }
+                        else { $("#dtSelect2BasicInstruments").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtChartEvaluation.row($(this).closest('tr')).data();
+                        $("#dtSelect2BasicInstruments").select2("data", { id: rowdata.Instrument.Id, text: rowdata.Instrument.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2BasicInstruments", this).select2('val') != null && $("#dtSelect2BasicInstruments", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2BasicInstruments", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+            $.editable.addInputType('EditableSelect2SeparateInstrument', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2BasicInstruments" class="select2 form-control col-md-8 input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2BasicInstruments').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2OTInstrument", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2BasicInstruments").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2BasicInstruments").closest('form').submit(); }
+                        else { $("#dtSelect2BasicInstruments").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtMedications.row($(this).closest('tr')).data();
+                        $("#dtSelect2BasicInstruments").select2("data", { id: rowdata.Instrument.Id, text: rowdata.Instrument.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2BasicInstruments", this).select2('val') != null && $("#dtSelect2BasicInstruments", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2BasicInstruments", this).select2("data").text);
+
+                    }
+                }
+            });
+
+            // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $.editable.addInputType('EditableClassYesorNoChart', {
+                element: function (settings, original) {
+                    var input = $('<select id="dtS2YesNo" class="form-control input-xs select2me input-sm" data-placeholder="Select..."> <option value="Yes" data-id="1" data-name="Yes">Yes</option> <option value="No">No</option><option value="Na">N/A</option> </select>');
+                    $(this).append(input);
+                    return (input);
+                },
+                plugin: function (settings, original) {
+
+                },
+                submit: function (settings, original) {
+                    console.log($("#dtS2YesNo", this).select2("data").name);
+                    console.log($("#dtS2YesNo", this).select2("data"));
+                    if ($("#dtS2YesNo", this).select2('val') != null && $("#dtS2YesNo", this).select2('val') != '') {
+
+                        $("input", this).val($("#dtS2YesNo", this).select2("data").name);
+                    }
+                }
+            });
+
+            // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $.editable.addInputType('EditableClassYesorNoCheck', {
+                element: function (settings, original) {
+                    var input = $('<select id="dtS2YesNo" class="form-control input-xs select2me input-sm" data-placeholder="Select..."> <option value="Yes">Yes</option> <option value="No">No</option><option value="Na">N/A</option> </select>');
+                    $(this).append(input);
+                    return (input);
+                },
+                plugin: function (settings, original) {
+
+                },
+                submit: function (settings, original) {
+                    console.log($("#dtS2YesNo", this).select2("data").name);
+                    console.log($("#dtS2YesNo", this).select2("data"));
+                    if ($("#dtS2YesNo", this).select2('val') != null && $("#dtS2YesNo", this).select2('val') != '') {
+
+                        $("input", this).val($("#dtS2YesNo", this).select2("data").name);
+                    }
+                }
+            });
+            // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $.editable.addInputType('EditableClassYesorNoMedication', {
+                element: function (settings, original) {
+                    var input = $('<select id="dtS2YesNo" class="form-control input-xs select2me input-sm" data-placeholder="Select..."> <option value="Yes">Yes</option> <option value="No">No</option><option value="Na">N/A</option> </select>');
+                    $(this).append(input);
+                    return (input);
+                },
+                plugin: function (settings, original) {
+
+                },
+                submit: function (settings, original) {
+                    console.log($("#dtS2YesNo", this).select2("data").name);
+                    console.log($("#dtS2YesNo", this).select2("data"));
+                    if ($("#dtS2YesNo", this).select2('val') != null && $("#dtS2YesNo", this).select2('val') != '') {
+
+                        $("input", this).val($("#dtS2YesNo", this).select2("data").name);
+                    }
+                }
+            });
+
+            //--------------------------------------------------------------------
+            $.editable.addInputType('EditableSelect2Charts', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Charts" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Charts').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2PreOperative_Chart", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Charts").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Charts").closest('form').submit(); }
+                        else { $("#dtSelect2Charts").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtChartEvaluation.row($(this).closest('tr')).data();
+                        $("#dtSelect2Charts").select2("data", { id: rowdata.Chart.Id, text: rowdata.Chart.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Charts", this).select2('val') != null && $("#dtSelect2Charts", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Charts", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+            //--------------------------------------------------------------------
+            $.editable.addInputType('EditableSelect2Check', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Checks" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Checks').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2PreOperative_Check", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Checks").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Checks").closest('form').submit(); }
+                        else { $("#dtSelect2Checks").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtCheckItems.row($(this).closest('tr')).data();
+                        $("#dtSelect2Checks").select2("data", { id: rowdata.CheckItem.Id, text: rowdata.CheckItem.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Checks", this).select2('val') != null && $("#dtSelect2Checks", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Checks", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+            //--------------------------------------------------------------------
+            $.editable.addInputType('EditableSelect2Medication', {
+                element: function (settings, original) {
+                    var input = $('<input id="dtSelect2Medications" class="select2 form-control input-sm">');
+                    $(this).append(input);
+
+                    return (input);
+                },
+                plugin: function (settings, original) {
+                    var select2 = $(this).find('#dtSelect2Medications').select2({
+                        minimumResultsForSearch: -1,
+                        minimumInputLength: 0,
+                        allowClear: true,
+                        ajax: {
+                            cache: false,
+                            type: 'GET',
+                            dataType: "json",
+                            url: '@Url.Action("Select2PreOperative_MedicationsGiven", "Common")',
+                            results: function (data) {
+                                return { results: data.Results };
+                            }
+                        },
+                    }).on("select2-blur", function () {
+                        $("#dtSelect2Medications").closest('td').get(0).reset();
+                    }).on('select2-close', function () {
+                        if (Select2IsClicked) { $("#dtSelect2Medications").closest('form').submit(); }
+                        else { $("#dtSelect2Medications").closest('td').get(0).reset(); }
+                        Select2IsClicked = false;
+                    }).on("select2-focus", function (e) {
+                        var rowdata = dtMedications.row($(this).closest('tr')).data();
+                        $("#dtSelect2Medications").select2("data", { id: rowdata.Medication.Id, text: rowdata.Medication.Name });
+                    }).data('select2');
+
+                    select2.onSelect = (function (fn) {
+                        return function (data, options) {
+                            var target;
+                            if (options != null) {
+                                target = $(options.target);
+                            }
+                            Select2IsClicked = true;
+                            return fn.apply(this, arguments);
+                        }
+                    })(select2.onSelect);
+                },
+                submit: function (settings, original) {
+                    if ($("#dtSelect2Medications", this).select2('val') != null && $("#dtSelect2Medications", this).select2('val') != '') {
+                        $("input", this).val($("#dtSelect2Medications", this).select2("data").text);
+
+                    }
+                }
+            });
+
+
+
+        };
+
+        function SetEditable() {
+            //--------------------------------------------------
+            $('.dtS2Medications', dtMedications.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Medications").select2('data');
+
+                var rowdata = dtMedications.row($(this).parent()).data()
+
+                rowdata.Medication.Id = selecteddata.id;
+                rowdata.Medication.Name = selecteddata.text;
+
+                dtMedications.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+       {
+           "type": 'EditableSelect2Medication', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+           "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+       });
+
+            //--------------------------------------------------
+            $('.dtS2Checks', dtCheckItems.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Checks").select2('data');
+
+                var rowdata = dtCheckItems.row($(this).parent()).data()
+
+                rowdata.CheckItem.Id = selecteddata.id;
+                rowdata.CheckItem.Name = selecteddata.text;
+
+                dtCheckItems.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+       {
+           "type": 'EditableSelect2Check', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+           "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+       });
+
+            //--------------------------------------------------
+            $('.dtS2Charts', dtChartEvaluation.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Charts").select2('data');
+
+                var rowdata = dtChartEvaluation.row($(this).parent()).data()
+
+                rowdata.Chart.Id = selecteddata.id;
+                rowdata.Chart.Name = selecteddata.text;
+
+                dtChartEvaluation.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+       {
+           "type": 'EditableSelect2Charts', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+           "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+       });
+
+
+            // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $('.ClassYesorNoChart', dtChartEvaluation.rows().nodes()).editable(function (sVal, settings) {
+
+
+                var cell = dtChartEvaluation.cell($(this).closest('td')).index();
+                dtChartEvaluation.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+            {
+                "type": 'EditableClassYesorNoChart', "style": 'display: inline;', "onblur": 'submit', "onreset": '',
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+            // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $('.ClassYesorNoCheck', dtCheckItems.rows().nodes()).editable(function (sVal, settings) {
+
+
+                var cell = dtCheckItems.cell($(this).closest('td')).index();
+                dtCheckItems.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+            {
+                "type": 'EditableClassYesorNoCheck', "style": 'display: inline;', "onblur": 'submit', "onreset": '',
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+            // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $('.ClassYesorNoMedication', dtMedications.rows().nodes()).editable(function (sVal, settings) {
+
+
+                var cell = dtMedications.cell($(this).closest('td')).index();
+                dtMedications.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+            {
+                "type": 'EditableClassYesorNoMedication', "style": 'display: inline;', "onblur": 'submit', "onreset": '',
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+
+
+
+            $('.editableinput', dtCheckItems.rows().nodes()).editable(function (sVal, settings) {
+
+                sVal = sVal <= 0 ? "" : sVal;
+                var cell = dtCheckItems.cell($(this).closest('td')).index();
+                dtCheckItems.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+            {
+                "type": 'EditableNumber', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+
+
+            $('.editableinput', dtChartEvaluation.rows().nodes()).editable(function (sVal, settings) {
+
+                sVal = sVal <= 0 ? "" : sVal;
+                var cell = dtChartEvaluation.cell($(this).closest('td')).index();
+                dtChartEvaluation.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+          {
+              "type": 'EditableNumber', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+              "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+          });
+
+
+            $('.editableinput', dtMedications.rows().nodes()).editable(function (sVal, settings) {
+
+                sVal = sVal <= 0 ? "" : sVal;
+                var cell = dtMedications.cell($(this).closest('td')).index();
+                dtMedications.cell(cell.row, cell.column).data(sVal);
+                return sVal;
+            },
+           {
+               "type": 'EditableNumber', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+               "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+           });
+
+            $('.dtS2Unit', dtCheckItems.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Unit").select2('data');
+
+                var rowdata = dtCheckItems.row($(this).parent()).data()
+
+                rowdata.OTUnitOfMeasurementId = selecteddata.id;
+                rowdata.Unit.Id = selecteddata.id;
+                rowdata.Unit.Name = selecteddata.text;
+
+                dtCheckItems.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+            {
+                "type": 'EditableSelect2Unit', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+
+            $('.dtS2Items', dtCheckItems.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2Items").select2('data');
+
+                var rowdata = dtCheckItems.row($(this).parent()).data()
+
+                rowdata.OTItemId = selecteddata.id;
+                rowdata.Item.Id = selecteddata.id;
+                rowdata.Item.Name = selecteddata.text;
+
+                dtCheckItems.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+           {
+               "type": 'EditableSelect2Items', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+               "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+           });
+
+
+            $('.dtS2BasicInstru', dtChartEvaluation.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2BasicInstruments").select2('data');
+
+                var rowdata = dtChartEvaluation.row($(this).parent()).data()
+
+                rowdata.OTInstrumentId = selecteddata.id;
+                rowdata.Instrument.Id = selecteddata.id;
+                rowdata.Instrument.Name = selecteddata.text;
+
+                dtChartEvaluation.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+              {
+                  "type": 'EditableSelect2BasicInstrument', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                  "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+              });
+
+
+            $('.dtS2SeparateInstru', dtMedications.rows().nodes()).editable(function (sVal, settings) {
+
+                var selecteddata = $("#dtSelect2BasicInstruments").select2('data');
+
+                var rowdata = dtMedications.row($(this).parent()).data()
+
+                rowdata.OTInstrumentId = selecteddata.id;
+                rowdata.Instrument.Id = selecteddata.id;
+                rowdata.Instrument.Name = selecteddata.text;
+
+                dtMedications.row($(this).parent()).data(rowdata).draw();
+
+                return sVal;
+            },
+           {
+               "type": 'EditableSelect2SeparateInstrument', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+               "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+           });
+
+        };
+
+    </script>
+}
+

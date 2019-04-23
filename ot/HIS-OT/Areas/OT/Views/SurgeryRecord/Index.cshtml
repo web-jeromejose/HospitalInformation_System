@@ -1,0 +1,1037 @@
+﻿@{
+    ViewBag.Title = "Surgery Record";
+    // Layout = "~/Areas/OT/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    #gridList > tbody :hover {
+        cursor: pointer;
+         /*border: 1px solid #feae4c;*/ 
+        text-decoration: none;
+        color: #049372;
+        opacity: 1;
+        /*-webkit-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        transform: scale(1.3);*/
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        border-radius: 1%;
+    }
+
+</style>
+<!-- Daterange picker -->
+<link rel="stylesheet" href="~/Content/dist/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<!-- date-range-picker -->
+<script src="~/Content/dist/bower_components/moment/min/moment.min.js"></script>
+<script src="~/Content/dist/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-plus-sign" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">SURGERY RECORD</label>
+    </div>
+    <div class="pull-right" style="margin-top:3px;">
+        <a id="btnNewEntry" class="button-width btn btn-sm btn-success" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnView" class="button-width btn btn-sm btn-success" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+        @*        <a id="btnFilter" class="btn btn-sm btn-success NotUse">
+                <span class="glyphicon glyphicon-filter"></span> Filter
+            </a>*@
+        <a id="btnRefresh" class="button-width btn btn-sm btn-success">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    <input id="Action" name="" type="hidden" class="form-control">
+    <input id="Id" name="" type="hidden" class="form-control">
+    <input id="Is24" name="" type="hidden" class="form-control">
+
+
+
+    <div class="row">
+        <div id="grid" class="col-xs-12" style="visibility:hidden;">
+            <table id="gridList" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th>Action</th>
+                        <th>W</th>
+                        <th>Id</th>
+                        <th>SlNo</th>
+                        <th>PIN</th>
+                        <th>Patient Name</th>
+                        <th>OTStartDateTime</th>
+                        <th>OTEndDateTime</th>
+                        <th>Operator</th>
+                        <th>OrderDateTime</th>
+                        <th>Ward</th>
+                        <th>IPID</th>
+                        <th>BedID</th>
+                        <th>BedNo</th>
+                        <th>PrimaryConsultant</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>OperatorId</th>
+                        <th>AnaesthetistNotes</th>
+                        <th>SurgeonNotes</th>
+                        <th>OperationTheatreId</th>
+                        <th>OperationTheatreName</th>
+                        <th>OTStartDateTime</th>
+                        <th>OTEndDateTime</th>
+                        <th>AnaesthesiaStartDateTime</th>
+                        <th>IncisionDateTime</th>
+                        <th>ClosureDateTime</th>
+                        <th>RecoveryStartDateTime</th>
+                        <th>RecoveryEndDateTime</th>
+                        <th>ScheduleRequestedById</th>
+                        <th>ScheduleRequestedByName</th>
+                        <th>Category</th>
+                        <th>Company</th>
+                        <th>Package</th>
+                        <th>Disease</th>
+                        <th>ShiftingNurseId</th>
+                        <th>ShiftingNurseName</th>
+                        <th>CirculatoryNurseId</th>
+                        <th>CirculatoryNurseName</th>
+                        <th>AnaesthesiaTypeID</th>
+                        <th>AnaesthesiaTypeName</th>
+                        <th>RequestedById</th>
+                        <th>RequestedByName</th>
+                        <th>stationid</th>
+                        <th>DateTimeD</th>
+                        <th>AnaesthesiaStartDateTimeD</th>
+                        <th>AnaesthesiaEndDateTimeD</th>
+                        <th>IncisionDateTimeD</th>
+                        <th>ClosureDateTimeD</th>
+                        <th>RecoveryStartDateTimeD</th>
+                        <th>RecoveryEndDateTimeD</th>
+                        <th>Is24</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal  " id="modalEntry" style=" padding-right: 17px;">
+    <div class="modal-dialog  " style="width: 100%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">
+                        <span class="glyphicon glyphicon-plus-sign" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;">SURGERY RECORD</h4>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+
+                        <a id="btnClose" class="button-width btn btn-sm btn-danger pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+                            <span class="glyphicon glyphicon-remove"></span> Close
+                        </a>
+                        <a id="btnClear" class="button-width btn btn-sm btn-success pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+                            <span class="glyphicon glyphicon-stop"></span> Clear
+                        </a>
+                        <a id="btnDelete" class="btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+                            <span class="glyphicon glyphicon-trash"></span> Cancel Order
+                        </a>
+                        <a id="btnEdit" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+                            <span class="glyphicon glyphicon-edit"></span> Edit
+                        </a>
+                        <a id="btnPrint" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView ShowOnEdit NotUse">
+                            <span class="glyphicon glyphicon-print"></span> Print
+                        </a>
+                        <a id="btnSave" class="button-width btn btn-sm btn-success pull-right pull-right-margin ShowOnAdd HideOnView ShowOnEdit">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                        </a>
+                        <a id="btnNew" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+                            <span class="glyphicon glyphicon-file"></span> New
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="border">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#sectionA">InPatient - Basic Info</a></li>
+                        <li><a data-toggle="tab" href="#sectionB">Doctors & Medical Equipments</a></li>
+                        <li><a data-toggle="tab" href="#sectionC">Anaesthetist Notes</a></li>
+                        <li><a data-toggle="tab" href="#sectionD">Surgeon Notes</a></li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <div id="sectionA" class="tab-pane fade in active">
+
+                            <div class="panel-body border-below">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label required">PIN / Name</label>
+                                    </div>
+                                    <div class="col-xs-3 hide">
+                                        <input id="select2PIN" name="" type="hidden" class="form-control ">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input id="select2Name" name="" type="text" class="form-control RequiredField">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">Bed No</label>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <input id="select2BedNo" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <div id="dtAdmitted" class="input-group date">
+                                            <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel-body border-below">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label">Operator</label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input id="txtOperator" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">Date Time</label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="txtDateTime" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <input id="txtPackage" name="" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label">Ward</label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input id="txtWard" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">S1 No</label>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <input id="txtSlNo" name="" type="text" class="form-control">
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label">Primary Consultant</label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input id="txtPrimaryConsultant" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">Age</label>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <input id="txtAge" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">Gender</label>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <input id="txtGender" name="" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label">Category</label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input id="txtCategory" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">Company</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input id="txtCompany" name="" type="text" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel-body border-below">
+
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        @*<input id="iChkStart" type="checkbox" value="false" />
+                                            <label class="control-label">Update Time (based on  OT Start Date)</label>*@
+                                    </div>
+                                    <div class="col-xs-3">
+                                        @*<input id="iChkEnd" type="checkbox" value="false" />
+                                            <label class="control-label">End (Set as today)</label>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label required">Operation Theatre</label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="select2OperationTheatreId" name="" type="text" class="form-control RequiredField">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        @*<input id="dtOTStartDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />*@
+
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group">
+                                                <label class="input-group-addon btn" for="datef_ot">
+                                                    <span class="fa fa-calendar"></span>
+                                                </label>
+                                                <input id="dtOTStartDateTime" type="text" class="form-control pull-right RequiredField " autocomplete="off" />
+                                            </div>
+
+                                            @*<span class="input-group-btn">
+                                                <button type="button" id="datef_ot_time" class="btn btn-info">Adjust Time</button>
+
+                                            </span>*@
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtOTEndDateTime" type="text" class="form-control pull-right dt_datepicker RequiredField " autocomplete="off" />
+                                        @*<div id="dtOTEndDateTime" class="input-group dt_datepicker">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label required">Anaesthesia</label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="select2AnaesthesiaTypeID" name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtAnaesthesiaStartDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                                        @*<div id="dtAnaesthesiaStartDateTime" class="input-group dt_datepicker">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>*@
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtAnaesthesiaEndDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                                        @*<div id="dtAnaesthesiaEndDateTime" class="input-group dt_datepicker">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <label class="control-label">Surgery (Incision / Closure)</label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtIncisionDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                                        @*<div id="dtIncisionDateTime" class="input-group dt_datepicker">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>*@
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtClosureDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                                        @*<div id="dtClosureDateTime" class="input-group dt_datepicker">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <label class="control-label">Recovery Room</label>
+                                        <input id="iChkRecovery" type="checkbox" value="false" />
+                                    </div>
+                                    <div class="col-xs-1">
+                                       
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtRecoveryStartDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                                        @*<div id="dtRecoveryStartDateTime" class="input-group dt_datepicker">
+                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>*@
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input id="dtRecoveryEndDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+
+                                        @*<div id="dtRecoveryEndDateTime" class="input-group dt_datepicker">
+                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>*@
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+
+                                    <div class="col-xs-3">
+                                        <label class="control-label">Shifting Nurse (from Recovery Room)</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input id="select2ShiftingNurseId" name="" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <label class="control-label">Circulatory Nurse</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input id="select2CirculatoryNurseId" name="" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-xs-3">
+                                        <label class="control-label">Disease</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input id="txtDisease" name="" type="text" class="form-control">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div id="sectionB" class="tab-pane fade">
+                            <div class="row">
+
+                                <div class="col-xs-6">
+                                    <div class="border">
+                                        <div class="row">
+                                            <div class="col-xs-3 pull-left">
+                                                <label class="control-label">Surgery</label>
+                                            </div>
+                                            <div class="col-xs-9 pull-right">
+
+                                                <a id="btnRemoveSurgery" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                                    <span class="glyphicon glyphicon-minus"></span> Remove
+                                                </a>
+                                                <a id="btnAddSurgery" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                                    <span class="glyphicon glyphicon-plus"></span> Add
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                        <div class="row rowMarginTop">
+                                            <div class="col-xs-12">
+                                                <table id="gridSurgery" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width:600px !important;">
+                                                    <thead class="cAR-tlist-header">
+                                                        <tr>
+                                                            <th>id</th>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Quantity</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="border">
+
+                                        <div class="panel-body border-below">
+
+                                            <div class="row">
+
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">Surgeon</label>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input id="select2TSurgeon" placeholder="type to search a surgeon..." type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="panel-body border-below">
+
+                                            <div class="row">
+
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">Assistant Surgeon</label>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input id="select2TAssistantSurgeon" placeholder="Type to search an assistant surgeon..." type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="panel-body border-below">
+
+                                            <div class="row">
+
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">Anaesthetist</label>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input id="select2TAnaesthetist" placeholder="Type to search an Anaesthetist..." type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="panel-body border-below">
+
+                                            <div class="row">
+
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">Scrub Nurse</label>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input id="select2TScrubNurse" placeholder="Type to search a Scrub Nurse..." type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="panel-body">
+
+                                            <div class="row">
+
+                                                <div class="col-xs-3">
+                                                    <label class="control-label">Equipment</label>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <input id="select2TEquipment" placeholder="Type to search an Equipment..." type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div id="sectionC" class="tab-pane fade">
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <input id="select2AnaesthetistNotesId" placeholder="Type to search an Anaesthetist..." type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea id="txtAnaesthetistNotes" class="form-control DisableOnView" rows="10" cols="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="sectionD" class="tab-pane fade">
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea id="txtSurgeonNotes" class="form-control DisableOnView" rows="10" cols="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+@*<div class="modal modalLarge" id="modalEntry1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div class="row">
+                        <div class="col-xs-1" style="width:10px;">
+                            <span class="glyphicon glyphicon-plus-sign" style="font-size:25px;color:Green;"></span>
+                        </div>
+                        <div class="col-xs-5">
+                            <h4 class="modal-title" id="myModalLabel" style="color:Green;">SURGERY RECORD</h4>
+                        </div>
+                        <div class="col-xs-6 pull-right">
+
+                            <a id="btnClose" class="button-width btn btn-sm btn-danger pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+                                <span class="glyphicon glyphicon-remove"></span> Close
+                            </a>
+                            <a id="btnClear" class="button-width btn btn-sm btn-success pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+                                <span class="glyphicon glyphicon-stop"></span> Clear
+                            </a>
+                            <a id="btnDelete" class="btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+                                <span class="glyphicon glyphicon-trash"></span> Cancel Order
+                            </a>
+                            <a id="btnEdit" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </a>
+                            <a id="btnPrint" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView ShowOnEdit NotUse">
+                                <span class="glyphicon glyphicon-print"></span> Print
+                            </a>
+                            <a id="btnSave" class="button-width btn btn-sm btn-success pull-right pull-right-margin ShowOnAdd HideOnView ShowOnEdit">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                            </a>
+                            <a id="btnNew" class="button-width btn btn-sm btn-success pull-right pull-right-margin HideOnAdd ShowOnView HideOnEdit">
+                                <span class="glyphicon glyphicon-file"></span> New
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body form-horizontal">
+
+                    <div class="border">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#sectionA">InPatient - Basic Info</a></li>
+                            <li><a data-toggle="tab" href="#sectionB">Doctors & Medical Equipments</a></li>
+                            <li><a data-toggle="tab" href="#sectionC">Anaesthetist Notes</a></li>
+                            <li><a data-toggle="tab" href="#sectionD">Surgeon Notes</a></li>
+                        </ul>
+                        <div class="tab-content">
+
+                            <div id="sectionA" class="tab-pane fade in active">
+
+                                <div class="panel-body border-below">
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label required">PIN / Name</label>
+                                        </div>
+                                        <div class="col-xs-3 hide">
+                                            <input id="select2PIN" name="" type="hidden" class="form-control">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="select2Name" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <label class="control-label">Bed No</label>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <input id="select2BedNo" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtAdmitted" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel-body border-below">
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label">Operator</label>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="txtOperator" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <label class="control-label">Date Time</label>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <input id="txtDateTime" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <input id="txtPackage" name="" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label">Ward</label>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="txtWard" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <label class="control-label">S1 No</label>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <input id="txtSlNo" name="" type="text" class="form-control">
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label">Primary Consultant</label>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="txtPrimaryConsultant" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <label class="control-label">Age</label>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <input id="txtAge" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <label class="control-label">Gender</label>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <input id="txtGender" name="" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label">Category</label>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input id="txtCategory" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <label class="control-label">Company</label>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <input id="txtCompany" name="" type="text" class="form-control">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel-body border-below">
+
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <input id="iChkStart" type="checkbox" value="false"/>
+                                            <label class="control-label">Start (Set as today)</label>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <input id="iChkEnd" type="checkbox" value="false"/>
+                                            <label class="control-label">End (Set as today)</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label required">Operation Theatre</label>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <input id="select2OperationTheatreId" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtOTStartDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtOTEndDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label class="control-label required">Anaesthesia</label>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <input id="select2AnaesthesiaTypeID" name="" type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtAnaesthesiaStartDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtAnaesthesiaEndDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <label class="control-label">Surgery (Incision / Closure)</label>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtIncisionDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtClosureDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <label class="control-label">Recovery Room</label>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtRecoveryStartDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div id="dtRecoveryEndDateTime" class="input-group date">
+                                                <input data-date-format="DD-MMM-YYYY HH:mm" type='text' class="form-control DisableOnView"/>
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="row">
+
+                                        <div class="col-xs-3">
+                                            <label class="control-label">Shifting Nurse (from Recovery Room)</label>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <input id="select2ShiftingNurseId" name="" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <label class="control-label">Circulatory Nurse</label>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <input id="select2CirculatoryNurseId" name="" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-xs-3">
+                                            <label class="control-label">Disease</label>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <input id="txtDisease" name="" type="text" class="form-control">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div id="sectionB" class="tab-pane fade">
+                                <div class="row">
+
+                                <div class="col-xs-6">
+                                    <div class="border">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Surgery</label>
+                                            </div>
+                                        </div>
+                                        <div class="row rowMarginTop">
+                                            <div class="col-xs-12">
+                                                <table id="gridSurgery" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width:600px !important;">
+                                                    <thead class="cAR-tlist-header">
+                                                        <tr>
+                                                            <th>id</th>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Count</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-9 pull-right">
+
+                                                <a id="btnRemoveSurgery" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                                    <span class="glyphicon glyphicon-minus"></span> Remove
+                                                </a>
+                                                <a id="btnAddSurgery" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                                    <span class="glyphicon glyphicon-plus"></span> Add
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="border">
+
+                                    <div class="panel-body border-below">
+
+                                        <div class="row">
+
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Surgeon</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2TSurgeon" placeholder="type to search a surgeon..." type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="panel-body border-below">
+
+                                        <div class="row">
+
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Assistant Surgeon</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2TAssistantSurgeon" placeholder="Type to search an assistant surgeon..." type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="panel-body border-below">
+
+                                        <div class="row">
+
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Anaesthetist</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2TAnaesthetist" placeholder="Type to search an Anaesthetist..." type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="panel-body border-below">
+
+                                        <div class="row">
+
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Scrub Nurse</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2TScrubNurse" placeholder="Type to search a Scrub Nurse..." type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div class="row">
+
+                                            <div class="col-xs-3">
+                                                <label class="control-label">Equipment</label>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <input id="select2TEquipment" placeholder="Type to search an Equipment..." type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    </div>
+                                </div>
+
+
+                                </div>
+                            </div>
+                            <div id="sectionC" class="tab-pane fade">
+
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <input id="select2AnaesthetistNotesId" placeholder="Type to search an Anaesthetist..." type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <textarea id="txtAnaesthetistNotes" class="form-control DisableOnView" rows="10" cols="5"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="sectionD" class="tab-pane fade">
+
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <textarea id="txtSurgeonNotes" class="form-control DisableOnView" rows="10" cols="5"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/OT/SurgeryRecord.js")" type="text/javascript"></script>
+   
+}

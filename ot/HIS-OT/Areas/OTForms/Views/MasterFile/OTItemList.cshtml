@@ -1,0 +1,119 @@
+﻿
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-dashboard" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">OT CHECKLIST ITEMS</label>
+    </div>
+    <div class="pull-right" style="margin-top: 3px;">
+       
+              @{
+                       AjaxOptions createopt = new AjaxOptions()
+                       {
+                           HttpMethod = "GET",
+                           //OnBegin = "_indicator.Show($('#schedules'))",
+                           OnComplete = "ShowModal()",
+                           LoadingElementDuration = 1000,
+                           UpdateTargetId = "modalEntry",
+                           InsertionMode = InsertionMode.Replace
+                       };
+                 }
+  
+                @using (Ajax.BeginForm("OTItemCreate", "MasterFile", createopt))
+                {
+                    <button id="btn-new"  type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalEntry">
+                        <span class="glyphicon glyphicon-pencil"></span> New Item
+                    </button>
+                }
+     
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+   <table id="tbl-list" class="table table-nomargin table-condensed table-striped table-hover">
+        <thead class="cAR-tlist-header">
+             <tr>
+                 <th>Id</th>
+                 <th>Item Name</th>
+                 <th></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+
+</div>
+
+
+<div class="modal" id="modalEntry" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+</div>
+@section styles{
+      <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+@section scripts{
+        <script src="~/Content/sweetalert/sweet-alert.min.js"></script>
+
+    <script type="text/javascript">
+
+        var tblList;
+        $(document).ready(function () {
+            tblList = $("#tbl-list").DataTable({
+                processing: true,
+                serverSide: true,
+                destroy: true,
+                //scrollY: "400px",
+                ajax: {
+                    url: "@Url.Action("GetOTItems")",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: function (data) {
+                        return JSON.stringify(data);
+                    }
+                },
+                 language: {
+                     search: "",
+                     searchPlaceholder: "Search . . ."
+                 },
+                 columns: [
+                  { data: "Id", visible: false , orderable:false},
+                  { data: "Name" },
+                  {
+                      data: null, "render": function (data) {
+
+                          var action = '@Url.Action("OTItemDetail")';
+
+                          return '';
+                         //return '<a href="' + action + '/' + data + '" style="color: #049372;">VIEW <span class="glyphicon glyphicon-search"/></a>';
+
+                     }, className: 'text-center', searchable: false, orderable: false, width: "10%"
+                 }
+
+                 ],
+                fnCreatedRow: function (row, aData, index) {
+                    $viewctrl = $('<a id="view' + aData.Id + '" type="submit" style="color: #049372;cursor:pointer;">VIEW <span class="glyphicon glyphicon-search"/></a>');
+                    
+                    $form = $("<form>");
+                    $form.attr("action", "@Url.Action("OTItemDetail")/" + aData.Id);
+                    $form.attr("data-ajax", true);
+                    $form.attr("data-ajax-complete", "ShowModal()");
+                    $form.attr("data-ajax-method", "GET");
+                    $form.attr("data-ajax-mode", "replace");
+                    $form.attr("data-ajax-update", "#modalEntry");
+                    $form.attr("id", "formdetail" + aData.Id);
+                    $('td:eq(1)', row).append($form);
+                    $('td:eq(1)', row).append($viewctrl);
+
+                    $viewctrl.click(function () {
+                        $("#formdetail" + aData.Id).submit();
+                    });
+                }
+
+             });
+        })
+
+        function ShowModal() {
+            $("#modalEntry").modal('show');
+        }
+
+    </script>
+}

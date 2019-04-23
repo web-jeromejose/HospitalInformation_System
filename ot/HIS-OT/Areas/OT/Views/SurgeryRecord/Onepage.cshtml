@@ -1,0 +1,1588 @@
+﻿<!-- Daterange picker -->
+<link rel="stylesheet" href="~/Content/dist/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<!-- date-range-picker -->
+<script src="~/Content/dist/bower_components/moment/min/moment.min.js"></script>
+<script src="~/Content/dist/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<style>
+    .form-control {
+        font-size: 15px !important;
+    }
+
+    .select2-hidden-accessible, .select2-chosen {
+        color: black !important;
+    }
+
+    .smalltext {
+        font-size: 9px !important;
+    }
+
+
+    /*.form-control[type='email'],
+    .form-control[type='text'],
+    .form-control[type='password'],
+    .btn.form-control {
+        height: 15px;
+    }*/
+
+</style>
+
+<section class="content ">
+    <div class="row">
+
+        <div class="col-sm-8" style="border-right: 3px solid green;">
+            <!-- /.MAIN col-sm-8 -->
+            <div class="col-sm-12">
+                <div class="box box-success box-solid" style=" ">
+                    <div class="box-header with-border">
+                        <div class=" ">
+                            <div class="col-sm-4 ">
+                                <label class="control-label ">PIN</label>
+                                <input id="select2Name" name="" type="text" class=" form-control RequiredField " style=" ">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label label">Ward</label>
+                                <div class="input-group input-group-sm">
+                                    <input id="select2PIN" name="" type="hidden" class="form-control ">
+                                    <input type="text" id="OpenTxtWard" class="form-control  smalltext " readonly="">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="control-label label">Bed No</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" id="select2BedNo" class="form-control smalltext" readonly="">
+                                    <input id="select2BedID" name="" type="hidden" class="form-control ">
+                                </div>
+                            </div>
+ 
+
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool pinclose" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="">
+                        <div class="panel-body border-below">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <label class="control-label">Ward</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <input id="txtWard" name="" type="text" class="form-control smalltext " readonly>
+                                </div>
+                                <div class="col-xs-1">
+                                    <label class="control-label">Date Time</label>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input id="dtAdmitted" name="" type="text" class="form-control smalltext" readonly>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input id="txtPackage" name="" type="text" class="form-control smalltext" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <label class="control-label">Primary Consultant</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="input-group-sm">
+                                        <input id="txtPrimaryConsultant" name="" type="text" class="form-control smalltext" readonly>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-1">
+                                    <label class="control-label">Age</label>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="input-group-sm">
+                                        <input id="txtAge" name="" type="text" class="form-control smalltext" readonly>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-1">
+                                    <label class="control-label">Gender</label>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="input-group-sm">
+                                        <input id="txtGender" name="" type="text" class="form-control smalltext" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <label class="control-label">Category</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="input-group-sm">
+                                        <input id="txtCategory" name="" type="text" class="form-control smalltext" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <label class="control-label">Company</label>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="input-group-sm">
+                                        <input id="txtCompany" name="" type="text" class="form-control smalltext" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-sm-12 ">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <span class="label label-danger">OT TIME</span>
+                    </div>
+                    <div class="col-xs-3">
+
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="label label-danger">START DATE</span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="label label-danger">END DATE</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label class="control-label required">Operation Theatre</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="select2OperationTheatreId" name="" type="text" class="form-control RequiredField">
+                    </div>
+                    <div class="col-xs-3">
+
+                        <div class="input-group input-group-sm">
+                            <div class="input-group">
+                                <label class="input-group-addon btn" for="datef_ot">
+                                    <span class="fa fa-calendar"></span>
+                                </label>
+                                <input id="dtOTStartDateTime" type="text" class="form-control pull-right RequiredField " autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="dtOTEndDateTime" type="text" class="form-control pull-right dt_datepicker RequiredField " autocomplete="off" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label class="control-label required">Anaesthesia</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="select2AnaesthesiaTypeID" name="" type="text" class="form-control">
+
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <input id="dtAnaesthesiaStartDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <input id="dtAnaesthesiaEndDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <label class="control-label">Surgery (Incision / Closure)</label>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <input id="dtIncisionDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <input id="dtClosureDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Recovery Room</label>
+                        <input id="iChkRecovery" type="checkbox" value="TRUE" />
+                    </div>
+                    <div class="col-xs-1">
+
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="dtRecoveryStartDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+
+                    </div>
+                    <div class="col-xs-3">
+                        <input id="dtRecoveryEndDateTime" type="text" class="form-control pull-right dt_datepicker " autocomplete="off" />
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label">Circulatory Nurse</label>
+                    </div>
+                    <div class="col-xs-5">
+                        <input id="select2CirculatoryNurseId" name="" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-3">
+                        <label class="control-label">Shifting Nurse (from Recovery Room)</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input id="select2ShiftingNurseId" name="" type="text" class="form-control">
+                    </div>
+                    <div class="col-xs-1">
+                        <label class="control-label">Disease</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input id="txtDisease" name="" type="text" class="form-control">
+                    </div>
+                </div>
+                    <div class="row "  style="border-top: 3px solid green;">
+                        <div class="col-xs-3">
+                            <span class="label label-danger">NOTES</span>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-xs-5">
+                                <input id="select2AnaesthetistNotesId" placeholder="Type to search an Anaesthetist..." type="text" class="form-control">
+                            </div>
+
+                            <div class="col-xs-12">
+                                <textarea id="txtAnaesthetistNotes" class="form-control DisableOnView" rows="3" cols="5" placeholder="Anaesthesia Notes.."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <textarea id="txtSurgeonNotes" class="form-control DisableOnView" rows="3" cols="5" placeholder="Surgeon Notes.."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.MAIN col-sm-8 -->
+        <div class="col-sm-4">
+            <!-- /. MAIN col-sm-4 -->
+            <div class="row">
+                <div class="col-xs-9 pull-right">
+
+                    <a id="btncancel" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-minus"></span> CANCEL
+                    </a>
+                    <a id="btnSave" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-file"></span> NEW
+                    </a>
+
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label">Surgeon</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input id="select2TSurgeon" placeholder="Type to search a Surgeon..." type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label">Assistant Surgeon</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input id="select2TAssistantSurgeon" placeholder="Type to search an Assistant Surgeon..." type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label">Anaesthetist</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input id="select2TAnaesthetist" placeholder="Type to search an Anaesthetist..." type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label">Scrub Nurse</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input id="select2TScrubNurse" placeholder="Type to search a Scrub Nurse..." type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label class="control-label">Equipment</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input id="select2TEquipment" placeholder="Type to search an Equipment..." type="text" class="form-control">
+                    </div>
+                </div>
+
+
+
+                <!-- SURGERY -->
+                <div class="row">
+                    <div class="col-xs-3 pull-left">
+                        <span class="label label-danger">SURGERY</span>
+                    </div>
+                    <div class="col-xs-9 pull-right">
+
+                        <a id="btnRemoveSurgery" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-minus"></span> Remove
+                        </a>
+                        <a id="btnAddSurgery" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-plus"></span> Add
+                        </a>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row rowMarginTop">
+                        <div class="col-xs-12">
+                            <table id="gridSurgery" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width:600px !important;">
+                                <thead class="cAR-tlist-header">
+                                    <tr>
+                                        <th>id</th>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div> <!-- /. MAIN col-sm-4 -->
+        </div>
+
+
+
+
+
+    <div class="row">
+
+
+    </div>
+
+    <div class="row">
+
+        <!--col-4 -->
+    </div>
+
+</section>
+
+<script type="text/javascript">
+    var c = new Common();
+    var Action = 1;
+ 
+
+    var TblGridSurgery;
+    var TblGridSurgeryId = "#gridSurgery";
+    var TblGridSurgeryDataRow;
+
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.pinclose').trigger('click');
+            $('#iChkRecovery').prop('checked', true).iCheck('update');   
+            $("#dtRecoveryStartDateTime").attr("disabled", "disabled");
+            $("#dtRecoveryEndDateTime").attr("disabled", "disabled");
+            $("#dtRecoveryStartDateTime").val("");
+            $("#dtRecoveryEndDateTime").val("");
+            c.SetSelect2('#select2AnaesthesiaTypeID', 88, "<NONE> No Anesthesia");
+            $("#dtAnaesthesiaStartDateTime").attr("disabled", "disabled");
+            $("#dtAnaesthesiaEndDateTime").attr("disabled", "disabled");
+            c.DisableSelect2('#select2TAnaesthetist', true);
+            $("#dtAnaesthesiaStartDateTime").val("");
+            $("#dtAnaesthesiaEndDateTime").val("");
+            c.ButtonDisable('#btnSave', true);
+            $("#select2Name").select2('open');
+        }, 800);
+        init_select2();
+        init_checkbox();
+        init_datepicker();
+       
+        init_button();
+        SetupSelectedSurgery();
+        InitDataTables();
+   
+    });
+
+
+    function init_select2() {
+        $('#select2Name').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2GetName',
+                dataType: 'jsonp',
+                cache: false,
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        type: 0
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            $('.pinclose').trigger('click');
+            var list = e.added.list;
+            console.log(list);
+            c.SetValue('#OpenTxtWard', list[7]);
+            c.SetValue('#select2PIN', list[2]);
+            c.SetValue('#select2BedNo', list[4]);
+            c.SetValue('#select2BedID', list[5]);
+            
+            FetchPatientDetails(list);
+            if ($('#select2TSurgeon').val() == "") { $("#select2TSurgeon").select2('open'); }
+            setTimeout(function () { $('.pinclose').trigger('click'); }, 500);
+
+            if ($('#select2Name').val() !== "") {
+                c.ButtonDisable('#btnSave', false);
+            } 
+            
+        });
+
+        $('#select2OperationTheatreId').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2GetOperatingTheatres',
+                dataType: 'jsonp',
+                cache: false,
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        type: 0
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            var list = e.added.list;
+            if ($("#select2AnaesthesiaTypeID").val() == "")
+            $("#select2AnaesthesiaTypeID").select2('open');
+
+        });
+
+        $('#select2AnaesthesiaTypeID').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2GetAnaesthesia',
+                dataType: 'jsonp',
+                cache: false,
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        type: 0
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            var list = e.added.list;
+
+            var IsNoAnaesthetist = list[0] == 88; // if NO ANAESTHESIA
+
+            c.DisableSelect2('#select2TAnaesthetist', IsNoAnaesthetist);
+            if (IsNoAnaesthetist) c.Select2Clear('#select2TAnaesthetist');
+
+
+            if (IsNoAnaesthetist) { //no anaesthesia
+                $("#dtAnaesthesiaStartDateTime").val("");
+                $("#dtAnaesthesiaStartDateTime").attr("disabled", "disabled");
+                $("#dtAnaesthesiaEndDateTime").val("");
+                $("#dtAnaesthesiaEndDateTime").attr("disabled", "disabled");
+               
+                if ($('#select2CirculatoryNurseId').val() == "") { $("#select2CirculatoryNurseId").select2('open');  }
+
+            } else {
+                $("#dtAnaesthesiaStartDateTime").removeAttr("disabled");
+                $("#dtAnaesthesiaEndDateTime").removeAttr("disabled");
+                if ($('#dtAnaesthesiaStartDateTime').val() == "") { AdjustTime(); }
+            }
+
+           
+            });
+
+        $('#select2CirculatoryNurseId').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2GetCirculatoryNurses',
+                dataType: 'jsonp',
+                cache: false,
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        type: 0
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            var list = e.added.list;
+            if ($('#select2ShiftingNurseId').val() == "") { $("#select2ShiftingNurseId").select2('open'); } 
+
+            });
+        $('#select2ShiftingNurseId').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2GetShiftingNurse',
+                dataType: 'jsonp',
+                cache: false,
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        type: 0
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            var list = e.added.list;
+
+
+            });
+
+        $("#select2TSurgeon").select2({
+            data: [],
+            minimumInputLength: 0,
+            tags: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2SelectedSurgeon',
+                dataType: 'jsonp',
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        SurgeryRecordId: 0,
+                        IsSelected: 0
+                    };
+                },
+                success: function () {
+
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function () { if ($('#select2TAssistantSurgeon').val() == "") { $("#select2TAssistantSurgeon").select2('open');   } });
+
+
+        $("#select2TAssistantSurgeon").select2({
+            data: [],
+            minimumInputLength: 0,
+            tags: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2SelectedAsstSurgeon',
+                dataType: 'jsonp',
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        SurgeryRecordId: 0,
+                        IsSelected: 0
+                    };
+                },
+                success: function () {
+
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function () {
+           
+            if ($('#select2TAnaesthetist').val() == "") { $("#select2TAnaesthetist").select2('open'); } 
+            if ($('#s2id_select2TAnaesthetist').hasClass("select2-container-disabled")) { $("#select2TScrubNurse").select2('open'); } 
+            
+        });
+        $("#select2TAnaesthetist").select2({
+            data: [],
+            minimumInputLength: 0,
+            tags: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2SelectedAnaesthetist',
+                dataType: 'jsonp',
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        SurgeryRecordId: 0,
+                        IsSelected: 0
+                    };
+                },
+                success: function () {
+
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+
+            var data = $('#select2TAnaesthetist').select2('data');
+            $.each(data, function (i, val) {
+                c.SetSelect2('#select2AnaesthetistNotesId', data[0].id, data[0].text);
+                return;
+            });
+            if ($('#select2TScrubNurse').val() == "") { $("#select2TScrubNurse").select2('open'); } 
+       
+        });
+        $("#select2TScrubNurse").select2({
+            data: [],
+            minimumInputLength: 0,
+            tags: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2SelectedScrubNurse',
+                dataType: 'jsonp',
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        SurgeryRecordId: 0,
+                        IsSelected: 0
+                    };
+                },
+                success: function () {
+
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function () {
+        
+            if ($('#select2OperationTheatreId').val() == "") { $("#select2OperationTheatreId").select2('open'); } 
+
+            });
+        $("#select2TEquipment").select2({
+            data: [],
+            minimumInputLength: 0,
+            tags: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2SelectedEquipment',
+                dataType: 'jsonp',
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        SurgeryRecordId: 0,
+                        IsSelected: 0
+                    };
+                },
+                success: function () {
+
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            var list = e.added.list;
+
+            });
+
+        $('#select2AnaesthetistNotesId').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            ajax: {
+                quietMillis: 150,
+                url: baseURL + 'Select2SelectedAnaesthetist',
+                dataType: 'jsonp',
+                cache: false,
+                data: function (term, page) {
+                    return {
+                        pageSize: pageSize,
+                        pageNum: page,
+                        searchTerm: term,
+                        SurgeryRecordId: 0,
+                        IsSelected: 0
+                    };
+                },
+                results: function (data, page) {
+                    var more = (page * pageSize) < data.Total;
+                    return { results: data.Results, more: more };
+                }
+            }
+        }).change(function (e) {
+            var list = e.added.list;
+ 
+        });
+
+
+    }
+    function init_checkbox() {
+
+        $('#iChkRecovery').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red'
+        }).on("ifChecked ifUnchecked", function (e) {
+            var checked = e.type == "ifChecked" ? true : false;
+            if (checked) {
+                $("#dtRecoveryStartDateTime").val("");
+                $("#dtRecoveryEndDateTime").val("");
+                $("#dtRecoveryStartDateTime").attr("disabled", "disabled");
+                $("#dtRecoveryEndDateTime").attr("disabled", "disabled");
+
+
+            } else {
+                $("#dtRecoveryStartDateTime").removeAttr("disabled");
+                $("#dtRecoveryEndDateTime").removeAttr("disabled");
+                AdjustTime();
+
+            }
+
+
+
+        });
+
+    }
+    function init_datepicker() {
+
+        $('#dtOTStartDateTime').daterangepicker({
+            singleDatePicker: true,
+            autoclose: true,
+            startDate: new Date(),
+            showDropdowns: true,
+            timePicker: true,
+            //maxDate: new Date(),
+            timePicker24Hour: true,
+            timePickerIncrement: 10,
+            autoUpdateInput: true,
+            minYear: 2010,
+            maxYear: parseInt(moment().format('YYYY'), 10),
+            locale: {
+                format: 'DD MMM YYYY HH:mm'
+            }
+
+        });
+
+        $('#dtOTStartDateTime').on('apply.daterangepicker', function (ev, picker) {
+            console.log(picker.startDate.format('MM/DD/YYYY'));
+            console.log('dtOTStartDateTime apply');
+            AdjustTime();
+        });
+
+
+        $('.dt_datepicker').daterangepicker({
+            singleDatePicker: true,
+            startDate: new Date(),
+            showDropdowns: false,
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerIncrement: 5,
+            autoUpdateInput: true,
+            locale: {
+
+                format: 'DD MMM YYYY HH:mm'
+            }
+
+        });
+
+        $('#dtAdmitted').datetimepicker({
+            pickTime: true
+        }).on("dp.change", function (e) {
+
+        });
+    }
+    function init_button() {
+        $('#btnAddSurgery').click(function () {
+          
+
+            var ctr = $(TblGridSurgeryId).DataTable().rows().nodes().length + 1;
+            TblGridSurgery.row.add({
+                "id": "",
+                "No": ctr,
+                "name": "",
+                "Count": "1"
+            }).draw();
+            InitSelectedSurgery();
+
+
+        });
+        $('#btnRemoveSurgery').click(function () {
+
+            if (TblGridSurgery.rows('.selected').data().length == 0) {
+                c.MessageBoxErr("Select...", "Please select a row to be deleted.", null);
+                return;
+            }
+
+            var YesFunc = function () {
+                TblGridSurgery.row('tr.selected').remove().draw(false);
+            };
+
+            c.MessageBoxConfirm("Delete...", "Are you sure you want to delete the selected row/s?", YesFunc, null);
+
+        });
+
+        $(document).on("click", TblGridSurgeryId + " td", function (e) {
+            e.preventDefault();
+
+            if (typeof $(this).closest("tr").find('td:eq(0)').html() != 'undefined') {
+                var tr = $(this).closest('tr');
+                tr.toggleClass('selected');
+                TblGridSurgeryDataRow = TblGridSurgery.row($(this).parents('tr')).data();
+            }
+
+        });
+        $('#btnSave').click(function () {
+            Save();
+        });
+        $('#btncancel').click(function () {
+            window.location.href = "@Url.Action("Index", "SurgeryRecord")";
+        });
+
+        
+
+    }
+
+    //------------------------------------------------------------------------------Not so important Function
+    function AdjustTime() {
+
+        //  c.SetValue('#dtOTStartDateTime', moment().format("DD MMM YYYY HH:mm"));
+        $("#dtOTStartDateTime").trigger('click');
+        console.log($("#dtOTStartDateTime").val());
+        //Adjust time Anaesthesia
+        var IsNoAnaesthetist = c.GetSelect2Id('#select2AnaesthesiaTypeID') == 88 && (Action == 1 || Action == 2);
+        if (IsNoAnaesthetist) { //no anaesthesia
+            $("#dtAnaesthesiaStartDateTime").val("");
+            $("#dtAnaesthesiaStartDateTime").attr("disabled", "disabled");
+            $("#dtAnaesthesiaEndDateTime").val("");
+            $("#dtAnaesthesiaEndDateTime").attr("disabled", "disabled");
+        } else {
+            $('#dtAnaesthesiaStartDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 5)).format('DD MMM YYYY HH:mm'));
+            $('#dtAnaesthesiaEndDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 30)).format('DD MMM YYYY HH:mm'));
+
+        }
+
+        //Adjust time Surgery
+        $('#dtIncisionDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 15)).format('DD MMM YYYY HH:mm'));
+        $('#dtClosureDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 25)).format('DD MMM YYYY HH:mm'));
+        //Adjust OT Date TIME END
+        $('#dtOTEndDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 35)).format('DD MMM YYYY HH:mm'));
+        //Adjust RECOVERY
+        if ($('#iChkRecovery').is(':checked')) {
+            $("#dtRecoveryStartDateTime").val("");
+            $("#dtRecoveryEndDateTime").val("");
+            $("#dtRecoveryStartDateTime").attr("disabled", "disabled");
+            $("#dtRecoveryEndDateTime").attr("disabled", "disabled");
+
+
+        } else {
+            $('#dtRecoveryStartDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 40)).format('DD MMM YYYY HH:mm'));
+            $('#dtRecoveryEndDateTime').data('daterangepicker').setStartDate(moment(moment($("#dtOTStartDateTime").val(), "DD MMM YYYY HH:mm").add('minutes', 50)).format('DD MMM YYYY HH:mm'));
+
+        }
+
+
+    };
+
+    function FetchPatientDetails(list) {
+        c.SetValue('#txtWard', list[7]);
+        c.SetValue('#txtAge', list[8]);
+        c.SetValue('#txtGender', list[9]);
+        c.SetValue('#txtPrimaryConsultant', list[10]);
+        c.SetValue('#txtPackage', list[11]);
+        c.SetValue('#txtCategory', list[14]);
+        c.SetValue('#txtCompany', list[13]);
+        c.SetValue('#dtAdmitted', list[17]);
+        // c.SetDateTimePicker('#dtAdmitted', list[17]);
+
+        //0: "1574421"
+        //1: "SA01"
+        //2: 210645
+        //3: "SA01.0001574421 - ABDULLAH  HANI"
+        //4: "ER-OR2"
+        //5: "3"
+        //6: "SA01.0001574421"
+        //7: "EMERGENCY WARD"
+        //8: "4 Year(s)"
+        //9: "Male"
+        //10: "Dr. Mohamed Sammy El Hadidy"
+        //11: "Non-Package"
+        //12: "3E8N"
+        //13: "MEDIVISA/MEDGULF -  SWCC"
+        //14: "MEDIVISA/MEDGULF"
+        //15: "O+ve"
+        //16: 75
+        //17: "15 Jun 2017 02:21:33:000"
+        //18: "M65.3 - Trigger finger"
+
+    }
+
+
+
+    //------------------------------------------------------------------------------data table
+    function SetupSelectedSurgery() {
+
+        $.editable.addInputType('txtCount', {
+            element: function (settings, original) {
+
+                var input = $('<input id="txtCount" style="width:100%; height:30px; margin:0px, padding:0px;" type="number" class="form-control">');
+                $(this).append(input);
+
+                return (input);
+            }
+        });
+        $.editable.addInputType('select2TSurgery', {
+            element: function (settings, original) {
+                var input = $('<input id="select2TSurgery" style="width:100%; height:30px;" type="text" class="form-control required">');
+                $(this).append(input);
+
+                return (input);
+            },
+            plugin: function (settings, original) {
+                var select2 = $(this).find('#select2TSurgery').select2({
+                    //minimumInputLength: 1,
+                    allowClear: true,
+                    ajax: {
+                        cache: false,
+                        quietMillis: 150,
+                        url: baseURL + 'Select2SelectedSurgery',
+                        dataType: 'jsonp',
+                        data: function (term, page) {
+                            return {
+                                pageSize: pageSize,
+                                pageNum: page,
+                                searchTerm: term,
+                                SurgeryRecordId: 0,
+                                IsSelected: 0
+                            };
+                        },
+                        results: function (data, page) {
+                            var more = (page * pageSize) < data.Total;
+                            return { results: data.Results, more: more };
+                        }
+                    }
+                }).on("select2-blur", function () {
+                    $("#select2TSurgery").closest('td').get(0).reset();
+                }).on('select2-close', function () {
+                    if (Select2IsClicked) { $("#select2TSurgery").closest('form').submit(); }
+                    else { $("#select2TSurgery").closest('td').get(0).reset(); }
+                    Select2IsClicked = false;
+                }).on("select2-focus", function (e) {
+                    var a = $(this).closest('tr').find('#select2TSurgery').val();
+                    $("#select2TSurgery").select2("data", { id: a, text: a });
+                }).data('select2');
+
+                select2.onSelect = (function (fn) {
+                    return function (data, options) {
+                        var target;
+                        if (options != null) {
+                            target = $(options.target);
+                        }
+                        Select2IsClicked = true;
+                        return fn.apply(this, arguments);
+                    }
+                })(select2.onSelect);
+
+
+            },
+            submit: function (settings, original) {
+                if ($("#select2TSurgery", this).select2('val') != null && $("#select2TSurgery", this).select2('val') != '') {
+                    $("input", this).val($("#select2TSurgery", this).select2("data").text);
+
+                }
+            }
+        });
+        $.editable.addInputType('mskQty', {
+            element: function (settings, original) {
+                var input = $('<input id="mskQty" style="width:100%; height:30px; margin:0px, padding:0px;" type="number" class="form-control" value="1">');
+                $(this).append(input);
+                return (input);
+            }
+            
+        });
+    }
+    function InitSelectedSurgery() {
+        console.log('ter');
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+        $('.ClassTxtCount', TblGridSurgery.rows().nodes()).editable(function (sVal, settings) {
+            var cell = TblGridSurgery.cell($(this).closest('td')).index();
+            TblGridSurgery.cell(cell.row, cell.column).data(sVal);
+            return sVal;
+        },
+            {
+                "type": 'txtCount', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+            });
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------
+        console.log('ter1');
+        $('.ClassSelect2TSurgery', TblGridSurgery.rows().nodes()).editable(function (sVal, settings) {
+            var cell = TblGridSurgery.cell($(this).closest('td')).index();
+            var id = c.GetSelect2Id('#select2TSurgery');
+            TblGridSurgery.cell(cell.row, 0).data(id);
+            TblGridSurgery.cell(cell.row, cell.column).data(sVal);
+            return sVal;
+        },
+            {
+                "type": 'select2TSurgery', "style": 'display: inline;', "onblur": 'submit', "onreset": '',
+                "event": 'click', "submit": '', "cancel": '', "placeholder": 'select surgery here...', "cssclass": "coleditor"
+            });
+        $('.ClassMskQty', TblGridSurgery.rows().nodes()).editable(function (sVal, settings) {
+            var cell = TblGridSurgery.cell($(this).closest('td')).index();
+            TblGridSurgery.cell(cell.row, cell.column).data(sVal);
+            return sVal;
+        },
+            {
+                "type": 'mskQty', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                "event": 'click', "submit": '', "cancel": '', "placeholder": '1', "cssclass": "coleditor" 
+            });
+        console.log('ter2');
+        // Resize all rows.
+        $(TblGridSurgeryId + ' tr').addClass('trclass');
+
+    }
+    function ShowSelectedSurgeryColumns() {
+        var Is24 = c.GetValue('#Is24') == 1;
+        var cols = [
+            { targets: [0], data: "id", className: '', visible: false, searchable: false, width: "0%" },
+            { targets: [1], data: "No", className: '', visible: true, searchable: false, width: "10%" },
+            {
+                targets: [2], data: "name"
+                , className: (Action == 2 && Is24 == false) || Action == 1 ? 'ClassSelect2TSurgery' : ''
+                , visible: true, searchable: true, width: "60%"
+            },
+            {
+                targets: [3], data: "Count"
+                , className: (Action == 2 && Is24 == false) || Action == 1 ? 'ClassMskQty' : ''
+                , visible: true, searchable: true, width: "20%"
+            },
+        ];
+        return cols;
+    }
+
+    function InitDataTables() {
+        BindSelectedSurgery([]);
+    }
+    function BindSelectedSurgery(data) {
+        console.log('BindSelectedSurgery');
+        console.log(data);
+         
+        TblGridSurgery = $(TblGridSurgeryId).DataTable({
+            cache: false,
+            destroy: true,
+            data: data,
+            paging: false,
+            ordering: false,
+            searching: false,
+            info: false,
+            scrollY: 380,
+            processing: false,
+            autoWidth: false,
+            dom: 'Rlfrtip',
+            scrollCollapse: false,
+            pageLength: 150,
+            lengthChange: false,
+            iDisplayLength: 25,
+            //fnRowCallback: ShowSelectedSurgeryRowCallBack(),
+            columns: ShowSelectedSurgeryColumns()
+        });
+      
+ 
+            InitSelectedSurgery();
+        
+    }
+
+     //------------------------------------------------------------------------------SAVING
+    function DateIsRequired() {
+
+
+        var startDateTime_OperationTheatre = moment($('#dtOTStartDateTime').val()).format('DD MMM YYYY HH:mm'); //$('#dtOTStartDateTime').val();
+        var endDatetime_OperationTheatre = $('#dtOTEndDateTime').val();
+        var startDateTime_Anaesthesia = $('#dtAnaesthesiaStartDateTime').val();
+        var endDateTime_Anaesthesia = $('#dtAnaesthesiaEndDateTime').val();
+        var startDateTime_Surgery = $('#dtIncisionDateTime').val();
+        var endDateTime_Surgery = $('#dtClosureDateTime').val();
+        var startDateTime_RecoveryRoom = $('#dtRecoveryStartDateTime').val();
+        var endDateTime_RecoveryRoom = $('#dtRecoveryEndDateTime').val();
+
+        var admitted_date = moment($('#dtAdmitted').val()).format('DD MMM YYYY HH:mm'); //c.GetDateTimePickerDateTimeCompare('#dtAdmitted');
+        var icheckrecovery = $('#iChkRecovery').is(':checked') === false;//not check
+
+         var getdate = moment().format('DD MMM YYYY HH:mm');
+        var IsNoAnaesthetist = c.GetSelect2Id('#select2AnaesthesiaTypeID') == 88; // if NO ANAESTHESIA 123
+        var OT_Room = c.GetSelect2Id('#select2OperationTheatreId');
+        var OT_patient = c.GetSelect2Id('#select2Name');
+
+
+        console.log('startDateTime_OperationTheatre');
+        console.log(startDateTime_OperationTheatre);
+        console.log('endDatetime_OperationTheatre');
+        console.log(endDatetime_OperationTheatre);
+        console.log('getdate');
+        console.log(getdate); 
+ 
+        var msg = '';
+        var ctr = 0;
+
+        if (OT_patient == "") {
+            ctr++;
+            msg = msg + ctr.toString() + '. Select Patient. <br>';
+        }
+        if (OT_Room == "") {
+            ctr++;
+            msg = msg + ctr.toString() + '. Select OT Room. <br>';
+        }
+        if (startDateTime_OperationTheatre == endDatetime_OperationTheatre )  {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Operation Theatre START and END datetime. <br>';
+        }
+        if (startDateTime_OperationTheatre < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Operation Theatre start datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+        if (endDatetime_OperationTheatre < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Operation Theatre end datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+
+        if (!IsNoAnaesthetist && startDateTime_Anaesthesia < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Anaesthesia start datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+        if (!IsNoAnaesthetist && endDateTime_Anaesthesia < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Anaesthesia end datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+
+        if (startDateTime_Surgery < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Surgery start datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+        if (endDateTime_Surgery < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Surgery end datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+        if (icheckrecovery && startDateTime_RecoveryRoom < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check RecoveryRoom start datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+        if (icheckrecovery && endDateTime_RecoveryRoom < admitted_date) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check RecoveryRoom end datetime. It should be greater than the patient admitted datetime. <br>';
+        }
+
+        if ( startDateTime_OperationTheatre > endDatetime_OperationTheatre) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Operation Theatre end datetime. It should be greater than the start datetime <br>';
+        }
+        if (startDateTime_Anaesthesia > endDateTime_Anaesthesia) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Anaesthesia end datetime. It should be greater than the start datetime <br>';
+        }
+        if (startDateTime_Surgery > endDateTime_Surgery) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Surgery end datetime. It should be greater than the start datetime <br>';
+        }
+        if (icheckrecovery && startDateTime_RecoveryRoom > endDateTime_RecoveryRoom) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Recovery Room end datetime. It should be greater than the start datetime <br>';
+        }
+
+        if (!IsNoAnaesthetist && !(startDateTime_Anaesthesia >= startDateTime_OperationTheatre && startDateTime_Anaesthesia <= endDatetime_OperationTheatre)) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Anaesthesia start datetime. It should be between Operation Theatre (start) and (end) datetime. <br>';
+        }
+        if (!IsNoAnaesthetist && !(endDateTime_Anaesthesia >= startDateTime_OperationTheatre && endDateTime_Anaesthesia <= endDatetime_OperationTheatre)) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Anaesthesia end datetime. It should be between Operation Theatre (start) and (end) datetime. <br>';
+        }
+
+
+
+        if (!(startDateTime_OperationTheatre <= getdate)) {
+            ctr++;
+            console.log('(Date.parse(startDateTime_OperationTheatre) <= Date.parse(getdate))');
+            msg = msg + ctr.toString() + '. Check Operation Theatre start datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+        if (!(endDatetime_OperationTheatre <= getdate)) {
+            ctr++;
+            console.log('(Date.parse(endDatetime_OperationTheatre) <= Date.parse(getdate))');
+            msg = msg + ctr.toString() + '. Check Operation Theatre end datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+        if (!(startDateTime_Anaesthesia <= getdate)) {
+            ctr++;
+
+            console.log('(Date.parse(startDateTime_Anaesthesia) <= Date.parse(getdate))');
+            msg = msg + ctr.toString() + '. Check Anaesthesia start datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+        if (!(endDateTime_Anaesthesia <= getdate)) {
+            ctr++;
+            console.log('(Date.parse(endDateTime_Anaesthesia) <= Date.parse(getdate))');
+            msg = msg + ctr.toString() + '. Check Anaesthesia end datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+
+        if (!(startDateTime_Surgery <= getdate)) {
+            ctr++;
+            console.log('(Date.parse(startDateTime_Surgery) <= Date.parse(getdate))');
+            msg = msg + ctr.toString() + '. Check Surgery start datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+        if (!(endDateTime_Surgery <= getdate)) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Surgery end datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+
+        if (!(startDateTime_Surgery >= startDateTime_OperationTheatre && startDateTime_Surgery <= endDatetime_OperationTheatre)) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Surgery start datetime. It should be between Operation Theatre (start) and (end) datetime. <br>';
+        }
+        if (!(endDateTime_Surgery >= startDateTime_OperationTheatre && endDateTime_Surgery <= endDatetime_OperationTheatre)) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Surgery end datetime. It should be between Operation Theatre (start) and (end) datetime. <br>';
+        }
+       
+        if (icheckrecovery && !(startDateTime_RecoveryRoom <= getdate) && startDateTime_RecoveryRoom.length > 0) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Recovery Room start datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+        if (icheckrecovery && !(endDateTime_RecoveryRoom <= getdate) && endDateTime_RecoveryRoom.length > 0) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Recovery Room end datetime. It should be lesser or equal to the curent datetime. <br>';
+        }
+
+
+        if (icheckrecovery && !(startDateTime_RecoveryRoom > endDatetime_OperationTheatre)) {
+            ctr++;
+            msg = msg + ctr.toString() + '. Check Recovery Room start datetime. It should be greater than Operation Theatre end datetime. <br>';
+        }
+        console.log('msg.length');
+        console.log(msg);
+
+        if (msg.length > 0) {
+            setTimeout(function () {
+                $("#dtOTStartDateTime").trigger("click");
+            }, 1500);
+            var msg1 = "<b>Admitted DateTime: " + admitted_date  + "<br>";
+            msg1 += "Current DateTime: " + getdate  + " <br><br>";
+            msg1 += "START OPERATION: " + startDateTime_OperationTheatre + " <br> ";
+            msg1 += "END OPERATION: " + endDatetime_OperationTheatre + "</b><br><br>";
+            c.MessageBoxErr('Required...', 'Please check the following required value(s): <br> <br>' + msg1 + msg);
+            
+        }
+
+        return msg.length > 0;
+
+    }
+
+    function Validated() {
+        var req = false;
+        var startDateTime_Anaesthesia = $('#dtAnaesthesiaStartDateTime').val();
+        var endDateTime_Anaesthesia = $('#dtAnaesthesiaEndDateTime').val();
+
+        if ($('#ListOfStation').val() == null) {
+            c.MessageBoxErr('Error...', 'Please select a station in the upper right.');
+
+        }
+        else if ($('#select2PIN').val() == "" || $('#select2PIN').val() == null  ) {
+            c.MessageBoxErr('Required...', 'Please select a PIN / Name.');
+            c.SetActiveTab('sectionA');
+
+        }
+        else if (c.IsEmptySelect2('#select2OperationTheatreId')) {
+            c.MessageBoxErr('Empty...', 'Please select an operation theatre.');
+            c.SetActiveTab('sectionA');
+        }
+        else if (DateIsRequired()) {
+        }
+        else if (c.IsEmptySelect2('#select2AnaesthesiaTypeID')) {
+            c.MessageBoxErr('Required...', 'Anaesthesia is required.');
+            c.SetActiveTab('sectionA');
+        }
+        else if (c.GetSelect2Id('#select2AnaesthesiaTypeID') != 88 && c.GetSelect2Id('#select2AnaesthesiaTypeID') != "" && (startDateTime_Anaesthesia == "" || endDateTime_Anaesthesia == "")) {
+            c.MessageBoxErr('Required...', 'Anaesthetist Date is required.');
+            c.SetActiveTab('sectionA');
+        }
+      
+        // Check if there is an Anaesthetist if with anaesthesia is selected.
+        else if (c.GetSelect2Id('#select2AnaesthesiaTypeID') != 88 &&
+            c.GetSelect2Id('#select2AnaesthesiaTypeID') != "" &&
+            $('#select2TAnaesthetist').val() == "") {
+            c.MessageBoxErr('Required...', 'Anaesthetist is required.');
+            c.SetActiveTab('sectionB');
+        }
+        else if ($(TblGridSurgeryId).DataTable().rows().nodes().length == 0) {
+            c.MessageBoxErr('Required...', 'Surgery is required. Please add an item on the list.');
+            $('#btnAddSurgery').trigger('click');
+          
+            c.SetActiveTab('sectionB');
+        }
+        else if ($('#select2TSurgeon').val() == "") {
+            c.MessageBoxErr('Required...', 'Surgeon is required.');
+            c.SetActiveTab('sectionB');
+        }
+
+        
+        else if ($('#select2BedID').val() == "") {
+            c.MessageBoxErr('Required...', 'BED ID is required.');
+            c.SetActiveTab('sectionB');
+        }
+        else if ($('#select2TScrubNurse').val() == "") {
+            c.MessageBoxErr('Required...', 'Scrub nurse is required.');
+            c.SetActiveTab('sectionB');
+        }
+       
+        else {
+           
+
+            $.each(TblGridSurgery.rows().data(), function (i, row) {
+                ctrC = 0;
+                if (row.id == null || row.id == "") {
+                    c.MessageBoxErr('Required...', 'Please select surgery..');
+                    
+                    req = false;
+                }
+
+                while (ctrC < row.Count) {
+
+                    if (row.id == null || row.id == "") {
+                        c.MessageBoxErr('Required...', 'Please select surgery..');
+                        c.SetActiveTab('sectionB');
+                        req = false;
+                    } else {
+                        req = true;
+                    }
+                    ctrC++;
+                }
+            });
+
+        }
+
+        return req;
+    }
+    function Save() {
+        if (Action != 3) {
+            var ret = Validated(); 
+            if (!ret) return;
+        }
+        $('#preloader').show();
+        var entry;
+        entry = [];
+        entry = {};
+        entry.Action = Action;
+        entry.CurrentStationID = $("#ListOfStation").val();
+        entry.ID = c.GetValue('#Id');
+        entry.IPIDOPID = $("#select2PIN").val();
+        entry.OTID = c.GetSelect2Id('#select2OperationTheatreId');
+        entry.AnaesthesiaTypeID = c.GetSelect2Id('#select2AnaesthesiaTypeID');
+      
+        entry.OTStartDateTime = $('#dtOTStartDateTime').val();
+        entry.OTEndDateTime = $('#dtOTEndDateTime').val();
+        entry.AnaesthesiaStartDateTime = $('#dtAnaesthesiaStartDateTime').val();
+        entry.AnaesthesiaEndDateTime = $('#dtAnaesthesiaEndDateTime').val();
+        entry.IncisionDateTime = $('#dtIncisionDateTime').val();
+        entry.ClosureDateTime = $('#dtClosureDateTime').val();
+        entry.RecoveryStartDateTime = $('#dtRecoveryStartDateTime').val();
+        entry.RecoveryEndDateTime = $('#dtRecoveryEndDateTime').val();
+
+        entry.disease = c.GetValue('#txtDisease');
+        entry.BedId = c.GetValue('#select2BedID');
+        entry.CirculatoryNurseId = c.GetSelect2Id('#select2CirculatoryNurseId');
+        entry.ShiftingNurseId = c.GetSelect2Id('#select2ShiftingNurseId');
+
+
+
+
+        var ctrC = 0;
+        entry.OTOrderDetail = [];
+        $.each(TblGridSurgery.rows().data(), function (i, row) {
+            ctrC = 0;
+            while (ctrC < row.Count) {
+                ctrC++;               
+                entry.OTOrderDetail.push({
+                    type: 1,
+                    typeid: row.id,
+                    SpecialisationId: "",  // ?
+                    charges: "0",
+                    priority: row.No,
+                    count: 1
+                });
+            }
+        });
+      
+        entry.OTNotes = [];
+        entry.OTNotes.push({
+            orderid: c.GetValue('#Id'),
+            DoctorNotes: c.GetValue('#txtSurgeonNotes'),
+            anaesthesianotes: c.GetValue('#txtAnaesthetistNotes'),
+            doctorid: c.GetSelect2Id('#select2AnaesthetistNotesId')
+        });
+ 
+
+                ctrC = 0;
+            var arr = $('#select2TSurgeon').val();
+            $.each(arr.split(','), function (i, val) {
+                ctrC++;
+                entry.OTOrderDetail.push({
+                    type: 2,
+                    typeid: val,
+                    charges: "0",
+                    priority: ctrC
+                });
+            })
+
+            ctrC = 0;
+            arr = $('#select2TAssistantSurgeon').val();
+            $.each(arr.split(','), function (i, val) {
+                ctrC++;
+                entry.OTOrderDetail.push({
+                    type: 3,
+                    typeid: val,
+                    charges: "0",
+                    priority: ctrC
+                });
+            })
+
+            ctrC = 0;
+            arr = $('#select2TAnaesthetist').val();
+            $.each(arr.split(','), function (i, val) {
+                ctrC++;
+                entry.OTOrderDetail.push({
+                    type: 4,
+                    typeid: val,
+                    charges: "0",
+                    priority: ctrC
+                });
+            })
+
+            ctrC = 0;
+            arr = $('#select2TScrubNurse').val();
+            $.each(arr.split(','), function (i, val) {
+                ctrC++;
+                entry.OTOrderDetail.push({
+                    type: 5,
+                    typeid: val,
+                    charges: "0",
+                    priority: ctrC
+                });
+            })
+
+            ctrC = 0;
+            arr = $('#select2TEquipment').val();
+            $.each(arr.split(','), function (i, val) {
+                ctrC++;
+                entry.OTOrderDetail.push({
+                    type: 6,
+                    typeid: val,
+                    charges: "0",
+                    priority: ctrC
+                });
+            })
+ 
+            console.log(entry);
+          
+
+         setTimeout(function () {
+            $.ajax({
+                url: baseURL + 'Save',
+                data: JSON.stringify(entry),
+                type: 'post',
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                  
+                    c.ButtonDisable('#btnSave', true);
+                },
+                success: function (data) {
+                    $('#preloader').hide();
+                    c.ButtonDisable('#btnSave', false);
+
+                    if (data.ErrorCode == 0) {
+                        c.MessageBoxErr("Error...", data.Message);
+                        return;
+                    }
+
+                    var OkFunc = function () {
+
+                        location.reload();
+                    };
+
+                    c.MessageBox(data.Title, data.Message.replace('100-', ''), OkFunc);
+                    
+
+                },
+                error: function (xhr, desc, err) {
+                    $('#preloader').hide();
+                    c.ButtonDisable('#btnSave', false);
+                    var errMsg = "Error in posting the data." + "<br>" + err + "<br>" + desc;
+                    c.MessageBox("Error...", errMsg, null);
+                }
+            });
+        }, 1000);
+
+        return ret;
+    }
+</script>

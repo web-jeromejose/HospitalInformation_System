@@ -1,0 +1,288 @@
+﻿@{
+    ViewBag.Title = "Results View";
+    //Layout = "~/Areas/OT/Views/Shared/_Layout.cshtml";
+}
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-list-alt" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">RESULTS VIEW</label>
+    </div>
+
+    <div class="pull-right" style="margin-top:3px;">
+        <a id="btnRefresh" class="btn btn-sm btn-success">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+</div>
+<div id="DashBoard" class="col-xs-12 form-horizontal standardborder">
+    <input id="Action" name="" type="hidden" class="form-control">
+    <input id="Id" name="" type="hidden" class="form-control">
+    
+    <div class="panel-body border-below">
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">PIN / Name</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="select2PIN" placeholder="Type PIN" type="text" class="form-control">
+            </div>
+            <div class="col-xs-4">
+                <input id="select2Name" placeholder="Type Name" type="text" class="form-control">
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Age</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="txtAge" name="" type="text" class="form-control">
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Gender</label>
+            </div>
+            <div class="col-xs-1">
+                <input id="txtGender" name="" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <ul id="tabMain" class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#sectionA">Results <span id="badgeResults" class="badge badge-success">0</span></a></li>
+            <li><a data-toggle="tab" href="#sectionB">OldResults</a></li>
+            <li><a data-toggle="tab" href="#sectionC">Endoscopy Reports</a></li>
+            <li><a data-toggle="tab" href="#sectionD">CathLab Reports <span id="badgeCathLab" class="badge badge-success">0</span></a></li>
+
+            <div class="pull-right" style="margin-top:3px; margin-right:10px;">
+                <input id="iChkPanicValue" type="checkbox" value="false"/>
+                <label class="control-label">Panic Value Results</label>
+            </div>
+
+        </ul>
+
+        <div class="tab-content">
+            
+            <div id="sectionA" class="tab-pane fade in active">
+                <div class="border">
+@*                    <div class="row">
+                        <div class="pull-left" style="margin-top:3px; margin-right:10px;">
+                            <div class="col-xs-12">
+                                <a id="btnReportView" class="btn btn-sm btn-success">
+                                    <span class="glyphicon glyphicon-print"></span> Report
+                                </a>
+                            </div>
+                        </div>                
+                    </div>*@
+                    <div class="row rowMarginTop">
+
+                        <div id="grid" class="col-xs-12">
+                            <table id="gridResults" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                                <thead class="cAR-tlist-header">
+                                    <tr>
+                                        <th>OrderNo</th>
+                                        <th>Doctor</th>
+                                        <th>Section</th>
+                                        <th>Code</th>
+                                        <th>TestName</th>
+                                        <th>OrderDateTime</th>
+                                        <th>ID</th>
+                                        <th>TestID</th>
+                                        <th>StID</th>
+                                        <th>TestDoneBY</th>
+                                        <th>verifiedby</th>                                        
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <br>
+                
+                <div class="row">
+                    <div class="col-xs-12 pull-left">                      
+                        <label class="control-label border" style="background-color:#ffe8e8;">Test Not Done</label>
+                        <label class="control-label border" style="background-color:#ffffd9;">Test Done</label>
+                        <label class="control-label border" style="background-color:#d9ffec;">Results Confirmed</label>
+                    </div>
+                </div>
+
+            </div>
+            <div id="sectionB" class="tab-pane fade in">
+                <ul id ="tabOldResult" class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#sectionB1">Laboratory <span id="badgeLaboratory" class="badge badge-success">0</span></a></li>
+                    <li><a data-toggle="tab" href="#sectionB2">Radiology <span id="badgeRadiology" class="badge badge-success">0</span></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="sectionB1" class="tab-pane fade in active">
+
+                        <div class="border">
+                            <div class="row">
+                                <div id="grid" class="col-xs-12">
+                                    <table id="gridResultsOldLab" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                                        <thead class="cAR-tlist-header">
+                                            <tr>
+                                                <th>DateCompleted</th>
+                                                <th>Doctor</th>
+                                                <th>Code</th>
+                                                <th>TestName</th>
+                                                <th>PatientType</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="sectionB2" class="tab-pane fade in ">
+
+                        <div class="border">
+                            <div class="row">
+                                <div id="grid" class="col-xs-12">
+                                    <table id="gridResultsOldRadiology" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                                        <thead class="cAR-tlist-header">
+                                            <tr>
+                                                <th>DateCompleted</th>
+                                                <th>Doctor</th>
+                                                <th>Code</th>
+                                                <th>TestName</th>
+                                                <th>PatientType</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+            </div>
+            <div id="sectionC" class="tab-pane fade in">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#sectionC1">New Results <span id="badgeNewResults" class="badge badge-success">0</span></a></li>
+                    <li><a data-toggle="tab" href="#sectionC2">Old Results <span id="badgeOldResults" class="badge badge-success">0</span></a></li>
+                </ul>                
+                <div class="tab-content">
+                    <div id="sectionC1" class="tab-pane fade in active">        
+
+                        <div class="border">
+                            <div class="row">
+                                <div id="grid" class="col-xs-12">
+                                    <table id="gridEndoscopyNew" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                                        <thead class="cAR-tlist-header">
+                                            <tr>
+                                                <th>SlNo.</th>
+                                                <th>PIN</th>
+                                                <th>Name</th>
+                                                <th>Age</th>
+                                                <th>Gender</th>                                                
+                                                <th>RequestDTime</th>
+                                                <th>BillNo</th>
+                                                <th>PatientType</th>
+                                                <th>ProcedureName</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="sectionC2" class="tab-pane fade in">
+                    
+                        <div class="border">
+                            <div class="row">
+                                <div id="grid" class="col-xs-12">
+                                    <table id="gridEndoscopyOld" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                                        <thead class="cAR-tlist-header">
+                                            <tr>
+                                                <th>PIN</th>
+                                                <th>PatientName</th>
+                                                <th>Age</th>
+                                                <th>Gender</th>
+                                                <th>VisitDate</th>
+                                                <th>Room</th>
+                                                <th>Procedure</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                           
+                    </div>
+                </div>
+
+            </div>
+            <div id="sectionD" class="tab-pane fade in">
+                <div class="border">
+                    <div class="row">
+                        <div id="grid" class="col-xs-12">
+                            <table id="gridCathLab" class="Hide Show table table-nomargin table-condensed fahad" width="100%" style="cursor: pointer; width:100%!important;">
+                                <thead class="cAR-tlist-header">
+                                    <tr>
+                                        <th>ID</th>                                        
+                                        <th>OrderDateTime</th>
+                                        <th>ProcedureID</th>                                        
+                                        <th>ProcedureName</th>
+                                        <th>PatientType</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="modal modalPortrait" id="modalReport" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-print" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;">LABORATORY REPORT</h4>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+
+                        <a id="btnCloseReport" class="btn btn-sm btn-danger pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+                            <span class="glyphicon glyphicon-remove"></span> Close
+                        </a>
+                                               
+                    </div>
+                </div>   
+
+            </div>
+
+            <div class="modal-body form-horizontal">
+
+                <div id="reportBorder" class="border">
+
+                    <iframe id="myReport" width="100%" style="overflow: auto !important;height:100%;border: 1px solid #D4D0C8;">
+                    </iframe>                    
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/OT/ResultsView.js")" type="text/javascript"></script>
+}

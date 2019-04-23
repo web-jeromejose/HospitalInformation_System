@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "OtReportMRD";
+}
+
+ 
+
+  @*<iframe id=" " src="http://localhost:42229/OT/Reports/OtReportMRD" width="100%"  height="100%" frameborder="10" class=" "></iframe>*@
+
+
+
+ 
+<div class="modal modalSmall" id="FrmReason" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Reason of cancelling</h4>
+            </div>
+
+            <div class="modal-body form-horizontal">
+
+             <iframe id=" " src="http://130.7.1.9/HISMRDREP/MRDREP/Reports/OTReport" width="100%"  height="100%" frameborder="0" class=" "></iframe>
+
+            </div>
+
+            <div class="modal-footer">
+                
+               @* <a id="btnCloseReason" class="btn btn-sm btn-danger pull-right pull-right-margin button-width">
+                    <span class="glyphicon glyphicon-remove"></span> Close
+                </a>
+                <a id="btnSaveReason" class="btn btn-sm btn-success pull-right pull-right-margin button-width">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> OK
+                </a>               *@
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    var c = new Common();
+    c.ModalShow('#FrmReason', true);
+</script>

@@ -1,0 +1,89 @@
+﻿@model OTEf.Core.Model.OTItem
+
+ <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-pencil" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;">CREATE ITEM</h4>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+                         <button class="btn btn-sm btn-success pull-right" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-off"></span> Close
+                        </button>
+                        <button id="btn-clear" class="btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-stop"></span> Clear
+                        </button>
+                        <button id="btn-create" class="btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-check"></span> Save
+                        </button>
+                    </div>
+                </div>                
+
+            </div>
+            <div class="modal-body form-horizontal">
+                 @{
+                       AjaxOptions createopt = new AjaxOptions()
+                       {
+                           HttpMethod = "POST",
+                           //OnBegin = "_indicator.Show($('#schedules'))",
+                           //OnComplete = "OnComplete()",
+                           LoadingElementDuration = 1000,
+                           UpdateTargetId = "modalEntry",
+                           InsertionMode = InsertionMode.Replace,
+                           OnSuccess = "createSuccess()"
+                       };
+                }
+  
+                @using (Ajax.BeginForm("OTItemCreate", "MasterFile", null, createopt, new { id = "FormOTItemCreate" }))
+                {
+                    <div class="form-group">
+                        <div class="col-md-12">
+                         <label  class="control-label">Item Name</label>
+                         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </div>
+                     
+                    </div>
+                }
+          
+            </div>
+        </div>
+ </div>
+
+
+<script type="text/javascript">
+    var c = new Common();
+    $(document).ready(function () {
+        $("#btn-create").click(function () {
+            if (validate()) {
+                $("#FormOTItemCreate").submit();
+            }
+        });
+        $("#btn-clear").click(function () {
+            clear();
+        });
+    });
+
+    function validate() {
+        if ($.trim($("#Name").val()) == "") {
+
+            c.MessageBoxErr("Validation Error", "* Item name is required");
+
+            return false;
+        }
+
+        return true;
+    };
+
+    function clear() {
+        $("#Name").val('');
+    };
+
+    function createSuccess() {
+        tblList.draw();
+    }
+
+</script>

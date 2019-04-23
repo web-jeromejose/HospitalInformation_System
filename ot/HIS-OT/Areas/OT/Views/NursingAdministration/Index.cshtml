@@ -1,0 +1,351 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Index";
+
+}
+
+<section class="content">
+    <div id="headerMain" class="col-xs-12 standardborder">
+        <div class="pull-left">
+            <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+            <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">NURSING ADMINISTRATION</label>
+        </div>
+        <div class="pull-right" style="margin-top:3px;">
+            <button type="button" data-toggle="modal" data-target="#modalEntry"  class="button-width btn btn-sm btn-success modalEntry">
+                <span class="glyphicon glyphicon-file"></span> New
+            </button>
+
+            <a id="btnRefresh" class="button-width btn btn-sm btn-success" onclick="return location.reload();">
+                <span class="glyphicon glyphicon-refresh"></span> Refresh
+            </a>
+        </div>
+
+    </div>
+
+    <div id="DashBoard" class="col-xs-12">
+        <div class="row">
+            <table id="TblDashboard" class="table table-bordered table-hover ">
+                <thead class="ColumnHeader cAR-tlist-header ">
+                    <tr></tr>
+                </thead>
+            </table>
+
+        </div>
+
+
+    </div>
+ 
+
+    @*MODAL*@
+    <div class="modal  " id="modal-showselected" style=" padding-right: 17px;">
+        <div class="modal-dialog " style="width: 90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="box-tools pull-left">
+                        <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+                        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">Nursing Administration - Order View </label>
+                    </div>
+                    <div class="box-tools pull-right">
+                        <div class="box-tools">
+                            <button id="btn-can" data-orderid="0" class=" btn btn-success btn-sm"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span>Cancel Order</button>
+                            <button type="button" class=" button-width btn-danger  btn  btn-sm btncloseview " data-dismiss="modal" aria-label="Close">Close</button>
+                        </div>
+                    </div> 
+                </div>
+                    <div class="modal-body">
+                        <div class="box box-success">
+                            <div class=" "></div>
+                            <div class="box-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label for="txtpatient" class="col-sm-1 control-label">PIN</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="txtpatient" class="form-control" readonly />
+                                            </div>
+                                            <label for="txtbed" class="col-sm-1 control-label">Bed No</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" id="txtbed" class="form-control" readonly />
+                                            </div>
+                                            <label for="prefixorderno" class="col-sm-1 control-label">IPID</label>
+                                            <div class="col-sm-2">
+                                                <input id="prefixorderno" type="text" class="form-control" readonly />
+                                            </div>
+                                            <label for="date" class="col-sm-1 control-label">
+                                                Date
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="dt" type="text" class="form-control" readonly value="@DateTime.Now.ToString("dd-MMM-yyyy HH:mm")" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label for="txtname" class="col-sm-1 control-label">
+                                                Name
+                                            </label>
+                                            <div class="col-sm-5">
+                                                <input id="txtname" type="text" class="form-control" readonly />
+                                            </div>
+                                            <label for="ward" class="col-sm-1 control-label">
+                                                Ward
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="ward" type="text" class="form-control" style="font-size: 10px;" readonly />
+                                            </div>
+                                            <label for="package" class="col-sm-1 control-label">
+                                                Package
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="package" type="text" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label for="txtage" class="col-sm-1 control-label">
+                                                Age
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="txtage" type="text" class="form-control" readonly />
+                                            </div>
+                                            <label for="txtsex" class="col-sm-1 control-label">
+                                                Sex
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="txtsex" type="text" class="form-control" readonly />
+                                            </div>
+
+                                            <label for="txtcompany" class="col-sm-1 control-label">
+                                                Company
+                                            </label>
+                                            <div class="col-sm-5">
+                                                <input id="txtcompany" type="text" class="form-control" style="font-size: 10px;" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label for="drugallergies" class="col-sm-1 control-label">
+                                                Allergies
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="drugallergies" type="text" class="form-control" readonly />
+                                            </div>
+                                            <label for="blood" class="col-sm-1 control-label">
+                                                Blood
+                                            </label>
+                                            <div class="col-sm-2">
+                                                <input id="blood" type="text" class="form-control" readonly />
+                                            </div>
+
+                                            <label for="txtdoctor" class="col-sm-1 control-label">
+                                                Doctor
+                                            </label>
+                                            <div class="col-sm-5">
+                                                <input id="txtdoctor" type="text" class="form-control" data-id="0" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    @*<div class="col-sm-4">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="txtpatientID" class="col-sm-2 control-label">Search</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="txtsearchproc" class="sel _select_item" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                                    <div class="col-sm-8  ">
+                                        <table id="tbl-selected" class="table table-bordered table-hover ">
+                                            <thead class="ColumnHeader cAR-tlist-header ">
+                                                <tr></tr>
+                                            </thead>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        @*<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>*@
+                    </div>
+                </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+    <div class="modal  " id="modalEntry" style=" padding-right: 17px;">
+        <div class="modal-dialog " style="width: auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+     
+                    <div class="box-tools pull-left">
+                        <h4 class="modal-title">Nursing Administration -New Order</h4>
+
+                    </div>
+
+                    <div class="box-tools pull-right">
+                            <button id="btn-new-save" data-orderid="0" class="btn btn-success  btn-sm"><span aria-hidden="true" class="glyphicon glyphicon-new"></span>Save New Order</button>
+                            <button type="button" class="btn btn-sm  btn-danger btnclose" data-dismiss="modal" aria-label="Close">Close</button>
+                    </div>
+                    <br />
+                </div>
+                <div class="modal-body">
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <div class="col-sm-12">
+                              
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label for="txtpatient_new" class="col-sm-1 control-label">PIN</label>
+
+
+
+
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <input type="text" id="txtpatient_new" class="form-control select2" />
+                                            </div>
+
+                                            @*<input type="text" id="txtpatient_new" class="form-control" readonly />*@
+                                        </div>
+                                        <label for="txtbed_new" class="col-sm-1 control-label">Bed No</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" id="txtbed_new" class="form-control" readonly />
+                                        </div>
+                                        <label for="prefixorderno_new" class="col-sm-1 control-label">IPID</label>
+                                        <div class="col-sm-2">
+                                            <input id="prefixorderno_new" type="text" class="form-control" readonly />
+                                        </div>
+                                        <label for="dt_new" class="col-sm-1 control-label">
+                                            Date
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="dt_new" type="text" class="form-control" readonly value="@DateTime.Now.ToString("dd-MMM-yyyy HH:mm")" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label for="txtname_new" class="col-sm-1 control-label">
+                                            Name
+                                        </label>
+                                        <div class="col-sm-5">
+                                            <input id="txtname_new" type="text" class="form-control" readonly />
+                                        </div>
+                                        <label for="ward_new" class="col-sm-1 control-label">
+                                            Ward
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="ward_new" type="text" class="form-control" style="font-size: 10px;" readonly />
+                                        </div>
+                                        <label for="package_new" class="col-sm-1 control-label">
+                                            Package
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="package_new" type="text" class="form-control" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label for="txtage_new" class="col-sm-1 control-label">
+                                            Age
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="txtage_new" type="text" class="form-control" readonly />
+                                        </div>
+                                        <label for="txtsex_new" class="col-sm-1 control-label">
+                                            Sex
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="txtsex_new" type="text" class="form-control" readonly />
+                                        </div>
+
+                                        <label for="txtcompany_new" class="col-sm-1 control-label">
+                                            Company
+                                        </label>
+                                        <div class="col-sm-5">
+                                            <input id="txtcompany_new" type="text" class="form-control" style="font-size: 10px;" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label for="drugallergies_new" class="col-sm-1 control-label">
+                                            Allergies
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="drugallergies_new" type="text" class="form-control" readonly />
+                                        </div>
+                                        <label for="blood_new" class="col-sm-1 control-label">
+                                            Blood
+                                        </label>
+                                        <div class="col-sm-2">
+                                            <input id="blood_new" type="text" class="form-control" readonly />
+                                        </div>
+
+                                        <label for="txtdoctor_new" class="col-sm-1 control-label">
+                                            Doctor
+                                        </label>
+                                        <div class="col-sm-5">
+                                            <input id="txtdoctor_new" type="text" class="form-control" data-id="0" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <table id="tbl-items-list" style="cursor:cell" class="table table-bordered table-hover ">
+                                        <thead class="ColumnHeader cAR-tlist-header " style="width:auto;">
+                                            <tr></tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="col-sm-6  ">
+                                    @*<table id="tbl-newselected-items" class="table table-bordered table-hover ">
+                                        <thead class="ColumnHeader cAR-tlist-header ">
+                                            <tr>
+                                                <th>QTY</th>
+                                                <th>Code</th>
+                                                <th>Name</th>
+                                            </tr>
+                                        </thead>
+                                    </table>*@
+
+                                    <table id="tbl-newselected-items" class="table table-condensed">
+                                        <thead class="ColumnHeader cAR-tlist-header " style="width:auto;">
+                                            <tr>
+                                                <th style="width: 50px;">#</th>
+                                                <th>Procedure</th>
+                                                <th style="width: 100px;">Quantity</th>
+                                                <th style="width: 50px;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+
+                                </div>
+
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+</section>
+
+    @section scripts {
+        <script defer src="@Url.Content("~/Scripts/OT/NursingAdministration.js")" type="text/javascript"></script>
+    }
