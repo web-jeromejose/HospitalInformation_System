@@ -1,0 +1,200 @@
+﻿
+<style>
+    #tbl-machine td {
+        font-size:12px !important;
+    }
+    table#tbl-machine thead tr th {
+        color:white !important;
+    }
+
+</style>
+
+<div class="panel panel-default" >
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>
+                    <b class="navbar-header">Machine Setup</b>
+                </h4>
+              
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs col-sm-12" role="tablist">
+                    <li role="presentation" class="active"><a href="#machine" aria-controls="machine" role="tab" data-toggle="tab">Machine List</a></li>
+                    <li role="presentation"><a href="#modality" aria-controls="modality" role="tab" data-toggle="tab">Modality List</a></li>
+                    <li role="presentation"><a href="#procmodality" aria-controls="procmodality" role="tab" data-toggle="tab">Procedure Modality List</a></li>                    
+                </ul>
+                <div class="tab-content col-sm-12">
+                    <br />
+                    <div role="tabpanel" class="tab-pane active" id="machine">
+                        <div class="row">
+
+                                 <button type="button" id="btn-new" class="btn btn-sm btn-success pull-right" style="margin-left:40px;">
+                                     <span aria-hidden="true" class="glyphicon glyphicon-ok"></span> New Machine
+                                 </button>
+                            <div >
+                                <table id="tbl-machine" class="table no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Department</th>
+                                            <th>Location</th>
+                                            <th>Room</th>
+                                            <th>Modalities</th>
+                                            <th>Acquisition Date</th>
+                                            <th>Commission Date</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="modality">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <table id="tbl-modality" class="table table-condensed table-responsive no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="procmodality">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <table id="tbl-procmodality" class="table table-condensed table-responsive no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Procedure Name</th>
+                                            <th>Modality</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-mach" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-5">
+                       <h5>Machine Setup</h5> 
+                    </div>
+                    <div class="navbar-collapse navbar-right">
+                        <button type="button" id="btn-sv" class="btn btn-sm btn-success"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span> Save Change</button>
+                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
+                            <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>(Esc)</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Machine Code</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" id="txtcode" class="sel" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Machine Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="txtname" class="form-control clr" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Description</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="txtdesc" class="form-control clr" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Department</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" id="txtdept" class="sel" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Location</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" id="txtlocation" class="sel" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Room</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" id="txtroom" class="form-control clr" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Modalities</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="txtmodalt" class="sel"  />
+                                    </div>
+                                </div>
+
+                                 <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Doctors</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="txtDoctors" class="sel"  />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Acquisition Date</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" id="txtaqc" class="form-control dt" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="col-sm-3 control-label">Commission Date</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" id="txtcomm" class="form-control dt" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="url"     
+    data-mach="@Url.Action("GetMachineList")"
+    data-sv="@Url.Action("GetMachineSv")"
+    data-dept="@Url.Action("GetDept")"
+    data-location="@Url.Action("GetLocation")"
+    data-modali="@Url.Action("GetModalities")"
+    data-asset="@Url.Action("GetAssetItems")"
+    data-procmodal="@Url.Action("GetProcModal")"
+    data-getdoctors="@Url.Action("GetDoctors")"
+    data-getmachinedoctors="@Url.Action("GetMachineDoctors")"
+    
+    data-id="0"
+    />
+
+@Scripts.Render("~/Scripts/itadmin/jqmachinelist.js")

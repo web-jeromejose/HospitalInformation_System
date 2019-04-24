@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<input type="hidden" id="url"
+data-fetchorg="@Url.Action("FetchOrganisationDetails")"
+data-getcompany="@Url.Action("CompanyList")"
+data-getcurrency="@Url.Action("CurrencyList")"
+data-getlistnoprice="@Url.Action("ItemListNoPrice")"
+data-getlistwithprice="@Url.Action("ItemListWithPrice")"
+data-save="@Url.Action("Save")"
+/>
+
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-5">
+            <h4><b class="navbar-header">Organisation Information</b></h4>
+         </div>
+   
+   </div>
+</div>
+    <div class="panel-body">
+         <div class="form-horizontal">
+             <div class="form-group">
+                        <label class="control-label col-sm-2">Organisation Name:</label>
+                        <div class="col-sm-3">
+                                <input type="text" class="form-control" id="txtOrganizationName"/>
+                        </div>
+                        <label class="control-label col-sm-2">Additional Information:</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="form-control"  id="txtAdditionalInfo"/>
+                        </div>
+              </div>
+             
+              <div class="form-group">
+                <label class="control-label col-sm-2">Address1:</label>
+                   <div class="col-sm-3">
+                      <input type="text" class="form-control"  id="txtAddress1"/>
+                  </div>
+                 <label class="control-label col-sm-2">Address2:</label>
+                   <div class="col-sm-3">
+                      <input type="text" class="form-control"  id="txtAddress2"/>
+                  </div>
+             @*     <label class="control-label col-sm-1">Mark Up %</label>
+                        <div class="col-sm-2">
+                           <input type="text" class="sel" id="txtMarkup"/>
+                        </div>
+                      <button type="button" class="btn btn-sm btn-default button-width" id="btnPreview">
+                        <span class="glyphicon glyphicon-search"></span> Find Item
+                    </button>*@
+
+              </div>
+       
+              <div class="form-group">
+                  <label class="control-label col-sm-2">Address3:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtAddress3"/>
+                 </div>
+                <label class="control-label col-sm-2">City:</label>
+                   <div class="col-sm-3">
+                      <input type="text" class="form-control"  id="txtCity"/>
+                  </div>
+              </div>
+            <div class="form-group">
+                      <label class="control-label col-sm-2">Zip Code:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtZipCode"/>
+                 </div>
+                         <label class="control-label col-sm-2">Issue Authority Code:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtIssueAuthCode"/>
+                 </div>
+                            </div>
+                   <div class="form-group">
+                    <label class="control-label col-sm-2">District:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtDistrict"/>
+                 </div>
+                  <label class="control-label col-sm-2">Country:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtCountry"/>
+                 </div>
+               </div>
+               <div class="form-group">
+                    <label class="control-label col-sm-2">Phone No:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtPhone"/>
+                 </div>
+                   <label class="control-label col-sm-2">Email Address:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtEmailAdd"/>
+                 </div>
+              </div>
+                   <div class="form-group">
+                    <label class="control-label col-sm-2">Fax No:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtFaxno"/>
+                 </div>
+                   <label class="control-label col-sm-2">Pager No:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtPagerAdd"/>
+                 </div>
+              </div>
+                <div class="form-group">
+                   <label class="control-label col-sm-2">Cell Phone No:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control"  id="txtCellPhone"/>
+                 </div>
+                     <label class="control-label col-sm-2">Default Company:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="sel"  id="Select2DefaultCompany"/>
+                 </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2">Currency:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="sel"  id="Select2Currency"/>
+                 </div>
+                </div>
+            </div>
+               <div class="pull-right">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+           @* <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+         </div> 
+         </div>
+
+    </div>
+     
+
+
+@section scripts{
+<script src="~/Scripts/itadmin/Organisation.js"></script>
+
+}

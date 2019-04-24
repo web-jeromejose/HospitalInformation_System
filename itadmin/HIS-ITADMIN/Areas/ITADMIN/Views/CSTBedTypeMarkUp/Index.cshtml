@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "CST Bed Type MarkUp";
+}
+
+<input type="hidden" id="url"
+data-getbedtype="@Url.Action("BedtypeMarkUp")"
+data-save="@Url.Action("Save")"
+/>
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">CST BedType MarkUp(Cash & Credit)</b></h4>
+         </div>
+      </div>
+   </div>
+    <div class="panel-body">
+             <div class="col-xs-12">
+                              <table id="gridBedTypeMarkUp" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                               @*      <tr>
+                                       <th colspan="7" class="centertext compressedtableheader" style="text-align:center">Range MarkUp</th>
+                                    </tr>*@
+                                    <th><input id="iChkAllTest" type="checkbox" value="false"/></th>
+                                    <th>Bed Type</th>
+                                    <th>Current MarKUp %</th>
+                                    <th>New MarkUp %</th>
+                                    <th></th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                             <div class="pull-right">
+                                <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+                               @* <button id="btnCancelran" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                             </div>
+                           </div>    
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/BedtypeMarkup.js"></script>
+}

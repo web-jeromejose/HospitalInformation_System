@@ -1,0 +1,206 @@
+﻿@using DataLayer.ITAdmin.Model
+@model UpdateDoctorsCode
+ 
+@section styles
+    {
+
+@*    <link href="~/Content/css/SGHLayout/plugins/icheck3/skins/square/_all.css" rel="stylesheet" />
+     
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/select2/select2.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/icheck2/all.min.css")" />
+    <link rel="Stylesheet" href="@Url.Content("~/Content/styles/itadmin/iptariff.css")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />    
+ 
+    <link href="@Url.Content("~/Content/datatable/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datatable/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/toastr/content/toastr.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/glyphicons/glyphicons.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/datepicker/datepicker.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.eot")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.ttf")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff")" />
+ *@
+}
+
+@section scripts{   
+ 
+<script type="text/javascript" src="@Url.Content("~/scripts/jquery-ui-1.10.4.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/content/plugins/icheck/jquery.icheck.js")"></script> 
+<script src="~/Content/plugins/icheck3/icheck.js"></script>
+<script src="~/Content/js/dataTables.bootstrap.js"></script>
+<script src="~/Scripts/itadmin/sghUtilities/UpdateDoctorsCode.js"></script>
+<script src="~/Content/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="~/Content/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+ 
+}
+
+
+
+<input type="hidden" id="url"
+ 
+data-getfindemployeeid="@Url.Action("GetDocEmployeeId")"
+data-save="@Url.Action("UpdateDoctorsCodeSave")"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-12">
+            <h4><b class="navbar-header">Update Doctors Code / Email Address</b></h4>
+            </div>
+       
+   </div>
+</div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            <div class="row">
+    <div class="col-xs-12">
+        <form id="frmUpdateDoctorsCode" class="form-horizontal"   method="get">
+
+               <div class="row">
+                    <div class="col-xs-10" style="padding-left: 100px;">
+                  <fieldset >
+                      <legend>Employee Details</legend>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-xs-4">Employee ID </label>
+                    <div class="col-xs-8">
+                        <select id="cboEmployee" name="cboEmployee" data-placeholder="Select the Employee" style="width: 100%;">
+                            <option></option>
+                            @foreach (var item in Model.EmployeeList )
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        </select>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Doctor Code</label>
+                    <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="txtDoctorCode" name="txtDoctorCode"/>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-xs-4">Nationality </label>
+                    <div class="col-xs-8">
+                     <input type="text" class="form-control disabled-text" id="txtNationality" name="txtNationality"/>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Email Address</label>
+                    <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="txtEmail" name="txtEmail"/>
+                    </div>
+                </div>
+            </div> 
+
+   </fieldset>
+                </div>
+                </div>
+
+            
+             <div class="row">
+                    <div class="col-xs-10" style="padding-left: 100px;">
+                  <fieldset >
+                      <legend>Work Details</legend>
+
+                       <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-xs-4">Department </label>
+                    <div class="col-xs-8">
+                     <input type="text" class="form-control disabled-text" id="txtDepartment" name="txtDepartment"/>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Position</label>
+                    <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="txtPosition" name="txtPosition"/>
+                    </div>
+                </div>
+            </div> 
+
+                        <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-xs-4">Category </label>
+                    <div class="col-xs-8">
+                        <select id="cboCategory" name="cboCategory" data-placeholder="Select the Category" style="width: 100%;">
+                            <option></option>
+                            @foreach (var item in Model.CategoryList)
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        </select>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Is Physiotherapist   </label>
+                    <div class="col-xs-8">
+                        <select id="txtPhysiotherapist" name="txtPhysiotherapist" data-placeholder="Select the Category" style="width: 100%;">
+                             <option value="0">No</option>
+                             <option value="1">Yes</option>
+                        </select>
+
+                    </div>
+ 
+
+                </div>
+            </div>
+
+                         <div class="col-xs-6">
+                 <div class="form-group">
+                    
+                      <label class="control-label col-xs-4">Status   </label>
+                    <div class="col-xs-8">
+                        <select id="cboStatus" name="cboStatus" data-placeholder="Select the Category" style="width: 100%;">
+                             <option value=""></option>
+                             <option value="0">Active</option>
+                             <option value="1">InActive</option>
+                        </select>
+
+                    </div>
+
+                </div>
+            </div>
+
+     <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal "> Save</button>
+ 
+                  </fieldset>
+                </div>
+                </div>
+
+
+
+
+        </form>
+    </div>
+</div>
+
+
+        
+
+
+        </div>
+</div>
+</div>
+
+

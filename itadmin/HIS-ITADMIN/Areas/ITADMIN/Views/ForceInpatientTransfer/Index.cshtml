@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Force InPatient Transfer";
+}
+
+<input type="hidden" id="url"
+    data-process="@Url.Action("Process")" 
+    data-fetchip ="@Url.Action("GetRegNo")" 
+    data-getbedlistwithnopatient="@Url.Action("GetBedList")" 
+    data-save="@Url.Action("Save")" 
+
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-5">
+            <h4><b class="navbar-header">Force InPatient Bed Transfer</b></h4>
+         </div>
+
+               <div class="col-xs-6">
+         <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal "> SAVE</button>
+                </div>
+
+      </div>
+   </div>
+   <div class="panel-body">
+             <div class="form-horizontal">
+
+                 <div class="row">
+                      <div class="form-group">
+                                <label class="control-label col-sm-1">Pin:</label>
+                            <div class="col-sm-3">
+                            <input type="text" class="sel" id="Select2Pin"/>
+                            </div>
+                        
+                        <label class="control-label col-sm-1">Name:</label>
+                        <div class="col-sm-4">
+                        <input type="text" class="form-control" id="txtName" disabled/>
+                        </div>
+                       
+
+                        <label class="control-label col-sm-1">Current Bed:</label>
+                        <div class="col-sm-2">
+                        <input type="text" class="form-control" id="txtCurrentBed" disabled/>
+                        </div>
+
+                            </div>
+
+
+                 </div>
+                       
+ 
+
+
+
+
+          
+    </div>
+              <div class="form-group">
+                <label class="control-label col-sm-1">Transfer To:</label>
+                  <div class="col-sm-2">
+                    <input type="text" class="sel" id="Select2TransferPin"/>
+                  </div>
+                    <div class="col-sm-6">
+                     <input type="text" class="sel" id="HasBed" value="Patient is currently in proper bed and cannot be transfer" disabled/>
+                          </div>
+            </div>
+   </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/ForceInPatientTransfer.js"></script>
+}

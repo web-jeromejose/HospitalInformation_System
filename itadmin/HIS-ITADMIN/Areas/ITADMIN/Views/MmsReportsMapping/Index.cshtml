@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">MMS Reports Mapping</b></h4>
+             </div>
+   
+       </div>
+    </div>
+     <div class="panel-body">
+          <div class="form-horizontal">
+               <div class="form-group">
+                     <label class="control-label col-sm-1">From</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="select2From" class="sel" />
+                        </div>
+                
+                        <button type="button" class="btn btn-sm btn-default button-width" id="btnSave">
+                     <span class="glyphicon glyphicon-th-list"></span> Save Mapping Report
+                     </button>
+                </div>
+
+
+
+                <div class="col-xs-12">
+          <table id="gridlistcashdiscount" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+               @*     <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Selected Items</th>
+                    </tr> *@
+                  <th><input id="iChkAllTest" type="checkbox" value="false"/></th>
+                   <th>Report ID</th>
+                   <th>Report Name</th>
+                   <th></th>
+                  <th></th>
+                </tr>
+             </thead>
+          </table>
+        </div>
+
+
+           </div>
+     </div>
+</div>
+
+<input type="hidden" id="url"
+ data-getstation="@Url.Action("StationList")"
+ data-fetchmmsreportmapping="@Url.Action("MmsRepostMappingDashboard")"
+ data-save="@Url.Action("Save")"
+ 
+/>
+
+
+@section scripts{
+    <script src="~/Scripts/itadmin/MmsReportsMapping.js"></script>
+}
+

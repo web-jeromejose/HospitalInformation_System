@@ -1,0 +1,510 @@
+﻿@model DataLayer.ITAdmin.Model.UserAccessReviewVM
+
+@{
+    ViewBag.Title = "UserAccessReviewReport";
+}
+
+
+@section styles
+    {
+
+    <link href="~/Content/css/SGHLayout/plugins/icheck3/skins/square/_all.css" rel="stylesheet" />
+     
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/select2/select2.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/icheck2/all.min.css")" />
+    <link rel="Stylesheet" href="@Url.Content("~/Content/styles/itadmin/iptariff.css")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />    
+ 
+    <link href="@Url.Content("~/Content/datatable/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datatable/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/toastr/content/toastr.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/glyphicons/glyphicons.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/datepicker/datepicker.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.eot")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.ttf")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff")" />
+        
+ 
+}
+
+@section scripts{   
+ 
+<script type="text/javascript" src="@Url.Content("~/scripts/jquery-ui-1.10.4.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/content/plugins/icheck/jquery.icheck.js")"></script> 
+<script src="~/Content/plugins/icheck3/icheck.js"></script>
+<script src="~/Content/js/dataTables.bootstrap.js"></script>
+@*<script src="~/Scripts/itadmin/IPTariff.js"></script>*@
+<script src="~/Content/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="~/Content/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+ 
+ 
+}
+
+
+        
+
+@*
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-12">
+            <h4><b class="navbar-header">User Access Review Report</b></h4>
+            </div>
+       </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+               <div class="row">
+                <div class="col-xs-12">
+
+                       <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Department Name </label>
+                                <div class="col-xs-8">
+                                    <select id="cboDeptId" name="cboDeptId" data-placeholder="Select Dept" style="width: 100%;">
+                                        <option></option>
+                                        @foreach (var item in Model.DeptList)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    </select>
+                        
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                   </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+</div>*@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b class="navbar-header">Role Details Review Report</b></h4>
+            </div>
+           <div class="navbar-collapse navbar-right">
+                @*<button id="btn-punch-view" type="button" class="btn btn-sm btn-primary" >
+                    <span class="glyphicon glyphicon-file"></span> View</button>         *@       
+                <button id="btnDisplay" type="button" class="btn btn-sm btn-success" >
+                    <span class="glyphicon glyphicon-file"></span> View</button>                
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+      
+                     <label class="control-label col-sm-2">Department Name :</label>
+                  <div class="col-sm-3">
+                 <select id="cboDeptId" name="cboDeptId" data-placeholder="Select Dept" style="width: 100%;">
+                                        <option value="0">ALL</option>
+                                        @foreach (var item in Model.DeptList)
+                                        {
+                                            <option value="@item.ID">@item.Name</option>
+                                        }
+                                    </select>
+
+                 </div>
+
+            @*     <label class="control-label col-sm-1">From Date:</label>
+                <div class="col-sm-2">
+                   <div id="dtFrom" class="input-group date">
+                           <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-calendar"></span>
+                           </span>
+                        </div>
+               </div>
+
+               <label class="col-sm-1 control-label">To Date:</label>
+            <div class="col-sm-2">
+                <div id="dtTo" class="input-group date">
+                           <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-calendar"></span>
+                           </span>
+                        </div>
+                 </div>*@
+        </div>
+            </div>
+            <div id="_tbl"></div>
+        </div>
+    </div>
+
+
+
+
+
+<div id="modal-print" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <iframe id="rrpt" width="100%" style="overflow: auto !important; min-height: 800px; border: 1px solid #D4D0C8;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:98%;height:auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+
+                <h3 class="modal-title" id="myModalLabel">AuditTrail Reports</h3>  
+            </div>
+            <div class="modal-body">
+             
+                <form role="form" class="form-horizontal">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <div id="PDFForm" style="display:none; opacity:.99; background-color:#4f4f4f; position:fixed; width:100%; height:100%; top:0px; left:0px; z-index:999999999999999999999;">
+                                <div id="PDFFormHeader" style="position: absolute; background-color: Black; height:35px; width:100%; ">
+                                    <div class="pull-left" style="margin-left:10px; margin-top:6px; width:50px;opacity:1">
+                                        <div class="btn-group " style="background-color:#484242; color:white;">
+                                            <button style="background-color:#484242; color:white; border:0px !important;padding:0px !important;" type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+                                                Export To<span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li id="ExportToXLS"><a href="#">To .xls</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right" style="margin-right:10px; margin-top:5px; font-size:20px;">
+                                        <span id="btnPDFFormClose" class="glyphicon glyphicon-remove" style="cursor:pointer; color:white;" onclick="$('#PDFForm').hide();"></span>
+                                    </div>
+                                </div>
+               
+                                <div id="DownloadContainer" style="display:none;margin-top:35px; height:90%; width:100%; position:relative;">
+
+                                </div>
+                
+                                <img class="loadingpdf" src="@Url.Content("~/Content/images/loading128.gif")" style="position: absolute; left:0; top:0; right:0; bottom:0; margin:auto;" />
+                            </div>
+                            <div id="PreviewInPDF" class="col-xs-12 border" style="background-color:Gray; height:600px;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input type="hidden" id="url"
+
+data-getdept="@Url.Action("Select2Department")"
+data-getemp="@Url.Action("Select2Employeelst")"
+data-pdf="@Url.Action("ToPDFByAllRoles")"
+data-xls="@Url.Action("ToXLS")"
+/>
+
+
+
+<script>
+
+
+    var c = new Common();
+ 
+
+
+    $(document).ready(function () {
+
+        InitButton();
+        
+        $('#cboDeptId').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+
+        }).change(function (e) {
+            var select_val = $(e.currentTarget).val();
+            console.log(select_val);
+
+            //$('#preloader').show();
+
+            //$.ajax({
+            //    type: "GET",
+            //    contentType: 'application/json',
+            //    url: '',
+            //    data: { id: select_val },  //JSON.stringify(data),
+            //    beforeSend: function () {
+
+            //    },
+            //    success: function (data) {
+
+            //        console.log(data);
+            //        if (data.ErrorCode == 0) {
+            //            c.MessageBoxErr("Error...", data.Message);
+            //            return;
+            //        }
+
+            //        var OkFunc = function () {
+
+            //            if (Action == 3) {
+            //            }
+
+            //            Action = 0;
+
+            //        };
+                   
+            //        c.MessageBox(data.Title, data.Message, OkFunc);
+
+            //        $('#preloader').hide();
+
+            //    },
+            //    error: function (xhr, desc, err) {
+            //        c.ButtonDisable('#btnSave', false);
+            //        var errMsg = "Error in posting the data." + "<br>" + err + "<br>" + desc;
+            //        c.MessageBox("Error...", errMsg, null);
+
+            //        $('#preloader').hide();
+
+            //    }
+            //});
+
+
+
+        });
+
+ 
+      
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function InitButton() {
+        var NoFunc = function () {
+        };
+        // Sample usage
+        $('#btnPreview').click(function () {
+
+            $('#myModal').modal('show');
+            PrintPreview();
+
+            //var RegNo = c.GetValue('#txtRegno');
+            //if (RegNo == '') {
+            //   RegNo = -1
+            //} 
+            //var FromDate = c.GetDateTimePickerDate('#dtFrom');
+            //var ToDate = c.GetDateTimePickerDate('#dtTo');
+            //Requisitionlist(RegNo, FromDate, ToDate);
+        });
+
+        $('#btnSave').click(function () {
+            var YesFunc = function () {
+                Action = 1;
+                Save();
+            };
+            c.MessageBoxConfirm("Save Entry?", "Are you sure you want to Add the Entry?", YesFunc, null);
+
+        });
+
+        $('#btnModify').click(function () {
+            var YesFunc = function () {
+                Action = 2;
+                Save();
+
+            };
+            c.MessageBoxConfirm("Modify Entry?", "Are you sure you want to Modify the Entry?", YesFunc, null);
+
+        });
+
+        $('#btnRefesh').click(function () {
+
+            //  print_preview();
+            PrintPreview();
+            //$('#myModal').modal('show');
+            //PrintPreview();
+
+        });
+
+
+
+        var ret = false;
+
+        //ret = c.IsEmpty('#txtHomeAdress');
+
+        //if (ret) {
+        //    c.MessageBoxErr('Y/N...', 'Please input Y for YES and N for NO');
+        //    return false;
+        //}
+
+
+        $("#btnDisplay").on("click", function () {
+            var empty = false
+            empty = c.IsEmptySelect2('#Select2EmployeeId');
+            if (empty == true) {
+
+                c.MessageBoxErr('Empty...', 'Please select Employee');
+            } else {
+                ToPDF();
+
+
+
+            }
+
+
+        });
+        $("#ExportToXLS").on("click", function () {
+            ToXLS();
+        });
+
+        //$('#btnAddScientificAchievement').click(function () {
+        //    var ctr = $(tblScientificAchievementListId).DataTable().rows().nodes().length + 1;
+        //    tblScientificAchievement.row.add({
+        //        "SNo": ctr,
+        //        "ScientificAchievement": "",
+        //        "TransAchievementYear": "",
+        //        "Awards": "",
+        //        "Remarks": "",
+        //        "EmpId": Action == 1 ? "" : GetID,
+        //        "AchievementYear": ""
+        //    }).draw();
+        //    InitSelectedScientificAchievement();
+        //});
+    }
+
+
+
+    function Momentdatetime(value) {
+        return moment().format('l h:mm:ss A');
+    }
+
+
+    function setCookie(name, value, days) {
+        var expires;
+
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+        //document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function ToPDF() {
+        //if (debug) debugger;
+
+        $('#PDFMaximize').show();
+        $('.loadingpdf').show();
+
+        var filter = [{
+
+            DeptID: c.GetSelect2Id('#cboDeptId'),
+        }];
+        var filterfy = JSON.stringify(filter);
+        setCookie('Filterfy', filterfy, 365);
+
+
+        var url = $("#url").data("pdf") + "?page=1#zoom=100";
+        var content = '<iframe id="MyIFRAME" src="' + url + '" width="100%"  height="100%" frameborder="0" class="rpt-viewer-frame"></iframe>';
+
+        //$('#rptMaximize').empty();
+        //$('#rptMaximize').append(content);
+
+        $('#PreviewInPDF').empty();
+        $('#PreviewInPDF').append(content);
+
+        $('#MyIFRAME').unbind('load');
+        $('#MyIFRAME').load(function () {
+            $('.loadingpdf').hide();
+        });
+
+    }
+    function ToXLS() {
+        $('#PDFMaximize').show();
+        $('.loadingpdf').show();
+
+        var filter = [{
+           // FromDateLog: c.GetDateTimePickerDateTimeSCS('#dtFrom'),
+           // ToDateLog: c.GetDateTimePickerDateTimeSCS('#dtTo'),
+            EmpId: c.GetSelect2Id('#cboDeptId'),
+        }];
+        var filterfy = JSON.stringify(filter);
+        setCookie('Filterfy', filterfy, 365);
+
+        var url = $("#url").data("xls") + "?page=1#zoom=100";
+        var content = '<iframe id="MyIFRAME" src="' + url + '" width="100%"  height="100%" frameborder="0" class="rpt-viewer-frame"></iframe>';
+
+        //$('#rptMaximize').empty();
+        //$('#rptMaximize').append(content);
+
+        $('#PreviewInPDF').empty();
+        $('#PreviewInPDF').append(content);
+
+        $('#PDFMaximize').hide();
+        $('#MyIFRAME').unbind('load');
+        $('#MyIFRAME').load(function () {
+            $('.loadingpdf').hide();
+            $('#PDFMaximize').hide();
+        });
+
+
+    }
+
+
+</script>

@@ -1,0 +1,1174 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>QMS
+        <small>Queuing Management System</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>IT Admin</a></li>
+        <li class="active">QMS</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#main_tables" data-toggle="tab">Main Tables</a></li>
+                    <li><a href="#Zonetab" data-toggle="tab">Zone > Clinic Tab</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Other</a></li>
+                   
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="main_tables">
+                        <div class="row">
+                            <div class="col-md-6" style="border-right: 1px solid black;">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-primary direct-chat direct-chat-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Zone</h3>
+                                        <div class="box-tools pull-right">
+
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <!-- /.box-header -->
+                                            <!-- form start -->
+                                            <form role="form" id="FormZoneNew">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Code</label>
+                                                        <input type="text" class="form-control" id="zoneCode" name="zoneCode" placeholder="Enter Code" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="zoneName">Zone Name</label>
+                                                        <input type="text" class="form-control" id="zoneName" name="zoneName" placeholder="Enter Name" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="zoneFlow">Flow Zone Order</label>
+                                                        <input type="number" class="form-control" id="zoneFlow" name="zoneFlow" required>
+                                                        <p class="help-block">Order of the Zone</p>
+                                                    </div>
+
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-primary" style="display: none">Submit</button>
+                                                    <button type="button" class="btn btn-primary" onclick="jspage.FormSubmitZone()">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+                            <div class="col-md-6">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-primary direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Clinic</h3>
+                                        <div class="box-tools pull-right">
+
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <form role="form" id="FormClinic">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Clinic Zone</label>
+                                                        <input type="text" class="form-control" id="clinicZone" placeholder="Enter Zone">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Code</label>
+                                                        <input type="text" class="form-control" id="clinicCode" placeholder="Enter Code" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="zoneName">Clinic Name</label>
+                                                        <input type="text" class="form-control" id="clinicName" placeholder="Enter Name" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="clinicService">Service</label>
+                                                        <input type="text" class="form-control" id="clinicService" placeholder="Enter Service">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="zoneFlow">Flow Zone Order</label>
+                                                        <input type="number" class="form-control" id="clinicFlow" required>
+                                                        <p class="help-block">Order of the Zone</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-primary" style="display: none">Submit</button>
+                                                    <button type="button" class="btn btn-primary" onclick="jspage.FormSubmitClinic()">Submit</button>
+                                                </div>
+                                            </form>
+
+
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+                            <div class="col-md-6">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-primary direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Services</h3>
+                                        <div class="box-tools pull-right">
+
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <form role="form" id="FormSubmitService">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Service Name</label>
+                                                        <input type="text" class="form-control" id="serviceName" placeholder="Enter service">
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-primary" style="display: none">Submit</button>
+                                                    <button type="button" class="btn btn-primary" onclick="jspage.FormSubmitServices()">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div>
+                                    <!-- /.box-footer-->
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+                            <div class="col-md-6">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-primary direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Doctor - Location Mapping</h3>
+                                        <div class="box-tools pull-right">
+
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <form role="form" id="FormDoctorLocation">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Doctor</label>
+                                                        <input type="text" class="form-control" id="DocLocDoctorId" placeholder="Enter Doctor">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Location</label>
+                                                        <input type="text" class="form-control" id="DocLocLocationId" placeholder="Enter Location">
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-primary" style="display: none">Submit</button>
+                                                    <button type="button" class="btn btn-primary" onclick="jspage.FormDoctorLocation()">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div>
+                                    <!-- /.box-footer-->
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+
+
+                             <div class="col-md-6">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-primary direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Zone-Station Mapping (1 = 1) </h3>
+                                        <div class="box-tools pull-right">
+
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <form role="form" id="FormStationLocation">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Station</label>
+                                                        <input type="text" class="form-control" id="StatLocStationId" placeholder="Enter Station">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Location</label>
+                                                        <input type="text" class="form-control" id="StatLocLocationId" placeholder="Enter Location">
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-primary" style="display: none">Submit</button>
+                                                    <button type="button" class="btn btn-primary" onclick="jspage.FormStationLocation()">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div>
+                                    <!-- /.box-footer-->
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+                             <div class="col-md-6">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-primary direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Location-Station(s) Mapping </h3>
+                                        <div class="box-tools pull-right">
+
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <form role="form" id="TestFormStationLocation">
+                                                <div class="box-body">
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Location</label>
+                                                        <input type="text" class="form-control" id="TestStatLocLocationId" placeholder="Enter Location">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="zoneCode">Station(s)</label>
+                                                        <input type="text" class="form-control select2" id="TestStatLocStationId" placeholder="Enter Station">
+                                                    </div>
+
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-primary" style="display: none">Submit</button>
+                                                    <button type="button" class="btn btn-primary" onclick="jspage.TestFormStationLocation()">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                    </div>
+                                    <!-- /.box-footer-->
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+
+
+                        </div>
+
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="Zonetab">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <!-- DIRECT CHAT PRIMARY -->
+                                <div class="box box-success direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Zone Tab</h3>
+                                        <div class="box-tools pull-right">
+                                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table id="DTZoneTab" class="table table-bordered table-hover">
+                                            <thead class="ColumnHeader">
+                                                <tr></tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        
+                                    </div>
+                                    <!-- /.box-footer-->
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_3">
+                      
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </div>
+
+
+    </div>
+</section>
+
+<div class="modal   fade" id="ModalClinic">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Clinic List</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div role="form">
+                        <!-- text input -->
+                        <div class="form-group">
+                            <div class="col-lg-6">
+                                <label>Zone Code</label>
+                                <input type="text" class="form-control" id="ZoneDisplayCode" placeholder="Enter ...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6">
+                                <label>Zone Name</label>
+                                <input type="text" class="form-control" id="ZoneDisplayName" placeholder="Enter ...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6">
+                                <label>Zone Flow</label>
+                                <input type="number" class="form-control" id="ZoneDisplayFlow" >
+                            </div>
+                        </div>
+
+                    </div>
+                </div>  <br />  <br />
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Close</button> 
+                        </div>
+                         <div class="col-lg-6">
+                             <button type="button" class="btn btn-warning pull-left" id="deletezone" >Delete Zone</button>
+                             <button type="button" class="btn btn-primary  pull-right" id="updatezone" >Save changes</button>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <hr />
+                <table id="DTClinicList" class="table table-bordered table-hover">
+                    <thead class="ColumnHeader">
+                        <tr></tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal   fade" id="ModalClinicDetails">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Clinic List Details</h4>
+            </div>
+            <div class="modal-body ">
+
+                <div role="form">
+
+                    <div class="form-group has-error">
+                        <label class="control-label" for="inputError">
+                            <i class=""></i>Zone
+                        </label>
+                        <input type="text" class="form-control" id="detailscliniczone" placeholder="Enter ...">
+                        <span class="help-block">This is the current Zone.</span>
+                    </div>
+
+                      <div class="form-group">
+                        <label>Clinic Station</label>
+                        <input type="text" id="detailsclinicstation" class="form-control" placeholder="Enter Station Name">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Clinic Name</label>
+                        <input type="text" id="detailsclinicname" class="form-control" placeholder="Enter Clinic Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Code</label>
+                        <input type="text" id="detailscliniccode" class="form-control" placeholder="Enter Clinic Code">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Flow Zone </label>
+                        <input type="number" id="detailsclinicflowzone" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Service  </label>
+                        <input type="text" id="detailsclinicservice" class="form-control" placeholder="Enter ...">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+<input type="hidden" id="url"    
+data-showzone="@Url.Action("showZoneOnly")"
+data-showclinicbyid="@Url.Action("showClinicByZoneId")"
+data-showqmsservice="@Url.Action("showQmsService")"
+data-showzonelist="@Url.Action("showZoneList")"
+data-showlocationlist="@Url.Action("showLocationList")"
+data-getdoctor="@Url.Action("GetDoctors")"
+data-getstation="@Url.Action("GetStation")"
+data-getteststationbylocid="@Url.Action("getteststationbylocid")"
+  
+data-savenewzone="@Url.Action("SaveNewZone")"
+data-savenewclinic="@Url.Action("SaveNewClinic")"
+data-savenewservice="@Url.Action("SaveNewService")"
+data-savedocloc="@Url.Action("SaveDocLocation")"
+data-savestatloc="@Url.Action("SaveStationLocation")"
+data-savetestzonedoc="@Url.Action("SaveTestZoneDoc")"
+
+
+data-removezoneclinic="@Url.Action("DeleteLocationById")"
+data-updatezoneclinic="@Url.Action("UpdateLocationById")"
+
+ 
+
+
+   
+    
+/>
+<script>
+    var c = new Common();
+    jQuery(document).ready(function () {
+        jspage.init();
+        jspage.initBeforeFormSbumission();
+
+        setTimeout(
+            function () {
+                console.log('.hidewidget');
+                $('.hidewidget').click();
+            }
+            ,2000)
+       
+    });
+
+
+
+
+
+    /*************************************************************************************************************************************************************************************************/
+    var jspage = function () {
+
+        var ZoneDTList;
+        var ZoneDTListId = '#DTZoneTab';
+
+        var ClinicDTList;
+        var ClinicDTListId = '#DTClinicList'
+
+
+        var ZoneDTListDataRow;
+        var handleJs = function () {
+
+            $(document).ready(function () {
+                LoadDataTables();
+                LoadOnClick();
+                LoadOnSelect2();
+                onChange();
+            });
+
+            function onChange() {
+
+
+                $('#TestStatLocLocationId').on('change', function () {
+                    var selectedDoctorsIds = [];
+                    var locationid = $(this).val();
+                     ajaxWrapper.Get($("#url").data("getteststationbylocid"), { locid: locationid }, function (data, e) {
+                         console.log(data);
+                         $.each(data, function (index, item) {
+                            selectedDoctorsIds.push(item.id);
+                        });
+                        $("#TestStatLocStationId").select2('val', selectedDoctorsIds);
+                    });
+                });
+
+            
+
+            }
+            function LoadOnSelect2() {
+                ajaxWrapper.Get($("#url").data("showqmsservice"), null, function (xx, e) {
+
+                    Sel2Client($("#clinicService"), xx, function (x) { });
+                    Sel2Client($("#detailsclinicservice"), xx, function (x) { });
+
+                });
+                ajaxWrapper.Get($("#url").data("showzonelist"), null, function (xx, e) {
+                    Sel2Client($("#clinicZone"), xx, function (x) { });
+                    Sel2Client($("#detailscliniczone"), xx, function (x) { });
+                                   
+                });
+                ajaxWrapper.Get($("#url").data("showlocationlist"), null, function (xx, e) {
+                    Sel2Client($("#TestStatLocLocationId"), xx, function (x) { });
+                    Sel2Client($("#DocLocLocationId"), xx, function (x) { });
+                    Sel2Client($("#StatLocLocationId"), xx, function (x) { });
+
+                });
+                ajaxWrapper.Get($("#url").data("getdoctor"), null, function (xx, e) {
+                    Sel2Client($("#DocLocDoctorId"), xx, function (x) { });
+
+                });
+
+                
+                ajaxWrapper.Get($("#url").data("getstation"), null, function (xx, e) {
+                    Sel2Client($("#StatLocStationId"), xx, function (x) { });
+                    Sel2Client($("#detailsclinicstation"), xx, function (x) { });
+                    
+                    Sel2ClientMultiple($("#TestStatLocStationId"), xx, function (x) {
+
+                    })
+                });
+
+            }
+
+
+            function LoadOnClick() {
+
+                $('#deletezone').click(function (e) {
+                    e.preventDefault();
+                    var $zoneid = $(this).data('zoneid');
+
+                    var YesFunc = function () {
+                        var filter = {
+                            Id: $zoneid
+                        };
+                        ajaxWrapper.Post($("#url").data("removezoneclinic"), JSON.stringify(filter), function (x, e) {
+                            LoadDataTables();
+                            c.ModalShow('#ModalClinic', false);
+                        });
+                    }
+
+                    c.MessageBoxConfirm("Zone Delete", "Are you sure you want delete this Zone ?", YesFunc, null);
+
+
+                });
+                $('#updatezone').click(function (e) {
+                    e.preventDefault();
+                    var $zoneid = $(this).data('zoneid');
+
+                    var YesFunc = function () {
+ 
+                        var filter = {
+                              Id: $zoneid
+                            , Code: $('#ZoneDisplayCode').val()
+                            , Name: $('#ZoneDisplayName').val()
+                            , Flow: $('#ZoneDisplayFlow').val()
+                        };
+
+                        ajaxWrapper.Post($("#url").data("updatezoneclinic"), JSON.stringify(filter), function (x, e) {
+                            LoadDataTables();
+                            c.ModalShow('#ModalClinic', false);
+                        });
+                    }
+
+                    c.MessageBoxConfirm("Zone Update", "Are you sure you want update this Zone ?", YesFunc, null);
+
+
+                });
+
+                $(document).on("click", ZoneDTListId + " td", function (e) {
+                    if (typeof $(this).closest("tr").find('td:eq(0)').html() != 'undefined') {
+
+                        var d = ZoneDTList.row($(this).parents('tr')).data();
+                        console.log(d);
+                        if ($(this).hasClass('_remove')) {
+                            console.log('deleteID ' + d.Id);
+
+                            if (d.Name == d.ZoneName) // VIEW ZONE
+                            {
+                                ajaxWrapper.Get($("#url").data("showclinicbyid"), { zoneid: d.Id }, function (x, e) {
+                                    c.ModalShow('#ModalClinic', true);
+                                    $('#deletezone').attr('data-zoneid', d.Id);
+                                    $('#updatezone').attr('data-zoneid', d.Id);
+                                    
+                                    $('#ZoneDisplayCode').val(d.Code);
+                                    $('#ZoneDisplayName').val(d.Name);
+                                    $('#ZoneDisplayFlow').val(d.Flow);
+                                    DataTableClinic(x.list);
+                                });
+
+                            }
+                            else
+                            { //delete clinic
+                                var YesFunc = function () {
+                                    
+                                    var filter = {
+                                        Id: d.Id
+                                    };
+                                    ajaxWrapper.Post($("#url").data("removezoneclinic"), JSON.stringify(filter), function (x, e) {
+                                        LoadDataTables();
+                                     });
+
+
+                                }
+                                c.MessageBoxConfirm("Clinic Removal - " + d.Name + " ", "Are you sure you want delete this Clinic " + d.Name + " ?", YesFunc, null);
+                            }
+
+                        } else {//VIEW
+                            if (d.Name == d.ZoneName) //ZONE
+                            {
+                                ajaxWrapper.Get($("#url").data("showclinicbyid"), { zoneid: d.Id }, function (x, e) {
+                                    c.ModalShow('#ModalClinic', true);
+                                    $('#deletezone').attr('data-zoneid', d.Id);
+                                    $('#updatezone').attr('data-zoneid', d.Id);
+                                    
+                                    $('#ZoneDisplayCode').val(d.Code);
+                                    $('#ZoneDisplayName').val(d.Name);
+                                    $('#ZoneDisplayFlow').val(d.Flow);
+                                    DataTableClinic(x.list);
+                                });
+
+                            } else {
+
+                                c.ModalShow('#ModalClinicDetails', true);
+                                console.log(d);
+                                $('#detailsclinicname').val(d.Name);
+                                $('#detailscliniccode').val(d.Code);
+                                $('#detailsclinicflowzone').val(d.Flow);
+                                $('#detailsclinicservice').val(d.Service_Id);
+                                c.SetSelect2('#detailsclinicservice', d.ServiceId, d.ServiceName);
+                                c.SetSelect2('#detailscliniczone', d.ZoneId, d.ZoneName);
+                                c.SetSelect2('#detailsclinicstation', d.StationId, d.StationName);
+                                
+
+                            }
+
+                        }
+
+                    }
+                    e.stopPropagation();
+                });
+            }
+            window.LoadDataTables = function() {
+
+                ajaxWrapper.Get($("#url").data("showzone"), null, function (x, e) {
+                   DataTableZoneDashboard(x.list);
+                });
+            };
+
+
+            function DataTableZoneDashboard(data) {
+
+                ZoneDTList = $(ZoneDTListId).DataTable({
+                    cache: false,
+                    destroy: true,
+                    data: data,
+                    paging: false,
+                    ordering: false,
+                    searching: true,
+                    info: false,
+                    //scrollY: 400,
+                    //scrollX: true,
+                    processing: false,
+                    autoWidth: false,
+                    dom: 'Rlfrtip',
+                    scrollCollapse: false,
+                    pageLength: 150,
+                    lengthChange: false,
+                    columns: ShowListLocation(),
+                    fnRowCallback: ShowWithPriceRowCallBack()
+                });
+
+                // InitSelectedPrice();
+
+
+            }
+
+            function ShowListLocation() {
+                var cols = [
+                  { data: "Id", title: 'ZoneID', className: ' ', visible: true, searchable: false, width: "1%" },
+                  { data: "Code", title: 'Code', className: ' ', visible: true, searchable: true, width: "2%" },
+                  { data: "Name", title: 'Name', className: ' ', visible: true, searchable: true, width: "2%" },
+                  { data: "ServiceName", title: 'Service Name', className: ' ', visible: true, searchable: true, width: "2%" },
+                  { data: "Flow", title: 'Flow Zone', className: ' ', visible: true, searchable: true, width: "1%" }
+                , { data: "ZoneName", title: 'Zone Name', className: ' ', visible: true, searchable: true, width: "1%" }
+                , { data: "StationName", title: 'Station Name', className: ' ', visible: true, searchable: true, width: "1%" }
+                , { data: "", title: '', className: ' _remove ', visible: true, searchable: true, width: "1%", defaultContent: '<button type="button" class="btn btn-sm btn-danger"  title="Delete Zone Clinic?" rel="tooltip"> <i class="glyphicon glyphicon-trash"></i></button>' }
+                ];
+                return cols;
+            }
+            function ShowWithPriceRowCallBack() {
+                var rc = function (nRow, aData) {
+                    var $nRow = $(nRow);
+                    $nRow.addClass("row_gray");
+
+                    if (aData["Name"] == aData["ZoneName"]) {
+                        console.log(aData["Name"]);
+                        //$nRow.removeClass("row_gray");
+                        $nRow.css("font-weight", "bold");
+                        $('td:eq(7)', nRow).html('<button type="button" class="btn btn-sm btn-info"  title="View Zone Clinic?" rel="tooltip"> <i class="fa fa-folder-open"></i></button>');
+                    }
+
+                };
+                return rc;
+
+            }
+            function InitSelectedPrice() {
+
+                //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                $('.ClassPrice', ZoneDTList.rows().nodes()).editable(function (sVal, settings) {
+                    var cell = ZoneDTList.cell($(this).closest('td')).index();
+                    ZoneDTList.cell(cell.row, 3).data(sVal);
+
+
+                    return sVal;
+                },
+                {
+                    "type": 'txtPrice', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+                    "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+                });
+
+                $('.ClassToDate', ZoneDTList.rows().nodes()).editable(function (sVal, settings) {
+                    var cell = ZoneDTList.cell($(this).closest('td')).index();
+                    ZoneDTList.cell(cell.row, 4).data(sVal);
+                    /*to Get ID*/
+                    //   var id = c.GetSelect2Id('#select2Relationship');
+                    //   tblFamilyDetails.cell(cell.row, 0).data(id);
+                    //tblPreviousExpDetails.cell(cell.row, cell.column).data(sVal);
+                    //sVal = defaultStartDate;
+                    return sVal;
+                },
+                    {
+                        "type": 'datepickerCurrentDate', "style": 'display: inline;', "onblur": 'submit', "onreset": '',
+                        "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+                    });
+
+
+                // Resize all rows.
+                $(ZoneDTListId + ' tr').addClass('trclass');
+
+            }
+
+
+            //////////////////////////////////////////////////////////CLININc
+
+            function DataTableClinic(data) {
+
+                ClinicDTList = $(ClinicDTListId).DataTable({
+                    cache: false,
+                    destroy: true,
+                    data: data,
+                    paging: false,
+                    ordering: false,
+                    searching: true,
+                    info: false,
+                    //scrollY: 400,
+                    //scrollX: true,
+                    processing: false,
+                    autoWidth: false,
+                    dom: 'Rlfrtip',
+                    scrollCollapse: false,
+                    pageLength: 150,
+                    lengthChange: false,
+                    columns: showlistClinic(),
+                    //fnRowCallback: ShowWithPriceRowCallBack()
+                });
+            }
+
+            function showlistClinic() {
+                var cols = [
+                  { data: "Id", title: 'Clinic ID', className: ' ', visible: true, searchable: false, width: "1%" },
+                  { data: "Code", title: 'Code', className: ' ', visible: true, searchable: true, width: "2%" },
+                  { data: "Name", title: 'Name', className: ' ', visible: true, searchable: true, width: "2%" },
+                  { data: "ServiceName", title: 'Service Name', className: ' ', visible: true, searchable: true, width: "2%" },
+                  { data: "Flow", title: 'Flow Zone', className: ' ', visible: true, searchable: true, width: "1%" }
+
+                ];
+                return cols;
+            }
+        }
+        return {
+            init: function () {
+                handleJs();
+            }
+            , initBeforeFormSbumission: function () {
+
+                $('#FormZoneNew').submit(function (e) {
+                    e.preventDefault();
+                    var entry = {
+                        Id: 0,
+                        Code: $('#zoneCode').val(),
+                        Name: $('#zoneName').val(),
+                        ServiceId: "0",
+                        Flow: $('#zoneFlow').val(),
+                    };
+                    console.log(entry);
+                  
+                    $.ajax({
+                        url: $('#url').data("savenewzone"),
+                        data: JSON.stringify(entry),
+                        type: 'post',
+                        cache: false,
+                        contentType: "application/json; charset=utf-8",
+                        beforesend: function () {
+                            //c.buttondisable('#btnservicesave', true);
+                        },
+                        success: function (data) {
+
+                            if (data.ErrorCode == 0) {
+                                c.MessageBoxErr("error...", data.Message);
+                                return;
+                            }
+                            c.MessageBox(data.Title, data.Message, function () {
+                                //  location.reload();
+                                $('#zoneCode').val("");
+                                $('#zoneName').val("");
+                                $('#zoneFlow').val("");
+                               
+                            });
+
+                            //var okfunc = function () {    
+                            //    //  location.reload();
+                            //    $('#zoneCode').val("");
+                            //    $('#zoneName').val("");
+                            //    $('#zoneFlow').val("");
+                            //    console.log('handleJs.LoadDataTables()');
+                            //    handleJs().LoadDataTables();
+
+                            //};
+                          
+                        },
+                        error: function (xhr, desc, err) {
+                            // c.buttondisable('#btnservicesave', false);
+                            var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                            c.MessageBox("error...", errmsg, null);
+                        }
+                    });
+
+
+                });
+
+                $('#FormClinic').submit(function (e) {
+                    e.preventDefault();
+                    var entry = {
+                        Id: $('#clinicZone').val(),
+                        Code: $('#clinicCode').val(),
+                        Name: $('#clinicName').val(),
+                        ServiceId: $('#clinicService').val(),
+                        Flow: $('#clinicFlow').val(),
+
+                    };
+                    console.log(entry);
+
+                    $.ajax({
+                        url: $('#url').data("savenewclinic"),
+                        data: JSON.stringify(entry),
+                        type: 'post',
+                        cache: false,
+                        contentType: "application/json; charset=utf-8",
+                        beforesend: function () {
+                            //c.buttondisable('#btnservicesave', true);
+                        },
+                        success: function (data) {
+
+                            if (data.ErrorCode == 0) {
+                                c.MessageBoxErr("error...", data.Message);
+                                return;
+                            }
+                            var okfunc = function () {
+                                //  location.reload();
+
+                                $('#clinicCode').val("");
+                                $('#clinicName').val("");
+
+                                $('#clinicFlow').val("");
+                                c.Select2Clear('#clinicZone');
+                                c.Select2Clear('#clinicService');
+                            };
+                            c.MessageBox(data.Title, data.Message, okfunc());
+                        },
+                        error: function (xhr, desc, err) {
+                            // c.buttondisable('#btnservicesave', false);
+                            var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                            c.MessageBox("error...", errmsg, null);
+                        }
+                    });
+
+
+                    return false;
+                });
+
+                $('#FormSubmitService').submit(function (e) {
+                    e.preventDefault();
+                    var entry = {
+                        Name: $('#serviceName').val(),
+                    };
+                    console.log(entry);
+
+                    $.ajax({
+                        url: $('#url').data("savenewservice"),
+                        data: JSON.stringify(entry),
+                        type: 'post',
+                        cache: false,
+                        contentType: "application/json; charset=utf-8",
+                        beforesend: function () {
+                            //c.buttondisable('#btnservicesave', true);
+                        },
+                        success: function (data) {
+
+                            if (data.ErrorCode == 0) {
+                                c.MessageBoxErr("error...", data.Message);
+                                return;
+                            }
+                            var okfunc = function () {
+                                //  location.reload();
+
+                                $('#serviceName').val("");
+
+                            };
+                            c.MessageBox(data.Title, data.Message, okfunc());
+                        },
+                        error: function (xhr, desc, err) {
+                            // c.buttondisable('#btnservicesave', false);
+                            var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                            c.MessageBox("error...", errmsg, null);
+                        }
+                    });
+
+                });
+
+                $('#FormDoctorLocation').submit(function (e) {
+                    e.preventDefault();
+                    var entry = {
+                        DoctorId: $('#DocLocDoctorId').val(),
+                        LocationId: $('#DocLocLocationId').val(),
+                    };
+                    console.log(entry);
+
+                    $.ajax({
+                        url: $('#url').data("savedocloc"),
+                        data: JSON.stringify(entry),
+                        type: 'post',
+                        cache: false,
+                        contentType: "application/json; charset=utf-8",
+                        beforesend: function () {
+                            //c.buttondisable('#btnservicesave', true);
+                        },
+                        success: function (data) {
+
+                            if (data.ErrorCode == 0) {
+                                c.MessageBoxErr("error...", data.Message);
+                                return;
+                            }
+                            var okfunc = function () {
+
+                                c.Select2Clear('#DocLocDoctorId');
+                                c.Select2Clear('#DocLocLocationId');
+                            };
+                            c.MessageBox(data.Title, data.Message, okfunc());
+                        },
+                        error: function (xhr, desc, err) {
+                            // c.buttondisable('#btnservicesave', false);
+                            var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                            c.MessageBox("error...", errmsg, null);
+                        }
+                    });
+
+                });
+
+                $('#FormStationLocation').submit(function (e) {
+                    e.preventDefault();
+                    var entry = {
+                        StationId: $('#StatLocStationId').val(),
+                        LocationId: $('#StatLocLocationId').val(),
+                    };
+                    console.log(entry);
+
+                    $.ajax({
+                        url: $('#url').data("savestatloc"),
+                        data: JSON.stringify(entry),
+                        type: 'post',
+                        cache: false,
+                        contentType: "application/json; charset=utf-8",
+                        beforesend: function () {
+                            //c.buttondisable('#btnservicesave', true);
+                        },
+                        success: function (data) {
+
+                            if (data.ErrorCode == 0) {
+                                c.MessageBoxErr("error...", data.Message);
+                                return;
+                            }
+                            var okfunc = function () {
+
+                                c.Select2Clear('#StatLocDoctorId');
+                                c.Select2Clear('#StatLocLocationId');
+                            };
+                            c.MessageBox(data.Title, data.Message, okfunc());
+                        },
+                        error: function (xhr, desc, err) {
+                            // c.buttondisable('#btnservicesave', false);
+                            var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                            c.MessageBox("error...", errmsg, null);
+                        }
+                    });
+
+                });
+
+            }
+            , FormSubmitZone: function () {
+                $('#FormZoneNew').find('[type="submit"]').trigger('click');
+                return false;
+            }
+            , FormSubmitClinic: function () {
+                $('#FormClinic').find('[type="submit"]').trigger('click');
+            }
+            , FormSubmitServices: function () {
+                $('#FormSubmitService').find('[type="submit"]').trigger('click');
+            }
+            , FormDoctorLocation: function () {
+                $('#FormDoctorLocation').find('[type="submit"]').trigger('click');
+            }
+            , FormStationLocation: function () {
+                $('#FormStationLocation').find('[type="submit"]').trigger('click');
+            }
+            , TestFormStationLocation: function () {
+                var stationIds = [];
+                var LocationId = 0;
+              
+                
+                $.each($("#TestStatLocStationId").select2('data'), function (i, row) {
+                    stationIds.push({
+                        stationId: row.id
+                    });
+                });
+                LocationId = $("#TestStatLocLocationId").val();
+                if (stationIds == "" || LocationId == 0)
+                {
+                    c.MessageBox("Error...", "Please select Location/Station(s).", null);
+                    return false;
+                }
+                var entry = {
+                    stationIds: stationIds,
+                    LocationId: LocationId,
+                };
+                console.log(entry);
+                $.ajax({
+                    url: $('#url').data("savetestzonedoc"),
+                    data: JSON.stringify(entry),
+                    type: 'post',
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    beforesend: function () {
+                        //c.buttondisable('#btnservicesave', true);
+                    },
+                    success: function (data) {
+
+                        if (data.ErrorCode == 0) {
+                            c.MessageBoxErr("error...", data.Message);
+                            return;
+                        }
+                        var okfunc = function () {
+
+                            c.Select2Clear('#TestStatLocLocationId');
+                            c.Select2Clear('#TestStatLocStationId');
+                        };
+                        c.MessageBox(data.Title, data.Message, okfunc());
+                    },
+                    error: function (xhr, desc, err) {
+                        // c.buttondisable('#btnservicesave', false);
+                        var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                        c.MessageBox("error...", errmsg, null);
+                    }
+                });
+
+
+            }
+
+        };
+
+    }();
+
+    /*************************************************************************************************************************************************************************************************/
+   
+
+</script>

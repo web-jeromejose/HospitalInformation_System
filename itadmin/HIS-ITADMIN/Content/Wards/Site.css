@@ -1,0 +1,47 @@
+﻿.priceeditor
+{
+    text-align: right;
+}
+
+.row_red
+{
+    background-color: #FFB3B3;
+}
+.row_yellow
+{
+    background-color: #FFFFB3;
+}
+.row_green
+{
+    background-color: #B3FFB3;
+}
+.row_orange
+{
+    background-color: #FFB300;
+}
+.row_blue
+{
+    background-color: #91E1FF;
+}
+
+.datepicker
+{
+    z-index: 1151 !important;
+}
+
+.row_red
+{
+    background-color: #FFB3B3;
+}
+.row_yellow
+{
+    background-color: #FFFFB3;
+}
+.row_green
+{
+    background-color: #B3FFB3;
+}
+.row_orange
+{
+    background-color: #FFB300;
+}

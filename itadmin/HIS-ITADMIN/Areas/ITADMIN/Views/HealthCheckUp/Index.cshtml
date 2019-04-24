@@ -1,0 +1,326 @@
+﻿@{
+    ViewBag.Title = "Health CheckUp";
+}
+
+<input type="hidden" id="url"
+data-gethealthdashboard="@Url.Action("HealthCheckupDashboard")"
+data-comp="@Url.Action("CompanyList")"
+data-dept="@Url.Action("DepartmentList")"
+data-getinvestigationlist="@Url.Action("InvestigationList")"
+data-getconsuldeptlist="@Url.Action("ConsulationDeptList")"
+data-getotherprocedure="@Url.Action("OtherProcedureList")"
+data-getinvestigationlistwithprice="@Url.Action("InvestigationListWithPrice")"
+data-getconsuldeptlistwithprice="@Url.Action("ConsultationDeptWithPrice")"
+data-getotherprocedurewithprice="@Url.Action("OtherProcedureWithPrice")"
+data-getselec2sample="@Url.Action("OtherProcedureWithPrice")"
+data-computeitemprice="@Url.Action("ComputeItemPrice")"
+data-investempdisplay="@Url.Action("InvestigationTempDisplay")"
+data-deptconsultempdisplay="@Url.Action("DeptConsulTempDisplay")"
+data-depthealthprocedure="@Url.Action("HealthProcedureTempDisplay")"
+data-save="@Url.Action("Save")"
+data-view="@Url.Action("View")"
+data-getsampleselected="@Url.Action("Select2Sample")"
+@*data-proceduredoneby="@Url.Action("Select2ProcedureDoneBy")"*@
+
+/>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-3">
+                <h4><b class="navbar-header">Health Check Up Details</b></h4>
+            </div>
+            @*     <div class="col-sm-3 pull-left">
+            <input type="text" id="select2PackageType" class="sel" />
+         </div>*@
+            <div class="form-group col-sm-9">
+                @* <label class="control-label col-sm-1">Type</label>*@
+                <button id="btnNew" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right">New</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-12">
+            <table id="gridHealthCheckUpDashBoard" class="table table-bordered table-hover dataTable no-footer;">
+                <thead class="AR_custom_table_header expanded-group">
+                    <tr>
+                        <th>SNO</th>
+                        <th>Health CheckUp</th>
+                        <th>Company Name</th>
+                        <th>DateTime</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!-- Modal Part Passport Details -->
+    <div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+        <input id="Registrationno" name="" type="hidden" class="form-control">
+        <input id="IssueAuthoritycode" name="" type="hidden" class="form-control">
+        <input id="PatientType" name="" type="hidden" class="form-control">
+        <input id="ProcedureId" name="" type="hidden" class="form-control">
+        <input id="RequestID" name="" type="hidden" class="form-control">
+        <input id="RequestedId" name="" type="hidden" class="form-control">
+        <div class="modal-dialog modal-lg" style="width: 95%;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="opbmyModalLabel">Health CheckUp Details</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Company:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="sel" id="Select2Company" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-1">Date:</label>
+                                        <div class="col-sm-3">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-left datepicker " id="dtMonth">
+                                            </div>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+
+                                    @*  <label class="control-label col-sm-2">Date:</label>
+                        <div id="dtMonth" class="input-group date col-sm-2  ">
+                           <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-calendar"></span>
+                           </span>
+                        </div>*@
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Code:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="txtCode" />
+                                    </div>
+                                    <label class="control-label col-sm-2">Health CheckUp:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="txtName" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Department:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="sel" id="Select2Department" />
+                                    </div>
+                                    <label class="control-label col-sm-2">Amount:</label>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="txtAmount" />
+                                    </div>
+                                    @*   <button type="button" class="btn btn-sm btn-default button-width" id="btnCalculate">
+                        <span class="glyphicon glyphicon-th-list"></span> Calculate
+                        </button>*@
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                  
+                            <div class="modal-body form-horizontal">
+                                <div class="col-sm-12 ">
+                                    <ul class="nav nav-tabs  col-sm-12">
+                                          <li role="presentation" class="active" ><a href="#sectionA" aria-controls="sectionA" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>Investigation</a></li>
+                                          <li role="presentation"><a href="#sectionB" aria-controls="sectionB" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-tag"></i>Consultation Department</a></li>
+                                          <li role="presentation"><a href="#sectionC" aria-controls="sectionC" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-flag"></i>Other Procedure</a></li>
+                  
+                                        @*
+                     <li>
+                        <a data-toggle="tab" href="#sectionC">
+                        <input id="iChkTicketEligible" type="checkbox" value="false"/> Contact Details
+                        </a>
+                     </li>
+                     *@
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="sectionA" class="tab-pane fade in active">
+                                            <div class="panel-body">
+                                                <div class="col-xs-4">
+                                                    <table id="gridInvestigation" class="table table-bordered table-hover dataTable no-footer;">
+                                                        <thead class="AR_custom_table_header expanded-group">
+                                                            <tr>
+                                                                <tr>
+                                                                    <th colspan="15" class="centertext compressedtableheader" style="text-align: center">List</th>
+                                                                </tr>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>Price</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>CodeName</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="col-xs-8">
+                                                    <table id="gridSelectedTest" class="table table-bordered table-hover no-footer;">
+                                                        <thead class="AR_custom_table_header">
+                                                            <tr>
+                                                                <tr>
+                                                                    <th colspan="15" class="centertext compressedtableheader" style="text-align: center">List of Items</th>
+                                                                </tr>
+                                                                <th>SNo</th>
+                                                                <th>testid</th>
+                                                                <th>ItemPrice</th>
+                                                                <th>tid</th>
+                                                                <th>Code</th>
+                                                                <th>Test Name</th>
+                                                                <th>CodeName</th>
+                                                                <th>stnid</th>
+                                                                <th>station</th>
+                                                                <th>sid</th>
+                                                                <th>Sample</th>
+                                                                <th>seq</th>
+                                                                <th>Original Price</th>
+                                                                <th>Percent(%)</th>
+                                                                <th>Price</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="sectionB" class="tab-pane fade in">
+                                            <div class="panel-body">
+                                                <div class="col-xs-4">
+                                                    <table id="gridConsultationDept" class="table table-bordered table-hover dataTable no-footer;">
+                                                        <thead class="AR_custom_table_header expanded-group">
+                                                            <tr>
+                                                                <tr>
+                                                                    <th colspan="9" class="centertext compressedtableheader" style="text-align: center">List</th>
+                                                                </tr>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>Dept Code</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>OriginalPrice</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="col-xs-8">
+                                                    <table id="gridSelectedConsulDeprt" class="table table-bordered table-hover dataTable no-footer;">
+                                                        <thead class="AR_custom_table_header expanded-group">
+                                                            <tr>
+                                                                <tr>
+                                                                    <th colspan="9" class="centertext compressedtableheader" style="text-align: center">List of Items</th>
+                                                                </tr>
+                                                                <th>SNo</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>Dept Name</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>OriginalPrice</th>
+                                                                <th>Percent(%)</th>
+                                                                <th>Price</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="sectionC" class="tab-pane fade in">
+                                            <div class="panel-body">
+                                                <div class="col-xs-4">
+                                                    <table id="gridOtherProcedure" class="table table-bordered table-hover dataTable no-footer;">
+                                                        <thead class="AR_custom_table_header expanded-group">
+                                                            <tr>
+                                                                <tr>
+                                                                    <th colspan="10" class="centertext compressedtableheader" style="text-align: center">List</th>
+                                                                </tr>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>CodeName</th>
+                                                                <th></th>
+                                                                <th>OriginalPrice</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="col-xs-8">
+                                                    <table id="gridSelectedOtherProcedure" class="table table-bordered table-hover dataTable no-footer;">
+                                                        <thead class="AR_custom_table_header expanded-group">
+                                                            <tr>
+                                                                <tr>
+                                                                    <th colspan="10" class="centertext compressedtableheader" style="text-align: center">List of Items</th>
+                                                                </tr>
+                                                                <th>SNo</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th>CodeName</th>
+                                                                <th></th>
+                                                                <th>OriginalPrice</th>
+                                                                <th>Percent(%)</th>
+                                                                <th>Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                    <div class="modal-footer">
+                        @*  <button id="btnModify" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-trash ShowOnEdit HideOnAdd" data-dismiss="modal">Delete</button>*@
+                        <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+                        @* <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+                        <button type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+</div>
+   </div>
+</div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/HealthCheckUp.js"></script>
+}

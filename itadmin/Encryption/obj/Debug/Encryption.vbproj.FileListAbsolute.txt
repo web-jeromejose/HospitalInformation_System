@@ -1,0 +1,10 @@
+D:\PROJECTS\ITAdmin\Staging\Encryption\bin\Debug\Encryption.dll
+D:\PROJECTS\ITAdmin\Staging\Encryption\bin\Debug\Encryption.pdb
+D:\PROJECTS\ITAdmin\Staging\Encryption\bin\Debug\Encryption.xml
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\SGH.Encryption.Resources.resources
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\Encryption.vbproj.GenerateResource.cache
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\Encryption.vbproj.CoreCompileInputs.cache
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\Encryption.dll
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\Encryption.xml
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\Encryption.pdb
+D:\PROJECTS\ITAdmin\Staging\Encryption\obj\Debug\Encryption.vbprojAssemblyReference.cache

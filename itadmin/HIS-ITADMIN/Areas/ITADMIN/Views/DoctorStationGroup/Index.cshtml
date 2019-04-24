@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "ITADMIN - Doctor/Station/Profile";
+}
+
+
+<div class="col-xs-12">
+    <div class="panel">
+        <div class="panel-heading" style="background-color: #3d7aa7; color: #fff;"><i class="fa fa-sitemap"></i>PROFILE</div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-xs-6">
+
+                    <div class="form-group">
+                        Select Profile :
+                        <input type="text" class="form-control" id="profilelist" style="height: auto; background-color: #d9edf7 !important;" />
+                    </div>
+
+                </div>
+                <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top: 10px;">
+
+                    <a id="btnSave" class="btn btn-sm btn-success  button-width " style="display: none;">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>Save
+                    </a>
+                    <a id="btnNewEntry" class="btn btn-sm btn-info button-width">
+                        <span class="glyphicon glyphicon-file"></span>New Profile
+                    </a>
+
+                    <a id="btnRefresh" class="btn btn-sm btn-warning button-width" href="javascript:location.reload();">
+                        <span class="glyphicon glyphicon-refresh"></span>Refresh
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="col-xs-6">
+    <div class="panel panel-info">
+        <div class="panel-heading"><i class="fa fa-sliders"></i>STATION </div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="col-xs-10">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="stationlist" style="height: auto; background-color: #d9edf7 !important;" />
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="col-xs-6">
+    <div class="panel panel-success ">
+        <div class="panel-heading"><i class="fa fa-eyedropper"></i>DOCTOR</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="doctorlist" style="height: auto; background-color: #dff0d8 !important;" />
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div id="modalReport" class="modal modalPortrait" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div class="row">
+                    <div class="col-xs-1" style="width: 10px;">
+                        <span class="glyphicon glyphicon-print" style=""></span>
+                    </div>
+                    <div class="col-xs-7">
+                        <h4 id="ReportCaption" class="modal-title" @*id="myModalLabel" *@ style="color:#00154f;">New Profile</h4>
+                    </div>
+                    <div class="col-xs-4 pull-right">
+
+                        <a class="btnCloseReport button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-remove"></span>Close
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body form">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <div class="form-group has-warning">
+                            @*  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i>Input with warning</label>*@
+                            <input type="text" class="form-control" id="newprofilename" placeholder="Enter ...">
+                            <span class="help-block">Enter your new profile.</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="form-group  ">
+                        <div class="col-xs-2  ">
+                            <button type="submit" id="btncreateprofile" class=" form-control btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="loadprofilelist" />
+<input type="hidden" id="url"    
+data-save="@Url.Action("Save")"
+data-profilelist="@Url.Action("ProfileList")"
+data-stationlist="@Url.Action("StationList")"
+data-doctorlist="@Url.Action("DoctorList")"
+data-showstationbyprofid="@Url.Action("ShowStationProfileId")"
+data-showdoctorbyprofid="@Url.Action("ShowDoctorProfileId")"
+data-saveprofile="@Url.Action("SaveProfile")"
+ 
+ 
+    
+/>
+@section scripts{
+    <script src="~/Scripts/itadmin/DoctorStationGroup.js"></script>
+}

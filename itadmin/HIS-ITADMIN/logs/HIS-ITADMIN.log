@@ -1,0 +1,117 @@
+2019-03-13 16:51:03,213 ERROR IP Tariff Logger - xmlIPTariffDetailsSave :<DocumentElement>
+  <IPTariffDetailsSave>
+    <BedTypeId>1</BedTypeId>
+    <Price>1150.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>2</BedTypeId>
+    <Price>1100.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>3</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>5</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>6</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>7</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>8</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>9</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>10</BedTypeId>
+    <Price>1200.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>11</BedTypeId>
+    <Price>1350.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>12</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>15</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>17</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>18</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>20</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>23</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>24</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>25</BedTypeId>
+    <Price>1200.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>27</BedTypeId>
+    <Price>1050.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>28</BedTypeId>
+    <Price>1200.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+  <IPTariffDetailsSave>
+    <BedTypeId>37</BedTypeId>
+    <Price>1350.00</Price>
+    <StartDate>3/13/2019 4:50:13 PM</StartDate>
+  </IPTariffDetailsSave>
+</DocumentElement>xmlIPTariffHeaderSave :<DocumentElement>
+  <IPTariffHeaderSave>
+    <Action>1</Action>
+    <TariffId>37</TariffId>
+    <ServiceId>29</ServiceId>
+    <ItemId>7</ItemId>
+    <OperatorId>11503</OperatorId>
+  </IPTariffHeaderSave>
+</DocumentElement>
+2019-03-13 16:51:03,221 ERROR IP Tariff Logger -    at DataLayer.IPTariffNewModel.Save(IPTariffHeaderSave entry) in D:\PROJECTS\ITAdmin\Staging\DataLayer\Data\ITAdmin\IPTariffNewModel.cs:line 139
+   at HIS_ITADMIN.Areas.ITADMIN.Controllers.IPTariffNewController.Save(IPTariffHeaderSave entry) in D:\PROJECTS\ITAdmin\Staging\HIS-ITADMIN\Areas\ITADMIN\Controllers\IPTariffNewController.cs:line 158

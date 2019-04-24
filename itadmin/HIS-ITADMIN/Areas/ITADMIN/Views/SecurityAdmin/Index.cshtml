@@ -1,0 +1,418 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b class="navbar-header">Security Admin (wipro)</b></h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs col-sm-12" role="tablist">
+                    <li role="presentation"><a href="#newrole" aria-controls="newrole" role="tab" data-toggle="tab">Create Role</a></li>
+                    <li role="presentation" class="active"><a href="#ConfigureRolesTab" aria-controls="ConfigureRolesTab" role="tab" data-toggle="tab">Configure Roles</a></li>
+                    
+                    <li role="presentation"><a href="#RoleToEmp" aria-controls="RoleToEmp" role="tab" data-toggle="tab">Role to Employee</a></li> 
+                    <li role="presentation"><a href="#featuretoFunc" aria-controls="featuretoFunc" role="tab" data-toggle="tab">Feature to Function</a></li> 
+                     <li role="presentation"><a href="#EditFeat" aria-controls="EditFeat" role="tab" data-toggle="tab">Copy Station module to Station</a></li>
+                   
+        
+                </ul>
+                <div class="tab-content col-sm-12">
+                    <hr />
+
+                      <div role="tabpanel" class="tab-pane" id="newrole">
+                        <div> 
+                            <div class="row">
+                                <div class="form-group">
+                                <label class="col-sm-1 control-label">NEW ROLE</label>
+                                <div class="col-sm-5">
+                                <input type="text" id="txtnewrole" class="input "   />
+                                                  
+                                </div>   
+                                   
+                                   
+                                
+                                    
+                                </div>
+
+                            </div>
+                              <div class="row">
+                                   <label class="col-sm-1 control-label">DESCRIPTION</label>
+                             <div class="col-sm-5">
+                                 <textarea  id="txtdesc"  >
+
+                                 </textarea>
+                                                  
+                                </div>  
+                                </div>
+                             <div class="row">
+                                  <div class="col-sm-5">
+                                <button class="btn btn-info " onclick="NewRole();">NEW ROLE</button>  
+                                </div> 
+                                </div>
+                            <br />
+                            <br />
+                            <br />
+                               <div class="row">
+                             <table id="tblallRoles" class="table table-condensed table-responsive no-footer">
+                            <thead>
+                                <tr>
+                                   @* <th>Add</th>
+                                    <th>Remove</th>*@
+                                    <th>ID</th>
+                                    <th>Role Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                        </table>
+    </div>
+                        
+
+                        </div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane active" id="ConfigureRolesTab">
+ 
+
+                          <div class="row">
+                             <div class="form-group">
+                                    <label class="col-sm-1 control-label">Roles</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtroles" class="form-control"     />
+                                             </div>    
+                                 
+                                  <div class="col-sm-5">
+                                                  <button id="btnsaveFeat" class="btn btn-warning " onclick="Save();">SAVE</button>  
+                                                  <button  class="btn btn-info " onclick="location.reload();">RELOAD</button>  
+                            </div>  
+
+                            </div>
+                        </div>
+                              <br />
+
+                        
+                         <div class="row">
+                             <div class="form-group">
+                                       <label class="col-sm-1 control-label">Stations</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtstation" class="sel"  />
+                                                  
+                                             </div>      
+                            </div>
+                        </div>
+
+                            <br />
+                          <div class="row">
+                             <div class="form-group">
+                                    <label class="col-sm-1 control-label">Module</label>
+                                            <div class="col-sm-5">
+                                        <input type="text" id="txtmodule" class="sel"  onchange="txtstationchange()"  /> 
+                                          
+                                             </div>       
+                            </div>
+                        </div>
+                         <br />
+                         <div class="row">
+                            <div class="col-sm-9" style="overflow: auto; height: 350px;">
+                                <table id="tblmenulist" class="table table-condensed table-responsive no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th> <input type="checkbox" name="select_all" value="1" id="example-select-all"></th>
+                                            <th>Feature ID</th>
+                                            <th>Module ID</th>
+                                            <th>Feature Name</th>
+                                            @*<th>View</th>
+                                            <th>Save</th>
+                                            <th>Modify</th>
+                                            <th>Delete</th>
+                                            <th>Printing</th>*@
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                  
+                    <div role="tabpanel" class="tab-pane" id="RoleToEmp">
+
+                        <div class="form-horizontal">
+                          
+
+                        </div>
+                        <hr />
+                        <div class="row">
+
+                                           <label class="col-sm-1 control-label">Roles</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtrolestoemp" class="form-control"     />
+                                             </div>   
+
+                            
+ 
+
+                        </div><br />
+                          <div class="row">
+
+                                           <label class="col-sm-1 control-label">Employee</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtEmployee" class="form-control"     />
+                                             </div>   
+
+                            
+                                  <div class="col-sm-5">
+                                                  <button class="btn btn-warning " onclick="SaveRoleToEmp();">SAVE</button>  
+                            </div>  
+ 
+
+                        </div>
+
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="featuretoFunc">
+                        <div>
+                            <div class="row">
+
+                                           <label class="col-sm-1 control-label">Roles</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtrolestofunc" class="form-control"     />
+                                             </div>   
+
+                            
+ 
+
+                        </div><br />
+
+                         <div class="row">
+                             <div class="form-group">
+                                       <label class="col-sm-1 control-label">Stations</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtstationtofunc" class="sel"  />
+                                                  
+                                             </div>      
+                            </div>
+                        </div>
+
+                            <br />
+                          <div class="row">
+                             <div class="form-group">
+                                    <label class="col-sm-1 control-label">Module</label>
+                                            <div class="col-sm-5">
+                                        <input type="text" id="txtmoduletofunc" class="sel"  onchange="txtroletofeattofunction()"  /> 
+                                          
+                                             </div>       
+                            </div>
+                        </div>
+                            
+                            
+                            <br />
+
+                           @*datatable*@
+                                <div class="row">
+                            <div class="col-sm-11" style="overflow: auto; height: 350px;">
+                                <table id="tblfeaturelist" class="table table-condensed table-responsive no-footer">
+                                    <thead>
+                                        <tr>
+                                             
+                                            <th>Feature ID</th>                                     
+                                            <th>Feature Name</th>
+                                              <th>Function Name</th>
+                                            <th>Add</th>
+                                            <th>Remove</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+
+                          
+                        </div>
+                    </div>
+                 
+
+
+                     <div role="tabpanel" class="tab-pane" id="EditFeat">
+
+                           <div class="row">
+                             <div class="form-group">
+                                    <label class="col-sm-1 control-label">Station</label>
+                                            <div class="col-sm-5">
+                                        <input type="text" id="txtStationtoStation" class="sel" onchange="changeoriginalstation()"    /> 
+                                          
+                                             </div>       
+                            </div>
+                        </div>  <br />
+                           <div class="row">
+                             <div class="form-group">
+                                    <label class="col-sm-1 control-label">Copy Station To : </label>
+                                            <div class="col-sm-5">
+                                                <input type="text" id="txtCopyStation" class="sel"   /> 
+                                             </div>       
+                            </div>
+
+                                  <div class="form-group">
+                                   
+                                            <div class="col-sm-5">
+                                             <button class="btn btn-warning " id="CopyStationtoStationBTN" onclick="SavetoStationToStation();">COPY Station</button>  
+                                             </div>       
+                            </div>
+
+                        </div>
+                         <br />
+                                <div class="row">
+                                    <div class="col-sm-11" style="overflow: auto; height: 350px;">
+                                        <table id="tblstationmodulelist" class="table table-condensed table-responsive no-footer">
+                                            <thead>
+                                                <tr>           
+                                                   @* <th>Role ID</th>
+                                                    <th>Role Name</th>   *@           
+                                                    <th>Module ID</th>
+                                                    <th>Module Name</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+ 
+
+                         </div>
+
+
+
+
+
+
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@*<div id="modal-func" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Add Function</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="txtfunction" class="sel" />
+
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-success" onclick="AddFeatureFunction();">Add Function</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Existing Function List</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="txtnewfunction" class="form-control" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-info" onclick="AddNewFunction();">Save New Function</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <table id="tblfeaturefunc" class="table table-condensed table-responsive no-footer">
+                            <thead>
+                                <tr>
+                                    <th>Add</th>
+                                    <th>Remove</th>
+                                    <th>ID</th>
+                                    <th>Function Name</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<input type="hidden" id="url"    
+     data-getroles="@Url.Action("RoleList")"
+     data-getdept="@Url.Action("DeptList")"
+     data-getmodule="@Url.Action("ModuleList")"
+     data-getstation="@Url.Action("StationList")"
+     data-createnewrole="@Url.Action("CreateNewRole")"
+     data-deletefeatinrole="@Url.Action("DeleteFeatinRole")"
+    
+     data-insertnewrole="@Url.Action("InsertNewRole")"
+     data-getemployeelist="@Url.Action("EmployeeList")"
+     data-insertnewroletoemployee="@Url.Action("InsertNewRoleToEmployee")"
+     data-getfeaturelistbyrole="@Url.Action("GetFeatureListbyRole")"
+     data-getallrolelist="@Url.Action("GetAllRoleList")"
+     data-addrolefunctions="@Url.Action("AddRoleFunctions")"
+     data-removerolefunctions="@Url.Action("RemoveRoleFunctions")"
+     data-getmoduleperstation="@Url.Action("GetModulePerStation")"
+     data-savestationtostationpermodule="@Url.Action("SaveStationtoStationperModule")"
+    
+    
+    
+    
+    
+
+
+     data-getrolenamebymoduleid="@Url.Action("GetRolesByModuleID")"
+     data-dttablefeaturelist="@Url.Action("DtTableFeatureList")"
+
+
+     data-tblroleuserlist="@Url.Action("UserRoleList")"
+     
+    
+     
+    data-emp="@Url.Action("EmployeeList")"
+    data-mod="@Url.Action("ModuleList")"
+    data-svmod="@Url.Action("UpdateModule")"
+
+    data-modaccess="@Url.Action("ModuleAccessList")"
+    data-modaccessfeat="@Url.Action("ModuleAccessListFeat")"
+    data-moduseraccess="@Url.Action("GetModuleUser")"
+    data-menu="@Url.Action("GetMenu")"
+    data-srcmenu="@Url.Action("GetMenuSearch")"
+    data-svmenu="@Url.Action("UpdateMenu")"
+    data-addmenu="@Url.Action("AddModMenu")"
+    data-delmenu="@Url.Action("RemModMenu")"
+    data-newmenu="@Url.Action("NewModMenu")"
+    
+    data-addusermod="@Url.Action("UpdateUserModule")"
+    data-adduserfeat="@Url.Action("UpdateUserFeature")"
+    data-delusermod="@Url.Action("DeleteUserMod")"
+    
+    data-funclist="@Url.Action("GetFunctions")"
+    data-funcfeat="@Url.Action("GetFunctionsFeat")"
+    data-addnewfunc="@Url.Action("AddNewFeatureFunction")"
+    data-addfuncfeat="@Url.Action("GetFunctionsAddFeat")"
+    data-getusrfuncfeat="@Url.Action("GetUserFunctionsFeat")"
+    data-upduserfunc="@Url.Action("UpdateUserFunction")"
+
+    data-modidfeat=""
+    data-modidusr=""
+    data-funcfeatadd=""
+
+    data-syncmod="@Url.Action("SynchModules")"
+    data-syncfeat="@Url.Action("SynchFeatures")"
+    data-syncmodfeat="@Url.Action("SynchModFeatures")"
+    data-syncfunc="@Url.Action("SynchFunctions")"
+    />
+
+@Scripts.Render("~/Scripts/jqreports")
+@*<script src="~/Scripts/itadmin/jqmoduleaccess.js"></script>*@
+<script src="~/Scripts/itadmin/SecurityAdmin.js"></script>
+<link href="~/Content/plugins/datepicker/css/datepicker.css" rel="stylesheet" />

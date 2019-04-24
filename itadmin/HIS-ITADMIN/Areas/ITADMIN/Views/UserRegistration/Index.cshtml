@@ -1,0 +1,435 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-getuserinfo="@Url.Action("GetUserInformation")"
+data-fetchuserinfo="@Url.Action("Select2FetchUserDetails")"
+data-listinformation="@Url.Action("FetchUserListInformation")"
+data-getviewanes="@Url.Action("FetchAnesView")"
+data-save="@Url.Action("Save")"
+data-selectuserlist="@Url.Action("Select2UserList")"
+data-selectuserlistwithuserauthentic="@Url.Action("Select2UserListWithUserAuthentic")"
+data-exceppaccess="@Url.Action("PassExcepEmployeeList")"
+data-userlockedlist="@Url.Action("UserLockedList")"
+data-listwebip="@Url.Action("GetWebIPLogin")"
+data-userlockedsave="@Url.Action("UserLockedSave")"
+data-passwordexceptsave="@Url.Action("PasswordExceptionSave")"
+data-webipsave="@Url.Action("GetWebIPLoginSave")"
+data-getdeptlist="@Url.Action("DeptList")"
+data-forceresetpassword="@Url.Action("ForceResetPassword")"
+    
+    
+/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4>
+                    <b class="navbar-header">User Maintenance</b>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="modal-body form-horizontal">
+            <div class=" ">
+                <ul class="nav nav-tabs  col-sm-12">
+
+                    <li role="presentation" class="active"><a href="#sectionANew" aria-controls="sectionANew" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>User Registration</a></li>
+                    @*<li role="presentation"><a href="#sectionB" aria-controls="sectionB" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>Change Password</a></li>*@
+                    @*<li role="presentation"><a href="#resetpasswordtab" aria-controls="resetpasswordtab" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>Reset Password</a></li>*@
+                    <li role="presentation"><a href="#sectionUserlocked" aria-controls="sectionUserlocked" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>User Locked</a></li>
+                    <li role="presentation"><a href="#sectionBranchIpList" aria-controls="sectionBranchIpList" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>Branch IP List</a></li>
+
+
+                    @*<li role="presentation"><a href="#sectionC" aria-controls="sectionC" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>Company Level MarkUp</a></li>
+                     <li role="presentation"><a href="#sectionD" aria-controls="sectionD" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> ChangePass Exception</a></li>
+                     *@
+                </ul>
+
+
+                <div class="tab-content col-sm-12">
+
+                    <hr />
+                    <input id="enryppassword" name="" type="hidden" class="form-control">
+                    <input id="SecAnswer1" name="" type="hidden" class="form-control">
+                    <input id="SecAnswer2" name="" type="hidden" class="form-control">
+
+
+                    <div id="sectionANew" class="active tab-pane fade in ">
+                        <div class="row">
+                            <div class="callout callout-danger" style="width: 600px;">
+                                <h4><i class="icon fa fa-ban"></i>Alert!</h4>
+                               <p>
+                                    NEW PAGE FOR USER REGISTRATION AND PASSWORD                                         
+                                </p>
+                            </div>
+                            <input class="btn  btn-warning" style="width: 600px;" value="Go to (new) Employee User Profile  " onclick="window.location = '/HISITADMIN/ITADMIN/EmployeeDetails'">
+                        </div>
+                    </div>
+
+                    <div id="sectionAOLD" class=" tab-pane ">
+                        <input id="UserName" name="" type="hidden" class="form-control">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Effectivity Date:</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-left datepicker " id="dtEffectivity">
+                                    </div>
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+
+                            @*  <div class="form-group">
+                                <label class="control-label col-sm-1">Effectivity Date:</label>
+                                <div class="col-sm-2">
+                                    <div id="dtEffectivity" class="input-group date datepicker">
+                                        <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>*@
+                            @*	<div class="form-group">
+								<label class="control-label col-sm-1">SuperUser:</label>
+								<div class="col-sm-1">
+									<input type="text" class="sel" id="Select2IsSuperUser"/>
+								</div>
+							</div>*@
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Name</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="select2Userlist" class="sel" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Password:</label>
+                                <div class="col-sm-3">
+                                    <input data-toggle="tooltip" title="(At least one letter/One capital letter)/(One number)/(8 characters in length)" name="pass" type="password" class="form-control password" placeholder="Enter Password" id="txtPassword" />
+                                    @*<span class="glyphicon glyphicon-eye-open"></span>*@
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Confirm Pass:</label>
+                                <div class="col-sm-3">
+                                    <input type="password" placeholder="Confirm Password" class="form-control" id="txtConfirmPassword" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Email:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="txtEmail" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Mobile:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="txtMobile" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <h5>
+                                            <b>Security Question</b>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Question 1:</label>
+                                    <div class="col-sm-3">
+                                        @*<input type="text" class="form-control" />*@
+                                        <select class="form-control" id="txtQuestion1">
+                                            <option value="In what city were you born?">In what city were you born?</option>
+                                            <option value="What is your favorite movie?">What is your favorite movie?</option>
+                                            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                                            <option value="What is your father's middle name?">What is your father's middle name?</option>
+                                            <option value="What was your first car?">What was your first car?</option>
+                                        </select>
+                                    </div>
+                                    <label class="control-label col-sm-1">Answer 1:</label>
+                                    <div class="col-sm-3">
+                                        <input type="password" class="form-control" id="txtAnswer1" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Question 2:</label>
+                                    <div class="col-sm-3">
+                                        @*<input type="text" class="form-control" />*@
+                                        <select class="form-control" id="txtQuestion2">
+                                            <option value="In what city or town was your first job?">In what city or town was your first job?</option>
+                                            <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+                                            <option value="What is your oldest cousin's first and last name?">What is your oldest cousin's first name?</option>
+                                            <option value="Where Did you travel for the first time?">Where did you travel for the first time?</option>
+                                        </select>
+
+                                    </div>
+                                    <label class="control-label col-sm-1">Answer 2:</label>
+                                    <div class="col-sm-3">
+                                        <input type="password" class="form-control" id="txtAnswer2" />
+                                    </div>
+                                </div>
+                                <div class="pull-left">
+                                    <button id="btnSave" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-export ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Register</button>
+
+                                    <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sectionBOLD" class="tab-pane fade in ">
+                        <div class="panel-body">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Name</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="select2UserReset" class="sel" />
+                                    </div>
+                                    @* <button id="btnAdminReset" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-user ShowOnEdit HideOnAdd" data-dismiss="modal">Admin Reset</button>*@
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Old Password:</label>
+                                    <div class="col-sm-3">
+                                        <input type="password" placeholder="Old Password" class="form-control" id="txtOldPassword" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">New Password:</label>
+                                    <div class="col-sm-3">
+                                        <input data-toggle="tooltip" title="(At least one letter/One capital letter)/(One number)/(8 characters in length)" name="pass" type="password" class="form-control password" placeholder="Enter Password" id="txtNewPassword" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Confirm Password:</label>
+                                    <div class="col-sm-3">
+                                        <input type="password" maxlength="10" placeholder="Confirm Password" class="form-control" id="txtresitConfirmPassword" />
+                                    </div>
+                                </div>
+                                @* <div class="form-group">
+									<label class="control-label col-sm-1" id="txtresetquestion1">Security Answer1:</label>
+									<div class="col-sm-3">
+										<input type="password" placeholder="Security Answer 1" class="form-control" id="txtresetAnswer1"/>
+									</div>
+								</div>
+                                <div class="form-group">
+									<label class="control-label col-sm-1" id="txtresetquestion2" >Security Answer2</label>
+									<div class="col-sm-3">
+										<input type="password"  placeholder="Security Answer 2" class="form-control" id="txtresetAnswer2"/>
+									</div>
+								</div>*@
+                                <div class="pull-left">
+                                    <button id="btnReset" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Change Password</button>
+                                    @* 
+									<button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sectionC" class="tab-pane fade in">
+                        <div class="panel-body">
+                            <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                <div class="pull-right">
+                                    <button id="btnSavecomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="sectionD" class="tab-pane fade in">
+                        <div class="panel-body">
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                            <div class="row">
+                                <label><b>Employee 90 days change password Exception</b></label>
+                                <hr>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Name</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="select2UserlistPasswordException" class="sel" />
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <button id="btnAddEmployeePasswordException" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Add Employee</button>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-8" style="overflow: auto; height: 350px;">
+                                        <table id="tblmoduleslist" class="table table-condensed table-responsive no-footer _tabledt">
+                                            <thead>
+                                                <tr>
+                                                    <th>Employee Name</th>
+                                                    <th>Department</th>
+                                                    <th style="width: 70px;">Remove Exception</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sectionUserlocked" class="tab-pane fade in">
+                        <div class="panel-body">
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                            <div class="row">
+                                <label><b>Employee that has been logged-in 3 times with wrong password / wrong network.</b></label>
+                                <hr>
+                            </div>
+                            <div class="col-xs-12">
+
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-8" style="overflow: auto; height: 350px;">
+                                        <table id="tbluserlockedlist" class="table table-condensed table-responsive no-footer _tabledt">
+                                            <thead>
+                                                <tr>
+                                                    <th>Employee Name</th>
+                                                    <th>Department</th>
+                                                    <th style="width: 70px;">Remove Locked</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sectionBranchIpList" class="tab-pane fade in">
+                        <div class="panel-body">
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                            <div class="row">
+                                <label><b>Strict Logged in with IP Address, Branch/ Department</b></label>
+                                <hr>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">IP Address</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="IpAddress" class="form-control " />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Branch</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="BranchIp" class="form-control " />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Department</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="select2Dept" class="form-control    sel  " />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-3 pull-left">
+                                        <button id="btnNewIPList" type="button" class="btn btn-sm btn-primary ">NEW  </button>
+                                        <button id="btnAddIPList" type="button" class="btn btn-sm btn-primary ">ADD </button>
+                                        <button id="btnUpdateIPList" type="button" class="btn btn-sm btn-info ">UPDATE </button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-8" style="overflow: auto; height: 350px;">
+                                        <table id="tbliplist" class="table table-condensed table-responsive no-footer _tabledt">
+                                            <thead>
+                                                <tr>
+                                                    <th>IP Address</th>
+                                                    <th>Branch</th>
+                                                    <th>Department</th>
+                                                    <th style="width: 70px;">Delete</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div id="resetpasswordtab" class="tab-pane fade in">
+                        <div class="panel-body">
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                            <div class="row">
+                                <label><b>Force Reset Password</b></label>
+                                <hr>
+                            </div>
+                            <div class="col-xs-12">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Employee ID</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="select2UserPasswordReset" class="sel" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1"></label>
+                                    <div class="col-sm-3">
+                                        <button id="btnNewResetPassword" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">FORCE RESET</button>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section scripts{
+
+    <script src="~/Scripts/itadmin/UserListMaintenance.js"></script>
+}
+

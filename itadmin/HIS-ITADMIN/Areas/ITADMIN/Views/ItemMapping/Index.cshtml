@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Item Mapping";
+}
+
+<input type="hidden" id="url"
+data-getcategory="@Url.Action("CategoryList")"
+data-getstation="@Url.Action("StationList")"
+data-getview="@Url.Action("View")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+
+
+/>
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Item Mapping</b></h4>
+             </div>
+   
+       </div>
+    </div>
+     <div class="panel-body">
+          <div class="form-horizontal">
+               <div class="form-group">
+                     <label class="control-label col-sm-1">From</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="select2From" class="sel" />
+                        </div>
+                @*      <button type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width" id="btnNew">
+                     <span class="glyphicon glyphicon-file"></span> New
+                     </button>
+                    <button type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width ShowOnAdd ShowOnView HideOnEdit" id="btnModify">
+                     <span class="glyphicon glyphicon-ok"></span> Modify
+                     </button>*@
+                    <label class="control-label col-sm-2">To</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2To"/>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default button-width" id="btnSave">
+                     <span class="glyphicon glyphicon-th-list"></span> Mapping Process
+                     </button>
+                </div>
+           </div>
+     </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/itadmin/ItemMapping.js"></script>
+}

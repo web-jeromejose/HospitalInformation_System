@@ -1,0 +1,33 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b class="navbar-header">Aramco Per Capita Monthly</b></h4>
+            </div>
+            <div class="navbar-collapse navbar-right">
+                <button id="btn-aramco" type="button" class="btn btn-sm btn-primary" >
+                    <span class="glyphicon glyphicon-file"></span> View</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                 <label class="col-sm-2 control-label">Date</label>
+                <div class="col-sm-2">
+                    <input type="text" id="txtdf" class="form-control dt" />
+                </div>            
+            </div>
+        </div>
+        <iframe id="rrpt" width="100%" style="overflow: auto !important; min-height: 800px; border: 1px solid #D4D0C8;"></iframe>
+    </div>
+</div>
+
+<input type="hidden" id="url" 
+    data-urllink="@Url.Content("~/Areas/ITADMIN/Reports/Aramco_PerCapita.aspx")" 
+    
+    />
+
+@Scripts.Render("~/Scripts/jqreports")
+
+<link href="~/Content/plugins/datepicker/css/datepicker.css" rel="stylesheet" />

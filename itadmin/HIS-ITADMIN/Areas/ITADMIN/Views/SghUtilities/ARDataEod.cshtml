@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<input type="hidden" id="url"
+    data-process="@Url.Action("ARDataEodProcess")"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-5">
+            <h4><b class="navbar-header">AR DATA EOD</b></h4>
+         </div>
+      </div>
+   </div>
+   <div class="panel-body">
+      <div class="form-horizontal">
+         <div class="form-group">
+            <div class="col-sm-1">
+               <label class="control-label col-xs-4">Date</label>
+            </div>
+            <div class="col-sm-2">
+               <div id="dtMonth" class="input-group date">
+                  <input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+                  <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+               </div>
+            </div>
+    
+            <div class="col-xs-2">
+               <button type="button" class="btn btn-sm btn-success button-width" id="btnProcess">
+               <span class="glyphicon glyphicon-th-list"></span> Process
+               </button>
+            </div>
+         </div>
+      </div>
+    
+   </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/ArDataEOD.js"></script>
+
+}

@@ -1,0 +1,58 @@
+﻿@using DataLayer.ITAdmin.Model
+@model TariffItemPriceList
+
+@*<div class="row">
+<div class="col-xs-12">*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<table id="tblItemPrice" class="table table-nomargin table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th colspan="8" class="titlebar" data-itemid="@Model.ItemID" id="tariffitem">@Model.ItemCode - @Model.ItemName</th>
+        </tr>
+        <tr>
+            <th rowspan="2" class="center">Bed Type</th>
+            <th colspan="2" class="center">Present</th>
+            <th colspan="2" class="center">New</th>
+        </tr>
+        <tr>
+            <th class="center">Price</th>
+            <th class="center">With Effect From</th>
+            <th class="center">Price</th>
+            <th class="center">With Effect From</th>            
+            <th>Ok To Edit</th>
+            <th>BedTypeID</th>
+            <th>BedType</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+        if (Model.PriceList != null){
+        foreach (var item in Model.PriceList)
+        {
+            <tr>
+                <td>
+                    @*<div class="icheckbox"><input type="checkbox" id="chk@(item.BedTypeID)" data-checkall="0" class='icheck-me' data-skin="square" data-color="green"></div>
+                    <div class="icheckbox-label"><label for="chk@(item.BedTypeID)">@item.BedType</label></div>*@
+                </td>
+                <td class="rightalign">@item.Price.ToString("#,##0.00")</td>
+                <td>@item.EffectiveFrom</td>
+                <td class="priceeditor rightalign"></td>
+                <td class="datetimeeditor rightalign"></td>
+                <td>1</td>
+                <td>@item.BedTypeID</td>
+                <td>@item.BedType</td>
+            </tr>
+        }
+        }
+        }
+    </tbody>
+</table>
+@*</div>
+</div>           
+*@

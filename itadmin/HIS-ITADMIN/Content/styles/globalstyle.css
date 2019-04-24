@@ -1,0 +1,118 @@
+﻿/* Legend */
+.AR_custom_legend_box
+{
+    background-color:#fff;
+    border:1px solid #ddd;
+    width:18px;
+    height:18px;
+    -webkit-border-radius:50% !important;
+    -moz-border-radius:50% !important;
+    -ms-border-radius:50% !important;
+    border-radius:50% !important;
+}
+
+/*Legend Blocked*/
+.AR_custom_legend_blocked {
+    background-color:rgba(210, 77, 87, 0.3) !important;
+    color:#96281B !important;
+}
+/*Legend Expired*/
+.AR_custom_legend_expired {
+    background-color:#fcf1cb !important;
+    color:#ff8816;
+}
+/*Legend Active*/
+.AR_custom_legend_active {
+    background-color:rgba(255, 255, 255, 1);
+    color:#019875;
+}
+.AR_custom_legend_active_reverse {
+    color:#134d3f;
+    background-color:#a2e4d4;
+}
+
+/* LEGEND */
+
+.AR_custom_leg_approved {
+    background-color:#20ba81;
+}
+.AR_custom_leg_disapproved {
+    background-color:#d35454;
+}
+.AR_custom_leg_cancelled {
+    background-color:#8ad4ed;
+}
+.AR_custom_leg_underprocess {
+    background-color:#ffbc5f;
+}
+
+/*Legend Container for Dismissable Alerts*/
+.AR_custom_leg_alert_container{
+    width:18px;
+    display:inline-block;
+    margin-left:10px;
+    margin-right:5px;
+}
+
+
+/** {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+* {
+    -moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    border-radius: 0px !important;
+}
+
+
+/*OVERRIDE*/
+.form-group {
+    margin-bottom:5px;
+}
+
+.AR_font_red {
+    color:#D24D57 !important;
+}
+.AR_font_yellow {
+    color:#F4D03F !important;
+}
+
+.AR_make_bold {
+    font-weight:bold !important;
+}
+
+/* COMPANY STATUS */
+
+.AR_comp_active {
+    background-color:#019875;
+    border:none !important;
+}
+.AR_com_blocked {
+    background-color:#d96363;
+    border:none !important;
+}
+.AR_com_expired {
+    background-color:#f8b449;
+    border:none !important;
+}
+
+.dataTables_scrollHeadInner {
+    padding-left:0px !important;
+}
+.mymodal-header {
+    min-height: 16.43px;
+    padding: 5px;
+    border-bottom: 1px solid #e5e5e5;
+
+    /* http://www.w3schools.com/css/css3_gradients.asp */
+    background: #0086B8; 
+    background: -webkit-linear-gradient(right,rgba(41, 128, 185, 1),rgba(41, 128, 185, 0)); 
+    background: -o-linear-gradient(right,rgba(41, 128, 185, 1),rgba(41, 128, 185, 0)); 
+    background: -moz-linear-gradient(right,rgba(41, 128, 185, 1),rgba(41, 128, 185, 0)); 
+    background: linear-gradient(to right, rgba(41, 128, 185, 1), rgba(41, 128, 185, 0));
+}

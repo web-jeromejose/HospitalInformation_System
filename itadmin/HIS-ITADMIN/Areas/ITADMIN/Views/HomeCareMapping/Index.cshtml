@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Home Care Mapping";
+}
+
+
+<input type="hidden" id="url"
+data-getlistitem="@Url.Action("ItemListDashboard")"
+data-process="@Url.Action("Process")"
+
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-5">
+            <h4><b class="navbar-header">HomeCare Mapping</b></h4>
+         </div>
+               <div class="form-group">
+                    <div class="col-xs-2">
+                     <button type="button" class="btn btn-sm btn-default button-width" id="btnProcess">
+                     <span class="glyphicon glyphicon-th-list"></span> Code Mapping Process
+                     </button>
+                    </div>
+              </div>
+      </div>
+   </div>
+       <div class="panel-body">
+           <div class="form-horizontal">
+         
+
+        <div class="col-xs-6">
+            <table id="gridItemList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                 <tr>
+                    <th colspan="7" class="centertext compressedtableheader" style="text-align:center">List of Item</th>
+                   </tr>
+                   @* <th><input id="iChkAllTest" type="checkbox" value="false"/></th>*@
+                   <th>SNo</th>
+                   <th>Test Name</th>
+                   <th>Cost Price</th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+      
+                </tr>
+             </thead>
+          </table>
+        </div>
+ </div>
+      <div class="col-xs-6">
+            <table id="gridItemCodeMap" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                   <tr>
+                    <th colspan="7" class="centertext compressedtableheader" style="text-align:center">Code Map</th>
+                   </tr>
+
+                    <th>SNo</th>
+                   <th></th>
+                   <th>Cost Price</th>
+                   <th></th>
+                   <th>New Code</th>
+                   <th>Name</th>
+                    <th></th>
+      
+                </tr>
+             </thead>
+          </table>
+        </div>
+ 
+     </div>
+      
+  </div>
+@section scripts{
+<script src="~/Scripts/itadmin/HC.js"></script>
+
+}

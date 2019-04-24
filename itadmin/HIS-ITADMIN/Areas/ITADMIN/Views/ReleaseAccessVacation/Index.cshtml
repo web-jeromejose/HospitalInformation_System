@@ -1,0 +1,53 @@
+﻿@*@{
+    ViewBag.Title = "Index";
+}*@
+
+
+<input type="hidden" id="url"
+data-getransacdash="@Url.Action("ReleaseEmpDashBoard")"
+data-getstation="@Url.Action("StationInList")"
+data-getview="@Url.Action("FetchTransInv")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+/>
+
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Release HIS Access (Employee on Vacation)</b></h4>
+             </div>
+    <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-share ShowOnAdd ShowOnView HideOnEdit col-sm-2" data-dismiss="modal"> Release</button>
+       </div>
+    </div>
+         <div class="panel-body">
+
+                 <div class="col-sm-12">
+                              <table id="gridLeaveEmployee" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                                   @* <th><input id="iChkAllTestIP" type="checkbox" value="false"/ style="flex-item-align:center"></th>*@
+                                   <th></th>
+                                    <th>EmployeeId</th>
+                                    <th>Name</th>
+                                    <th>Dept</th>
+                                    <th>From Date</th>
+                                    <th>To Date</th>
+                                     <th></th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                     
+                   @*   <button id="btnRemove" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove-sign ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Remove</button>*@
+@*                      <button id="btnClear" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-folder-open ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Add</button>*@
+                     <button id="btnRefesh" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-refresh ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Refresh</button>
+                      </div>
+                
+         </div>
+</div>
+
+
+@section scripts{
+<script src="~/Scripts/itadmin/ReleaseEmp.js"></script>
+}

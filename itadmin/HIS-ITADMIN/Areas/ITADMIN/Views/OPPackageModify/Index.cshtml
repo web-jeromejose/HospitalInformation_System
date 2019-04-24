@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-getlistoftest="@Url.Action("PacakgeVisitTestDashboard")"
+data-getlistofprocedure="@Url.Action("PacakgeVisitProcedureDashboard")"
+data-save="@Url.Action("Save")"
+@*data-getservices="@Url.Action("Select2Service")"
+data-getservicesdept="@Url.Action("Select2ServiceDept")"
+data-getlistnoprice="@Url.Action("ItemListNoPrice")"
+data-getlistwithprice="@Url.Action("ItemListWithPrice")"*@
+
+/>
+
+
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">OP Package Visit Modify</b></h4>
+         </div>
+    @*     <div class="col-sm-3 pull-left">
+            <input type="text" id="select2PackageType" class="sel" />
+         </div>*@
+
+      </div>
+   </div>
+
+       <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                         <div class="col-sm-1">
+                           <label class="control-label col-sm-1">Pin</label>
+                        </div>
+                        <div class="col-sm-2">
+                           <input type="text" class="form-control" id="txtPin">
+                        </div>
+                          <div class="col-sm-2">
+                           <button type="button" class="btn btn-sm btn-info button-width" id="btnPreview">
+                           <span class="glyphicon glyphicon-th-list"></span> View
+                           </button>
+                        </div>
+                   </div>
+                <div class="form-group">
+                       <div class="col-sm-1">
+                           <label class="control-label col-sm-1">Name</label>
+                        </div>
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" id="txtName">
+                        </div>
+                   @*  <div class="col-sm-1">
+                         <label class="control-label border" style="background-color:#b7d7ff;text-align:center; width:100%;">
+                         Selected
+                        </label>
+                    </div>*@
+                </div>    
+             </div>  
+            <div class="col-xs-6">
+          <table id="gridListTest" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="13" class="centertext compressedtableheader" style="text-align:center">List of Test</th>
+                    </tr> 
+                    <th><input id="iChkAllTest" type="checkbox" value="false"/></th>
+                   <th>SNo</th>
+                   <th>TestId</th>
+                   <th>TestName</th>
+                   <th>Doctor</th>
+                   <th>PackDays</th>
+                   <th>PackVisit</th>
+                   <th>PinNo</th>
+                   <th>Patient</th>
+                   <th>Days</th>
+                   <th>Visit</th>
+                   <th>Remarks</th>
+                   <th>doctorid</th>
+                   <th>ItemId</th>
+                   @*<th>OriginalDays</th>*@
+                </tr>
+             </thead>
+          </table>
+      
+        </div>
+            <div class="col-sm-6">
+          <table id="gridlistProced" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="13" class="centertext compressedtableheader" style="text-align:center">List of Procedure</th>
+                    </tr>
+                   <th><input id="iChkAllProced" type="checkbox" value="false"/></th>
+                   <th>SNo</th>
+                   <th>ProcedureName</th>
+                   <th>Doctor</th>
+                   <th>Pack-Days</th>
+                   <th>Pack-Visit</th>
+                   <th>Days</th>
+                   <th>Visit</th>
+                   <th>Remarks</th>
+                   <th>Patient</th>
+                   <th>TestId</th>
+                   <th>doctorid</th>
+                   <th>PinNo</th>
+                   <th>ItemId</th>
+                  @* <th>OriginalDays</th>*@
+                   @*<th>selected</th>*@
+                </tr>
+             </thead>
+          </table>
+        
+        </div>
+            <div class="pull-right">
+            <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+            <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>
+         </div>
+       </div>
+ </div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/PackageModifyVisit.js"></script>
+
+}

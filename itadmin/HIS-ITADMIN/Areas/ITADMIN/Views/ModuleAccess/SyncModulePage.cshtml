@@ -1,0 +1,557 @@
+﻿@{
+    ViewBag.Title = "SyncModulePage";
+}
+
+<h2>Synchronize - Parent - Module - Feature to Other DATABASE</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <section class="content">
+            <div class="row">
+                <div class="box-header">
+                    <h3 class="box-title">PARENT AND FUNCTION MENUS</h3>
+                </div>
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Parent Menu</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="txtparent">Add Parent</label>
+                                <input type="email" class="form-control" id="txtparent" placeholder="Enter Parent">
+                            </div>
+                            <small class="label pull-right bg-red">Add in .27 (live) then sync the module.</small>
+                            <div class="box-footer">
+                                <button class="btn btn-primary" data-funcid="4" onclick="AddParent();">Submit</button>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+
+
+                    </div>
+                    <!-- /.box -->
+
+                    <!-- Form Element sizes -->
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <div class="box-body">
+                            <div style="overflow: auto; width: 100%; height: 400px;">
+                                <table id="tblparentlist" class="table table-bordered table-hover  ">
+                                    <thead>
+                                        <tr>
+                                            <th>Parent ID</th>
+                                            <th>Parent Name</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+
+                <!-- right column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Function Menu</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="txtparent">Add Function</label>
+                                <input type="email" class="form-control" id="txtfunctionadd" placeholder="Enter Function">
+                            </div>
+                            <small class="label pull-right bg-red">Add in .27 (live) then sync the module.</small>
+                            <div class="box-footer">
+                                <button class="btn btn-primary" data-funcid="4" onclick="AddFunction();">Submit</button>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                    <!-- Form Element sizes -->
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <div class="box-body">
+                            <div style="overflow: auto; width: 100%; height: 400px;">
+                                <table id="tblfunctionlist" class="table table-bordered table-hover  ">
+                                    <thead>
+                                        <tr>
+                                            <th>Function ID</th>
+                                            <th>Function Name</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+
+
+
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 ">
+        <div class="row">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Module Synchronize - Old Branch</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div style="overflow: auto; width: 100%; height: 400px;">
+                        <table id="tblmodules-sync" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ModuleName</th>
+                                    <th>Jeddah 90</th>
+                                    <th>Jeddah 138</th>
+                                    <th>Aseer</th>
+                                    <th>AseerTEST 2.5</th>
+                                    <th>Cairo .13</th>
+                                    <th>Cairo .16</th>
+                                    <th>Sanaa</th>
+                                    <th>Jeddah .186</th>
+                                    <th>Aseer 2.4</th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+               
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="row">
+            
+             <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">New Branch</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div style="overflow: auto; width: 100%; height: 400px;">
+                        <table id="tblmodules2-sync" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ModuleName</th>
+                                    <th>Hail .14</th>
+                                    <th>Hail .7</th>
+                                    <th>Bev .153</th>
+                                    <th>Sharja 6.18</th>
+                                    <th>Shjtest 241</th>
+                                    <th>Shjlive 53</th>
+				                    <th>Beverly 91</th>
+                                  
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+               
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" id="url"     
+    data-emp="@Url.Action("EmployeeList")"
+    data-mod="@Url.Action("ModuleList")"
+    data-svmod="@Url.Action("UpdateModule")"
+
+    data-modaccess="@Url.Action("ModuleAccessList")"
+    data-modaccessfeat="@Url.Action("ModuleAccessListFeat")"
+    data-moduseraccess="@Url.Action("GetModuleUser")"
+    data-menu="@Url.Action("GetMenu")"
+    data-srcmenu="@Url.Action("GetMenuSearch")"
+    data-svmenu="@Url.Action("UpdateMenu")"
+    data-addmenu="@Url.Action("AddModMenu")"
+    data-delmenu="@Url.Action("RemModMenu")"
+    data-newmenu="@Url.Action("NewModMenu")"
+    
+    data-addusermod="@Url.Action("UpdateUserModule")"
+    data-adduserfeat="@Url.Action("UpdateUserFeature")"
+    data-delusermod="@Url.Action("DeleteUserMod")"
+    
+    data-funclist="@Url.Action("GetFunctions")"
+    data-funcfeat="@Url.Action("GetFunctionsFeat")"
+    data-addnewfunc="@Url.Action("AddNewFeatureFunction")"
+    data-addfuncfeat="@Url.Action("GetFunctionsAddFeat")"
+    data-getusrfuncfeat="@Url.Action("GetUserFunctionsFeat")"
+    data-upduserfunc="@Url.Action("UpdateUserFunction")"
+
+
+    data-createmoduleid="@Url.Action("CreateModuleId")"
+    
+    
+
+    data-modidfeat=""
+    data-modidusr=""
+    data-funcfeatadd=""
+    
+    data-station="@Url.Action("GetStation")"
+    data-modstation="@Url.Action("GetModuleStation")"
+    data-insmodstation="@Url.Action("InsertModuleStation")"
+    data-insmodstationdatainfotbl="@Url.Action("InserttoDataInfoModulePermission")"
+
+    data-syncmod="@Url.Action("SynchModules")"
+    data-syncfeat="@Url.Action("SynchFeatures")"
+    data-syncmodfeat="@Url.Action("SynchModFeatures")"
+    data-syncfunc="@Url.Action("SynchFunctions")"
+
+    data-sync="@Url.Action("SynchPerModFeatures")"
+    data-addparent ="@Url.Action("AddNewParent")"
+    data-addfunction ="@Url.Action("AddNewFunction")"
+    data-showparentlist ="@Url.Action("GetParentList")"
+    data-showfunctionlist ="@Url.Action("GetFunctionList")"
+    data-savecopyemployeeaccess ="@Url.Action("SaveCopyEmployeeAccess")"
+    
+    
+    />
+
+<script type="text/javascript">
+    var c = new Common();
+    ShowFunction();
+    ShowParent();
+   
+     if(!/.27/.test(window.location.href))
+    {
+         alert("You are not in LIVE JEDDAH!!!! ");
+         alert("You have to Add and Sync in the LIVE JEDDAH ONLY! LISTEN!!! ");
+    }
+
+    function ShowParent() {
+        ajaxWrapper.Get($("#url").data("showparentlist"), {}, function (x, e) {
+            tblfunc = $("#tblparentlist").DataTable({
+                destroy: true,
+                paging: false,
+                searching: true,
+                ordering: true,
+                info: false,
+                data: x,
+                bAutoWidth: false,
+                order: [[0, "desc"]],
+                columns: [
+                    // { data: "id" },
+                   //  { data: "id", className: "_remove_func" },
+                     { data: "id" },
+                     { data: "text" }
+                ],
+                fnCreatedRow: function (nRow, aData, iDataIndex) {
+                    //  $('td:eq(0)', nRow).html("");
+                    //   $('td:eq(1)', nRow).html("<button class='btn btn-sm btn-danger'>Remove</button>");
+
+                }
+            });
+        });
+
+
+    }
+    function ShowFunction() {
+        ajaxWrapper.Get($("#url").data("showfunctionlist"), {}, function (x, e) {
+            tblfunc = $("#tblfunctionlist").DataTable({
+                destroy: true,
+                paging: false,
+                searching: true,
+                ordering: true,
+                info: false,
+                data: x,
+                bAutoWidth: false,
+                order: [[0, "desc"]],
+                columns: [
+                    // { data: "id" },
+                   //  { data: "id", className: "_remove_func" },
+                     { data: "id" },
+                     { data: "text" }
+                ],
+                fnCreatedRow: function (nRow, aData, iDataIndex) {
+                    //  $('td:eq(0)', nRow).html("");
+                    //   $('td:eq(1)', nRow).html("<button class='btn btn-sm btn-danger'>Remove</button>");
+
+                }
+            });
+        });
+
+
+    }
+    function AddParent() {
+
+        if ($("#txtparent").val() != "") {
+            ajaxWrapper.Get($("#url").data("addparent"), { "id": $("#txtparent").val(), }, function (x, e) {
+                console.log(x);
+                ShowParent();
+                NotifySuccess(x, "Module");
+            });
+        } else {
+            ShowParent();
+            NotifyError("Fill up parent name", "Module");
+        }
+
+    }
+    function AddFunction() {
+
+        if ($("#txtfunctionadd").val() != "") {
+            ajaxWrapper.Get($("#url").data("addfunction"), { "id": $("#txtfunctionadd").val(), }, function (x, e) {
+                console.log(x);
+                ShowFunction();
+                NotifySuccess(x, "Function");
+            });
+        } else {
+            ShowFunction();
+            NotifyError("Fill up function name", "Function");
+        }
+    }
+    //TAB1
+    $(document).on("click", "#tblmodules-sync td", function () {
+        var id = $(this).data('id');
+        var cons = $(this).data('con');
+        console.log(id);
+        console.log(cons);
+
+        var YesFunc2 = function () {
+            $('#preloader').show();
+            ajaxWrapper.Get($("#url").data("sync"), { id: id, cons: cons }, function (x, e) {
+                $('#preloader').hide();
+                NotifySuccess("Done", "Module Access");
+            });
+
+        };
+
+        var YesFunc = function () {
+            c.MessageBoxConfirm("Save Entry?", "Are you in the LIVE JEDDAH 27 Connection?", YesFunc2, null);
+        };
+        c.MessageBoxConfirm("Save Entry?", "Are you sure you want to sync this MODULE ID -> " + id + "?", YesFunc, null);
+
+
+    });
+
+    ajaxWrapper.Get($("#url").data("mod"), null, function (x, e) {
+        $("#tblmodules-sync").DataTable({
+            destroy: true,
+            paging: false,
+            searching: true,
+            ordering: true,
+            info: false,
+            data: x,
+            bAutoWidth: false,
+            columns: [
+                     { data: "ModuleID" },
+                     { data: "ModuleName" },
+                     { data: "ID" },
+                     { data: "ID" },
+                     { data: "ID" },
+                     { data: "ID" },
+                     { data: "ID" },
+                     { data: "ID" },
+                    { data: "ID" },
+                     { data: "ID" },
+				    { data: "ID" },
+                 
+
+            ], fnCreatedRow: function (nRow, aData, iDataIndex) {
+
+                //<th>Jeddah 90</th>
+                            $('td:eq(2)', nRow).addClass("_btnsync");
+                            $('td:eq(2)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(2)', nRow).data("con", '5suJ6JW36vL7cP4o16qISabFlnjdUF79qvPvDUlmP1tQ/XaPbf7vWJFG2SYw9lWcR6oxNj5Wqpn8lcYYoBiVO9xGaajflsIiggXVz8Jq/qH8dZHPtPCFOjDM6VErJRKQB/xtwiULQOk=');
+                            $('td:eq(2)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //<th>Jeddah 138</th>
+                            $('td:eq(3)', nRow).addClass("_btnsync");
+                            $('td:eq(3)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(3)', nRow).data("con", '5suJ6JW36vL7cP4o16qISabFlnjdUF79qvPvDUlmP1tQ/XaPbf7vWJFG2SYw9lWcR6oxNj5Wqpn8lcYYoBiVO9xGaajflsIiggXVz8Jq/qH8dZHPtPCFOjDM6VErJRKQBWXVixCskCU=');
+                            $('td:eq(3)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //<th>Aseer</th>
+                            $('td:eq(4)', nRow).addClass("_btnsync");
+                            $('td:eq(4)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(4)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb9vdfhq1NddLrkYUJ9YkC8s=');
+                            $('td:eq(4)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //aseer TEST     //<th>AseerTEST 2.5</th><th>AseerTEST 2.5</th> 
+                            $('td:eq(5)', nRow).addClass("_btnsync");
+                            $('td:eq(5)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(5)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb9vdfhq1NddLOfjN0HPAzn4=');
+                            $('td:eq(5)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //cairo .13 //<th>Cairo .13</th> <th>Cairo .13</th>
+                            $('td:eq(6)', nRow).addClass("_btnsync");
+                            $('td:eq(6)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(6)', nRow).data("con", '5suJ6JW36vL7cP4o16qISabFlnjdUF79qvPvDUlmP1tQ/XaPbf7vWJFG2SYw9lWcR6oxNj5Wqpn8lcYYoBiVO9xGaajflsIiggXVz8Jq/qH8dZHPtPCFOkTLjGcFiH2ELtKPOKZVMZY=');
+                            $('td:eq(6)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //<th>Cairo .16</th>     <th>Cairo .16</th>
+                            $('td:eq(7)', nRow).addClass("_btnsync");
+                            $('td:eq(7)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(7)', nRow).data("con", '5suJ6JW36vL7cP4o16qISabFlnjdUF79qvPvDUlmP1tQ/XaPbf7vWJFG2SYw9lWcR6oxNj5Wqpn8lcYYoBiVO9xGaajflsIiggXVz8Jq/qH8dZHPtPCFOkTLjGcFiH2EEGYOx6PCWEM=');
+                            $('td:eq(7)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //<th>Sanaa</th>
+                            $('td:eq(8)', nRow).addClass("_btnsync");
+                            $('td:eq(8)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(8)', nRow).data("con", '5suJ6JW36vLGDr4+ILED6xvMr+g7nNoTYHJYeyygHls5yp7Wn8rLqE/en0v0WHsqeowYqACll8Q4aT0Vd9iqBfMvGXZbMZorfOmWmMSsXtaUrbYhsDfwlqk8vgi30BILBMbhnrrlOS8=');
+                            $('td:eq(8)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+
+                //TEST 186
+                            $('td:eq(9)', nRow).addClass("_btnsync");
+                            $('td:eq(9)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(9)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb29qDLqnPuOwSmgcro6mGPE=');
+			    
+                            $('td:eq(9)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //TEST 3.2.4 aseer test
+                            $('td:eq(10)', nRow).addClass("_btnsync");
+                            $('td:eq(10)', nRow).data("id", aData["ModuleID"]);
+                            $('td:eq(10)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUa/IvXMHKQHReIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb9vdfhq1NddLC8bajTC6DNg=');
+                            $('td:eq(10)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 
+
+            }
+        });
+    });
+
+    //for TAB 2 sa as TAB1
+    $(document).on("click", "#tblmodules2-sync td", function () {
+        var id = $(this).data('id');
+        var cons = $(this).data('con');
+        console.log(id);
+        console.log(cons);
+
+        var YesFunc2 = function () {
+            $('#preloader').show();
+            ajaxWrapper.Get($("#url").data("sync"), { id: id, cons: cons }, function (x, e) {
+                $('#preloader').hide();
+                NotifySuccess("Done", "Module Access");
+            });
+
+        };
+
+        var YesFunc = function () {
+            c.MessageBoxConfirm("Save Entry?", "Are you in the LIVE JEDDAH 27 Connection?", YesFunc2, null);
+        };
+        c.MessageBoxConfirm("Save Entry?", "Are you sure you want to sync this MODULE ID -> " + id + "?", YesFunc, null);
+
+
+    });
+
+    ajaxWrapper.Get($("#url").data("mod"), null, function (x, e) {
+        $("#tblmodules2-sync").DataTable({
+            destroy: true,
+            paging: false,
+            searching: true,
+            ordering: true,
+            info: false,
+            data: x,
+            bAutoWidth: false,
+            columns: [
+                 { data: "ModuleID" },
+                 { data: "ModuleName" },
+                 { data: "ID" },
+                 { data: "ID" },
+                 { data: "ID" },
+                 { data: "ID" },
+                 { data: "ID" },
+                 { data: "ID" },
+                 { data: "ID" },
+  
+
+
+            ], fnCreatedRow: function (nRow, aData, iDataIndex) {
+
+                                
+                                
+
+
+
+
+                //<th>Hail .14</th>
+                $('td:eq(2)', nRow).addClass("_btnsync");
+                $('td:eq(2)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(2)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb1kdTyXPBQXiNMf7Nj5APbU=');
+                $('td:eq(2)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //<th>Hail .7</th>
+                $('td:eq(3)', nRow).addClass("_btnsync");
+                $('td:eq(3)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(3)', nRow).data("con", '5suJ6JW36vL7cP4o16qISabFlnjdUF79qvPvDUlmP1tQ/XaPbf7vWJFG2SYw9lWcR6oxNj5Wqpn8lcYYoBiVO9xGaajflsIiggXVz8Jq/qH8dZHPtPCFOkn2ADzACyjZX/AWPqrEgtE=');
+                $('td:eq(3)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //badriah 
+                //<th>Badriah .153</th>
+                $('td:eq(4)', nRow).addClass("_btnsync");
+                $('td:eq(4)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(4)', nRow).data("con", '5suJ6JW36vL7cP4o16qISabFlnjdUF79qvPvDUlmP1tQ/XaPbf7vWJFG2SYw9lWcR6oxNj5Wqpn8lcYYoBiVO9xGaajflsIiggXVz8Jq/qH8dZHPtPCFOjDM6VErJRKQ58qCPZnlBbw=');
+                $('td:eq(4)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+
+                //sharjah .172.29.6.18   //<th>Sharja 6.18</th> //<th>Sharja 6.18</th>  
+                $('td:eq(5)', nRow).addClass("_btnsync");
+                $('td:eq(5)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(5)', nRow).data("con", '5suJ6JW36vLVc9dHhulp+UCUvUI6BV47J5ZXdrzsuMEJZuJaH0un+jMq1wUgla0H/OcSQHKfjgx0bq/vk0uMFfMvGXZbMZorfOmWmMSsXtaUrbYhsDfwlihDqadY3//swGIk4dLmJFQ=');
+                $('td:eq(5)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+                //sharja 241     //<th>Shjtest 241</th>
+                $('td:eq(6)', nRow).addClass("_btnsync");
+                $('td:eq(6)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(6)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb7pMVerSS3Ibko/AelaP3Ik=');
+                $('td:eq(6)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+
+                //sharja live .53  //<th>Shjlive 53</th>
+                //<th>Shjlive 53</th>
+                $('td:eq(7)', nRow).addClass("_btnsync");
+                $('td:eq(7)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(7)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb7pMVerSS3Ib/pytTj2lrNI=');
+                $('td:eq(7)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+
+                //130.1.2.91 -- beverly nov 2018                 
+                $('td:eq(8)', nRow).addClass("_btnsync");
+                $('td:eq(8)', nRow).data("id", aData["ModuleID"]);
+                $('td:eq(8)', nRow).data("con", '5suJ6JW36vJUehuuhMr8waAp7pKorgAZFH0nHBO85u109yGb6Ploj/BIvgJvkFUaqvP4tIzrV3uIhzC9XD0GBMbjK+NlCEGdnYiKmwCBU8W4VQwMKk3Hb29qDLqnPuOw71sWia8UClY=');
+                $('td:eq(8)', nRow).html("<span  class='btn btn-warning btn-sm'><span class='glyphicon glyphicon-ok'></span></span>");
+
+                
+                
+
+            }
+        });
+    });
+</script>

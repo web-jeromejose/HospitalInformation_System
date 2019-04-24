@@ -1,0 +1,30 @@
+﻿@*<div class="AR_custom_status_bar">
+    <span class="pull-left">
+        <span style="color: #aaa;">BRANCH:</span>  @ViewBag.IssueAuthorityCode - @ViewBag.BranchName
+    </span>
+ <div class="AR_apps_about_btn" data-appsopen="0" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-bookmark"></span>tesrt</div>
+</div>
+<div id="collapseOne" class="panel-collapse collapse out AR_apps_about">
+    <b class="AR_about_title">@ViewBag.Title</b>
+    <hr style="padding: 0; margin: 0; margin-top: 5px; margin-bottom: 5px;" />
+    <span>CONNECTED SERVER: @Html.Raw(ViewBag.ConServer)</span>
+    <br />
+    <span>MY I.P ADDRESS: <span class="AR_my_IP_add">@ViewBag.LocalIPAddress</span></span>
+    <br />
+    <hr style="padding: 0; margin: 0; margin-top: 5px; margin-bottom: 5px;" />
+    <span>VERSION: </span>@ViewBag.VersionID
+    <br />
+    <span>DEV. BY: <span class="AR_dept_color">@ViewBag.Developer</span></span>
+    <br />
+    <span>&copy; @ViewBag.CopyRight</span>
+</div>*@
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+      </div>
+      <strong>   <span style="color: #aaa;">BRANCH:</span>  @ViewBag.IssueAuthorityCode - @ViewBag.BranchName 
+            &copy; 2016-2017 .</strong>  
+    </div>
+    <!-- /.container -->
+  </footer>

@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Claim File";
+}
+
+
+<input type="hidden" id="url"
+data-getinpatient="@Url.Action("Select2PatientInfo")"
+data-getcurrentroom="@Url.Action("CurrentRoomList")"
+data-getorbed="@Url.Action("ORBEdList")"
+data-getsurgeon="@Url.Action("SurgeonList")"
+data-getitemlist="@Url.Action("ITemList")"
+data-save="@Url.Action("Save")"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading" style="background-color:aliceblue">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header" >Claim File</b></h4>
+         </div>
+                <div class="form-group col-sm-9">
+            @* <label class="control-label col-sm-1">Type</label>*@
+            <button id="btnNew" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right"> New</button>
+         </div>
+      </div>
+   </div>
+    <div class="panel-body">
+             <div class="col-xs-12">
+                              <table id="gridOTTracker" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                     
+                                    <th>Seq</th>
+                                    <th>Pin</th>
+                                    <th>Status</th>
+                                    <th>Time-in OR</th>
+                                    <th>Time-in OT</th>
+                                    <th>Recovery</th>
+                                    <th>Surgery</th>
+                            
+                               @*     <th></th>*@
+                                    </tr>
+                                 </thead>
+                              </table>
+                    @*         <div class="pull-right">
+                                <button id="btnSave" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+                                
+                             </div>*@
+                           </div>    
+    </div>
+
+</div>
+@section scripts{
+<script src="~/Scripts/itadmin/ClaimFile.js"></script>
+}

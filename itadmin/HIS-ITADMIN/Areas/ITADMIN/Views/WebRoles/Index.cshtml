@@ -1,0 +1,354 @@
+﻿<div role="tabpanel" class="tab-pane " id="userandrolestab">
+    <br />
+    <br />
+    <div class="form form-horizontal  ">
+        <div class="row">
+            <div class="col-sm-9" style="padding-right: 0px;">
+                <div class="tab-content">
+
+
+                    <div role="tabpanel" class="tab-pane stacknav active" id="divUsernRolesTabRoles">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading bg-light-blue ">
+                                <b class=" ">Role List</b>
+
+
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="form-group" style="margin-left: 50px;">
+                                        <label class="col-sm-12   "><b>Use the list below to view roles properties.</b></label>
+                                    </div>
+                                </div>
+
+                                <hr class="col-md-12 form-divider" />
+                                <div class="col-xs-12">
+                                    <table id="gridlistRoles" class="table table-bordered table-hover dataTable no-footer;">
+                                        <thead class="bg-light-blue ">
+                                            <tr>
+                                                <th>Role Id</th>
+                                                <th>Role Name</th>
+                                                <th>Description</th>
+                                                <th>Date Created</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane stacknav " id="divAssignRolesModules">
+                        <div class="panel panel-default">
+                            <div class="panel-heading  bg-light-blue ">
+                                <b class="">Roles - Modules</b>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label class="col-sm-12   "><b>Select a role. Assign the role to list of features displayed below by selecting the appropriate module.</b></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="col-md-12 form-divider" />
+                                <div class="row   ">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">(1)Role</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="txtroleModule" class="sel" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">(2)Module</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="txtmodule" class="sel" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+
+                                            <div class="col-sm-5">
+                                                <button id=" " type="button" style="display: none;" class="btn btn-sm btn-warning left ">Search</button>
+
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button id="BtnSearchAssignModule" type="button" class="btn btn-sm btn-primary">Add Module</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-3" style="overflow: auto; height: 350px;">
+                                        <table id="tblmoduleslist" class="table table-condensed table-responsive no-footer ">
+                                            <thead class="  bg-light-blue ">
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th style="width: 70px;">Remove Access</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                    <div class="col-sm-9" style="border-left: 2px solid; border-color: dodgerblue;">
+                                        <table id="tblmenulist" class="table table-condensed table-responsive no-footer">
+                                            <thead class="  bg-light-blue ">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Menu</th>
+                                                    <th>Feature</th>
+                                                    <th>Access</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane stacknav" id="divUsernRolesTabAssignRoles">
+                        <div class="panel panel-default">
+                            <div class="panel-heading bg-light-blue ">
+                                <b class=" ">Assign Roles</b>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-12  pull-right "><b>Select a role. Assign the role to list of users displayed below by selecting the appropriate users.</b></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="col-md-12 form-divider" />
+                                <div class="row   ">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">(1)Department</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="txtdepartment" class="sel" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">(2)Role</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="txtrole" class="sel" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+
+                                            <div class="col-sm-5">
+                                                <button id="BtnSearchAssignRole" type="button" class="btn btn-sm btn-warning">Search</button>
+
+
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button id="BtnAssignRoleSave" type="button" class="btn btn-sm btn-primary" style="display: none;">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-xs-12">
+                                        <table id="gridlistAssignRoles" class="table table-bordered table-hover dataTable no-footer;">
+                                            <thead class="AR_custom_table_header expanded-group bg-light-blue">
+                                                <tr>
+                                                    @*     <tr>
+                                                                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Selected Items</th>
+                                                                    </tr> *@
+                                                    <th>
+                                                        <input id="iChkAllTest" type="checkbox" value="false" /></th>
+                                                    <th>Employee ID</th>
+                                                    <th>Name</th>
+                                                    <th>Department</th>
+
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 stacknav" style="font-size: 6px; color: blueviolet;">
+                    <div id="reg_tabs">
+                        <ul class="nav nav-tabs nav-stacked " role="tablist">
+                            <li role="presentation" class="nav_stack_active active">
+                                <a href="#divUsernRolesTabRoles" id="divRoles" aria-controls="divUsernRolesTabRoles" role="tab" data-toggle="tab">
+                                    <b>1. Roles</b>
+                                </a>
+
+                            </li>
+                            <li role="presentation" class="nav_stack_active ">
+                                <a href="#divAssignRolesModules" id="divRolesModules" aria-controls="divAssignRolesModules" role="tab" data-toggle="tab">
+                                    <b>2. Assign Roles - Module</b>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="nav_stack_active">
+                                <a href="#divUsernRolesTabAssignRoles" aria-controls="divUsernRolesTabAssignRoles" role="tab" data-toggle="tab">
+                                    <b>3. Assign Roles - User</b>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+@*START MODALS*@
+
+
+<div id="modal-RolesupdateDataTable" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="">
+        <div class="panel panel-primary">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="opbmyModalLabel"><b>Update - Role</b></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <hr />
+                        <div class="form">
+
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <div class="form-group">
+                                    <label>Role ID</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-sm-offset-2">
+                                <div class="form-group">
+                                    <input type="text" id="txtlistDTRoleID" class="form-control" disabled />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form">
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <div class="form-group">
+                                    <label>Role Name</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-sm-offset-2">
+                                <div class="form-group">
+                                    <input type="text" id="txtlistDTRolename" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form">
+
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-sm-offset-2">
+                                <div class="form-group">
+                                    <textarea id="txtlistDTRoleDesc" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form">
+
+
+                            <div class="col-sm-12 col-sm-offset-2">
+
+                                <div class="form-group">
+                                    <button id="btnrolenameupdatedelete" type="button" class=" btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Deleted</button>
+                                    <button id="btnrolenameupdate" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-pencil ShowOnEdit HideOnAdd" data-dismiss="modal">Modify</button>
+                                    <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<input type="hidden" id="url"    
+data-rolelistdatatable="@Url.Action("RolesDataTable")"
+data-getassignroledashboard="@Url.Action("AssignRoleDashboard")"   
+data-getdept="@Url.Action("DeptList")"
+data-getmodule="@Url.Action("ModuleList")"
+data-getroles="@Url.Action("RoleList")"
+data-updateassignrole="@Url.Action("AssignRoleSave")" 
+data-getmodulebyroleid="@Url.Action("GetModuleByRoleId")" 
+data-modaccessfeat="@Url.Action("ModuleAccessListFeat")"
+data-addmoduleinrole="@Url.Action("AddModuleinRole")"
+data-removemodulebyrole="@Url.Action("RemoveModuleinRole")"
+data-updaterolefeature="@Url.Action("UpdateRoleFeature")"
+data-rolemoduleid= "0"
+    data-updaterolesave="@Url.Action("UpdateRoleDesc")"
+    
+/>
+@section scripts{
+
+
+    <script src="~/Scripts/itadmin/WebRoles.js"></script>
+    <link href="~/Content/plugins/datepicker/css/datepicker.css" rel="stylesheet" />
+}
+

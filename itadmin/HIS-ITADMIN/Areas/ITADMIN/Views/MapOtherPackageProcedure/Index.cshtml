@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<input type="hidden" id="url"
+data-getpackageservice="@Url.Action("PackageServiceList")"
+data-getdashboard="@Url.Action("MapOtherProcedDashBoard")"
+data-getselectedlist="@Url.Action("SelectedListItem")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+/>
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Map Other Package Procedure</b></h4>
+             </div>
+     </div>
+    </div>
+ <div class="panel-body">
+         <div class="form-horizontal">
+             <div class="form-group">
+                        <label class="control-label col-sm-1">Package Service</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="Selet2PackageService" class="sel" />
+                        </div>
+          <div class="pull-left">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+            <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>
+         </div>
+                 
+              </div>
+         
+         </div>
+     <div class="col-xs-5">
+          <table id="gridOtherProcedList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Procedure List</th>
+                    </tr> 
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+        @*           <th></th>*@
+                </tr>
+             </thead>
+          </table>
+        </div>
+           <div class="col-xs-7">
+          <table id="gridSelectedlist" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Selected Procedure</th>
+                    </tr> 
+                   <th>Service Code</th>
+                   <th>Department</th>
+                   <th>Service Name</th>
+                   <th></th>
+                   <th></th>
+                   @*<th>Ref Price</th>*@
+                </tr>
+             </thead>
+          </table>
+         
+        </div>
+    
+    </div>    
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/MapOtherProcedure.js"></script>
+}

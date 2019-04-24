@@ -1,0 +1,212 @@
+﻿<!-- BEGIN PORTLET-->
+<div class="portlet box blue  ">
+    <div class="portlet-title bg-blue">
+        <div class="caption">
+            <i class="fa icon-pencil"></i>Service Category Master
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+            <a href="javascript:;" class="reload"></a>
+            <a href="javascript:;" class="remove"></a>
+        </div>
+    </div>
+    <div class="portlet-body  ">
+        <div class="row">
+
+            @*  <div class="col-md-6">
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Menu Header</h3>
+                    </div>
+                    <div class="box-body">
+                    </div>
+                </div>
+            </div>*@
+            <div class="col-md-8">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Main Options</h3>
+                    </div>
+                    <div class="box-body">
+
+                        <table id="DTDashboard" class="table table-bordered table-hover">
+                            <thead class="ColumnHeader">
+                                <tr></tr>
+                            </thead>
+                        </table>
+
+                        @*   <div class="col-md-6">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Main Options</h3>
+                                </div>
+                                <div class="box-body">
+                                   
+                                </div>
+                            </div>
+                        </div>*@
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Menu Options</h3>
+                    </div>
+                    <div class="box-body">
+                        <button type="button" class="btn btn-sm blue" id="btnNew">NEW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+        </div>
+    </div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modalViewDetails" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-half">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title green"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @*<div class="col-md-4">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Price History</h3>
+                                </div>
+                                <div class="box-body">
+                                </div>
+                            </div>
+                        </div>*@
+
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Details</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form form-horizontal">
+                                        <div class="form-group hide">
+                                            <label class="control-label col-sm-3">Id:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control   input-sm " id="idd" readonly="true" />
+                                            </div>
+                                        </div>
+
+                                        <!--View Only -->
+                                        <div id="showOnView">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Category Name:</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control   input-sm showOnView" id="CategoryName" readonly="true" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Code :</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control   input-sm  showOnView" id="Code" readonly="true" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Name :</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control   input-sm showOnView" id="Name" readonly="true" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Department Name :</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control   input-sm showOnView " id="DeptName" readonly="true" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--NEW -->
+                                        <div id="showOnNew">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Category Name:</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control select2me input-sm  sel  " id="CategoryName_new" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Test Item :</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control select2me input-sm  sel " id="ServiceCatId" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Department Name :</label>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control select2me input-sm  " id="DeptName_new" readonly="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm blue" id="btnSave">Save</button>
+                <button type="button" class="btn btn-sm btn-danger" id="btnDelete">Delete</button>
+                <button type="button" class="btn btn-sm green default" data-dismiss="modal" id="BtnClose">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL -->
+
+
+
+
+
+<input type="hidden" id="url"    
+data-dashboard="@Url.Action("ServiceCategoryDashboard")"
+data-getdeptlist="@Url.Action("DeptList")"
+data-gettestlist="@Url.Action("TestList")"
+data-getservicecatlist="@Url.Action("ServiceCategoryList")"
+data-getdeptbytestid="@Url.Action("GetDeptByTestId")"
+data-servicecategorysave="@Url.Action("ServiceCategorySave")"
+ 
+    
+/>
+
+@section scripts{
+    <script src="~/Scripts/itadmin/ServiceCategory.js"></script>
+}
+

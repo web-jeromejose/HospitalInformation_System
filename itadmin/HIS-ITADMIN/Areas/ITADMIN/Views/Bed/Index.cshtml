@@ -1,0 +1,122 @@
+﻿<input type="hidden" id="url"
+    data-getbedtypedl="@Url.Action("BedTypeDL")"
+    data-getstationanme="@Url.Action("StationNameDL")"
+    data-getroom="@Url.Action("RoomNameDL")"
+    data-getbedsat="@Url.Action("BedStatusDL")"
+    data-getdpt="@Url.Action("DepartmentListDL")"
+
+    data-getbedtypedash="@Url.Action("BedDashBoardList")"
+    data-getfetchbed="@Url.Action("FetchBedView")"
+    @*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+    data-save="@Url.Action("Save")"
+
+/>
+
+<div class="panel panel-default">
+          <div class="panel-heading">
+              <div class="row">
+                 <div class="col-xs-3">
+                    <h4><b class="navbar-header">Bed</b></h4>
+                 </div>
+                        <div class="form-group">
+                       @* <label class="control-label col-sm-1">Type</label>*@
+                    
+              </div>
+           </div>
+        </div>
+       <div class="panel-body">
+          <div class="col-xs-4">
+          <table id="gridItemList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                   @*<th style="text-align:center">Name</th>*@
+                    <th>SLNo</th>
+                    <th>Station</th>
+                    <th>Name</th>
+                    <th>BedId</th>                   
+                </tr>
+             </thead>
+          </table>
+                       <button id="btnNew" type="button" class="btn btn-sm btn-primary pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-open " data-dismiss="modal"> New</button>
+        </div>
+     </div>
+</div>
+
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+   <input id="txtbedid" name="" type="hidden" class="form-control">
+  
+   <div class="modal-dialog modal-lg" style=" " role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="opbmyModalLabel">Create Bed</h4>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+                     <div class="col-sm-12">
+                  <form role="form" class="form-horizontal AR_custom_label_left_align">
+             
+                     <div class="form-group">
+                        <label class="control-label col-sm-3">Bed Name:</label>
+                         <div class="col-sm-7">
+                           <input type="text" class="form-control" id="txtName"/>
+                        </div>
+                     </div>
+                       <div class="form-group">
+                         <label class="control-label col-sm-3">Bed Type:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="sel" id="Select2Bedtype"/>
+                        </div>
+                        </div>
+                               <div class="form-group">
+                           <label class="control-label col-sm-3">Station:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="sel" id="Select2Station"/>
+                        </div>
+                       </div>
+                      <div class="form-group">
+                           <label class="control-label col-sm-3">Room Name:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="sel" id="Select2Room"/>
+                        </div>
+                       </div>
+                       <div class="form-group">
+                           <label class="control-label col-sm-3">Extension No:</label>
+                        <div class="col-sm-7">
+                           <input type="number" class="form-control" id="txtExtention"/>
+                        </div>
+                       </div>
+                              <div class="form-group">
+                           <label class="control-label col-sm-3">Status:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="sel" id="Select2Status"/>
+                        </div>
+                       </div>
+                        <div class="form-group">
+                           <label class="control-label col-sm-3">Dept:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="sel" id="Select2Department"/>
+                        </div>
+                       </div>
+                  
+                     @* 
+                     <div id="endos"></div>
+                     *@
+                  </form>
+               </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+               <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove HideOnAdd ShowOnEdit " data-dismiss="modal"> Deleted</button>
+              @* <button id="btnModify" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-pencil ShowOnEdit HideOnAdd" data-dismiss="modal">Modify</button>*@
+               <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnView ShowOnAdd" data-dismiss="modal">Save</button>
+               @*   <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+               <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>
+         </div>
+      </div>
+   </div>
+@section scripts{
+<script src="~/Scripts/itadmin/BedDL.js"></script>
+
+}

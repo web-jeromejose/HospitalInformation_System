@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Cancel Deposit";
+}
+
+<input type="hidden" id="url"
+data-getadmdate="@Url.Action("Select2AdminssionDate")"
+data-getcanceladmndate="@Url.Action("FetchCancelAdmissionDate")"
+data-fetchpatientinfo="@Url.Action("FetchCancelPatientInformation")"
+data-cancelreason="@Url.Action("CancelReasonList")"
+data-changetype="@Url.Action("Select2ChangeType")"
+data-save="@Url.Action("Save")"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+   <input id="CompanyId" name="" type="hidden" class="form-control">
+   <input id="IssueAuthoritycode" name="" type="hidden" class="form-control">
+   <input id="PatientType" name="" type="hidden" class="form-control">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">Cancel Deposit</b></h4>
+         </div>
+               <div class="form-group col-sm-9">
+                <button id="btnSave" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right"> Save</button>
+            </div>
+           
+      </div>
+   </div>
+        <div class="panel-body">
+         <div class="form-horizontal">
+               
+              <div class="form-group">
+              <label class="control-label col-sm-1">Pin:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="txtPin"/>
+                </div>
+                   <label class="control-label col-sm-2">Adm.Date:</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2AdmnDate"/>
+                  </div>
+            </div>
+             <div class="form-group">
+                 <label class="control-label col-sm-1">Patient Name:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="txtPatientName"/>
+                </div>
+             </div>
+              <div class="form-group">
+                 <label class="control-label col-sm-1">Company Code:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="txtCompanyCode"/>
+                </div>
+             </div>
+             <div class="form-group">
+                 <label class="control-label col-sm-1">Discharge Date:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="txtdischargedate"/>
+                </div>
+             </div>
+                <div class="form-group">
+                   <label class="control-label col-sm-2">Reason for Cancel</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2ReasonforCancel"/>
+                  </div>
+               </div>
+
+          <div class="col-xs-12">
+           
+          <table id="gridtransactiondetails" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="9" class="centertext compressedtableheader" style="text-align:center">Transaction Details</th>
+                    </tr> 
+                   <th>ReceiptNo</th>
+                   <th>Date</th>
+                   <th>Type</th>
+                   <th>Amount</th>
+                   <th></th>
+
+                @* <th>Change Type</th>*@
+                @* <th></th>
+                <th></th>
+                <th></th>
+                <th></th>*@
+                </tr>
+             </thead>
+          </table>
+            
+        </div>
+     </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/CancelDeposit.js"></script>
+}

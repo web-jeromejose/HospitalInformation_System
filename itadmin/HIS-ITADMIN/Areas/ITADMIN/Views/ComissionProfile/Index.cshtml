@@ -1,0 +1,482 @@
+﻿<br />
+
+
+
+<!-- BEGIN PORTLET-->
+<div class="portlet box blue  ">
+    <div class="portlet-title bg-blue">
+        <div class="caption">
+            <i class="fa icon-basket"></i>Commission Profile
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+            <a href="javascript:;" class="reload"></a>
+            <a href="javascript:;" class="remove"></a>
+        </div>
+    </div>
+    <div class="portlet-body  ">
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Menu Options</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-6">Type</label>
+                            <div class="col-md-6">
+                                <select id="IPOPType" class="form-control input-xs select2me input-sm" data-placeholder="Select...">
+                                    <option value="">Select Type</option>
+                                    <option value="1">IP - Inpatient</option>
+                                    <option value="2">OP - Outpatient</option>
+                                </select>
+                                @*<span class="help-block">.input-sm </span>*@
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label class="control-label col-md-6">Doctor </label>
+                            <div class="col-md-6">
+                                <input type="text" id="sel2alldoctor" class="form-control select2me input-sm  sel" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Commission Profile Options</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+
+                            <div class="col-md-4 ">
+                                <a class="btn default" data-toggle="modal" href="#modalViewServices" id="viewViewServices"><i class="fa fa-tasks"></i>Services </a>
+                            </div>
+                            <div class="col-md-4 ">
+                                <a class="btn default" data-toggle="modal" href="#modalViewDept" id="viewViewDept"><i class="fa fa-tasks"></i>Department </a>
+                            </div>
+                            @* <div class="col-md-4 ">
+                                <a class="btn default" data-toggle="modal" href="#modalViewItems" id="viewViewItems"><i class="fa fa-tasks"></i>Items </a>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row" id="maintabId">
+            <div class="col-sm-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">
+                            <ul class="nav nav-tabs col-sm-12" role="tablist">
+                                <li role="presentation"><a href="#servicestab" aria-controls="servicestab" role="tab" data-toggle="tab" id="servicestabId"><i class="fa icon-pencil"></i>Services</a></li>
+                                <li role="presentation" class="active"><a href="#departmenttab" aria-controls="departmenttab" role="tab" data-toggle="tab" id="departmenttabId"><i class="fa icon-tag"></i>Department</a></li>
+                                <li role="presentation"><a href="#itemstab" aria-controls="itemstab" role="tab" data-toggle="tab" id="itemstabId"><i class="fa icon-handbag"></i>Items</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div role="tabpanel" class="tab-pane " id="servicestab">
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-4">
+                                            <div class="box box-primary">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Service Options</h3>
+                                                </div>
+                                                <div class="box-body">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3"></label>
+                                                            <div class="col-md-8">
+                                                                @*<input type="text" class="form-control select2me input-sm  sel" id=" " />*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div class="col-md-12"></div>
+                                                    <div class="col-md-6 pull-right" id="DivBtnServiceSave">
+                                                        <a href="javascript:;" class="btn btn-sm blue" id="BtnServiceSave"><i class="fa fa-file-o"></i>Save Changes </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-8">
+
+                                            <table id="DTviewCPServicesTab" class="table table-bordered table-hover" style="width: auto !important; margin-left: 0px;">
+                                                <thead class="ColumnHeader">
+                                                    <tr></tr>
+                                                </thead>
+                                            </table>
+
+
+
+                                        </div>
+                                    </div>
+
+                                    @*   <div class="col-xs-12">
+                                        <div class=" form-horizontal">
+                                            <table id="DTviewCPServicesTab"  class="table table-bordered table-hover"  style="width: auto !important; margin-left: 0px;">
+                                                <thead class="ColumnHeader">
+                                                    <tr></tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>*@
+
+
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane active " id="departmenttab">
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-4">
+                                            <div class="box box-primary">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Department Options</h3>
+                                                </div>
+                                                <div class="box-body">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">Services</label>
+                                                            <div class="col-md-8">
+                                                                <input type="text" class="form-control select2me input-sm  sel" id="DeptTabService" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div class="col-md-12"></div>
+                                                    <div class="col-md-6 pull-right" id="DivBtnDeptSave">
+                                                        <a href="javascript:;" class="btn btn-sm blue" id="BtnDeptSave"><i class="fa fa-file-o"></i>Save Changes </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-8">
+
+                                            <table id="DTviewCPDeptTabServiceList" class="table table-bordered table-hover" style="width: auto !important; margin-left: 0px;">
+                                                <thead class="ColumnHeader">
+                                                    <tr></tr>
+                                                </thead>
+                                            </table>
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <div role="tabpanel" class="tab-pane  " id="itemstab">
+
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="box box-primary">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Item Options</h3>
+                                                </div>
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Services</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control select2me input-sm  sel  " id="ItemTabService">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">Department</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control select2me input-sm  sel " id="ItemTabDept">
+                                                                    @*<span class="help-block">.input-sm </span>*@
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div class="col-md-12"></div>
+                                                    <div class="col-md-6 pull-right" id="DivBtnItemSave">
+                                                        <a href="javascript:;" class="btn btn-sm blue" id="BtnItemSave"><i class="fa fa-file-o"></i>Save Changes </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+
+
+                                            <div id="DIVviewCPItemTablList" class="">
+                                                <table id="DTviewCPItemTablList" class="table table-bordered table-hover" style="width: auto !important; margin-left: 0px;">
+                                                    <thead class="ColumnHeader">
+                                                        <tr></tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+
+
+
+                                            <!-- END SAMPLE TABLE PORTLET-->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- END PORTLET-->
+
+
+
+
+    <!-- MODAL -->
+    <div id="modalViewServices" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-full">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title blue">Services Table</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Options</h3>
+                                    </div>
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Doctor </label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="sel2alldoctorservices" class="form-control select2me input-sm  sel" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Service List</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table id="DTviewDocAllServices" class="table table-bordered table-hover table-condensed table-responsive">
+                                            <thead class="ColumnHeader">
+                                                <tr></tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal" id="">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modalViewDept" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-full">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title blue">Service - Department Table</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Options</h3>
+                                    </div>
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Doctor </label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="sel2alldoctordept" class="form-control select2me input-sm  sel" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Department List</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table id="DTviewDocAllDept" class="table table-bordered table-hover table-condensed table-responsive">
+                                            <thead class="ColumnHeader">
+                                                <tr></tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal" id="">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modalViewItems" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-full">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title blue">Service - Item Table</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Options</h3>
+                                    </div>
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Doctor </label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="sel2alldoctoritem" class="form-control select2me input-sm  sel" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Item List</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table id="DTviewDocAllItem" class="table table-bordered table-hover table-condensed table-responsive">
+                                            <thead class="ColumnHeader">
+                                                <tr></tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal" id="">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL -->
+
+
+    <input type="hidden" id="url"    
+data-vatpresentprice="@Url.Action("VatPresentPrice")"
+data-vatnewprice="@Url.Action("VatNewPrice")"
+data-taxlist="@Url.Action("TaxList")"
+data-comissionprofileservicestab="@Url.Action("ComissionProfileServiceTab")"
+data-servicelistbytype="@Url.Action("VatServiceListByType", "VatProfile")"
+data-deptlist="@Url.Action("DeptList")"
+data-getdeptlistbyservice="@Url.Action("DeptListByService", "VatProfile")"
+data-comissioinprofitemstabdatatable="@Url.Action("ComissionProfileItemTabList")"
+data-savenewvat="@Url.Action("SaveNewVat")"
+data-saveservicetab="@Url.Action("SaveServiceTab")"
+data-getdoclist="@Url.Action("GetDoctorDAL")"
+
+data-cpdoclistservices="@Url.Action("perDoctorListServices")"
+data-cpdoclistdepartment="@Url.Action("perDoctorListDepartment")"
+data-cpdoclistitem="@Url.Action("perDoctorListItems")"
+
+        
+    
+
+data-comissionprofiledepartmenttab="@Url.Action("ComissionProfileDepartmentTab")"
+data-savedepartmenttab="@Url.Action("SaveDepartmentTab")"
+data-saveitemtab="@Url.Action("SaveItemTab")"
+ 
+    
+/>
+
+
+    @section scripts{
+        <script src="~/Scripts/itadmin/ComissionProfile.js"></script>
+    }

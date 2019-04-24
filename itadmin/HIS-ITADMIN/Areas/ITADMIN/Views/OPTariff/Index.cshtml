@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-pdf="@Url.Action("ToPDF")"
+data-xls="@Url.Action("ToXLS")"
+data-gettariff="@Url.Action("Select2Tariff")"
+data-getservices="@Url.Action("Select2Service")"
+data-getservicesdept="@Url.Action("Select2ServiceDept")"
+data-getlistnoprice="@Url.Action("ItemListNoPrice")"
+data-getlistwithprice="@Url.Action("ItemListWithPrice")"
+data-save="@Url.Action("Save")"
+/>
+
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-3">
+            <h4><b class="navbar-header">OP Tariff</b></h4>
+           </div>
+          <div class="form-group col-sm-9">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal "> Save</button>
+          @* <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd pull-right" data-dismiss="modal">Cancel</button>*@
+               </div>   
+
+              
+          
+             
+   </div>
+</div>
+    <div class="panel-body">
+         <div class="form-horizontal">
+             <div class="form-group">
+                        <label class="control-label col-sm-1">Tariff</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="select2Tariff" class="sel" />
+                        </div>
+                        <label class="control-label col-sm-1">Services</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2Service"/>
+                        </div>
+                  <button id="btnPrint" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-print ShowOnEdit HideOnAdd" data-dismiss="modal"> Print</button>
+              </div>
+             
+              <div class="form-group">
+                   <label class="control-label col-sm-1">Department</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2Department"/>
+                        </div>
+             @*     <label class="control-label col-sm-1">Mark Up %</label>
+                        <div class="col-sm-2">
+                           <input type="text" class="sel" id="txtMarkup"/>
+                        </div>
+                      <button type="button" class="btn btn-sm btn-default button-width" id="btnPreview">
+                        <span class="glyphicon glyphicon-search"></span> Find Item
+                    </button>*@
+
+              </div>
+         </div>
+    <div class="col-xs-4">
+          <table id="gridNoItemList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">List of Items</th>
+                    </tr> 
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                    <th></th>
+                </tr>
+             </thead>
+          </table>
+        </div>
+          <div class="col-xs-8">
+          <table id="gridListWithPrice" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Selected Items</th>
+                    </tr> 
+                    <th></th>
+                   <th>Item Name</th>
+                   <th>Item Code</th>
+                   <th>Price</th>
+                    <th></th>
+                   <th>Ref Price</th>
+                </tr>
+             </thead>
+          </table>
+        </div>
+         <div class="pull-right">
+            @*<button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+            <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+         </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/OPTariff.js"></script>
+
+}

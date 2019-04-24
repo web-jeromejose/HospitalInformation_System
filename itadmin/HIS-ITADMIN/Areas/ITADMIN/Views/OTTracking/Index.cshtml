@@ -1,0 +1,195 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-getdashboard="@Url.Action("ORTrackingDashBoard")"
+data-getinpatient="@Url.Action("Select2PatientInfo")"
+data-getcurrentroom="@Url.Action("CurrentRoomList")"
+data-getorbed="@Url.Action("ORBEdList")"
+data-getsurgeon="@Url.Action("SurgeonList")"
+data-getitemlist="@Url.Action("ITemList")"
+data-view="@Url.Action("View")"
+data-save="@Url.Action("Save")"
+/>
+<div class="panel panel-default">
+   <div class="panel-heading" style="background-color:aliceblue">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header" >OR Tracking</b></h4>
+         </div>
+                <div class="form-group col-sm-9">
+            @* <label class="control-label col-sm-1">Type</label>*@
+            <button id="btnNew" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right"> New</button>
+         </div>
+      </div>
+   </div>
+    <div class="panel-body">
+             <div class="col-xs-12">
+                              <table id="gridOTTracker" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                     
+                                   @* <th>Seq</th>*@
+                                    <th>Pin</th>
+                                    <th>Status</th>
+                                    <th>Time-in OR</th>
+                                    <th>Time-in OT</th>
+                                    <th>Recovery</th>
+                                    <th>Surgery</th>
+                                    <th></th>
+                               @*     <th></th>*@
+                                    </tr>
+                                 </thead>
+                              </table>
+                    @*         <div class="pull-right">
+                                <button id="btnSave" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+                                
+                             </div>*@
+                           </div>    
+    </div>
+
+</div>
+
+
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+   <input id="Id" name="" type="hidden" class="form-control">
+   <
+   <div class="modal-dialog modal-lg" style="width:75%;padding:10px;" role="document" >
+      <div class="modal-content">
+         <div class="modal-header" style="background-color:azure">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="opbmyModalLabel">OR Tracking Details</h4>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-xs-12">
+                    <form role="form" class="form-horizontal AR_custom_label_left_align">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Seq. No. (0 to 9):</label>
+                        <div class="col-sm-1">
+                           <input type="number" class="form-control" id="txtSeq"/>
+                        </div>
+                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">PIN:</label>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2Pin"/>
+                        </div>
+                         <label class="control-label col-sm-1">Item:</label>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2Item"/>
+                        </div>
+                 
+                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Patient Name:</label>
+                        <div class="col-sm-4">
+                           <input type="text" class="form-control" id="txtPatient"/>
+                        </div>
+                                <label class="control-label col-sm-1">OR Bed:</label>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2ORBed"/>
+                        </div>
+                     </div>
+                    <div class="form-group">
+                            <label class="control-label col-sm-2">Current Room:</label>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2CurrentRoom"/>
+                        </div>
+                         <div class="col-sm-2">
+                        <label class="control-label">Time-in CathLab:</label>
+                             <input class="col-sm-1" id="ichkTimeinCathLab" type="checkbox" value="false"/>
+                        </div>
+                         <div data-date-format="hh:mm A" id="dtTimeinCathLab" class="input-group date col-sm-2">
+@*                        <div data-date-format="DD-MMM-YYYY hh:mm A" id="dtTimeinCathLab" class="input-group date col-sm-3">*@
+                           <input type='text' class="form-control RequiredField"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                        </div>
+                 
+                     </div>
+                    <div class="form-group">
+                            <div class="col-sm-2">
+                            <label class="control-label">Surgeon:</label>
+                                </div>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2Surgeon"/>
+                        </div>
+                        <div class="col-sm-2">
+                        <label class="control-label">Time-in Procedure:</label>
+                             <input class="col-sm-1" id="ichkTimeinProcedure" type="checkbox" value="false"/>
+                        </div>
+                        <div data-date-format="hh:mm A" id="dtTimeinProcedure" class="input-group date col-sm-2">
+                       @* <div data-date-format="DD-MMM-YYYY hh:mm A" id="dtTimeinProcedure" class="input-group date col-sm-3">*@
+                           <input type='text' class="form-control RequiredField"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                        </div>  
+                     </div>
+                    <div class="form-group">
+                            <div class="col-sm-2">
+                            <label class="control-label">Asst. Surgeon:</label>
+                                </div>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2AsstSurgeon"/>
+                        </div>
+                        <div class="col-sm-2">
+                        <label class="control-label">Time-out Procedure:</label>
+                             <input class="col-sm-1" id="ichkTimeoutProcedure" type="checkbox" value="false"/>
+                        </div>
+                    @*     <label class="control-label col-sm-2"></label>*@
+                        <div data-date-format="hh:mm A" id="dtTimeoutProcedure" class="input-group date col-sm-2">
+@*                        <div data-date-format="DD-MMM-YYYY hh:mm A" id="dtTimeoutProcedure" class="input-group date col-sm-3">*@
+                           <input type='text' class="form-control RequiredField"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                        </div> 
+                 
+                     </div>
+                    <div class="form-group">
+                            <label class="control-label col-sm-2">Anesthesiologist:</label>
+                        <div class="col-sm-4">
+                           <input type="text" class="sel" id="Select2Anesthesiologist"/>
+                        </div>
+                              <div class="col-sm-2">
+                        <label class="control-label">Time-out Cathlab:</label>
+                             <input class="col-sm-1" id="ichkTimeoutCathlab" type="checkbox" value="false"/>
+                        </div>
+                        <div data-date-format="hh:mm A" id="dtTimeoutCathLab" class="input-group date col-sm-2">
+@*                        <div data-date-format="DD-MMM-YYYY hh:mm A" id="dtTimeoutCathLab" class="input-group date col-sm-3">*@
+                           <input type='text' class="form-control RequiredField"/>
+                           <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                        </div> 
+                     <label class="control-label col-sm-2">Status:</label>
+                        <div class="col-sm-5">
+                           <input type="text" class="form-control" id="txtStatus"/>
+                        </div>
+
+                     </div>
+             
+                   </form>
+                </div> 
+                       
+            </div>
+            <div class="modal-footer">
+@*               <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-trash HideOnAdd ShowOnEdit">Delete</button>*@
+               <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd HideOnEdit">Save</button>
+                <button id="btnModify" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk HideOnAdd ShowOnEdit">Modify</button>
+               @* <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+               <button type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+         </div>
+      </div>
+   </div>
+        
+
+@section scripts{
+<script src="~/Scripts/itadmin/OTTracking.js"></script>
+}

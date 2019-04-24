@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-selecttariff="@Url.Action("TariffList")"
+data-orchargesdashboard="@Url.Action("ORChargesDashBoard")"
+data-selectorno="@Url.Action("ORNOListDal")" 
+data-viewasstsurgeon="@Url.Action("AsstSurgeonChargeView")"
+data-viewempdetails="@Url.Action("OREmployeeViewDetails")"
+data-save="@Url.Action("Save")"
+/>
+<div class="panel panel-default">
+          <div class="panel-heading">
+              <div class="row">
+                 <div class="col-xs-3">
+                    <h4><b class="navbar-header">OR Charges</b></h4>
+                 </div>
+                        <div class="form-group col-xs-9">
+                           @* <button id="btnRefresh" type="button" class="btn btn-sm btn-success pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-refesh" data-dismiss="modal"> Refresh</button>*@
+                       @* <label class="control-label col-sm-1">Type</label>*@
+                @*        <div class="col-sm-2 pull-right">
+                            <input type="text" id="select2PackageType" class="sel" />
+                        </div>*@
+                  @* <button id="btnNew" type="button" class="btn btn-sm btn-primary pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-open ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> New</button>*@
+              </div>
+           </div>
+        </div>
+      <div class="panel-body">
+            <div class="form-horizontal">
+                     <label class="control-label col-sm-1">Tariff</label>
+                    <div class="col-sm-3">
+                            <input type="text" id="Select2Tariff" class="sel" />
+                    </div>
+      </div>
+            <div class="col-sm-9">
+                              <table id="gridORCharges" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                                   @* <th><input id="iChkAllTestIP" type="checkbox" value="false"/ style="flex-item-align:center"></th>*@
+                                    <th>SNo</th>
+                                      <th></th>
+                                    <th>OR Name</th>
+                                    <th>Price</th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                       <div class="pull-right">
+                    @* <button id="btnAdd" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-save ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Add</button>*@
+                      <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-share ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                   @*   <button id="btnRemove" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove-sign ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Remove</button>*@
+                     
+                   @*  <button id="btnRefesh" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-refresh ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Refresh</button>*@
+                     </div>
+               </div>
+ </div>
+ </div>
+@section scripts{
+<script src="~/Scripts/itadmin/ORCharges.js"></script>
+}

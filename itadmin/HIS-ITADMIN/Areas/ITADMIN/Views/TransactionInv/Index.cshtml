@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<input type="hidden" id="url"
+data-getransacdash="@Url.Action("TransaInviDashBoard")"
+data-getstation="@Url.Action("StationInList")"
+data-getview="@Url.Action("FetchTransInv")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+/>
+
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Transaction Inventory</b></h4>
+             </div>
+   
+       </div>
+    </div>
+         <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Department Name</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="Select2DeptStation" class="sel" />
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-sm-6">
+                              <table id="gridTransacInv" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                                   @* <th><input id="iChkAllTestIP" type="checkbox" value="false"/ style="flex-item-align:center"></th>*@
+                                    <th></th>
+                                    <th></th>
+                                    <th>Transaction Name</th>
+                                    <th></th>
+                                    <th></th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                      <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-share ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                   @*   <button id="btnRemove" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove-sign ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Remove</button>*@
+@*                      <button id="btnClear" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-folder-open ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Add</button>*@
+                     <button id="btnRefesh" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-refresh ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Refresh</button>
+                      </div>
+                
+         </div>
+</div>
+
+
+@section scripts{
+<script src="~/Scripts/itadmin/TransacInv.js"></script>
+}

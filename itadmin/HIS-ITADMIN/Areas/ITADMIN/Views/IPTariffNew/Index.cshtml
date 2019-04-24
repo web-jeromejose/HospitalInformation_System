@@ -1,0 +1,420 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div class="modal modal-danger " id="modal-danger" style="padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">UPDATE / CREATE NOTIFICATION</h4>
+              </div>
+              <div class="modal-body">
+                <p>
+                    Please check the following before updating/creating new IP Tariff:
+                    <ul>
+                        <li>No Zero Price in Items - New Price</li>
+                        <li>No Back Date in Items - With Effect From</li>
+                        <li>As per management, They should issue correct price because it will affect the billing process..</li>
+                        <li>Don't use the old application aside from this ip tariff.</li>
+                    </ul>
+
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" onclick="$('#modal-danger').hide();" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+               
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+
+
+
+
+
+<input type="hidden" id="url"
+data-pdf="@Url.Action("ToPDF")"
+data-xls="@Url.Action("ToXLS")"
+data-gettariff="@Url.Action("Select2Tariff")"
+data-getservices="@Url.Action("Select2IPServices")"
+data-getserviceslistwithdynamictable="@Url.Action("ServiceList")"
+data-getservicesdept="@Url.Action("Select2ServiceDept")"
+data-geitemprice="@Url.Action("ItemListPrice")"
+data-geitempricenotdynamictable ="@Url.Action("ItemListPriceNotDynamicTable")"
+data-geitempricemedicalsupervision ="@Url.Action("ItemListPriceMedicalSuperVision")"
+data-geitempricebloodcrossmatch ="@Url.Action("ItemListPriceBloodCrossMatch")"
+data-getnewprice="@Url.Action("ItemNewPrice")"
+data-getnewpricewitheffectivedate="@Url.Action("IPTariffNewPriceWithEffectiveDate")"
+data-itemlistcode="@Url.Action("ItemListWithPrice")"
+data-selectfinditemcode ="@Url.Action("Select2ItemCode")"
+data-save="@Url.Action("Save")"
+    data-branchname ="@ViewBag.IssueAuthorityCode"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-3">
+            <h4><b class="navbar-header">IP Tariff</b></h4>
+           </div>
+          <div class="form-group col-sm-9">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal "> Save</button>
+
+           </div>   
+
+              
+          
+                  
+   </div>
+</div>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="row">
+                            <div class="form-group">
+                                    <label class="control-label col-sm-1">(1)Tariff</label>
+                                    <div class="col-sm-3">
+                                    <input type="text" id="select2Tariff" class="sel" />
+                                    </div>
+                                    <label class="control-label col-sm-1">(2)Services</label>
+                                    <div class="col-sm-3">
+                                    <input type="text" class="sel" id="Select2Service"/>
+                                    </div>
+                                    <button id="btnPrint" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-print ShowOnEdit HideOnAdd" data-dismiss="modal"> Print</button>
+                            </div>
+                              <div class="form-group">
+                                    <label class="control-label col-sm-1">(3)ItemCode</label>
+                                    <div class="col-sm-4">
+                                    <input type="text" id="select2ITemCode" class="sel" />
+                                    </div>
+                              </div>
+                </div>
+           
+        </div>
+       
+        
+         <div class="row" id="DivMarkUP">
+                
+              <div class="col-sm-6"> &nbsp;&nbsp;&nbsp;
+                    <label class=" "><small style="font-size:10px;"><i>for Bulk Price Update</i></small></label>
+                               <button id="btnMarkup" onclick="ShowModalMarkup()" type="button" class="btn btn-sm btn-danger " > SHOW Markup Price</button>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+
+        <div id="modal-feat" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" style=" ">
+
+                                            <div class="panel panel-primary">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h3 class="modal-title" id=""> Mark Up </h3>
+                                            </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <table class="table  table-condensed table-responsive">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>BedType ID</td>
+                                                                    <td>Bed Name</td>
+                                                                    <td>Mark Up Price</td>
+                                                                </tr>
+
+
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>FIRST CLASS</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="1" id="tbFirstClass" value="0.15" />
+                                                                    </td>
+                                                                </tr>
+
+                                                            @*2	SECONDCLASS*@
+                                                                <tr>
+                                                                    <td>2</td>
+                                                                    <td>SECONDCLASS</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="2" id="tbSecondClass" value="0.1" />
+                                                                    </td>
+                                                                </tr>
+
+                                                            @*3	THIRDCLASS*@
+                                                                <tr>
+                                                                    <td>3</td>
+                                                                    <td>THIRDCLASS</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="3" id="tbThirdClass" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*5	ICU DAILY RATE*@
+                                                                <tr>
+                                                                    <td>5</td>
+                                                                    <td>ICU DAILY RATE</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="5" id="tbIcuDailyRate" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*6	NICU1*@
+                                                                <tr>
+                                                                    <td>6</td>
+                                                                    <td>NICU1</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="6" id="tbNicu1" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+
+                                                            @*7	NICU2*@
+                                                                <tr>
+                                                                    <td>7</td>
+                                                                    <td>NICU2</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="7" id="tbNicu2 " value="0.05" />
+                                                                    </td>
+                                                                </tr>
+
+                                                            @*8	TICU*@
+                                                                <tr>
+                                                                    <td>8</td>
+                                                                    <td>TICU</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup "  data-bedtypeid="8" id="tbTicu" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*9	PICU1*@
+                                                                <tr>
+                                                                    <td>9</td>
+                                                                    <td>PICU1</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="9" id="tbPicu1" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+
+                                                            @*10	SUITE*@
+                                                                <tr>
+                                                                    <td>10</td>
+                                                                    <td>SUITE</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup "  data-bedtypeid="10" id="tbSuite" value="0.2" />
+                                                                    </td>
+                                                                </tr>
+
+                                                            @*11	ROYAL SUITE*@
+                                                                <tr>
+                                                                    <td>11</td>
+                                                                    <td>ROYAL SUITE</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="11" id="tbRoyalSuite" value="0.35" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*12	NORMAL BABY CRIB*@
+                                                                <tr>
+                                                                    <td>12</td>
+                                                                    <td>NORMAL BABY CRIB</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="12" id="tbNormalBabyCrib" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*15	DELIVERY ROOM*@
+                                                                <tr>
+                                                                    <td>15</td>
+                                                                    <td>DELIVERY ROOM</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="15" id="tbDeliveryRoom" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*17	DAY CASE*@
+                                                                <tr>
+                                                                    <td>17</td>
+                                                                    <td>DAY CASE</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="17" id="tbDayCase" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*18	PICU2*@
+                                                                <tr>
+                                                                    <td>18</td>
+                                                                    <td>PICU2</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="18" id="tbPicu2" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*20	SCBU*@
+                                                                <tr>
+                                                                    <td>20</td>
+                                                                    <td>SCBU</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="20" id="tbScbu" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*23	NICU3*@
+                                                                <tr>
+                                                                    <td>23</td>
+                                                                    <td>NICU3</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="23" id="tbNicu3" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*24	PICU3*@
+                                                                <tr>
+                                                                    <td>24</td>
+                                                                    <td>PICU3</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="24" id="tbPicu3" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*25	DELUXE*@
+                                                                <tr>
+                                                                    <td>25</td>
+                                                                    <td>DELUXE</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="25" id="tbDeluxe" value="0.2" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*27	ICU RATE EXT.*@
+                                                                <tr>
+                                                                    <td>27</td>
+                                                                    <td>ICU RATE EXT.</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="27" id="tbIcuRateExt" value="0.05" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*28	DELUXE-R*@
+                                                                <tr>
+                                                                    <td>28</td>
+                                                                    <td>DELUXE-R</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="28" id="tbDeluxeR" value="0.2" />
+                                                                    </td>
+                                                                </tr>
+                                                            @*37	DELUXE-R-6FL*@
+                                                                <tr>
+                                                                    <td>37</td>
+                                                                    <td>DELUXE-R-6FL</td>
+                                                                    <td>
+                                                                        <input type="number" class="CLMarkup " data-bedtypeid="37" id="tbDeluxeR6floor" value="0.35" />
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                             <td colspan="3">  
+                                                                  <div class="col-sm-3">      
+                                                                    <label class="">(5)COST PRICE</label>
+                                                                      </div>
+                                                                 <div class="col-sm-3"> 
+                                                                    <input type="number" id="selectPercentage" class="sel" />
+                                                                        </div>
+                                                                 </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                             <td colspan="3">                     
+                                                                    
+                                                             
+                                                              <div class="col-sm-3">      
+                                                                    <label class=""> (6) Compute Price </label>
+                                                                      </div>
+                                                                 <div class="col-sm-3"> 
+                                                                   <button id="btnPricePercentage" onclick="BtnChangePriceviaPercentage();"  data-dismiss="modal" aria-label="Close" type="button" class="btn btn-sm btn-info " > Compute Price</button>
+                                                                   </div>
+                                                             </td>
+                                                                </tr>
+
+                                                            </tbody>
+
+
+                                                        </table>
+                                                        </div>
+
+                                                </div>
+                                            </div>
+                                         </div>
+
+        </div>
+                                        
+       <hr />
+
+       <div class="row">
+            <div class="col-xs-5">
+          <table id="gridNoItemList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="5" class="centertext compressedtableheader" style="text-align:center">Present Price</th>
+                    </tr> 
+                     <th>BedID</th>
+                   <th>BedType</th>
+                   <th>Price</th>
+                  <th>With Effect From</th>
+                 
+                    @*<th></th>
+                    <th></th>*@
+              @*    <th>Price</th>
+                   <th>With Effect From</th>*@
+    
+                </tr>
+             </thead>
+          </table>
+        </div>
+
+        <div class="col-xs-7">
+          <table id="gridNoItemListNew" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="5" class="centertext compressedtableheader" style="text-align:center">New Price</th>
+                    </tr> 
+                        <th><input id="iChkAll" type="checkbox" value="false"/ style="flex-item-align:center"></th>
+                        <th>BedID</th>
+                        <th>BedType</th>
+                        <th>Price</th>
+                        <th>With Effect From</th>
+               @*     <th></th>*@
+              @*    <th>Price</th>
+                   <th>With Effect From</th>*@
+    
+                </tr>
+             </thead>
+          </table>
+        </div>
+        </div>
+    @*        <div class="pull-right">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+            <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>
+         </div>*@
+    </div>
+
+</div>
+
+
+@section scripts{
+ 
+<script src="~/Scripts/itadmin/NewIPTariff.js"></script>
+
+}
+
+ <script>  $('#modal-danger').show();</script>

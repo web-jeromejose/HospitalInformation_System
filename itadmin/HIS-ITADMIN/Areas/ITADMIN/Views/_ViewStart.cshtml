@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="PDFMaximize" style="display:none; opacity:.99; background-color:#4f4f4f; position:fixed; width:85%; height:100%; top:0px; left:125px; z-index:999999999999999999999;" >
+    <div id="PDFFormHeader" class="mymodal-header" style="position: absolute; background-color: white; height:35px; width:100%; ">        
+        <div class="pull-left" style="margin-left:10px; margin-top:0px; width:50px;opacity:1">            
+           <div class = "btn-group " style="background-color:#0086B8; color:white;">
+              <button style="background-color:#0086B8; color:white; border:0px !important;padding:0px !important;" type = "button" class = "btn btn-primary dropdown-toggle " data-toggle = "dropdown">
+                Export To<span class = "caret"></span>
+              </button>      
+              <ul class = "dropdown-menu">
+                 <li id="ExportToXLS"><a href = "#">To .xls</a></li>
+              </ul>
+           </div>
+        </div>
+        <div class="pull-right" style="margin-right:10px; margin-top:0px; font-size:20px;">
+            <span id="btnPDFFormClose" class="glyphicon glyphicon-remove" style="cursor:pointer; color:black;" onclick="$('#PDFMaximize').hide();"></span>
+        </div>
+    </div>
+    <div id="PreviewInPDF" class="" style="margin-top:35px; height:95%; width:100%; position:relative;">
+        
+    </div>
+    <div id="DownloadContainer" style="display:none;margin-top:35px; height:90%; width:100%; position:relative;">
+
+    </div>
+    <img class="loadingpdf" src="@Url.Content("~/Content/images/loading128.gif")" style="position: absolute; left:0; top:0; right:0; bottom:0; margin:auto;" />
+</div>

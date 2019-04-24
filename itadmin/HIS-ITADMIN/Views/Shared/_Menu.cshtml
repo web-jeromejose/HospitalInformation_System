@@ -1,0 +1,153 @@
+﻿@model List<DataLayer.ApplicationMenuModel>
+@{
+    int maxI = Convert.ToInt16(Model.Max(x => x.MenuLevel));
+    string parentID = "0";
+    int ctr = 1;
+    var dis = "";
+    var sLink = "";
+}
+<li class="header">MAIN NAVIGATION</li>
+<li>
+    <a href="~/">
+        <i class="glyphicon glyphicon-home" style="color:#357ca5 !important;"></i><span>Home</span>
+    </a>
+</li>
+ 
+
+@{
+    foreach (var file in Model.GroupBy(x => new { x.ParentName, x.ParentID, x.ParentSequence }).OrderBy(x => x.Key.ParentSequence))
+    {
+    <li class="treeview _parentlink _parentlink_@file.Key.ParentID @(file.Key.ParentID == "58" ? "_changestation" : "")">
+        <a href="#">
+            <i class="glyphicon glyphicon-th-list"></i>
+            <span> @file.Key.ParentName <span data-toggle="tooltip" title="" class="badge bg-yellow pull-right" data-original-title="0 Patient Appointment">@Model.Where(x=>x.ParentID==file.Key.ParentID).Count()</span></span>
+        </a>
+        <ul class="treeview-menu _parentmenu _parentmenu_@file.Key.ParentID @(file.Key.ParentID == "58" ? "_changestation": "")">
+            @foreach (var menu in Model.Where(x => x.ParentID == file.Key.ParentID).OrderBy(x => x.ParentSequence))
+            {
+                dis = "";
+                sLink = menu.MenuURL;
+                if (menu.Access == "0")
+                {
+                    dis = "disabled";
+                    sLink = "#";
+                }
+
+                if (menu.NewWindow != "True" && file.Key.ParentID != "58")
+                {
+
+                     @:<li class="featlink @dis" data-featid="@menu.ID" data-isshow=" " data-search="@menu.MenuName.ToLower()" data-parentid="@menu.ParentID" >
+
+                
+                    if (@menu.MenuName.Length > 12)
+                    {
+                        
+                        @:<a href="@sLink" style="font-size: 12px;" ><i class="glyphicon glyphicon-chevron-right"></i>@menu.MenuName
+                        
+                    }else{
+                        @:<a href="@sLink" ><i class="glyphicon glyphicon-chevron-right"></i>@menu.MenuName
+                        
+                    }
+
+
+                    if (menu.ID == "2323" || menu.ID == "2685" || menu.ID == "2679" || menu.ID == "2576" || menu.ID == "2575" || menu.ID == "2567" || menu.ID == "2686" || menu.ID == "2689" || menu.ID == "2691" || menu.ID == "2692" || menu.ID == "2693"
+                        || menu.ID == "2695" || menu.ID == "2598" || menu.ID == "2599" || menu.ID == "2705" || menu.ID == "2709" || menu.ID == "2715" || menu.ID == "2727") 
+                    {                  
+                     
+                        @:<span class="pull-right-container"><small class="label pull-right bg-green" style="font-size: 9px;">new</small></span></a></li>                
+                    }                   
+                    else
+                    {
+                        @:</a></li>
+                    }
+            
+                
+                
+                }
+                else if (menu.NewWindow == "True") {
+                    @:<li class="featlink _iframeload @dis" data-featid="@menu.ID" data-url="@sLink" data-search="@menu.MenuName.ToLower()  data-parentid="@menu.ParentID" data-isshow=" " ><a href="#" >@menu.MenuName</a></li>
+                
+                }
+                else if (file.Key.ParentID != "58")
+                {
+                @:<li class="featlink _iframeload @dis _link" data-featid="@menu.ID" data-url="@sLink" data-search="@menu.MenuName.ToLower() data-parentid="@menu.ParentID" data-isshow=" " ><a href="@sLink"><span> @menu.MenuName</span></a></li>
+                    }
+                    
+            }
+
+        </ul>
+    </li>
+    }
+}
+
+<li>
+    <a href="/HISLOGIN/">
+        <i class=" glyphicon glyphicon-repeat" style="color:#008d4c !important;"></i><span>Back to Main</span>
+    </a>
+</li>
+
+<li>
+    <a href="/HISLOGIN/Home/LogOff">
+        <i class="glyphicon glyphicon-off" style="color:#dd4b39 !important;"></i><span>Log Out</span>
+    </a>
+</li>
+
+
+
+
+@*@model List<DataLayer.ApplicationMenuModel>
+@{
+    int maxI = Convert.ToInt16(Model.Max(x => x.MenuLevel));
+    string parentID = "0";
+    int ctr = 1;
+    int ctrAll = 1;
+    var dis = "";
+    var sLink = "";
+}
+<ul class="nav navbar-nav">
+    @{
+        foreach (var menu in Model.OrderBy(x => x.ParentSequence))
+        {
+            ctrAll = Model.Where(x => x.ParentID == menu.ParentID).Count();
+
+            if (parentID != menu.ParentID)
+            {
+        @:<li class="dropdown">
+        @:<a href="#" class="dropdown-toggle" data-toggle="dropdown">@menu.ParentName <span class="caret"></span></a>
+                  @:<ul class="dropdown-menu" role="menu">
+                      parentID = menu.ParentID;
+            }
+            dis = "";
+            sLink = menu.MenuURL;
+            if (menu.Access == "0")
+            {
+                dis = "disabled";
+                sLink = "#";        
+            }
+            
+            if (menu.NewWindow != "True") {
+                @:<li class="featlink @dis" data-featid="@menu.ID" ><a href="@menu.MenuURL" ><i class="fa fa-circle-o text-aqua"></i>@menu.MenuName</a></li>
+            }
+            else 
+            {
+                @:<li class="featlink _iframeload @dis" data-featid="@menu.ID" data-url="@sLink" ><a href="#" ><i class="fa fa-circle-o text-yellow"></i>@menu.MenuName</a></li>
+            }
+
+                if (menu.Bar == "True")
+                {
+                    @:<li role="separator" class="divider"></li>
+                }
+                if (ctrAll == ctr)
+                {
+                    ctr = 0;
+                @:</ul></li>
+                }
+                ctr = ctr + 1;
+        }
+    }
+
+</ul>
+
+*@
+
+

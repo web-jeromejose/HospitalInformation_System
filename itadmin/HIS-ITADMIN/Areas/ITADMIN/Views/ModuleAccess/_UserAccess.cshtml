@@ -1,0 +1,59 @@
+﻿@model List<DataLayer.ModuleAccessModel>
+@{    
+    var result =
+        from m in Model
+        orderby m.ModuleName
+        group m by m.ModuleID into gp
+        select new
+        {
+            ModuleID = gp.Key.ToString(),
+            ModuleName = gp.Max(prc => prc.ModuleName)
+        };
+}
+
+<div class="col-sm-3" style="overflow: auto; height: 350px;">   
+    <table id="tblmoduleslist" class="table table-condensed table-responsive no-footer _tabledt">
+        <thead>
+            <tr>
+                <th>ModuleName</th>
+                 <th style="width:70px;">Remove Access</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in result)
+            {
+                <tr>
+                    <td class="_id_@m.ModuleID" data-id="@m.ModuleID">@m.ModuleName</td>
+                     <td class="_remove"><span class="btn btn-danger" data-module="@m.ModuleID" ><span class="glyphicon glyphicon-remove"></span></span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="col-sm-9" style="overflow: auto; height: 350px;">
+    <table id="tblmenulist" class="table table-condensed table-responsive no-footer">
+        <thead>
+            <tr>
+                <th>FID</th>
+                <th>Parent Name</th>
+                <th>Feature Name</th>
+                <th>Has Access</th>
+                <th>Add Access</th>
+                <th>Remove Access</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.OrderBy(m => m.FeatureSequence).OrderBy(m => m.ParentSeq))
+            {              
+                <tr class="selectmenu _id_@m.ModuleID @(m.HasAccess != "0" ? "row_green" : "row_red")" >
+                    <td>@m.FID</td>
+                    <td>@m.ParentName</td>
+                    <td>@m.FeatureName</td>
+                    <td>@(m.HasAccess != "0" ? "Yes" : "No")</td>
+                    <td class="_add"><span class="btn btn-success" data-module="@m.ModuleID" data-feat="@m.FeatureID"><span class="glyphicon glyphicon-ok"></span></span></td>
+                    <td class="_remove"><span class="btn btn-danger" data-module="@m.ModuleID" data-feat="@m.FeatureID"><span class="glyphicon glyphicon-remove"></span></span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

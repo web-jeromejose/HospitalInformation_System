@@ -1,0 +1,611 @@
+﻿@{
+    ViewBag.Title = "Bulk_IP_Tariff";
+}
+<style>
+    .blue_col {
+        background-color: #3ba2ca !important;
+    }
+
+    .red_col {
+        background-color: #ff9d97 !important;
+    }
+    .red_price {
+        background-color: #ff928b !important;
+    }
+</style>
+@*<script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
+@{
+
+    AjaxOptions options = new AjaxOptions();
+    options.HttpMethod = "POST";
+    //options.Confirm = "Do you wish to submit this form?";
+    options.OnBegin = "_indicator.Body()";
+    options.OnComplete = "_indicator.Stop()";
+    //options.OnFailure = "OnFailure";
+    //options.OnSuccess = "OnSuccess";
+    //options.LoadingElementId = "loading";
+    options.LoadingElementDuration = 1000;
+    options.UpdateTargetId = "reportWrapper";
+    options.InsertionMode = InsertionMode.Replace;
+}
+
+<section class="content-header">
+    <h1>
+        IP Tariff Bulk Update
+        <small>Price and Date</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tariff</a></li>
+        <li class="active">IP Tariff Bulk Page</li>
+    </ol>
+</section>
+
+<section class="content">
+    @using (Ajax.BeginForm(options))
+    {
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Tariff - IP </h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" style="">
+
+
+                @*Pace loading works automatically on page. You can still implement it with ajax requests by adding this js:
+                    <br><code>$(document).ajaxStart(function() { Pace.restart(); });</code>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn btn-default btn-lrg ajax" title="Ajax Request">
+                                <i class="fa fa-spin fa-refresh"></i>&nbsp; Get External Content
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ajax-content">
+                    </div>*@
+                <div class="col-xs-12">
+
+                    <div class="table ">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="blue_col " style=" ">
+                                    <td class="tari_col col-xs-1">Tariff</td>
+                                    <td class="serv_col">Services</td>
+                                    <td class="itemc_col">Item Code</td>
+                                    <td class="bedtype_col">Bed Type</td>
+                                    <td class="itemc_col">BTN</td>
+                                    <td class="tari_col">NEW Price</td>
+                                    <td class="serv_col">NEW Date</td>
+                                </tr>
+                            </thead>
+                            <tbody id="TextBoxContainer">
+                                <tr>
+                                    <td class=" tr_1 col-xs-1"><input id="tariff_1" type="text" value="" class="form-control tariff_list" /></td>
+                                    <td class=" tr_1"><input id="service_1" data-row="1" type="text" value="" class="form-control service_list" /></td>
+                                    <td class=" tr_1"><input id="itemcode_1" type="text" value="" class="form-control itemcode_list" /></td>
+                                    <td class=" tr_1"><input id="bedtype_1" data-row="1" type="text" value="" style="width: 100%;" multiple="" class="bedtype_list form-control " data-toggle="tooltip" data-original-title="You can select Multiple Bed Type Here" /></td>
+                                    <td class=" tr_1">
+                                        <button type="button" class="btn btn-danger remove" data-widget="remove" data-toggle="tooltip" data-original-title="  Delete this row"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                                        <button type="button" data-row="1" class="btn btn-info " onclick="return getOldPrice(1);" data-toggle="tooltip" title="" data-original-title="View OLD PRICE" aria-describedby="tooltip"><i class="glyphicon  glyphicon-zoom-in"></i></button>
+                                    </td>
+                                    <td class=" tr_1"><input id="price_1" type="number" value="" class="form-control " data-toggle="tooltip" data-original-title="Set New Price for ALL the selected BedType and ALL ItemCode" /></td>
+                                    <td class=" tr_1"><input id="date_1" type="date" value="" class="form-control" data-toggle="tooltip" data-original-title="Set Start Date for ALL the selected BedType and ALL ItemCode" /></td>
+                                </tr>
+                                @*<td><select name="" class="form-control"><option> Select</option><option> Male</option><option> Female</option></select></td>
+                                    <td><input name="DynamicTextBox" type="radio" value="" /></td>
+                                    <td><input name="DynamicTextBox" type="checkbox" value=" " /></td>*@
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4">
+                                        <button id="btnAdd" type="button" class="btn btn-primary" data-toggle="tooltip" data-original-title="Add more row"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add Row&nbsp;</button>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer" style="">
+                <button type="button" class="btn btn-primary" onclick="Save()"><i class=" "></i>SAVE</button>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    }
+</section>
+
+
+@*START MODAL*@
+
+
+<div id="modal-oldpricelist" class="modal  fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Info Modal</h4>
+            </div>
+            <div class="modal-body">
+
+                <table id="DataTable_CurrentPriceList" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="ColumnHeader">
+                        <tr></tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@*END MODAL*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input type="hidden" id="url"
+       data-tarifflist="@Url.Action("tarifflist")"
+       data-servicelist="@Url.Action("servicelist")"
+       data-itemlist="@Url.Action("itemlist")"
+       data-bedtypelist="@Url.Action("bedtypelist")"
+       data-savenewprice="@Url.Action("SaveNewPrice")"
+       
+       data-oldpricelist="@Url.Action("OldPriceList")" />
+@*<script defer src="@Url.Content("~/Scripts/DataTabletoPdf.js")" type="text/javascript"></script>*@
+
+
+
+<script type="text/javascript">
+    var counter = 1;
+
+
+    $(function () {
+
+        function select2() {
+            ajaxWrapper.Get($("#url").data("tarifflist"), {}, function (stat, e) {
+
+                Sel2Client_IP($(".tariff_list"), stat, function (dd) { });
+            });
+            ajaxWrapper.Get($("#url").data("servicelist"), {}, function (stat, e) {
+
+                Sel2Client_IP($(".service_list"), stat, function (dd) {
+
+                });
+            });
+            ajaxWrapper.Get($("#url").data("bedtypelist"), {}, function (stat, e) {
+
+                Sel2ClientMultiple_Ip($(".bedtype_list"), stat, function (dd) {
+
+                    //let row_id = dd.data("row");
+                    //var all_bed = 0;
+                    //console.log(row_id + 'row_id');
+                    //if (dd.select2('data').length > 1) {
+
+                    //    $.each(dd.select2('data'), function (index, val) {
+                    //        if (val.id === "999") {
+                    //            all_bed = 1;
+                    //            console.log('val');
+                    //            dd.select2("val", "");
+                    //            dd.select2("val", "0");
+                    //             return false;
+                    //        }
+                    //    });
+
+                    //    if (all_bed === 1) {
+                    //        console.log('all_bed' + all_bed);
+                    //       $('#bedtype_1').val(["999"]).trigger("change");
+                    //   }
+                    //}
+
+                });
+            });
+
+
+
+        }
+
+        function Onclick() {
+
+            counter = 2;
+            $("#btnAdd").bind("click", function () {
+
+                var div = $("<tr />");
+
+                div.html(GetDynamicTextBox(counter));
+                $("#TextBoxContainer").append(div);
+                select2();
+                counter++;
+
+            });
+            $("body").on("click", ".remove", function () {
+                $(this).closest("tr").remove();
+            });
+        }
+
+        function OnChange() {
+
+
+
+            $(document.body).on("change", ".service_list", function (x) {
+                let serv_id = this.value;
+                let row_id = $(this).data("row");
+              
+                if (x.added.ServiceType == 0)//room and board medical supervision
+                {
+                    $("#itemcode_" + row_id).val('');
+                    $("#itemcode_" + row_id).select2("val", "");
+                    $("#itemcode_" + row_id).prop("disabled", true);
+
+                }
+                else {
+
+                    $("#itemcode_" + row_id).val('');
+                    $("#itemcode_" + row_id).select2("val", "");
+
+                    ajaxWrapper.Get($("#url").data("itemlist"), { serviceid: serv_id }, function (stat, e) {
+                        Sel2ClientMultiple_Ip($("#itemcode_" + row_id), stat, function (dd) { });
+                    });
+                    // $(".sidebar-toggle").trigger("click");
+                    //
+                    // $("#itemcode_" + row_id).addClass('select2-offscreen').show()
+                }
+            });
+
+
+
+        }
+
+
+
+        select2();
+        Onclick();
+        OnChange();
+
+        $(".sidebar-toggle").trigger("click");
+    });
+
+    function DataTable_CurrentPriceList(data) {
+ 
+
+        var dt_currentprice = $('#DataTable_CurrentPriceList').DataTable({
+            cache: false,
+            destroy: true,
+ 
+            data: data,
+            paging: true,
+            ordering: false,
+            searching: false,
+            info: false,
+            scrollY: 400,
+            processing: false,
+            autoWidth: true,
+            dom: 'Rlfrtip',
+            scrollCollapse: false,
+            pageLength: 21,
+            lengthChange: false,
+            //"columnDefs": [
+                
+            //    {
+            //        targets:[2],//PRICE COLUMN
+            //        "render": function (data, type, full, meta) {
+            //             var cellText = $(data).text(); //Stripping html tags !!!
+            //            console.log('cellText-columnDefs');
+            //            console.log(data);
+            //            console.log(cellText);
+            //            console.log(full);
+                   
+            //            if (type === 'display' && (cellText == "" || data == 0)) {
+            //                var rowIndex = meta.row + 1;
+            //                var colIndex = meta.col + 1;
+            //                $('#DataTable_CurrentPriceList tbody tr:nth-child(' + rowIndex + ')').addClass('red_col');
+            //                $('#DataTable_CurrentPriceList tbody tr:nth-child(' + rowIndex + ') td:nth-child(' + colIndex + ')').addClass('red_price');
+            //                return data;
+            //            } else {
+            //                return data;
+            //            }
+            //        }
+            //    }
+            //],
+            columns: [
+                {
+                    title: 'Item Name', data: "ItemName", className: '', visible: true, searchable: true, width: "150px"
+                              
+                },
+                { title: 'Bed Class', data: "BedName", className: '', visible: true, searchable: true, width: "150px" },
+                {
+                    title: 'Price', data: "Price", className: '', visible: true, searchable: true, width: "150px",
+                    render: function (data, type, full, meta) {                     
+                        return data;
+                    }
+
+                },
+                { title: 'Start Date', data: "StartDateTime", className: '', visible: true, searchable: true, width: "150px" },
+                { title: 'Operator', data: "OperatorName", className: '', visible: true, searchable: true, width: "150px" },
+            ]
+            , "fnInitComplete": function (oSettings, json) {           
+                //   $("#DataTable_CurrentPriceList").css("font-size", "18px");
+                $(this).css("font-size", "8px");
+            }
+            , fnRowCallback: function (nRow, aData) {
+                var value = aData['Price'];
+                var old_cssItemid = aData['Css'];
+                var $nRow = $(nRow);
+
+                //$nRow.css({ "background-color": old_cssItemid });
+               
+                if (value == 0) {
+                    $nRow.css({ "background-color": "#ff928b" });//"#ec4a4a"
+                }
+            }
+        
+        });
+
+
+        dt_currentprice.columns.adjust().draw();
+ 
+
+    }
+
+ 
+
+    function getOldPrice(rowid) {
+        checkColumnData(rowid);
+        let TariffID = $('#tariff_' + rowid).val();
+        let ServiceID = $('#service_' + rowid).val();
+        let ItemId = $('#itemcode_' + rowid).val();
+        let BedType = $('#bedtype_' + rowid).val();
+        if (TariffID == "" || ServiceID == "" || ItemId == "" || BedType == "") { NotifyError("INPUT DATA Tariff,Services,ItemCode,Bed Type", "ERROR"); return false; }
+
+        $('#modal-oldpricelist').modal('show');
+
+        ajaxWrapper.Get($("#url").data("oldpricelist"), { TariffID: TariffID, ServiceID: ServiceID, ItemId: ItemId, BedType: BedType }, function (data, e) {
+               DataTable_CurrentPriceList(data);
+            });
+ 
+
+    }
+
+
+
+    function checkColumnData(rowid) {
+        let TariffID = $('#tariff_' + rowid).val();
+        let ServiceID = $('#service_' + rowid).val();
+        let ItemId = $('#itemcode_' + rowid).val();
+        let BedType = $('#bedtype_' + rowid).val();
+        let TR_Id = $('.tr_' + rowid);
+
+        if (TariffID == "" || ServiceID == "" || ItemId == "" || BedType == "") {
+            TR_Id.addClass("red_col");
+        } else {
+            TR_Id.removeClass("red_col");
+        }
+
+    }
+    function GetDynamicTextBox(counterID) {
+        //return '<td><input name = "DynamicTextBox" type="text" value = "' + value + '" class="form-control" /></td>' + '<td><select name="" class="form-control"><option> Select</option><option> Male</option><option> Female</option></select></td>' + '<td><input name = "DynamicTextBox" type="radio" value = "' + value + '" /></td>' + '<td><input name = "DynamicTextBox" type="checkbox" value = "' + value + '" /></td>' + '<td><button type="button" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove-sign"></i></button></td>'
+
+        var html = '  <td class="tr_' + counterID + ' col-xs-1"><input id="tariff_' + counterID + '" type="text" value="" class="form-control tariff_list" /></td> ' +
+            ' <td class="tr_' + counterID + '"><input id="service_' + counterID + '" data-row="' + counterID + '" type="text" value="" class="form-control service_list" /></td> ' +
+            ' <td class="tr_' + counterID + '"><input id="itemcode_' + counterID + '" type="text" value="" class="form-control itemcode_list" /></td> ' +
+            ' <td class="tr_' + counterID + '"><input id="bedtype_' + counterID + '" data-row="' + counterID + '" type="text" value="" style="width: 100%;" multiple="" class="bedtype_list form-control " data-toggle="tooltip" data-original-title="You can select Multiple Bed Type Here" /></td> ' +
+            ' <td class="tr_' + counterID + '"> ' +
+            ' <button type="button" class="btn btn-danger remove" data-widget="remove" data-toggle="tooltip"  title="  Delete this row"><i class="glyphicon glyphicon-remove-sign"></i></button> ' +
+            ' <button type="button" data-row="' + counterID + '" class="btn btn-info " onclick="return getOldPrice(' + counterID + ');" data-toggle="tooltip" title="View OLD PRICE" aria-describedby="tooltip"><i class="glyphicon  glyphicon-zoom-in"></i></button> ' +
+            ' </td> ' +
+            ' <td class="tr_' + counterID + '"><input id="price_' + counterID + '" type="number" value="" class="form-control " data-toggle="tooltip"  title="Set New Price for ALL the selected BedType and ALL ItemCode" /></td> ' +
+            ' <td class="tr_' + counterID + '"><input id="date_' + counterID + '" type="date" value="" class="form-control" data-toggle="tooltip"  title="Set Start Date for ALL the selected BedType and ALL ItemCode" /></td> ';
+        return html;
+    }
+    function selectFormatName_IP(data) {
+        var markup = "<table><tr>";
+        if (data.name !== undefined) {
+            markup += "<td>" + data.text + "</td>";
+        }
+        markup += "</td></tr></table>"
+        return markup;
+    }
+    function Sel2Client_IP(input, data, CallBack) {
+        $(input).select2({
+            allowClear: true,
+            placeholder: "Select!!",
+            initSelection: function (element, callback) {
+                var selection = _.find(data, function (metric) {
+                    return metric.id === element.val();
+                })
+                callback(selection);
+            },
+            query: function (options) {
+                var pageSize = 100;
+                var startIndex = (options.page - 1) * pageSize;
+                var filteredData = data;
+                var stripDiacritics = window.Select2.util.stripDiacritics;
+
+                if (options.term && options.term.length > 0) {
+                    if (!options.context) {
+                        var term = stripDiacritics(options.term.toLowerCase());
+                        options.context = data.filter(function (metric) {
+                            if (!metric.stripped_text) {
+                                metric.stripped_text = stripDiacritics(metric.id.toLowerCase());
+                            } return (metric.stripped_text.indexOf(term) !== -1 || metric.id.toString().toUpperCase().indexOf(term.toUpperCase()) != -1 || metric.name.toString().toUpperCase().indexOf(term.toUpperCase()) != -1 || metric.text.toString().toUpperCase().indexOf(term.toUpperCase()) != -1);
+
+                        });
+                    }
+                    filteredData = options.context;
+                }
+                options.callback({
+                    context: filteredData,
+                    results: filteredData.slice(startIndex, startIndex + pageSize),
+                    more: (startIndex + pageSize) < filteredData.length
+                });
+            },
+            dropdownAutoWidth: true,
+            formatResult: selectFormatName_Ip
+        }).on('change', function () {
+            CallBack($(this).select2('data'));
+        });
+        $(input).select2("enable", true);
+        $(input).select2('focus');
+    }
+    function Sel2ClientMultiple_Ip(input, data, CallBack) {
+        $(input).select2({
+            allowClear: true,
+            multiple: true,
+            data: data,
+            dropdownAutoWidth: true,
+            formatResult: selectFormatName_Ip
+        }).on('change', function () {
+
+            //console.log($(this).data("row"));
+            // CallBack($(this).select2('data'));
+            CallBack($(this));
+        });
+        $(input).select2("enable", true);
+        $(input).select2('focus');
+
+    }
+    function selectFormatName_Ip(data) {
+        var markup = "<table><tr>";
+        if (data.name !== undefined) {
+            markup += "<td>" + data.name + "</td>";
+        }
+        markup += "</td></tr></table>"
+        return markup;
+    }
+
+    function Save() {
+        $('#preloader').show();
+
+        let error_count = 0;
+        let date_err_count = 0;
+  
+        var save = {};
+       
+        var entry;
+        entry = []
+        entry = {}
+        entry.OperatorID = 0;
+ 
+        entry.SaveNewPriceDalList = [];
+         
+        for (rowid = 1; rowid <= (counter - 1); rowid++)
+        {            
+                        let TariffID = $('#tariff_' + rowid).val();
+                        let ServiceID = $('#service_' + rowid).val();
+                        let ItemId = $('#itemcode_' + rowid).val();
+                        let BedType = $('#bedtype_' + rowid).val();
+                        let price = $('#price_' + rowid).val();
+                        let date = $('#date_' + rowid).val();
+                        let TR_Id = $('.tr_' + rowid);
+
+                        if (TariffID == "" || ServiceID == "" || ItemId == "" || BedType == "" || price == "" || date == "") {
+                            TR_Id.addClass("red_col");
+                            error_count++;
+                        } else {
+
+                            
+                            var expireDateArr = date.split("-");
+                            var expireDate = new Date(expireDateArr[0], (expireDateArr[1] -1), expireDateArr[2]);
+                            var todayDate = new Date();
+                           
+                            if (todayDate > expireDate) {
+                                TR_Id.addClass("red_col");
+                                date_err_count++;
+                                error_count++;
+                               
+                            } else {
+
+                                TR_Id.removeClass("red_col");
+                                save = {
+                                    rowid: rowid
+                                    , TariffID: TariffID
+                                    , ServiceID: ServiceID
+                                    , ItemId: ItemId
+                                    , BedType: BedType
+                                    , price: price
+                                    , date: date
+                                };
+
+                                entry.SaveNewPriceDalList.push(save);
+
+                            }
+
+
+
+                        } 
+        }
+       
+
+        if (date_err_count > 0) {
+            $('#preloader').hide();
+            NotifyError("Start Date should be greater than today.. ", "Date..");
+            return false;
+        } else if (error_count > 0) {
+            $('#preloader').hide();
+            NotifyError("Kindly check your data...", "Validate data..");
+            return false;
+        }
+       
+      //  console.log(entry.SaveNewPriceDalList);
+      //  entry.SaveNewPriceDalList = JSON.stringify(entry.SaveNewPriceDalList);
+        console.log(entry.SaveNewPriceDalList);
+            $.ajax({
+                type: "POST",
+                url: $("#url").data("savenewprice"),
+                data:  JSON.stringify(entry) ,
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                           
+                },
+                success: function (data, e) {
+                    $('#preloader').hide();
+                    swal({ title: "Price Updated", text: "IP TARIFF BULK SAVE!", html: true, type: "success" });
+                },
+                    error: function (result) {
+                    swal({ title: "Unauthorized Access", text: result.statusText, html: true, type: "error" });
+                }
+            });
+
+    
+        //var array = $.map(save_data, function (value, index) {
+        //    return [value];
+        //});
+ 
+       
+    }
+
+
+ 
+
+</script>

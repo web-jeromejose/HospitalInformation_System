@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "CashDiscount Dept Wise";
+}
+
+<input type="hidden" id="url"
+data-select2service="@Url.Action("Select2CashDiscountServices")"
+ data-selectcomp="@Url.Action("Select2Comp")"
+data-getcashdiscdeptwisedashboard="@Url.Action("CashDiscountDashboard")"
+data-getdeptwiseitem="@Url.Action("CashDiscountDashboardItem")"
+data-save="@Url.Action("Save")"
+data-select2distype="@Url.Action("Select2DiscountType")"
+    
+/>
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Cash Discount Dept Wise</b></h4>
+             </div>
+     </div>
+    </div>
+ <div class="panel-body">
+      <div class="form-horizontal">
+            <div class="form-group">
+                        <label class="control-label col-sm-1">Category:</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="select2Category" class="sel" />
+                        </div>
+                        <label class="control-label col-sm-1">Company:</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="select2Company"/>
+                        </div>
+                  </div>
+            <div class="form-group">
+                        <label class="control-label col-sm-1">List of Services:</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="select2ListService" class="sel" />
+                        </div>
+                        <label class="control-label col-sm-1">Discount Type</label>
+                        <div class="col-sm-2">
+                           <input type="text" class="sel" id="select2Discountypes"/>
+                        </div>
+                        <label class="control-label col-sm-1">Services</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="select2Services"/>
+                        </div>
+                     
+              </div>
+          </div>
+     <div class="col-xs-5">
+          <table id="gridGeneralList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Department</th>
+                    </tr>
+                   <th></th>
+                   <th>Code</th>
+                   <th>Department</th>
+                   <th>Percentage</th>
+                   <th></th>
+                   <th></th>
+                </tr>
+             </thead>
+          </table>
+        </div>
+           <div class="col-xs-6">
+          <table id="gridSelectedlist" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Item</th>
+                    </tr> 
+                    <th></th>
+                   <th>Code</th>
+                   <th>Department</th>
+                   <th>Percentage</th>
+                   <th></th>
+                   <th></th>
+                   @*<th>Ref Price</th>*@
+                </tr>
+             </thead>
+          </table>
+         
+        </div>
+        <div class="pull-right">
+                             <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width ShowOnAdd ShowOnView HideOnEdit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+              <button id="btnClear" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width"> <span class="glyphicon glyphicon-remove"></span> Clear</button> 
+                 @* <button id="btnCancelran" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+            </div>
+    </div>    
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/CashDiscountDeptWise.js"></script>
+}

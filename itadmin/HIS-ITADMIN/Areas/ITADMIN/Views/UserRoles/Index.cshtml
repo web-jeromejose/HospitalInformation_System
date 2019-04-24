@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<input type="hidden" id="url"
+data-getmodulelist="@Url.Action("ModuleList")"
+data-getmoduleroles="@Url.Action("Select2GetModuleDAL")"
+data-getservicesdept="@Url.Action("Select2ServiceDept")"
+data-getfeaturelist="@Url.Action("FeatureDashBoardList")"
+data-getfunctionlist="@Url.Action("FunctionListSelected")"
+data-getnewfeature="@Url.Action("FeatureNewEntryDashBoard")"
+data-getnewfunction="@Url.Action("FunctionNewEntryDashBoard")"
+data-getuserdetails="@Url.Action("EmployeeList")"
+data-save="@Url.Action("Save")"
+/>
+
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-4">
+            <h4><b class="navbar-header">Bulk User Roles</b></h4>
+         </div>
+           <div class="pull-right  col-sm-1">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+           </div>
+  </div>
+</div>
+    <div class="panel-body">
+         <div class="form-horizontal">
+             <div class="form-group">
+                        <label class="control-label col-sm-1">User</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="Select2User" class="sel" />
+                        </div>
+                  <label class="control-label col-sm-1">Role</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2Role"/>
+                        </div>
+                        <button id="btnCopyRole" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-cog ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Roles Mapping</button>
+                          </div>
+                  <div class="form-group">
+                        <label class="control-label col-sm-1">Module</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="Select2Module" class="sel" />
+                        </div>
+                       
+              </div>
+             
+              <div class="form-group">
+                   <label class="control-label col-sm-1">New Role</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="form-control" id="txtNewRole"/>
+                        </div>
+                  <button id="btnNew" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-refresh ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> New</button>
+             @*     <label class="control-label col-sm-1">Mark Up %</label>
+                        <div class="col-sm-2">
+                           <input type="text" class="sel" id="txtMarkup"/>
+                        </div>
+                      <button type="button" class="btn btn-sm btn-default button-width" id="btnPreview">
+                        <span class="glyphicon glyphicon-search"></span> Find Item
+                    </button>*@
+
+              </div>
+         </div>
+    <div style:"text-align:center" class="col-xs-7">
+          <table id="gridNoItemList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+
+                    @*<tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Features</th>
+                    </tr> *@
+                    <th><input id="iChkAll" type="checkbox" value="false"/ style="flex-item-align:center"></th>
+                   <th style:"text-align:center">Features</th>
+                   <th></th>
+               @*    <th></th>
+                   <th></th>*@
+                </tr>
+             </thead>
+          </table>
+        </div>
+       @*   <div class="col-xs-4">
+          <table id="gridListWithPrice" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    <tr>
+                       <th colspan="6" class="centertext compressedtableheader" style="text-align:center">Function</th>
+                    </tr> 
+
+                   <th></th>
+                  <th>Function</th>
+
+                </tr>
+             </thead>
+          </table>
+        </div>*@
+         <div class="pull-right">
+          @*  <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>*@
+            @*<button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+         </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/UserRoles.js"></script>
+
+}

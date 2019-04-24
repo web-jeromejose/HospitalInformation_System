@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Patient Order Cancelation";
+}
+
+<input type="hidden" id="url"
+data-getadmdate="@Url.Action("Select2AdminssionDate")"
+data-getcanceladmndate="@Url.Action("FetchCancelAdmissionDate")"
+data-fetchpatientinfo="@Url.Action("FetchCancelPatientOrderInformation")"
+data-cancelreason="@Url.Action("CancelReasonList")"
+data-changetype="@Url.Action("Select2ChangeType")"
+data-save="@Url.Action("Save")"
+data-fetchpatientorderdashboard="@Url.Action("FetchPatientOrderCancel")"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+   <input id="CompanyId" name="" type="hidden" class="form-control">
+   <input id="IssueAuthoritycode" name="" type="hidden" class="form-control">
+   <input id="IPID" name="" type="hidden" class="form-control">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">Patient Order Cancelation</b></h4>
+         </div>
+               <div class="form-group col-sm-9">
+                <button id="btnSave" type="button" class="btn btn-sm btn-danger glyphicon glyphicon-file pull-right"> Cancel-Item</button>
+            </div>
+           
+      </div>
+   </div>
+        <div class="panel-body">
+         <div class="form-horizontal">
+               
+              <div class="form-group">
+              <label class="control-label col-sm-1">Pin:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="txtPin"/>
+                </div>
+                   <label class="control-label col-sm-2">Admission Date:</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="form-control" id="txtadmitdatetime"/>
+                  </div>
+            </div>
+             <div class="form-group">
+                 <label class="control-label col-sm-1">Patient Name:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="txtPatientName"/>
+                </div>
+             </div>
+                  <div class="form-group" style:color>
+                 <label class="control-label col-sm-1">Bed No:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="txtBedNo"/>
+                </div>
+             </div>
+              <div class="form-group">
+                 <label class="control-label col-sm-1">Company:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="sel" id="Select2Company"/>
+                </div>
+             </div>
+        
+          @*      <div class="form-group">
+                   <label class="control-label col-sm-2">Reason for Cancel</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2ReasonforCancel"/>
+                  </div>
+               </div>*@
+
+          <div class="col-xs-12">
+           
+          <table id="gridtransactiondetails" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                   @* <tr>
+                       <th colspan="9" class="centertext compressedtableheader" style="text-align:center">Transaction Details</th>
+                    </tr> *@
+                   <th>Department</th>
+                   <th>OrderNo</th>
+                   <th></th>
+                   <th>Date Time</th>
+                   <th>Station Name</th>
+                   <th>Item Name</th>
+                   <th>Qty</th>
+                   <th>Unit</th>
+                   <th>SerialNo</th>
+                   <th>Operator</th>
+                   <th>Status</th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                @* <th>Change Type</th>*@
+                @* <th></th>
+                <th></th>
+                <th></th>
+                <th></th>*@
+                </tr>
+             </thead>
+          </table>
+          @*  <span class="glyphicon glyphicon-unchecked"></span>Free*@
+              
+         
+                    <span class="glyphicon glyphicon-unchecked" style="background-color: #ffff5e"></span>Cathlab Item
+        
+                    <span class="glyphicon glyphicon-unchecked" style="background-color: #CEFFC9"></span>Requested Item
+
+                    <span class="glyphicon glyphicon-unchecked" style="background-color: #fbf3b0"></span>Food Item
+
+                    <span class="glyphicon glyphicon-unchecked" style="background-color: #fbb673"></span>BSPExecution Item
+
+                    <span class="glyphicon glyphicon-unchecked" style="background-color: #ffa4f2"></span>Procedure Item
+
+                    <span class="glyphicon glyphicon-unchecked" style="background-color: #15739E"></span>RH Item
+        
+        </div>
+     </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/PatientOrderCancel.js"></script>
+}

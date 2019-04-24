@@ -1,0 +1,321 @@
+﻿@using DataLayer.ITAdmin.Model
+@model DownloadCompanyPrice
+
+
+@section styles
+    {
+
+    <link href="~/Content/css/SGHLayout/plugins/icheck3/skins/square/_all.css" rel="stylesheet" />
+     
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/select2/select2.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/icheck2/all.min.css")" />
+    <link rel="Stylesheet" href="@Url.Content("~/Content/styles/itadmin/iptariff.css")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />    
+ 
+    <link href="@Url.Content("~/Content/datatable/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datatable/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/toastr/content/toastr.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/glyphicons/glyphicons.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/datepicker/datepicker.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.eot")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.ttf")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff")" />
+        
+    @* DATA TABLES *@
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+
+}
+
+@section scripts{   
+ 
+<script type="text/javascript" src="@Url.Content("~/scripts/jquery-ui-1.10.4.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/content/plugins/icheck/jquery.icheck.js")"></script> 
+<script src="~/Content/plugins/icheck3/icheck.js"></script>
+<script src="~/Content/js/dataTables.bootstrap.js"></script>
+@*<script src="~/Scripts/itadmin/IPTariff.js"></script>*@
+<script src="~/Content/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="~/Content/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+ @* DATA TABLES *@
+@*<script src="//code.jquery.com/jquery-1.12.3.js"></script>*@
+   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script> 
+    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+@*    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>*@
+    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+ 
+    <script src="~/Content/js/dataTables.bootstrap.js"></script>
+        <link href="@Url.Content("~/Content/datatable/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datatable/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
+
+ 
+}
+
+
+
+
+<input type="hidden" id="url"
+ 
+data-loadipoplist="@Url.Action("LoadOPIPPriceList")"
+ 
+ 
+
+/>
+
+ 
+
+           
+
+
+   <div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-12">
+            <h4><b class="navbar-header">Download Company Price List</b></h4>
+            </div>
+       
+   </div>
+</div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                       <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-4">Tariff Name </label>
+                                <div class="col-xs-8">
+                                    <select id="cboTariff" name="cboTariff" data-placeholder="Select Tariff" style="width: 100%;">
+                                        <option></option>
+                                        @foreach (var item in Model.TariffList)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                        
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3" data-toggle="tooltip" data-original-title= "Choose your tariff type">Tariff Type </label>
+                                <div class="col-xs-5">
+                                    <select id="tariffType" name="tariffType" data-placeholder="Tariff Type" style="width: 100%;">
+                                        <option value="IP">IP</option>
+                                        <option value="OP">OP</option>
+                                    </select>
+                        
+                                </div>
+                                 <div class="col-xs-4">
+                                  <button id="BtnLoad" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal "> LOAD</button>
+                                    </div>
+                            </div>
+                        </div>
+
+
+    </div>
+</div>
+
+
+               <div class="col-sm-12">
+                                    <div class="row">
+                                        <br />
+                                        <div style="overflow: auto; height: auto;">
+                                            <table id="tblLoadData" class="table table-condensed table-responsive no-footer _table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Bed Type</th>
+                                                        <th>Department</th>
+                                                        <th>Code</th>
+                                                        <th>Name</th>
+                                                        <th>Price</th>
+                                                        <th>Arabic Name</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+        
+
+
+        </div>
+</div>
+</div>
+<script>
+
+
+    var c = new Common();
+ 
+
+
+    $(document).ready(function () {
+       
+        $('#tariffType').select2();
+        $('#cboTariff').select2({
+            minimumInputLength: 0,
+            allowClear: true,
+            //ajax: {
+            //    quietMillis: 150,
+            //    url: $("#url").data("getdoctorcode"),
+            //    dataType: 'jsonp',
+            //    cache: false,
+            //    data: function (term, page) {
+            //        return {
+            //            pageSize: pageSize,
+            //            pageNum: page,
+            //            searchTerm: term
+            //        };
+            //    },
+            //    results: function (data, page) {
+            //        var more = (page * pageSize) < data.Total;
+            //        return { results: data.Results, more: more };
+            //    }
+            //}
+        }).change(function (e) {
+            console.log(e);
+        });
+
+
+        $('#cboTariff').select2('open');
+
+      
+    });
+
+
+
+
+    $('#BtnLoad').click(function () {
+      
+        var YesFunc = function () {
+            $('#preloader').show();
+            Action = 1;
+            LoadTableList();
+        };
+       
+        var TariffID = $("#cboTariff").select2('val');
+        if (TariffID == '' || TariffID == null ) {
+
+             var errMsg = "Please select Tariff Name";
+                c.MessageBox("Error...", errMsg, null);
+                return false;
+        }
+       
+
+
+        c.MessageBoxConfirm("Load Entry?", "Are you sure you want to Load the Entry?", YesFunc, null);
+    });
+
+
+    function LoadTableList() {
+       
+        var IPorOp = $("#tariffType").select2('val');
+        var TariffID = $("#cboTariff").select2('val');
+
+      
+        ajaxWrapper.Get($("#url").data("loadipoplist"), { IPorOp: IPorOp, TariffID: TariffID }, function (x, e) {
+            console.log(x);
+            $("#tblLoadData").DataTable({
+                destroy: true,
+                dom: 'Bfrtip',
+                buttons: [
+                 
+                    'excelHtml5',
+ 
+                ],
+                "pageLength": 100,
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: false,
+                data: x,
+                bAutoWidth: false,
+                columns: [
+                     { data: "xGroup", className: " " },
+                     { data: "Department" },
+                     { data: "Code" },
+                     { data: "Name" },
+                     { data: "Price" },
+                     { data: "arabicname" }
+                ],
+                "initComplete": function (settings, json) {
+                    $('#preloader').hide();
+                  }
+            });
+ 
+           
+        });
+        //c.Disable('#btnAddAccess', false);
+      
+    }
+
+
+    function Save() {
+
+        $('#preloader').show();
+        var ret = Validated();
+        if (!ret) return ret;
+
+
+        url = $('#url').data("save");
+        var data = $('#frmUpdateDoctorsCode').serializeObject();
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json',
+            url: url,
+            data: JSON.stringify(data),
+            beforeSend: function () {
+
+            },
+            success: function (data) {
+
+                console.log(data);
+                if (data.ErrorCode == 0) {
+                    c.MessageBoxErr("Error...", data.Message);
+                    return;
+                }
+
+                var OkFunc = function () {
+
+                    if (Action == 3) {
+                    }
+
+                    Action = 0;
+
+                };
+                $('#preloader').hide();
+                c.MessageBox(data.Title, data.Message, OkFunc);
+
+                $('#preloader').hide();
+
+            },
+            error: function (xhr, desc, err) {
+                c.ButtonDisable('#btnSave', false);
+                var errMsg = "Error in posting the data." + "<br>" + err + "<br>" + desc;
+                c.MessageBox("Error...", errMsg, null);
+            }
+        });
+
+        return ret;
+    }
+
+
+
+
+
+ 
+
+
+</script>

@@ -1,0 +1,691 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .list-group-item
+    {
+
+        margin-bottom : 0px !important;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Employee User Profile
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>IT Admin</a></li>
+        <li><a href="#">Employee</a></li>
+        <li class="active">Update Profile</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-3">
+            <!-- About Me Box -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="http://130.1.8.184/HISLOGIN/Content/dist/img/saudi-avatar.png" alt="User profile picture">
+
+                    <h3 class="profile-username text-center" id="InfoName">Saudi German</h3>
+
+                    <p class="text-muted text-center" id="InfoDepartment">Hospital</p>
+                </div>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <strong><i class="fa fa-book margin-r-5"></i>Other Information</strong>
+
+                    <ul class="list-group ">
+                        <li class="list-group-item">
+                            <b>Address</b> <small class="pull-right" id="InfoAddress">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>CellNo</b> <small class="pull-right"  id="InfoCellNo">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Contact Person</b> <small class="pull-right"  id="InfoContactPerson">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Birth Date</b> <small class="pull-right"  id="InfoDOB">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Department</b> <small class="pull-right"  id="InfoDeptname">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Position</b> <small class="pull-right"  id="InfoDesignation">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Email</b> <small class="pull-right"  id="InfoEmail">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Last Login</b> <small class="pull-right"  id="InfoLogindate">--</small>
+                        </li>
+                        <li class="list-group-item">
+                            <b>ComputerName</b> <small class="pull-right"  id="InfoSystemName" >--</small>
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Total Employees</b> <a class="pull-right" id="allemployees">15,232</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Active Employees</b> <a class="pull-right"  id="activeemployees">890</a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <b>New Employees</b> <a class="pull-right"  id="newemployees">47</a>
+                        </li>
+                    </ul>
+
+
+
+
+                    <a href="#" onclick="location.reload();" class="btn btn-primary btn-block"><b>Refresh</b></a>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#newuser" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>New User</a></li>
+                    <li><a href="#chnagepasstab" aria-controls="sectionB" role="tab" data-toggle="tab"><i class="glyphicon  fa  fa-unlock-alt "></i>Password</a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div id="newuser" class="active tab-pane">
+                        <div class="form-horizontal">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3"><code>NEW</code> Employee</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="select2Userlist" class="form-control " />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Password:</label>
+                                <div class="col-sm-6">
+                                    <input data-toggle="tooltip" title="(At least one letter/One capital letter)/(One number)/(8 characters in length)" name="pass" type="password" class="form-control password" placeholder="Enter Password" id="txtPassword" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Confirm Pass:</label>
+                                <div class="col-sm-6">
+                                    <input type="password" placeholder="Confirm Password" class="form-control" id="txtConfirmPassword" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Email:</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="txtEmail" placeholder="Email@email.com" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Mobile:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="txtMobile" placeholder="9660123456789" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-sm-11">
+                                <div class="alert alert-info" style="font-size: 12px; color: black !important;" role="alert">
+                                    <b>Password Reminder(s)</b><br>
+                                    <ul>
+                                       @* <li>Password will expire within <b>90</b> days.</li>*@
+                                        <li>You can use password only once, you will need a different password upon renewal.</li>
+                                         <li>Do not give or share password with anyone.</li>
+                                        <li>Use a combination of alphanumeric characters when setting our password ( Upper [A-Z] Lower [a-z], Number [0-9] and Special Characters [ # $ % &amp; * !] etc .</li>
+                                        <li>Example: <b>aBcde1234</b></li>
+                                        <li>Default Password when reset: <b>The User EmployeeID ex. 000027</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <h5>
+                                        <b>Security Question</b>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Question 1:</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="txtQuestion1">
+                                        <option value="In what city were you born?">In what city were you born?</option>
+                                        <option value="What is your favorite movie?">What is your favorite movie?</option>
+                                        <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                                        <option value="What is your father's middle name?">What is your father's middle name?</option>
+                                        <option value="What was your first car?">What was your first car?</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Answer 1:</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="txtAnswer1" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Question 2:</label>
+                                <div class="col-sm-6">
+                                    @*<input type="text" class="form-control" />*@
+                                    <select class="form-control" id="txtQuestion2">
+                                        <option value="In what city or town was your first job?">In what city or town was your first job?</option>
+                                        <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+                                        <option value="What is your oldest cousin's first and last name?">What is your oldest cousin's first name?</option>
+                                        <option value="Where Did you travel for the first time?">Where did you travel for the first time?</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Answer 2:</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="txtAnswer2" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button id="btnSave" type="button" class="btn btn-sm btn-warning glyphicon glyphicon-export">Register</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- /.tab-pane -->
+                    <div id="chnagepasstab" class="tab-pane ">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-6"><b>Change Password</b></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="select2UserReset" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Old Password:</label>
+                                <div class="col-sm-6">
+                                    <input type="password" placeholder="Old Password" class="form-control" id="txtOldPassword" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">New Password:</label>
+                                <div class="col-sm-6">
+                                    <input data-toggle="tooltip" title="(At least one letter/One capital letter)/(One number)/(8 characters in length)" name="pass" type="password" class="form-control password" placeholder="Enter Password" id="txtNewPassword" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Confirm Password:</label>
+                                <div class="col-sm-6">
+                                    <input type="password" maxlength="10" placeholder="Confirm Password" class="form-control" id="txtresitConfirmPassword" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-10">
+                                    <button id="btnChangePass" type="button" class="btn btn-sm btn-primary glyphicon glyphicon-floppy-disk ">Change Password</button>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="col-sm-12">
+                                <div class="alert alert-info" style="font-size: 12px; color: black !important;" role="alert">
+                                    <b>Password Reminder(s)</b><br>
+                                    <ul>
+                                        @* <li>Password will expire within <b>90</b> days.</li>*@
+                                        <li>You can use password only once, you will need a different password upon renewal.</li>
+                                        <li>Do not give or share password with anyone.</li>
+                                        <li>Use a combination of alphanumeric characters when setting our password ( Upper [A-Z] Lower [a-z], Number [0-9] and Special Characters [ # $ % &amp; * !] etc .</li>
+                                        <li>Example: <b>aBcde1234</b></li>
+                                        <li>Default Password when reset: <b>The User EmployeeID ex. 000027</b></li>
+                                   
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <hr />
+                        <div class="form-horizontal">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-6"><b>Force Reset Password</b></label>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Employee ID</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="select2UserPasswordReset" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-10">
+                                    <button id="btnNewResetPassword" type="button" class="btn btn-sm btn-danger ">FORCE RESET</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- /.tab-pane -->
+
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+</section>
+<!-- /.content -->
+
+<input id="enryppassword"  type="hidden" >
+
+<input type="hidden" id="url"
+data-allnewemployee="@Url.Action("AllNewEmployees")"
+data-allactiveemployee="@Url.Action("AllActiveEmployees")"  
+data-save="@Url.Action("NewEmployeeSave")"   
+data-getemployeedetails="@Url.Action("GetEmployeeDetails")"   
+data-getcountemployees="@Url.Action("GetCountEmployees")"   
+data-getuserinfo="@Url.Action("GetUserInformation")" 
+data-changepasswordsave="@Url.Action("ChangePasswordSave")" 
+
+
+data-forceresetpassword="@Url.Action("ForceResetPassword_Sharjah")"
+    
+      
+/>
+@*pls create a js file to separate this lagi kseng RUSH eh.. peace!!*@
+@section scripts{
+
+    <script>
+        var c = new Common();
+
+        $(document).ready(function () {
+            InitSelect2();
+            initonClick();
+        });
+        function InitSelect2() {
+
+            ajaxWrapper.Get($("#url").data("allnewemployee"), null, function (xx, e) {
+                Sel2Client($("#select2Userlist"), xx, function (x) { getdetails(x.id) });              
+            });
+            ajaxWrapper.Get($("#url").data("allactiveemployee"), null, function (xx, e) {
+                //Sel2Client($("#select2UserPasswordReset"), xx, function (x) { getdetails(x.id) });
+                Sel2Client($("#select2UserPasswordReset"), xx, function (x) {  });
+                 Sel2Client($("#select2UserReset"), xx, function (x) { getdetails(x.id); viewUserinChangepassword(x.id); });
+            });
+
+           
+
+            ajaxWrapper.Get($("#url").data("getcountemployees"), null, function (xx, e) {
+               $.each(xx, function (i, row) {
+                   console.log(row);
+                   $('#' + row.field).html(row.count);
+
+                });
+            });
+
+            
+
+        }
+        function getdetails(id) {
+            console.log(id);
+            ajaxWrapper.Get($("#url").data("getemployeedetails"), { id: id }, function (x, e) {
+                console.log(x[0]);
+                data = x[0];
+                $('#InfoName').html(data.Name);
+                $('#InfoDepartment').html(data.Deptname);
+                $('#InfoAddress').html(data.Address);
+                $('#InfoCellNo').html(data.CellNo);
+                $('#InfoContactPerson').html(data.ContactPerson);
+                $('#InfoDOB').html(data.DOB);
+                $('#InfoDeptname').html(data.Deptname);
+                $('#InfoDesignation').html(data.Designation);
+                $('#InfoEmail').html(data.Email);
+                $('#InfoLogindate').html(data.Logindate);
+                $('#InfoSystemName').html(data.SystemName);
+    
+
+
+            });
+        }
+        function initonClick() {
+            $('#btnSave').click(function () {
+                var YesFunc = function () {
+                    Save();
+                };
+                c.MessageBoxConfirm("New Employee..", "Are you sure you want to Add this Employee?", YesFunc, null);
+            });
+            $('#btnChangePass').click(function () {
+                var YesFunc = function () {
+                 
+                    ChangePasswordSave();
+                };
+                c.MessageBoxConfirm("Change Password..", "Are you sure you want to Change the Password?", YesFunc, null);
+
+            });
+
+
+            $('#btnNewResetPassword').click(function () {
+                if (c.GetSelect2Id('#select2UserPasswordReset') == "") {
+                    c.MessageBoxErr('Empty', "You didn't enter a employee");
+                    //alert(pswd);
+                    return false;
+                }
+
+
+                var YesFunc = function () {
+
+
+
+
+                    $.ajax({
+                        url: $('#url').data("forceresetpassword"),
+                        data: JSON.stringify({ EmpId: c.GetSelect2Id('#select2UserPasswordReset') }),
+                        type: 'post',
+                        cache: false,
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+
+                            c.ButtonDisable('#btnNewResetPassword', true);
+                            //c.ButtonDisable('#btnModify', true);
+                        },
+                        success: function (data) {
+                            //c.ButtonDisable('#btnModify', false);
+                            c.ButtonDisable('#btnNewResetPassword', false);
+
+                            console.log(data);
+
+                            if (data.ErrorCode == 0) {
+                                c.MessageBoxErr("Error...", data.Message);
+                                return;
+                            }
+
+                            var OkFunc = function () {
+
+
+
+                            };
+
+                            c.MessageBox('Success', 'Employee set Password to EXPIRED. PLEASE LOGIN and change the password. / or Go to CHANGE PASSWORD TAB', OkFunc);
+                        },
+                        error: function (xhr, desc, err) {
+                            c.ButtonDisable('#btnNewResetPassword', false);
+                            var errMsg = "Error in posting the data." + "<br>" + err + "<br>" + desc;
+                            c.MessageBox("Error...", errMsg, null);
+                        }
+                    });
+
+
+                };
+                c.MessageBoxConfirm("Force Reset Password?", "Are you sure you want to FORCE Reset?", YesFunc, null);
+
+            });
+
+        }
+
+
+        function ValidatedPassword() {
+            var ret = false;
+            var pswd = $('#txtPassword').val();
+            var confrmpswd = $('#txtConfirmPassword').val();
+            var error = "";
+            var illegalChars = /[\W]/; // allow only letters and numbers
+            var CapitalChar = /[A-Z]+/; // allow one Capital Letter
+
+
+            if (pswd == "") {
+                c.MessageBoxErr('Empty', "You didn't enter a password");
+                //alert(pswd);
+                return false;
+            }
+            else if (!CapitalChar.test(pswd)) {
+                c.MessageBoxErr('Incorrect', "The password must contain at least one uppercase.");
+                return false;
+
+            }
+            else if ((pswd.length < 8) || (pswd.length > 10)) {
+                c.MessageBoxErr('Incorrect', "The password is wrong length. Maximum 10 characters only.");
+                return false;
+
+            } else if (illegalChars.test(pswd)) {
+
+                c.MessageBoxErr('Incorrect', "The password contains illegal characters.");
+                return false;
+            } else if ((pswd.search(/[a-zA-Z]+/) == -1) || (pswd.search(/[0-9]+/) == -1)) {
+
+                c.MessageBoxErr('Incorrect', "The password must contain at least one numeral.");
+                return false;
+            } else if (confrmpswd != pswd) {
+
+                c.MessageBoxErr('Not Match', "Confirm password not match.");
+                return false;
+            }
+
+
+            return true;
+        }
+
+        function Save() {
+
+            var entry = {};
+
+            entry.Id = c.GetSelect2Id('#select2Userlist');
+            entry.Password = $('#txtPassword').val();
+
+            entry.Email = $('#txtEmail').val();
+            entry.Mobile = $('#txtMobile').val();
+            entry.Question1 = $('#txtQuestion1').val();
+            entry.Question2 = $('#txtQuestion2').val();
+            entry.SecAnswer1 = $('#txtAnswer1').val();
+            entry.SecAnswer2 = $('#txtAnswer2').val();
+
+            console.log(entry.Id);
+            var txt = '';
+            if (entry.Id == "" || entry.Password == "") {
+                var txt = txt + '<li>Employee</li><li>Password</li>';
+            }
+
+            if (entry.SecAnswer1 == "") {
+                txt = txt + ' <li>Security question #1</li>';
+            }
+            if (entry.SecAnswer2 == "") {
+                txt = txt + ' <li>Security question #2</li>';
+            }
+
+            if (txt.length > 1) {
+                c.MessageBoxErr('Empty', "Please select/input the complete details..." + txt);
+                return false;
+            }
+
+            //   var ret = ValidatedPassword();
+            //   if (!ret) return ret;
+            console.log(entry);
+            $.ajax({
+                url: $('#url').data("save"),
+                data: JSON.stringify(entry),
+                type: 'post',
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    c.ButtonDisable('#btnSave', true);
+                },
+                success: function (data) {
+                    c.ButtonDisable('#btnSave', false);
+
+                    if (data.ErrorCode == 0) {
+                        c.MessageBoxErr("Error...", data.Message);
+                        return;
+                    }
+
+                    var OkFunc = function () {
+
+                    };
+
+                    c.MessageBox(data.Title, data.Message, OkFunc);
+                },
+                error: function (xhr, desc, err) {
+                    c.ButtonDisable('#btnSave', false);
+                    var errMsg = "Error in posting the data." + "<br>" + err + "<br>" + desc;
+                    c.MessageBox("Error...", errMsg, null);
+                }
+            });
+
+            return ret;
+        }
+
+        function ValidatedResetPassword() {
+            var ret = false;
+            var Oldpswd = $('#enryppassword').val();
+            var entryoldpswd = $('#txtOldPassword').val();
+            var newpswd = $('#txtNewPassword').val();
+            var confrmrstpswd = $('#txtresitConfirmPassword').val();
+
+            var error = "";
+            var illegalChars = /[\W]/; // allow only letters and numbers
+            var CapitalChar = /[A-Z]+/; // allow one Capital Letter
+
+            console.log(entryoldpswd);
+            console.log(newpswd);
+            console.log(confrmrstpswd);
+            if (newpswd == "") {
+                c.MessageBoxErr('Empty', "You didn't enter a new password");
+                return false;
+            }
+
+            else if (!CapitalChar.test(newpswd)) {
+                c.MessageBoxErr('Incorrect', "The password must contain at least one uppercase.");
+                return false;
+
+            } else if ((newpswd.length < 8) || (newpswd.length > 10)) {
+                c.MessageBoxErr('Incorrect', "The password is wrong length. Maximum 10 Characters only");
+                return false;
+
+            } else if (illegalChars.test(newpswd)) {
+
+                c.MessageBoxErr('Incorrect', "The password contains illegal characters.");
+                return false;
+            } else if ((newpswd.search(/[a-zA-Z]+/) == -1) || (newpswd.search(/[0-9]+/) == -1)) {
+
+                c.MessageBoxErr('Incorrect', "The password must contain at least one numeral1.");
+                return false;
+            } else if (Oldpswd != entryoldpswd) {
+                console.log(Oldpswd);
+                console.log(entryoldpswd);
+                c.MessageBoxErr('Not Match', "Old password not match.");
+                return false;
+
+            } else if (newpswd != confrmrstpswd) {
+                c.MessageBoxErr('Not Match', "The Confirm password not match..");
+                return false;
+            } else if (Oldpswd == "") {
+
+                c.MessageBoxErr('Empty', "You didn't enter an Old password");
+                return false;
+            }
+
+            return true;
+        }
+
+        function ChangePasswordSave() {
+
+            var ret = ValidatedResetPassword();
+            if (!ret) return ret;
+
+            var entry;
+            entry = []
+            entry = {}
+
+            entry.Id = $('#select2UserReset').val();
+            entry.Password = $('#txtNewPassword').val();
+
+ 
+            $.ajax({
+                url: $('#url').data("changepasswordsave"),
+                data: JSON.stringify(entry),
+                type: 'post',
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+
+                    c.ButtonDisable('#btnChange', true);
+                    //c.ButtonDisable('#btnModify', true);
+                },
+                success: function (data) {
+                    //c.ButtonDisable('#btnModify', false);
+                    c.ButtonDisable('#btnChangePass', false);
+
+                    console.log(data);
+
+                    if (data.ErrorCode == 0) {
+                        c.MessageBoxErr("Error...", data.Message);
+                        return;
+                    }
+
+                    var OkFunc = function () {
+                     };
+
+                    c.MessageBox(data.Title, data.Message, OkFunc);
+                },
+                error: function (xhr, desc, err) {
+                    c.ButtonDisable('#btnSave', false);
+                    var errMsg = "Error in posting the data." + "<br>" + err + "<br>" + desc;
+                    c.MessageBox("Error...", errMsg, null);
+                }
+            });
+
+            return ret;
+        }
+
+        function viewUserinChangepassword(Id) {
+            var param = {
+                Id: Id
+
+            };
+            ajaxWrapper.Get($("#url").data("getuserinfo"), param, function (xx, e) {
+                console.log(xx);
+                c.SetValue('#enryppassword', xx.DecrpytPass);
+            });
+        }
+
+
+    </script>
+}
+
+
+

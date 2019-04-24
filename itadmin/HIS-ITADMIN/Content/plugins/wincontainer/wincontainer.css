@@ -1,0 +1,54 @@
+﻿/* HIS Win-Con */
+.his-wincon
+{
+    width:1024px;
+    min-width:1024px;
+    max-height:700px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family:Calibri;
+    border:1px solid #888;
+    /*border:1px solid rgba(22, 160, 133, 0.5);*/
+    margin:auto;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -ms-border-radius:3px;
+    border-radius:3px;
+    box-shadow: 0px 2px 7px rgba(77,77,77,0.5);
+}
+
+.his-wincon-headings
+{
+    width:100%;
+    height:34px;
+    text-align:left;
+    border-bottom:1px solid #14A085;
+}
+
+.his-wincon-title
+{
+    width:100%;
+    line-height:34px;
+    background-color:#16A085;
+    float:left;
+    padding-left:10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color:#FFF;
+    font-weight:bold;
+}
+.his-wincon-menu
+{
+    width:100px;
+    height:34px;
+    float:right;
+    background:#016542;
+}
+.his-wincon-content
+{
+    width:100%;
+    height:auto;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:10px;
+}

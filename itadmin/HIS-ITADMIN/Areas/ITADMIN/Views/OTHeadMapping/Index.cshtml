@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+     data-exceppaccess="@Url.Action("MainListOtHead")"
+     data-save="@Url.Action("Save")"
+    data-selectuserlist="@Url.Action("Select2UserList")"
+@*data-getdefaultmarkup="@Url.Action("GetDefaultMarkUp")"*@
+/>
+
+ 
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-3">
+                <h4><b class="navbar-header">OT Head Mapping</b></h4>
+            </div>
+            <div class="form-group col-sm-9">
+                @*<button id="btnNew" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right">New</button>*@
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-12">
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Name</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="select2Userlist" class="sel" />
+                    </div>
+
+                    <div class="col-sm-3">
+                        @*<button id="btnADD" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Add</button>*@
+                <a id="btnADD" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnView ShowOnEdit">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Add
+                </a>
+                    </div>
+
+                </div>
+                <div class="row">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    &nbsp;
+                </div>
+
+            </div>
+
+            <table id="tblmoduleslist" class="table table-bordered table-hover dataTable no-footer;">
+                <thead class="AR_custom_table_header expanded-group">
+
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th style="width: 70px;">Remove OT Head</th>
+                    </tr>
+                </thead>
+
+            </table>
+
+        </div>
+    </div>
+
+
+    <div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+        <input id="Id" name="" type="hidden" class="form-control">
+
+        <div class="modal-dialog modal-lg" style="width: 40%;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="opbmyModalLabel">Nursing Administration Procedures</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Employee:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="sel" id="Select2Department" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Employee ID :</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="txtEmployeeId" />
+                                    </div>
+                                </div>
+
+
+
+
+                                @* 
+                     <div id="endos"></div>
+                     *@
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-trash HideOnAdd ShowOnEdit">Delete</button>
+                        @*               <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit">Save</button>*@
+                        <button id="btnPrint" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-print ShowOnEdit HideOnAdd" data-dismiss="modal">Print</button>
+                        <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk HideOnAdd ShowOnEdit">Save</button>
+
+                        <button type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/itadmin/otheadmapping.js"></script>
+}

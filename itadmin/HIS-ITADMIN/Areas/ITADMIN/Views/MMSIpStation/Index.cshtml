@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>
+        MMS IP Station
+        <small></small>
+    </h1>
+    <code>MMS IP Station</code>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>IT Admin</a></li>
+        <li class="active">MMS IPStation</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#MainTable" data-toggle="tab"><i class="fa  fa-arrow-circle-right"></i>Main Table</a></li>
+                    <li class=" "><a href="#ViewTab" data-toggle="tab"><i class="fa fa-flag-checkered"></i>View</a></li>
+                    @*<li><a href="#CityTAB" data-toggle="tab" onclick="ns.loadDTCity();"><i class="fa fa-flag-o"></i>City</a></li>*@
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="MainTable">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="box box-primary direct-chat direct-chat-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Station</h3>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool hidewidget" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="box box-primary">
+                                            <br />
+                                            <form role="form" id="FormMMSIpStation">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label>IP Address</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-laptop"></i>
+                                                            </div>
+                                                            <input id="IPAddress" type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="" required>
+                                                        </div>
+                                                        <!-- /.input group -->
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="StationId">Station Id</label>
+                                                        <div>
+                                                            <input type="text" id="StationId" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="LoginName">Login Name</label>
+                                                        <input type="text" class="form-control" id="LoginName" placeholder="LoginName..." required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Location">Location</label>
+                                                        <input type="text" class="form-control" id="Location" placeholder="LoginName..." required>
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="button" class="btn btn-primary" id="btnSave">Add Station</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="tab-pane " id="ViewTab">
+                        <div class="row">
+                            <table id="tblMMSIPStation" class="table table-bordered table-hover dataTable no-footer;">
+                                <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                                        <th>IP Address</th>
+                                        <th>Station</th>
+                                        <th>LoginName</th>
+                                        <th>Location</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <button id="btnNew" type="button" class="btn btn-sm btn-primary pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-open " data-dismiss="modal"> New</button>
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+</section>
+<input type="hidden" id="url"
+       data-dashboard="@Url.Action("CountryDashboard")"
+       data-save="@Url.Action("Save", "MMSIpStation")"
+       data-select2station="@Url.Action("StationNameDL", "Bed")"
+       data-getmmsipstation="@Url.Action("GetMMSIpStation")"
+       data-getmmsipstationdt="@Url.Action("GetMMSIpStationDataTable")" />
+
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+    <input id="hdstationId" name="" type="hidden" class="form-control">
+
+    <div class="modal-dialog modal-lg" style=" " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="opbmyModalLabel">MMS Ip Station</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form role="form" class="form-horizontal AR_custom_label_left_align">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">IP Address</label>
+                                <div class="col-sm-7">
+                                    @*<div class="input-group-addon">
+                                        <i class="fa fa-laptop"></i>
+                                    </div>*@
+                                    <input id="txtIpAddress" type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="" required disabled>
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Station:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="sel" id="select2Station" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">LoginName:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="txtLoginName" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Location:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="txtLocation" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove HideOnAdd ShowOnEdit " data-dismiss="modal"> Delete</button>
+                <button id="btnModify" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnView ShowOnAdd" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/itadmin/MMSIpStation.js"></script>
+}

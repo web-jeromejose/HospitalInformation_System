@@ -1,0 +1,6 @@
+ 
+---in 138
+ alter table [HISGLOBAL].[ACCESS_USERFUNCTION]
+ add RoleId int null default(0)
+ go
+

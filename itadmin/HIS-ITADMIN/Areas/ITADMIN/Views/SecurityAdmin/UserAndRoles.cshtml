@@ -1,0 +1,311 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b class="navbar-header">Security Admin - User and Roles (wipro)</b></h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#Users" data-toggle="tab" aria-expanded="true">User</a></li>
+                        <li class=""><a href="#Roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
+                        <li class=""><a href="#AssignRoles" data-toggle="tab" aria-expanded="false">Assign Roles</a></li>
+                        @*   <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                            </ul>
+                        </li>*@
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Users">
+                            <div class="row">
+                                <table id="tblAllUser" class="table table-condensed table-responsive no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th>User ID</th>
+                                            <th>Employee ID</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.tab-pane -->
+
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="Roles">
+
+                            <div class="row">
+                                <table id="tblallRoles" class="table table-condensed table-responsive no-footer">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Role Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <br /><br />
+                            <div class="row">
+
+                                <div class="row">
+                                    <div class="form">
+                                        <div class="form-group">
+                                            <label class="col-sm-12   "><b>Select a role. Assign the role to list of features displayed below by selecting the appropriate module.</b></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="col-md-12 form-divider" />
+                                <div class="row   ">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">(1)Role</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="txtroleModule" class="sel" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">(2)Module</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="txtmodule" class="sel" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6"></div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+
+                                            <div class="col-sm-5">
+                                                <button id=" " type="button" style="display: none;" class="btn btn-sm btn-warning left ">Search</button>
+
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button id="BtnSearchAssignModule" type="button" class="btn btn-sm btn-primary">Add Module</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-3" style="overflow: auto; height: 350px;">
+                                        <table id="tblmoduleslist" class="table table-condensed table-responsive no-footer ">
+                                            <thead class="  bg-light-blue ">
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th style="width: 70px;">Remove Access</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                    <div class="col-sm-9" style="border-left: 2px solid; border-color: dodgerblue;">
+                                        <table id="tblmenulist" class="table table-condensed table-responsive no-footer">
+                                            <thead class="  bg-light-blue ">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Menu</th>
+                                                    <th>Feature</th>
+                                                    <th>Access</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="tab-pane" id="AssignRoles">
+                            @*NOT YET DONE *@
+                            <div class="row">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+
+                                        <label for=" " class="col-sm-2 control-label">(1) Employee</label>
+
+                                        <div class="col-sm-8">
+                                            <input type="text" id="sel2_AssignRoles_Employee" class="form-control" />
+                                        </div>
+
+                                    </div>
+                                  
+
+                                    <div class="form-group">
+                                        <label for=" " class="col-sm-2 control-label">(2) Search </label>
+
+                                        <div class="col-sm-10">
+                                            <button class="btn btn-md btn-success" id="btn_AssignRoles_Search">Search</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                
+                            <div class="row">
+                                <table id="DTAssignRole" class="table table-condensed table-responsive no-footer">
+                                    
+                                </table>
+                            </div>
+
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- nav-tabs-custom -->
+                </div>
+
+            </div>
+
+        </div>
+        @*divbody *@
+
+    </div>
+
+
+
+
+
+    <div id="modal-loadroles" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>Change Role Description</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Role Name : </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="txtRoleName" class="sel" />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Role Description : </label>
+                                    <div class="col-sm-6">
+
+
+                                        <textarea id="txtRoleDesc" rows="4" cols="50">
+
+                                 </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">&nbsp;</div>
+                        <div class="col-sm-6">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <button class="btn btn-xs btn-success" id="btnSaveRoleNameAndDesc">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-userroles" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">&nbsp;</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="txtmodalfullname" class=" " disabled />
+
+                                    </div>
+                                    <div class="col-sm-2">
+                                        &nbsp;
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <table id="tbluserrolelist" class="table table-condensed table-responsive no-footer">
+                                <thead>
+                                    <tr>
+
+                                        <th>Role Name</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <input type="hidden" id="url"
+    data-getusersdatatable="@Url.Action("GetUserDataTable")"
+    data-getrolesbyuserid="@Url.Action("GetRolesByUserId")"
+    data-getallrolelist="@Url.Action("GetAllRoleList")"
+    data-saveroledesc="@Url.Action("SaveRoleDesc")"
+     data-getroles="@Url.Action("RoleList")"
+    data-getstation="@Url.Action("StationList")"
+  data-getmodulebyroleid="@Url.Action("GetModuleByRoleId")" 
+  data-getallemployeelist="@Url.Action("GetAllEmployeeList")" 
+  data-getdetailsbyemp="@Url.Action("GetDetailsByEmployee")" 
+        
+     />
+
+
+
+    @Scripts.Render("~/Scripts/jqreports")
+    <script src="~/Scripts/itadmin/userandroles.js"></script>
+    <link href="~/Content/plugins/datepicker/css/datepicker.css" rel="stylesheet" />

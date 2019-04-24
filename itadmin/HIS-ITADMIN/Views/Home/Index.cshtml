@@ -1,0 +1,213 @@
+﻿@model List<DataLayer.ApplicationMenuModel>
+@{
+    ViewBag.Title = "Main";
+    int maxI = Convert.ToInt16(Model.Max(x => x.MenuLevel));
+    string parentID = "0";
+    int ctr = 1;
+    int ctrAll = 1;
+    var dis = "";
+    var sLink = "";
+}
+
+<style>
+    .bg-homepage {
+        background-color: #357d59d1 !important;
+    }
+   
+</style>
+
+
+<h4>IT Admin</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Mostly Used Options</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-wrench"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+
+
+@{
+        foreach (var menu in Model.OrderBy(x => x.ParentSequence))
+        {
+
+            if (menu.ID == "554")
+            {
+                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-android-expand"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" >  <span class="info-box-text">Tariff</span>
+                                @:<span class="info-box-number">IP</span>
+                                @:<div class="progress"><div class="progress-bar" style="width: 20%"></div></div>
+                                @:<span class="progress-description">IP Tariff</span> </a>
+                                @:</div></div></div>      
+            }
+
+
+            if (menu.ID == "1981")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-paper"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">Tariff</span>
+                                @:<span class="info-box-number">OP</span><div class="progress"><div class="progress-bar" style="width: 60%"></div></div>
+                                @:<span class="progress-description">OP Tariff</span> </a>
+                                @:</div></div></div>      
+            }
+
+
+            if (menu.ID == "516")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-paper"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">Module</span>
+                                @:<span class="info-box-number">Permission</span><div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
+                                @:<span class="progress-description">Module Permission</span> </a>
+                                @:</div></div></div>      
+            }
+
+            if (menu.ID == "2563")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-cart"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">Company</span>
+                                @:<span class="info-box-number">Price List</span><div class="progress"><div class="progress-bar" style="width:20%"></div></div>
+                                @:<span class="progress-description">Company Price List</span> </a>
+                                @:</div></div></div>      
+            }
+
+
+            if (menu.ID == "2576")
+            {
+                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion ion-ios-medical"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" >  <span class="info-box-text">Bulk Module</span>
+                                @:<span class="info-box-number">Permission</span>
+                                @:<div class="progress"><div class="progress-bar" style="width: 20%"></div></div>
+                                @:<span class="progress-description">Multiple Module Access Permission</span> </a>
+                                @:</div></div></div>      
+            }
+
+
+
+            if (menu.ID == "1824")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-speedometer"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">Security</span>
+                                @:<span class="info-box-number">User Security</span><div class="progress"><div class="progress-bar" style="width: 60%"></div></div>
+                                @:<span class="progress-description">Setting</span> </a>
+                                @:</div></div></div>      
+            }
+
+            if (menu.ID == "2685")
+            {
+                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-stats-bars"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" >  <span class="info-box-text">All Procedure </span>
+                                @:<span class="info-box-number">Mapping (NEW) </span>
+                                @:<div class="progress"><div class="progress-bar" style="width:69%"></div></div>
+                                @:<span class="progress-description">All Item Mapping </span> </a>
+                                @:</div></div></div>      
+            }
+            if (menu.ID == "2686")
+            {
+                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-flag"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" >  <span class="info-box-text">All Country List </span>
+                                @:<span class="info-box-number">Country </span>
+                                @:<div class="progress"><div class="progress-bar" style="width:69%"></div></div>
+                                @:<span class="progress-description">Country Codes </span> </a>
+                                @:</div></div></div>      
+            }
+
+            if (menu.ID == "2689")
+            {
+                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-stopwatch"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" >  <span class="info-box-text">User Registration </span>
+                                @:<span class="info-box-number">Employee Details  </span>
+                                @:<div class="progress"><div class="progress-bar" style="width:69%"></div></div>
+                                @:<span class="progress-description">Register / Password Update</span> </a>
+                                @:</div></div></div>      
+            }
+            
+            
+            if (menu.ID == "2691")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-moon"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">Module Access</span>
+                                @:<span class="info-box-number">View Access</span><div class="progress"><div class="progress-bar" style="width: 10%"></div></div>
+                                @:<span class="progress-description">View access per Employee</span> </a>
+                                @:</div></div></div>      
+            }
+
+
+            if (menu.ID == "2727")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-ios-skipforward"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">OP Cancel</span>
+                                @:<span class="info-box-number"> Receipt Approval</span><div class="progress"><div class="progress-bar" style="width: 40%"></div></div>
+                                @:<span class="progress-description">cancel receipt</span> </a>
+                                @:</div></div></div>      
+            }
+            
+          if (menu.ID == "2323")
+            {
+                                @:<div class="col-md-4"><div class="info-box bg-homepage"><span class="info-box-icon"><i class="ion ion-android-microphone-off"></i></span><div class="info-box-content">
+                                @:<a style="color:white;" href="@menu.MenuURL" ><span class="info-box-text">Renewed</span>
+                                @:<span class="info-box-number">Module 2.0</span><div class="progress"><div class="progress-bar" style="width: 60%"></div></div>
+                                @:<span class="progress-description">Module Access 2.0</span> </a>
+                                @:</div></div></div>      
+            }
+                 
+    }
+}          
+            
+            
+     
+@*<i class="ion ion-stats-bars"></i>
+<i class="ion ion-ios-calculator"></i>
+<i class="ion ion-information-circled"></i>
+<i class="ion ion-ios-arrow-back"></i>
+<i class="ion ion-ios-bolt"></i>
+<i class="ion ion-compass"></i>
+<i class="ion "></i>
+<i class="ion ion-qr-scanner"></i>
+<i class="ion ion-ios-stopwatch"></i>
+<i class="ion ion-ios-skipforward"></i>
+<i class="ion ion-document"></i>
+<i class="ion ion-ios-checkmark-outline"></i>
+<i class="ion ion-ios-download"></i>
+<i class="ion "></i>
+<i class="ion ion-ios-navigate-outline"></i> *@
+            
+            
+            
+
+
+           
+          
+    
+
+                   
+</div></div></div></div></div>
+
+
+
+
+
+
+
+

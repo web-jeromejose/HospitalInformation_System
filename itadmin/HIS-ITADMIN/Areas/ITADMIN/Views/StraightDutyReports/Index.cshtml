@@ -1,0 +1,120 @@
+﻿
+
+<input type="hidden" id="url"
+
+data-getdept="@Url.Action("Select2Department")"
+data-getemp="@Url.Action("Select2Employeelst")"
+data-pdf="@Url.Action("ToPDF")"
+data-xls="@Url.Action("ToXLS")"
+/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b class="navbar-header">Straight Duty</b></h4>
+            </div>
+           <div class="navbar-collapse navbar-right">
+                @*<button id="btn-punch-view" type="button" class="btn btn-sm btn-primary" >
+                    <span class="glyphicon glyphicon-file"></span> View</button>         *@       
+                <button id="btnDisplay" type="button" class="btn btn-sm btn-success" >
+                    <span class="glyphicon glyphicon-file"></span> View</button>                
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-sm-2">Department:</label>
+                  <div class="col-sm-3">
+                 <input type="text" class="sel" id="Select2Depart"/>
+              </div>
+       @*              <label class="control-label col-sm-1">EmployeeId:</label>
+                  <div class="col-sm-3">
+                 <input type="text" class="sel" id="Select2EmployeeId"/>
+                 </div>*@
+
+        
+        </div>
+            </div>
+            <div id="_tbl"></div>
+        </div>
+    </div>
+
+<div id="modal-print" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <iframe id="rrpt" width="100%" style="overflow: auto !important; min-height: 800px; border: 1px solid #D4D0C8;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:98%;height:auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+
+                <h3 class="modal-title" id="myModalLabel">AuditTrail Reports</h3> @*
+                <button type="button" class="btn btn-sm btn-default button-width" id="btnRefesh">
+                    <span class="glyphicon glyphicon-th-list"></span> Refesh
+                </button>*@
+            </div>
+            <div class="modal-body">
+                @*
+                <div id="report-container">
+                    <iframe id="myReport2"></iframe>
+                </div>
+                <div class="clear-botn"></div>
+                *@
+                <form role="form" class="form-horizontal">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <div id="PDFForm" style="display:none; opacity:.99; background-color:#4f4f4f; position:fixed; width:100%; height:100%; top:0px; left:0px; z-index:999999999999999999999;">
+                                <div id="PDFFormHeader" style="position: absolute; background-color: Black; height:35px; width:100%; ">
+                                    <div class="pull-left" style="margin-left:10px; margin-top:6px; width:50px;opacity:1">
+                                        <div class="btn-group " style="background-color:#484242; color:white;">
+                                            <button style="background-color:#484242; color:white; border:0px !important;padding:0px !important;" type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+                                                Export To<span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li id="ExportToXLS"><a href="#">To .xls</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right" style="margin-right:10px; margin-top:5px; font-size:20px;">
+                                        <span id="btnPDFFormClose" class="glyphicon glyphicon-remove" style="cursor:pointer; color:white;" onclick="$('#PDFForm').hide();"></span>
+                                    </div>
+                                </div>
+                   @*             <div id="PreviewInPDF" style="margin-top:35px; height:90%; width:100%; position:relative;">
+
+                                </div>*@
+                                <div id="DownloadContainer" style="display:none;margin-top:35px; height:90%; width:100%; position:relative;">
+
+                                </div>
+                
+                                <img class="loadingpdf" src="@Url.Content("~/Content/images/loading128.gif")" style="position: absolute; left:0; top:0; right:0; bottom:0; margin:auto;" />
+                            </div>
+                            <div id="PreviewInPDF" class="col-xs-12 border" style="background-color:Gray; height:600px;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/StraightDutyTrail.js"></script>
+}

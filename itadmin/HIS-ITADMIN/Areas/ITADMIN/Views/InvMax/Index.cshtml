@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content-header">
+    <h1>MMS - Station Mapping
+       
+    </h1>
+    <code><small>Mapping to Station </small></code>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>IT Admin</a></li>
+        <li class="active">MMS </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#DTTAB" data-toggle="tab"><i class="fa fa-fw fa-medkit"></i>Inventory Mapping (invmax)</a></li>
+                    <li class=" "><a href="#MMSRPTMAP" data-toggle="tab"><i class="fa fa-fw fa-medkit"></i>MMS Mapping (MMSRPTMAP) </a></li>
+
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="DTTAB">
+
+                        <div class="row">
+
+                            <div class="col-md-10">
+                                <div class="box box-default collapsed-box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Inventory Station Mapping</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <!-- /.box-tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="col-sm-6">
+                                            <input type="text" id="select2Invmax" class="sel" />
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <button type="button" class="btn btn-info" onclick="maintable.Save()">Map this Station</button>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="MMSRPTMAP">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="box box-default collapsed-box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">MMS Station Mapping (MMSRPTMAP)</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <!-- /.box-tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="col-sm-6">
+                                            <input type="text" id="select2station_MMSRPTMAP" class="sel" />
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <button type="button" class="btn btn-info" onclick="maintable.SaveMMSRPTMAP()">Map this to MMSRPTMAP</button>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </div>
+    </div>
+</section>
+
+
+<input type="hidden" id="url"    
+data-getinvstation="@Url.Action("GetInvStation")"
+data-getstationmmrtptmap="@Url.Action("GetStationMMSRPTMAP")"
+    
+data-invmaxsave="@Url.Action("InvMaxSave")"
+data-invmaxsavemmsrptmap="@Url.Action("InvMaxSaveMMSRPTMAP")"
+/>
+
+@*pakilipat na lng sa js file --rush*@
+<script defer src="@Url.Content("~/Scripts/DataTabletoPdf.js")" type="text/javascript"></script>
+
+<script>
+    var c = new Common();
+    jQuery(document).ready(function () {
+
+        setTimeout(
+            function () {
+                // $('.hidewidget').click();
+                $('.sidebar-toggle').click();
+
+                InitSelect2();
+            }
+            , 1000);
+
+
+
+    });
+
+    function InitSelect2() {
+
+        ajaxWrapper.Get($("#url").data("getinvstation"), null, function (xx, e) {
+            console.log(xx);
+            Sel2Client($("#select2Invmax"), xx, function (x) { });
+        });
+        ajaxWrapper.Get($("#url").data("getstationmmrtptmap"), null, function (xx, e) {
+            Sel2Client($("#select2station_MMSRPTMAP"), xx, function (x) { });
+        });
+
+
+
+    }
+
+    $(function () {
+        maintable = {
+            Save: function (e) {
+                if ($('#select2Invmax').val() == "")
+                    NotifyError("Select Station for InvMax Mapping", "Alert.."); return false;
+
+                var entry = {
+                    stationid: $('#select2Invmax').val(),
+                };
+
+                $.ajax({
+                    url: $('#url').data("invmaxsave"),
+                    data: JSON.stringify(entry),
+                    type: 'post',
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    beforesend: function () {
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+                        c.MessageBox("Message..", data, function () {
+                            location.reload();
+                        });
+                    },
+                    error: function (xhr, desc, err) {
+                        var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                        c.MessageBox("error...", errmsg, null);
+                    }
+                });
+                console.log("SAVE");
+            },
+            SaveMMSRPTMAP: function (e) {
+
+                if ($('#select2station_MMSRPTMAP').val() == "") {
+                    NotifyError("Select Station for MMS Mapping", "Alert.."); return false;
+                }
+
+                var entry = {
+                    stationid: $('#select2station_MMSRPTMAP').val(),
+                };
+                console.log("entry");
+                console.log(entry);
+                $.ajax({
+                    url: $('#url').data("invmaxsavemmsrptmap"),
+                    data: JSON.stringify(entry),
+                    type: 'post',
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    beforesend: function () {
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+                        c.MessageBox("Message..", data, function () {
+                            location.reload();
+                        });
+                    },
+                    error: function (xhr, desc, err) {
+                        var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                        c.MessageBox("error...", errmsg, null);
+                    }
+                });
+                console.log("SAVE");
+            },
+
+
+        };
+
+        window.maintable = maintable;
+    })
+</script>
+

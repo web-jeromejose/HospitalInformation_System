@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-getsurgery="@Url.Action("ORSurgeryDashboard")"
+data-getdepartment="@Url.Action("DepartmentList")"
+data-fetchspecialisation="@Url.Action("SpecialisationListView")"
+data-getselectedlist="@Url.Action("SelectedListItem")"
+data-fetchsurgerydetails="@Url.Action("SurgeryViewDetails")"
+data-save="@Url.Action("Save")"
+     
+data-pdf="@Url.Action("ToPDF")"
+data-xls="@Url.Action("ToXLS")"
+/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-3">
+                <h4><b class="navbar-header">Surgery</b></h4>
+            </div>
+            <div class="form-group col-sm-9">
+
+                <div class="form-group col-sm-1 pull-right">
+                    <button id="btnNew" type="button" class="btn btn-sm btn-primary fixed_width glyphicon glyphicon-file  pull-right">New</button>
+
+                </div>
+                <div class="form-group col-sm-1 pull-right">
+                    <button id="btnDisplay" type="button" class="btn btn-sm btn-success   pull-right">
+                        <span class="glyphicon glyphicon-file"></span>Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-12">
+            <table id="gridORSurgeryDashBoard" class="table table-bordered table-hover dataTable no-footer;">
+                <thead class="AR_custom_table_header expanded-group">
+                    <tr>
+                        <th></th>
+                        <th style="text-align: center">Name</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Modal Part Passport Details -->
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+    <input id="Id" name="" type="hidden" class="form-control">
+    <
+   <div class="modal-dialog modal-lg" style="width: 85%;" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h3 class="modal-title" id="opbmyModalLabel">Surgery Details</h3>
+           </div>
+           <div class="modal-body">
+               <div class="row">
+                   <div class="col-xs-12">
+                       <form role="form" class="form-horizontal AR_custom_label_left_align">
+                           <div class="form-group">
+                               <label class="control-label col-sm-2">Department:</label>
+                               <div class="col-sm-4">
+                                   <input type="text" class="sel" id="Select2Department" />
+                               </div>
+                               <label class="control-label col-sm-1">Surgery Type:</label>
+                               <div class="col-sm-2">
+                                   <input type="text" class="sel" id="Select2Type" />
+                               </div>
+
+                           </div>
+                           <div class="form-group">
+                               <label class="control-label col-sm-2">Surgery Name:</label>
+                               <div class="col-sm-4">
+                                   <input type="text" class="form-control" id="txtSurgeryName" />
+                               </div>
+
+                           </div>
+                           <div class="form-group">
+                               <label class="control-label col-sm-2">Cost Price:</label>
+                               <div class="col-sm-2">
+                                   <input type="number" class="form-control" id="txtCostPrice" />
+                               </div>
+
+                           </div>
+                           <div class="form-group">
+                               <label class="control-label col-sm-2">Code:</label>
+                               <div class="col-sm-2">
+                                   <input type="text" class="form-control" id="txtCode" />
+                               </div>
+                               @* <button id="btnAddAll" type="button" class="btn btn-sm btn-info AR_custom_btn_fixed_width glyphicon glyphicon glyphicon-transfer "> Transfer-All</button>*@
+
+
+                           </div>
+                           <div class="form-group">
+                               <label class="control-label col-sm-2">Instructions:</label>
+                               <div class="col-sm-4">
+                                   <input type="text" class="form-control" id="txtInstruction" />
+                               </div>
+                               <button id="btnRemoveAll" type="button" class="btn btn-sm btn-info glyphicon glyphicon glyphicon-import">Remove-All</button>
+                           </div>
+                   </div>
+                   <div class="col-xs-5">
+                       <table id="gridSpecialisationList" class="table table-bordered table-hover dataTable no-footer;">
+                           <thead class="AR_custom_table_header expanded-group">
+                               <tr>
+                                   <tr>
+                                       <th colspan="3" class="centertext compressedtableheader" style="text-align: center; border: 0px; width: 100%;">Specialisation Listed</th>
+                                   </tr>
+                                   <th></th>
+                                   <th style="text-align: center"></th>
+
+                               </tr>
+                           </thead>
+                       </table>
+                   </div>
+                   <div class="form-group">
+                       <div class="col-sm-1">
+                           <button id="btnAddAll" type="button" class="btn btn-sm btn-info AR_custom_btn_fixed_width glyphicon glyphicon glyphicon-transfer "></button>
+                       </div>
+                   </div>
+
+
+
+                   <div class="col-xs-6">
+                       <table id="gridSpecialisationSelected" class="table table-bordered table-hover dataTable no-footer;">
+                           <thead class="AR_custom_table_header expanded-group">
+                               <tr>
+                                   <tr>
+                                       <th colspan="2" class="centertext compressedtableheader" style="text-align: center; border: 0px; width: 100%;">Specialisation Selected</th>
+                                   </tr>
+                                   <th></th>
+                                   <th style="text-align: center"></th>
+
+                               </tr>
+                           </thead>
+                       </table>
+                   </div>
+                   </form>
+               </div>
+           </div>
+
+           <div class="modal-footer">
+               <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-trash HideOnAdd ShowOnEdit">Delete</button>
+               <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit">Save</button>
+               <button id="btnModify" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk HideOnAdd ShowOnEdit">Modify</button>
+               @* <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+               <button type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+           </div>
+       </div>
+   </div>
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/itadmin/ORSurgery.js"></script>
+}

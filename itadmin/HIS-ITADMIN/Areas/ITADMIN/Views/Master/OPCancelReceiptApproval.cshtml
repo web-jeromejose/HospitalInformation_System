@@ -1,0 +1,286 @@
+﻿@{
+    ViewBag.Title = "OPCancelReceiptApproval";
+}
+
+<h2>OP Cancel Receipt Approval <small>(more than 30 days)</small></h2>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-11">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">OP Cancel Receipt Approval </h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div role="form">
+                    <div class="box-body">
+                        <div class="col-md-6">
+                            <div class="form-group has-success">
+                                @*<label class="control-label" for="inputSuccess"><i class="fa fa-check"></i>Input with success</label>*@
+                                <label for="exampleInputEmail1">Receipt No / Bill No <small>(enter)</small></label>
+                                <input type="text" class="form-control" id="billno" placeholder="FCR313423....." autofocus>
+                              
+
+                                @*<span class="help-block">Help block with success</span>*@
+                            </div>
+
+                        </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">OP ID</label>
+                                <input type="text" class="form-control" id="opbillid" placeholder="1514817" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">PIN</label>
+                                <input type="text" class="form-control" id="registrationno" placeholder="1514817" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Patient Name</label>
+                                <input type="text" class="form-control" id="PatientName" placeholder="Juan Dela Cruz Jr." disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Service</label>
+                                <input type="text" class="form-control" id="Service" placeholder="Consultation....etc" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Gross Amount</label>
+                                <input type="text" class="form-control" id="billamount" placeholder="0.00" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Paid Amount</label>
+                                <input type="text" class="form-control" id="paidamount" placeholder="0.00" disabled>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Discount</label>
+                                <input type="text" class="form-control" id="discount" placeholder="0.00" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Balance</label>
+                                <input type="text" class="form-control" id="balance" placeholder="0.00" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row _canceldiv" style="display:none;">
+                        <div role="form">
+                            <div class="box-body">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title" style="margin-left: 20px;"> <span class="glyphicon glyphicon-remove"></span>Cancellation </h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group has-warning">
+                                        @*<label class="control-label" for="inputSuccess"><i class="fa fa-check"></i>Input with success</label>*@
+                                       
+                                        <label for="exampleInputEmail1">Reason</label>
+                                        <input type="text" class="form-control" id="reason" placeholder="Procedure not done... etc">
+                                        @*<span class="help-block">Help block with success</span>*@
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">DATE</label>
+                                        <input type="text" class="form-control" id="appdatetime"  disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer _canceldiv">
+                        <button type="button" id="btnSave" class="btn btn-primary">Cancel Receipt</button>
+                        <button type="button" id="" onclick="location.reload();" class="btn btn-warning">Clear (f5)</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box -->
+
+        </div>
+    </div>
+
+</section>
+
+
+
+<input type="hidden" id="url"    
+data-viewdata="@Url.Action("ViewData_OPCancelReceiptApproval")"
+data-save="@Url.Action("OPCancelReceiptApprovalSAVE")"
+ 
+/>
+
+@*pakilipat na lng sa js file --rush*@
+
+<script>
+    var c = new Common();
+    jQuery(document).ready(function () {
+
+        setTimeout(
+            function () {
+                // $('.hidewidget').click();
+                $('.sidebar-toggle').click();
+                maintable.getDate();
+                $('._canceldiv').hide();
+            }
+            , 1000);
+
+
+        $('#btnSave').click(function () {
+            var YesFunc = function () {
+
+                maintable.Save();
+            };
+
+            if ($('#reason').val() == '')   
+            {
+                NotifyError("Please input correct REASON!!!", "Alert..");
+                return false;
+            }
+
+            c.MessageBoxConfirm("Save Entry?", "Are you sure you want to cancel the receipt?", YesFunc, null);
+
+        });
+
+
+    });
+
+    $(function () {
+        maintable = {
+            Save: function (e) {
+                if ($('#opbillid').val() == "") { NotifyError("opbillid invalid", "Alert.."); return false; }
+
+                var entry = {
+                    OPBillID: $('#opbillid').val(),
+                    Reason: $('#reason').val(),
+                };
+
+                $.ajax({
+                    url: $('#url').data("save"),
+                    data: JSON.stringify(entry),
+                    type: 'post',
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    beforesend: function () {
+                    },
+                    success: function (data) {
+
+                        if (data.ErrorCode == 1)
+                        {
+                            c.MessageBox("Message..", data.Message, function () {
+                                //location.reload();
+                            });
+
+                        } else {
+
+                            NotifyError(data.Message, "Alert..");                           
+
+                        }
+                        console.log(data);
+                     
+                    },
+                    error: function (xhr, desc, err) {
+                        var errmsg = "error in posting the data." + "<br>" + err + "<br>" + desc;
+                        c.MessageBox("error...", errmsg, null);
+                    }
+                });
+                console.log("SAVE");
+            },
+            getDate: function (e) {
+
+
+                $('#billno').keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        $(this).trigger("enterKey");
+                        console.log('enter');
+                        console.log($('#billno').val());
+
+                        if ($('#billno').val() == '')
+                        {
+                            NotifyError("Please input correct Bill No / Receipt Number!!!", "Alert..");
+                            $("input:text").val("");
+                            return false;
+                        }
+
+                        ajaxWrapper.Get($("#url").data("viewdata"), { billno: $('#billno').val() }, function (xx, e) {
+                            
+                            if (xx == '') {
+                                NotifyError("Please input correct Bill No / Receipt Number!!!", "Alert..");
+                                $('._canceldiv').hide(); $("input:text").val(""); $("#billno").prop("disabled", false);
+                                return false;
+                            } else {
+                                console.log(xx[0].PatientName);
+                                console.log(xx);
+                                $("#billno").prop("disabled", true);
+                                $('#registrationno').val(xx[0].registrationno);
+                                $('#PatientName').val(xx[0].PatientName);
+                                $('#Service').val(xx[0].Service);
+                                $('#billamount').val(xx[0].billamount);
+                                $('#paidamount').val(xx[0].paidamount);
+                                $('#discount').val(xx[0].discount);
+                                $('#balance').val(xx[0].balance);
+                                $('#opbillid').val(xx[0].opbillid);
+                                
+                                if (xx[0].cancellationperiod == 'yes') {
+                                    $('._canceldiv').show();
+                                    $('#reason').focus();
+                                 
+                                } else {
+                                    $('._canceldiv').hide(); $("#billno").prop("disabled", false);
+                                    $('#billno').focus();
+                                    NotifyError("This receipt cannot be cancel. 30 days rule .", "Alert..");
+                                    NotifyError("This receipt cannot be cancel. 30 days rule .", "Alert..");
+                                  
+                    
+                                }
+                                
+                                 
+                            }
+                        });
+
+                    }
+                });
+
+
+                var d = new Date();
+
+                var month = d.getMonth() + 1;
+                var day = d.getDate();
+
+                var output = d.getFullYear() + '/' +
+                    (month < 10 ? '0' : '') + month + '/' +
+                    (day < 10 ? '0' : '') + day;
+
+                $('#appdatetime').val(output);
+
+            }
+
+        };
+
+        window.maintable = maintable;
+    })
+</script>

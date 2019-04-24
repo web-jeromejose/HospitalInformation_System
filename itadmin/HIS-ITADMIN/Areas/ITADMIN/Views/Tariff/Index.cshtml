@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+data-gettariff="@Url.Action("TariffDashBoard")"
+
+data-gettariffview="@Url.Action("FetchTariff")"
+
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+data-save="@Url.Action("Save")"
+
+/>
+
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#DTTAB" data-toggle="tab"><i class="fa fa-fw fa-medkit"></i>Tariff</a></li>
+                  
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+
+
+                    <div class="tab-pane active" id="DTTAB">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <table id="gridItemList" class="table table-bordered table-hover dataTable no-footer;">
+                                    <thead class="AR_custom_table_header expanded-group">
+                                        <tr>
+                                            <th style="text-align: center">Tariff Name</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <button id="btnNew" type="button" class="btn btn-sm btn-primary pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-open ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">New</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+
+                  
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+    <input id="txttariffId" name="" type="hidden" class="form-control">
+
+    <div class="modal-dialog modal-lg" style="" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="opbmyModalLabel">Create Tariff</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form role="form" class="form-horizontal AR_custom_label_left_align">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Tariff:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="txtTariff" />
+                                </div>
+                                @*    <label class="control-label col-sm-2">No of Visit:</label>
+                        <div class="col-sm-2">
+                           <input type="text" class="form-control" id="txtNoofVisit"/>
+                        </div>*@
+                            </div>
+
+                            @* 
+                     <div id="endos"></div>
+                     *@
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<button id="btnModify" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-pencil ShowOnEdit HideOnAdd" data-dismiss="modal">Modify</button>*@
+                    <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+                    @*   <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+                    <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/itadmin/Tariff.js"></script>
+
+}

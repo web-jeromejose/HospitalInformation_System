@@ -1,0 +1,484 @@
+﻿@model DataLayer.ITAdmin.Model.InPatientVM
+
+@{
+    ViewBag.Title = "ForceCancelAdmission";
+}
+ 
+
+@section styles
+    {
+
+    <link href="~/Content/css/SGHLayout/plugins/icheck3/skins/square/_all.css" rel="stylesheet" />
+     
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/select2/select2.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/icheck2/all.min.css")" />
+    <link rel="Stylesheet" href="@Url.Content("~/Content/styles/itadmin/iptariff.css")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />    
+ 
+    <link href="@Url.Content("~/Content/datatable/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datatable/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/toastr/content/toastr.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/glyphicons/glyphicons.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/datepicker/datepicker.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.eot")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.ttf")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff")" />
+ 
+}
+
+@section scripts{   
+ 
+<script type="text/javascript" src="@Url.Content("~/scripts/jquery-ui-1.10.4.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/content/plugins/icheck/jquery.icheck.js")"></script> 
+<script src="~/Content/plugins/icheck3/icheck.js"></script>
+<script src="~/Content/js/dataTables.bootstrap.js"></script>
+    
+ <script src="~/Scripts/itadmin/sghUtilities/ForceCancelAdmission.js"></script>
+<script src="~/Content/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="~/Content/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+ 
+}
+
+
+
+
+
+<input type="hidden" id="url"
+data-save="@Url.Action("SaveCancelAdmission")"
+data-checkadmission="@Url.Action("CheckAdmissionPatient")" 
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+          <div class="col-sm-12">
+            <h4><b class="navbar-header">Force Cancel Admission</b></h4>
+            </div>
+       
+   </div>
+</div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            <div class="row">
+    <div class="col-xs-12">
+        <form id="frmUpdateDoctorsCode" class="form-horizontal"   method="get">
+
+               <div class="row">
+                    <div class="col-xs-12" style="">
+                  <fieldset >
+                      @*<legend>Employee Details</legend>*@
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label class="control-label col-xs-4">Employee ID </label>
+                    <div class="col-xs-8">
+                           <select id="ipid" name="ipid" data-placeholder="Select PIN" style="width: 100%;">
+                            <option></option>
+                            @foreach (var item in Model.InPatientList )
+                            {
+                                <option value="@item.ipid">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                 <div class="form-group">
+                      <label class="control-label col-xs-6">Admit Date & Time</label>
+                    <div class="col-xs-6">
+                          <input type="text" class="form-control disabled-text"  id="admitdatetime" name="admitdatetime"/>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label class="control-label col-xs-6">Current Date & Time </label>
+                    <div class="col-xs-6">
+                     <input type="text" class="form-control disabled-text" id="now" name="now"/>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-2">Name</label>
+                    <div class="col-xs-10">
+                          <input type="text" class="form-control disabled-text" id="Name" name="Name"/>
+                    </div>
+                </div>
+            </div> 
+
+                       <div class="col-xs-3">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Age</label>
+                    <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="Age" name="Age"/>
+                    </div>
+                </div>
+            </div> 
+                       <div class="col-xs-3">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Sex</label>
+                    <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="Sex" name="Sex"/>
+                    </div>
+                </div>
+            </div> 
+   </fieldset>
+                </div>
+                </div>
+
+            <br />
+
+             <div class="row">
+                    <div class="col-xs-12" style=" ">
+                  <fieldset >
+                      
+                       <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label col-xs-4">Bed / Room  </label>
+                    <div class="col-xs-8">
+                     <input type="text" class="form-control disabled-text" id="bed" name="bed"/>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Room Type</label>
+                    <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="bedType" name="bedType"/>
+                    </div>
+                </div>
+            </div> 
+ 
+            <div class="col-xs-6">
+                 <div class="form-group">
+                      <label class="control-label col-xs-4">Ward  </label>
+                   <div class="col-xs-8">
+                          <input type="text" class="form-control disabled-text" id="ward" name="ward"/>
+                    </div>
+ 
+
+                </div>
+            </div>
+
+                         <div class="col-xs-6">
+                             <div class="form-group">
+                                  <label class="control-label col-xs-4">Primary Consultation   </label>
+                                    <div class="col-xs-8">
+                                      <input type="text" class="form-control disabled-text" id="consultation" name="consultation"/>
+                                    </div>
+                                </div>
+                        </div>
+                           <div class="col-xs-6">
+                             <div class="form-group">
+                                  <label class="control-label col-xs-4">Reason   </label>
+                                    <div class="col-xs-8">
+                                        <textarea class="form-control " style="font-size: 12px;" id="reason" name="reason" maxlength="200"></textarea>
+                                    </div>
+                                </div>
+                        </div>
+                        </fieldset>
+            </div>
+
+          
+                
+                </div>
+
+
+                    <div class="row ">
+
+                        <div class="container pull-right" style="padding-top : 10px;">
+  @*<h2>Button Styles</h2>*@
+  @*<button type="button" class="btn btn-default">Default</button>*@
+  <button id="btnSave" type="button" class="btn btn-primary">Cancel Admission</button>
+  @*<button type="button" class="btn btn-success">Success</button>*@
+  <button type="button" class="btn btn-info">Clear</button>
+  @*<button type="button" class="btn btn-warning">Warning</button>*@
+  <button type="button" class="btn btn-danger">Close</button>
+  @*<button type="button" class="btn btn-link">Link</button>*@  
+       
+    
+</div>
+
+
+                     </div>
+
+
+    </div>
+
+               
+
+
+
+
+        </form>
+    </div>
+</div>
+
+
+        
+
+
+        </div>
+</div>
+</div>
+
+ 
+<script>
+    var c = new Common();
+
+    var registrationno = '';
+    var categoryid = "";
+    var companyid = "";
+    var ipid = "";
+    var Title = "";
+    var Name = "";
+    var AdmitDateTime = "";
+    var Now = "";
+    var age = "";
+    var sex = "";
+    var EmployeeID = "";
+    var Doctor = "";
+    var bedname = "";
+    var bedId = "";
+    var BedType = "";
+    var station = "";
+    var stationid = "";
+
+
+    var model = @Html.Raw(Json.Encode(Model.InPatientList))
+
+    $(document).ready(function () {
+
+    
+        $('#preloader').show();
+ 
+
+        $("#ipid").select2();
+
+        $('#preloader').show();
+ 
+        $(".disabled-text").prop('disabled', true);
+        $(".disabled-text").css('font-size', '11px');
+
+
+        $('#ipid').on('change', function () {
+            $('#preloader').show();
+            //  console.log($(this).val()); // or
+            var end = $(this).val();
+            $.each(model, function (index, value) {
+
+                if (end == value.ipid) {
+                    console.log(value);
+                    console.log(value.AdmitDateTime);
+                    $('#admitdatetime').val(moment(value.AdmitDateTime).format("DD-MMM-YYYY h:mm:ss a"));
+                    $('#now').val(moment(value.Now).format("DD-MMM-YYYY h:mm:ss a"));
+                    var name = value.Name.split('-');
+                    $('#Name').val(name[1]);
+                    $('#Age').val(value.age);
+                    $('#Sex').val(value.sex);
+                    $('#bed').val(value.bedname); 
+                    $('#bedType').val(value.BedType);
+                    $('#ward').val(value.station);  
+                    $('#consultation').val(value.EmployeeID + ' ' + value.Doctor);
+
+                    registrationno = value.registrationno;
+                    categoryid = value.categoryid;
+                    companyid = value.companyid;
+                    ipid = value.ipid;
+                    Title = value.Title;
+                    Name = value.Name;
+                    AdmitDateTime = value.AdmitDateTime;
+                    Now = value.Now;
+                    age = value.age;
+                    sex = value.sex;
+                    EmployeeID = value.EmployeeID;
+                    Doctor = value.Doctor;
+                    bedname = value.bedname;
+                    bedId = value.bedId;
+                    BedType = value.BedType;
+                    station = value.station;
+                    stationid = value.stationid;
+
+                    $('#preloader').hide();
+                }
+
+            });
+
+
+        });
+
+
+        $('#preloader').hide();
+
+
+      
+
+
+    });
+ 
+
+    $('#btnSave').click(function () {
+        var YesFunc = function () {
+            Action = 1;
+            Check();
+        };
+        c.MessageBoxConfirm("Save Entry?", "Are you sure you want to cancel the admission?", YesFunc, null);
+    });
+
+
+  
+
+    function Check() {
+        /*
+         public string reason { get; set; }
+    
+        public string registrationno { get; set; }
+        public int categoryid { get; set; }
+        public int companyid { get; set; }
+        public string ipid { get; set; }
+        public string Title { get; set; }
+        public string Name { get; set; }
+        public DateTime AdmitDateTime { get; set; }
+        public DateTime Now { get; set; }
+        public string age { get; set; }
+        public string sex { get; set; }
+        public string EmployeeID { get; set; }
+        public string Doctor { get; set; }
+        public string bedname { get; set; }
+        public string bedId { get; set; }
+        public string BedType { get; set; }
+        public string station { get; set; }
+        public string stationid { get; set; }
+        */
+
+        var ai = {
+
+            reason: $("#reason").val().trim(),
+            registrationno: registrationno,
+            categoryid: categoryid,
+            companyid: companyid,
+            ipid: ipid,
+            Title: Title,
+            Name: Name,
+            AdmitDateTime: moment(AdmitDateTime).format("DD-MMM-YYYY h:mm:ss a"),  
+            Now: moment(Now).format("DD-MMM-YYYY h:mm:ss a"),
+            age: age,
+            sex: sex,
+            EmployeeID: EmployeeID,
+            Doctor: Doctor,
+            bedname: bedname,
+            bedId: bedId,
+            BedType: BedType,
+            station: station,
+            stationid: stationid,
+
+
+        };
+        console.log(ai);
+
+        $.ajax({
+            url: $('#url').data("checkadmission"),
+            type: 'POST',
+            data: JSON.stringify(ai),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data);
+
+                if (data.ErrorCode == 0) {
+                    c.MessageBoxErr("Error...", data.Message);
+                    return;
+                }
+
+                var OkayButtonFunc = function () {
+                    alert('OKAY');
+
+                }
+                c.MessageBox(data.Title, data.Message, OkayButtonFunc);
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+
+    }
+
+
+    function Save() {
+
+        var ret = Validated();
+        if (!ret) return ret;
+
+
+        var ai = {
+
+            reason: $("#reason").val().trim(),
+            ipid: $('#ipid').val()
+
+        };
+
+        console.log(ai);
+        $.ajax({
+            url: $('#url').data("save"),
+            type: 'POST',
+            data: JSON.stringify(ai),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data);
+
+                if (data.ErrorCode == 0) {
+                    c.MessageBoxErr("Error...", data.Message);
+                    return;
+                }
+
+                var OkayButtonFunc = function () {
+                    //  alert('OKAY');
+                    $("#Select2Pin").val('');
+                    $('#Select2Pin').select2('open');
+                    $('#Select2TransferPin').select2("enable", false);
+
+                }
+                c.MessageBox(data.Title, data.Message, OkayButtonFunc);
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+
+    function Validated() {
+
+        var ret = false;
+
+        ret = $("#reason").val().trim();
+        console.log(ret);
+        if (!ret) {
+            c.MessageBoxErr('ERROR', 'Please input a valid Reason!');
+            return false;
+        }
+        var ret = $('#ipid').val();
+        console.log(ret);
+        if (!ret) {
+            c.MessageBoxErr('ERROR', 'Please select Patient ID!');
+            return false;
+        }
+
+        return true;
+
+    }
+
+
+
+</script>
+
+
+
+
+

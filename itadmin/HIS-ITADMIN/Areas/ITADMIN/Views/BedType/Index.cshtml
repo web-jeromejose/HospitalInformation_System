@@ -1,0 +1,101 @@
+﻿<input type="hidden" id="url"
+data-getbedtypedash="@Url.Action("BedTypeDashBoardList")"
+
+data-getlocationview="@Url.Action("FetchBedtype")"
+
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+data-save="@Url.Action("Save")"
+
+/>
+
+<div class="panel panel-default">
+          <div class="panel-heading">
+              <div class="row">
+                 <div class="col-xs-3">
+                    <h4><b class="navbar-header">Bed Type</b></h4>
+                 </div>
+                        <div class="form-group">
+                       @* <label class="control-label col-sm-1">Type</label>*@
+                    
+              </div>
+           </div>
+        </div>
+       <div class="panel-body">
+          <div class="col-xs-3">
+          <table id="gridItemList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                   @*<th style="text-align:center">Name</th>*@
+                    <th>SLNo</th>
+                    <th>Name</th>
+                    <th></th>
+                   
+                </tr>
+             </thead>
+          </table>
+                       <button id="btnNew" type="button" class="btn btn-sm btn-primary pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-open ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> New</button>
+        </div>
+     </div>
+</div>
+
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+   <input id="txtbedtypeid" name="" type="hidden" class="form-control">
+  
+   <div class="modal-dialog modal-lg" style=" " role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="opbmyModalLabel">Create Bed Type</h4>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+                     <div class="col-sm-12">
+                  <form role="form" class="form-horizontal AR_custom_label_left_align">
+             
+                     <div class="form-group">
+                        <label class="control-label col-sm-2">Name:</label>
+                         <div class="col-sm-7">
+                           <input type="text" class="form-control" id="txtName"/>
+                        </div>
+                     </div>
+                       <div class="form-group">
+                         <label class="control-label col-sm-2">Code:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="form-control" id="txtCode"/>
+                        </div>
+                        </div>
+                               <div class="form-group">
+                           <label class="control-label col-sm-2">Label:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="form-control" id="txtLabel"/>
+                        </div>
+                       </div>
+                      <div class="form-group">
+                           <label class="control-label col-sm-2">Type:</label>
+                        <div class="col-sm-7">
+                           <input type="text" class="sel" id="Select2Type"/>
+                        </div>
+                       </div>
+                  
+                     @* 
+                     <div id="endos"></div>
+                     *@
+                  </form>
+               </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+               <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal"> Deleted</button>
+               @*<button id="btnModify" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-pencil ShowOnEdit HideOnAdd" data-dismiss="modal">Modify</button>*@
+               <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+               @*   <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+               <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>
+         </div>
+      </div>
+   </div>
+@section scripts{
+<script src="~/Scripts/itadmin/BedType.js"></script>
+
+}

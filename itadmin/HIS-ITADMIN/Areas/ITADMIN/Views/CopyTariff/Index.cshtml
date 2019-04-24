@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "Copy Tariff";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-3">
+                <h4><b class="navbar-header">Copy Tariff</b></h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="modal-body form-horizontal">
+            <div class=" ">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#sectionA">InPatient</a></li>
+                    <li><a data-toggle="tab" href="#sectionB">OutPatient</a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div id="sectionA" class="tab-pane fade in active">
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Effectivity Date:</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-left datepicker " id="dtIPEffectivity">
+                                    </div>
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+
+
+                            @*   <div class="form-group">
+                            <label class="control-label col-sm-1">Effectivity Date:</label>
+                            	<div class="col-sm-2">
+									<div id="dtIPEffectivity" class="input-group date datepicker">
+										<input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+                                        </div>
+									</div>
+                                  
+								</div>*@
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">From Tariff</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="select2FromTariff" class="sel" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">To Tariff</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="select2ToTariff" class="sel" />
+                                    </div>
+
+                                    <label class="control-label col-sm-1">Percentage:</label>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="txtPercentage" />
+                                    </div>
+
+                                    <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-retweet ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Copy</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <table id="gridIPService" class="table table-bordered table-hover dataTable no-footer;">
+                                    <thead class="AR_custom_table_header expanded-group">
+                                        <tr>
+                                            <th>
+                                                <input id="iChkAllTestIP" type="checkbox" value="false" style=""></th>
+                                            <th></th>
+                                            <th>Service Name</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                                @*           <div class="pull-right">*@
+
+                                @* <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                                @*       </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sectionB" class="tab-pane fade in">
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Effectivity Date:</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-left datepicker " id="dtOPEffectivity">
+                                    </div>
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+
+
+                            @*    <div class="form-group">
+                            <label class="control-label col-sm-1">Effectivity Date:</label>
+                            	<div class="col-sm-2">
+									<div id="dtOPEffectivity" class="input-group date">
+										<input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+                                        </div>
+									</div>
+								</div>*@
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">From Tariff</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="select2FromOPTariff" class="sel" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">To Tariff</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="select2ToIPTariff" class="sel" />
+                                    </div>
+                                    <label class="control-label col-sm-1">Percentage:</label>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="txtOPPercentage" />
+                                    </div>
+                                    <button id="btnOPSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-retweet ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Copy OP</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <table id="gridOPService" class="table table-bordered table-hover dataTable no-footer;">
+                                    <thead class="AR_custom_table_header expanded-group">
+                                        <tr>
+                                            <th>
+                                                <input id="iChkAllTestOP" type="checkbox" value="false" style=""></th>
+                                            <th></th>
+                                            <th>Service Name</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                                @*           <div class="pull-right">*@
+
+                                @* <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                                @*       </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<input type="hidden" id="url"
+data-gettariff="@Url.Action("Select2Tariff")"
+data-getipservicedash="@Url.Action("CopyTariffDashBoard")"
+data-getopservicedash="@Url.Action("CopyOPTariffDashBoard")"
+data-save="@Url.Action("Save")"
+data-saveop="@Url.Action("SaveOP")"
+/>
+
+@section scripts{
+    <script src="~/Scripts/itadmin/CopyTariff.js"></script>
+}

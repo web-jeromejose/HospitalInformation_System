@@ -1,0 +1,130 @@
+﻿
+<input type="hidden" id="url"
+data-getbillreason="@Url.Action("Select2CanceBillReason")"
+data-getfetchmapping="@Url.Action("FetchCancelBillDashBoard")"
+data-fetcancelreason="@Url.Action("FetchCancelReason")"
+data-cancelreason="@Url.Action("CancelReasonList")"
+data-changetype="@Url.Action("Select2ChangeType")"
+data-save="@Url.Action("Save")"
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+   <input id="Id" name="" type="hidden" class="form-control">
+   <input id="IssueAuthoritycode" name="" type="hidden" class="form-control">
+   <input id="PatientType" name="" type="hidden" class="form-control">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">Cancellation Type Mapping</b></h4>
+         </div>
+               <div class="form-group col-sm-9">
+              @*  <button id="btnSave" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right"> Save</button>*@
+            </div>
+           
+      </div>
+   </div>
+        <div class="panel-body">
+         <div class="form-horizontal">
+                <div class="form-group">
+                   <label class="control-label col-sm-2">Cancellation Type</label>
+                        <div class="col-sm-3">
+                           <input type="text" class="sel" id="Select2CancellReason"/>
+                  </div>
+                     <button id="btnAdd" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-save ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Add</button>
+               </div>
+               
+          <div class="col-xs-12">
+           
+          <table id="gridtransactiondetails" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+   @*                 <tr>
+                       <th colspan="9" class="centertext compressedtableheader" style="text-align:center"> Details</th>
+                    </tr> *@
+                   <th>Reason</th>
+                   <th>Reason Date</th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+
+
+                @* <th>Change Type</th>*@
+                @* <th></th>
+                <th></th>
+                <th></th>
+                <th></th>*@
+                </tr>
+             </thead>
+          </table>
+            
+        </div>
+     </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalEntry" data-backdrop="static" style="overflow-y: auto;" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">New Reason</h4>
+            </div>
+
+            <!-- Nav tabs -->
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                  <form role="form" class="form-horizontal AR_custom_label_left_align">     
+               <div class="form-group">
+                   <label class="control-label col-sm-3"> Cancellation Type:</label>
+                        <div class="col-sm-6">
+                           <input type="text" class="sel" id="Selectt2CanReasonMapping"/>
+                  </div>
+               </div>
+               <div class="form-group">
+                   <label class="control-label col-sm-3"> Code:</label>
+                        <div class="col-sm-6">
+                           <input type="text" class="form-control" id="txtCode"/>
+                  </div>
+               </div>
+                <div class="form-group">
+                   <label class="control-label col-sm-3"> Reason:</label>
+                        <div class="col-sm-8">
+                           <input type="text" class="form-control" id="txtReason"/>
+                  </div>
+               </div>
+                           <div class="checkbox control-label col-sm-4">
+                                            <label>
+                                                <input type="checkbox" id="isDel" style="margin-top: 0px;" />
+                                                Deleted
+                                            </label>
+                                        </div>
+                </form>
+                </div>
+                
+            </div>
+                    </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="button" id="btn_save" class="btn btn-sm btn-primary IT_custom_btn_fixed_width">
+                            <span class="glyphicon glyphicon-floppy-save"></span>
+                            Save Changes
+                        </button>
+                        <button type="button" class="btn btn-sm btn-default IT_custom_btn_fixed_width" data-dismiss="modal">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     </div>
+@section scripts{
+<script src="~/Scripts/itadmin/CancelReasonMapping.js"></script>
+}

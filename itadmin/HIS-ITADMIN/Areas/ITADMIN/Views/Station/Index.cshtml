@@ -1,0 +1,159 @@
+﻿
+<input type="hidden" id="url"
+       data-getstation="@Url.Action("StationTypeDashBoardList")"
+       data-getstationview="@Url.Action("StationViewDetails")"
+       data-getlocationlist="@Url.Action("Locationlst")"
+       data-getstationlist="@Url.Action("StationTypList")"
+       data-getdepartmentlist="@Url.Action("DepartmentList")"
+       data-save="@Url.Action("Save")" />
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-3">
+                <h4><b class="navbar-header">Station</b></h4>
+            </div>
+            <div class="form-group">
+                @* <label class="control-label col-sm-1">Type</label>*@
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <table id="gridItemList" class="table table-bordered table-hover dataTable no-footer;">
+                <thead class="AR_custom_table_header expanded-group">
+                    <tr>
+                        @* <th style="text-align:center">SlNo</th>*@
+                        <th>SlNo</th>
+                        <th>Station Name</th>
+                        <th>Location</th>
+                        <th>Main Location</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+            <button id="btnNew" type="button" class="btn btn-sm btn-primary pull-right AR_custom_btn_fixed_width glyphicon glyphicon-folder-open" data-dismiss="modal"> New</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+    <input id="txtLocationId" name="" type="hidden" class="form-control">
+    <input id="StationId" name="" type="hidden" class="form-control">
+    <input id="txttimetoday" name="" type="hidden" class="form-control">
+
+    <div class="modal-dialog modal-lg" style="width:50%;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="opbmyModalLabel">Create Station</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @*      <div class="col-sm-12">*@
+                    <form role="form" class="form-horizontal AR_custom_label_left_align col-sm-12">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Station Name:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtStationName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Main Location:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="sel" id="Select2MainLocation" />
+                            </div>
+                            <label class="control-label col-sm-2">Location:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtLocation" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Station Type:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="sel" id="Select2StationType" />
+                            </div>
+                            <label class="control-label col-sm-2">Start Date:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtstartdate" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Department:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="sel" id="Select2Department" />
+                            </div>
+                            <label class="control-label col-sm-2">Start time:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtstarttime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Prefix:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtPrefix" />
+                            </div>
+                            <label class="control-label col-sm-2">Code:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtCode" />
+                            </div>
+                            <div class="checkbox control-label col-sm-4">
+                                <label>
+                                    
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox control-label col-sm-6">
+                                <label>
+                                    <input type="checkbox" id="isIndent" style="margin-top: 0px;" />
+                                    Check Min and Max Level in Indent
+                                </label>
+                            </div>
+                            <label class="control-label col-sm-2">ORA Code:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="txtOraCode" disabled />
+                            </div>
+                            <div class="checkbox control-label col-sm-4">
+
+                            </div>
+                        </div>
+
+
+                        
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="alert alert-danger alert-dismissible" style="color: black !important;">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-ban"></i> Reminder!</h4>
+                                    If you are selection "Store" in Station Type, Please make a request for DBA for the ORA CODE in ERP Team,
+                                    before creating new Station. The authorize person to update the ORA Code will be the DBA only as per management since 2005. Thank you.
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal"> Deleted</button>
+                <button id="btnModify" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-pencil ShowOnEdit HideOnAdd" data-dismiss="modal"> Modify</button>
+                <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                @*   <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+                <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/itadmin/Station.js"></script>
+
+}

@@ -1,0 +1,558 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+/*
+   Added by homie
+*/
+
+.float-Right 
+{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+  padding-right: 2px;
+}
+
+/*
+ Added by homie
+*/
+
+body
+{
+    /*background-color: #5c87b2;*/
+    font-size: 75%;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+}
+
+a:link
+{
+    color: #034af3;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: #505abc;
+}
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+a:active
+{
+    color: #12eb87;
+}
+
+p, ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    padding: 0 0 10px 0;
+}
+h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page
+{
+    width: 100%;
+    min-width : 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header
+{
+    position: relative;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+}
+
+#header h1
+{
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-size: 32px !important;
+}
+
+#main
+{
+    padding: 30px 30px 15px 30px;
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+    _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
+}
+
+#footer
+{
+    color: #999;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0;
+    font-size: .9em;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+/*ul#menu
+{
+    border-bottom: 1px #5C87B2 solid;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: right;
+}
+
+ul#menu li
+{
+    display: inline;
+    list-style: none;
+}
+
+ul#menu li#greeting
+{
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    color: #fff;
+}
+
+ul#menu li a
+{
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    background-color: #e8eef4;
+    color: #034af3;
+}
+
+ul#menu li a:hover
+{
+    background-color: #fff;
+    text-decoration: none;
+}
+
+ul#menu li a:active
+{
+    background-color: #a6e2a6;
+    text-decoration: none;
+}
+
+ul#menu li.selected a
+{
+    background-color: #fff;
+    color: #000;
+}*/
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:10px 1.4em 1.4em 1.4em;
+    /*margin-top: 75px!important;*/
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+input[type="text"] 
+{
+    border: 1px solid #CCC;
+}
+
+input[type="password"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table 
+{
+  border-collapse: collapse;
+}
+
+table td 
+{
+  padding: 3px;    
+}   
+/*
+table.dxgvControl > tbody tr td
+{
+    padding: 0px;
+}
+*/
+table.dxgvControl > tbody tr td.dxgvHeader
+{
+    padding: 0px;
+    background-color: #c9c9c9;
+}
+
+table.dxgvControl > tr.dxgvFilterRow td
+{
+    padding-top: 10px;
+}
+
+div.dxgvPagerBottomPanel
+{
+    padding-left: 10px;
+}
+
+table.dxgvControl  td.dxpPageNumber
+{
+    
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: left;
+  background-color: #e8eef4; 
+  border: solid 1px #e8eef4;   
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+div.error
+{
+    margin: 5px 0px 5px 0px;
+    padding: 5px 5px 5px 5px;
+    background-color: #ffeeee;
+    border: 1px solid #ffdddd;
+}
+
+div.success
+{
+    margin: 25px 0px 10px 0px;
+    padding: 5px 5px 5px 5px;
+    background-color: #eeffee;
+    color: #009900;
+    border: 1px solid #ddffdd;
+}
+
+#menucontainer
+{
+    margin-top:40px;
+}
+
+div#title
+{
+    display:block;
+    float:left;
+    text-align:left;
+}
+
+#logindisplay
+{
+    font-size:1.1em;
+    display:block;
+    text-align:right;
+    margin:10px;
+    color:White;
+}
+
+#logindisplay a:link
+{
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited
+{
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles for required fields
+-----------------------------------------------------------*/
+.required input {
+    background-color: rgb(255, 250, 205) !important;
+    width: 100%;
+
+}
+
+/*-----------------------------------------------------------*/
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-validSSS
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0px!important;
+    
+    border: 1px solid #ff5555;
+    background-color: #ffeeee;
+    
+    color: #ff0000;
+}
+
+.validation-summary-errors ul
+{
+    margin-left: 30px;
+    margin-bottom: 10px;
+    padding: 0px!important;
+}
+
+.validation-summary-success
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0px!important;
+    
+    border: 1px solid #55ff55;
+    background-color: #eeffee;
+    
+    color: #00ff00;
+}
+
+.validation-summary-success ul
+{
+    margin-left: 30px;
+    margin-bottom: 10px;
+    padding: 0px!important;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label
+{
+    margin: 1em 0 0 0;
+}
+
+.display-field,
+.editor-field
+{
+    margin:0.5em 0 0 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+/* Tab Menu Styles
+-----------------------------------------------------------------*/
+ul.tabs {
+margin: 0;
+padding: 0;
+float: left;
+list-style: none;
+height: 32px; /*--Set height of tabs--*/
+border-bottom: 1px solid #999;
+border-left: 1px solid #999;
+width: 100%;
+}
+
+ul.tabs li {
+float: left;
+margin: 0;
+padding: 0;
+height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+line-height: 31px; /*--Vertically aligns the text within the tab--*/
+border: 1px solid #999;
+border-left: none;
+margin-bottom: -1px; /*--Pull the list item down 1px--*/
+overflow: hidden;
+background: #e0e0e0;
+}
+
+ul.tabs li a {
+text-decoration: none;
+color: #000;
+display: block;
+font-size: 1.2em;
+padding: 0 20px;
+border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+outline: none;
+}
+
+ul.tabs li a:hover {
+background: #ccc;
+}
+
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+background: #fff;
+border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.tab_container {
+border: 1px solid #999;
+border-top: none;
+overflow: hidden;
+clear: both;
+float: left; width: 100%;
+background: #fff;
+}
+
+.tab_content {
+padding: 20px;
+font-size: 1.2em;
+color:#333;
+}
+
+.hide {
+    display: none;
+}
+
+div.report
+{
+    border: 1px solid #000;
+}
+
+/* Input
+--------------------------------------------------------------*/
+
+.numericText input {
+    text-align:right;
+}
+
+/* Legend Tables */
+
+#legend-table div
+{
+    width: 15px!important;
+    height: 15px!important;
+}
+
+#legend-table td.white div
+{
+    background-color: #FFF!important;
+    border: 1px solid #000!important;
+}
+
+#legend-table td.light-pink div
+{
+    background-color: #FFB6C1!important;
+    border: 1px solid #000!important;
+}
+
+#legend-table td.lemon-chiffon div
+{
+    background-color: #FFFACD!important;
+    border: 1px solid #000!important;
+}

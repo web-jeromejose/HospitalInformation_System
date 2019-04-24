@@ -1,0 +1,190 @@
+﻿<input type="hidden" id="url"
+data-canceloprecept="@Url.Action("CancelOPReceiptDashBoard")"
+data-cancelreceiptview="@Url.Action("CancelOPReceiptView")"
+data-cancelmapping="@Url.Action("CancelOPReceiptMapping")"
+data-getservicesdept="@Url.Action("Select2ServiceDept")"
+data-geitemprice="@Url.Action("ItemListPrice")"
+data-getnewprice="@Url.Action("ItemNewPrice")"
+data-itemlistcode="@Url.Action("ItemListWithPrice")"
+data-selectfinditemcode ="@Url.Action("Select2ItemCode")"
+data-save="@Url.Action("Save")"
+/>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4><b class="navbar-header">Cancelled OP Receipts-ReIssues Mapping</b> <small> (Canopbill)</small></h4>
+                <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal ">Save</button>
+                @* <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd pull-right" data-dismiss="modal">Cancel</button>*@
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label col-sm-1">From Date:</label>
+                    <div class="col-sm-3">
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-left datepicker " id="dtFromDate">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-1">From Date:</label>
+                    <div class="col-sm-3">
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-left datepicker " id="dtToDate">
+                        </div>
+                    </div>
+
+                </div>
+
+                @*	<label class="control-label col-sm-1">From Date:</label>
+								<div class="col-sm-2">
+									<div id="dtFromDate" class="input-group date">
+										<input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+                        		<label class="control-label col-sm-1">To Date:</label>
+								<div class="col-sm-2">
+									<div id="dtToDate" class="input-group date">
+										<input data-date-format="DD-MMM-YYYY" type='text' class="form-control RequiredField" value="@DateTime.Today.ToString("dd-MMM-yyyy")"/>
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>*@
+                <button id="btnpreview" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>
+            </div>
+
+            <div class="col-sm-12">
+
+                <table id="gridSpecialisationList" class="table table-bordered table-hover dataTable no-footer;">
+
+                    <thead class="AR_custom_table_header expanded-group">
+                        <tr>
+
+                            <th>PIN</th>
+                            <th>BILL NO</th>
+                            <th>SERVICE</th>
+                            <th>BILL DATE</th>
+                            <th>AMOUNT</th>
+                            <th>CANCEL REASON</th>
+                            <th>REISSUE RECEIPT</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            @* <th>REISSUE RECEIPT</th>*@
+
+
+                        </tr>
+                    </thead>
+                </table>
+                <span class="glyphicon glyphicon-unchecked" style="background-color: #d7ffea"></span>ReIssues Mapping
+            </div>
+            <!-- Modal Part Passport Details -->
+            <div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+                <input id="opbillId" name="" type="hidden" class="form-control">
+                <input id="SNO" name="" type="hidden" class="form-control">
+                <input id="BillNo" name="" type="hidden" class="form-control">
+                <div class="modal-dialog modal-lg" style=" height: 40% !important;" role="document">
+                    <div class="row">
+                        <div class="modal-content" style="height: auto!important;">
+                            <div class=" modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="opbmyModalLabel">Receipts Mapping</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2">PIN:</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="txtPin" />
+                                                </div>
+                                                <label class="control-label col-sm-2">Service Type:</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" id="txtServiceType" />
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2">Bill Date Time:</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="txtBIllDateTime" />
+                                                </div>
+
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <table id="gridReceiptMapping" class="table table-bordered table-hover dataTable no-footer;">
+                                            <thead class="AR_custom_table_header expanded-group">
+                                                <tr>
+                                                    @*<tr>
+                                <th colspan="3" class="centertext compressedtableheader" style="text-align:center; border: 0px; width: 100%;">Specialisation Listed</th>
+                            </tr>*@
+                                                    <th>BILL NO</th>
+                                                    <th>SERVICE</th>
+                                                    <th>DOC CODE</th>
+                                                    <th>CATEGORY</th>
+                                                    <th>BILL DATE</th>
+                                                    <th>AMOUNT</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    @*           <th style="text-align:center"></th>*@
+
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            @*            <div class="modal-footer">
+               <button id="btnDelete" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-trash HideOnAdd ShowOnEdit">Delete</button>
+             <button id="btnSave" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit">Save</button>
+               <button id="btnModify" type="button" class="btn btn-sm btn-success AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk HideOnAdd ShowOnEdit">Modify</button>
+                <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>
+               <button type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*        <div class="pull-right">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+            <button id="btnCancel" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>
+         </div>*@
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/itadmin/CancelOPReceipts.js"></script>
+
+}

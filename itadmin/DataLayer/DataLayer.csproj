@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EFD02C6C-AE1F-4F0D-B33C-5A3F25C87A6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BranchDBHelper.cs" />
+    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\Copy of DBHelper.cs" />
+    <Compile Include="Common\EnCryptPassword.cs" />
+    <Compile Include="Common\ExceptionLogging.cs" />
+    <Compile Include="Common\HISValidationException.cs" />
+    <Compile Include="Data\ITAdmin\AnesthesiaModel.cs" />
+    <Compile Include="Data\ITAdmin\CashierReceiptPrintingModel.cs" />
+    <Compile Include="Data\ITAdmin\CathLabEmployeeMasterModel.cs" />
+    <Compile Include="Data\ITAdmin\CathProcedModel.cs" />
+    <Compile Include="Data\ITAdmin\CategoryStationMapModel.cs" />
+    <Compile Include="Data\ITAdmin\ChangeCSTModel.cs" />
+    <Compile Include="Data\ITAdmin\AsstSurgeonModel.cs" />
+    <Compile Include="Data\ITAdmin\AnesthesiaChargesModel.cs" />
+    <Compile Include="Data\ITAdmin\CashDiscountModel.cs" />
+    <Compile Include="Data\ITAdmin\CashDiscountDeptWiseModel.cs" />
+    <Compile Include="Data\ITAdmin\BillPrefixModel.cs" />
+    <Compile Include="Data\ITAdmin\CancelBillReasonModel.cs" />
+    <Compile Include="Data\ITAdmin\AccessRevisitApprovalModel.cs" />
+    <Compile Include="Data\ITAdmin\CancelDepositModel.cs" />
+    <Compile Include="Data\ITAdmin\CityModel.cs" />
+    <Compile Include="Data\ITAdmin\CancelBillMappingModel.cs" />
+    <Compile Include="Data\ITAdmin\BedTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\BedDetailsModel.cs" />
+    <Compile Include="Data\ITAdmin\CancelOPReceiptsModel.cs" />
+    <Compile Include="Data\ITAdmin\Class1.cs" />
+    <Compile Include="Data\ITAdmin\ComissionProfileModel.cs" />
+    <Compile Include="Data\ITAdmin\ContentResult.cs" />
+    <Compile Include="Data\ITAdmin\CancelOPDiscountApprvlModel.cs" />
+    <Compile Include="Data\ITAdmin\CPTCodeModel.cs" />
+    <Compile Include="Data\ITAdmin\DoctorStationGroupModel.cs" />
+    <Compile Include="Data\ITAdmin\FoodItemModel.cs" />
+    <Compile Include="Data\ITAdmin\FRMPatientFileCheckListModel.cs" />
+    <Compile Include="Data\ITAdmin\JavaScriptSerializer.cs" />
+    <Compile Include="Data\ITAdmin\MasterModel.cs" />
+    <Compile Include="Data\ITAdmin\MMSIpStationModel.cs" />
+    <Compile Include="Data\ITAdmin\MmsReportsMappingModel.cs" />
+    <Compile Include="Data\ITAdmin\ModuleBulkAccessDAL.cs" />
+    <Compile Include="Data\ITAdmin\QMSModel.cs" />
+    <Compile Include="Data\ITAdmin\ReleaseBedModel.cs" />
+    <Compile Include="Data\ITAdmin\ReleaseEmpHISModel.cs" />
+    <Compile Include="Data\ITAdmin\RoomModel.cs" />
+    <Compile Include="Data\ITAdmin\IPTariffNewModel.cs" />
+    <Compile Include="Data\ITAdmin\SecurityAdminDAL.cs" />
+    <Compile Include="Data\ITAdmin\SghUtilitiesDB.cs" />
+    <Compile Include="Data\ITAdmin\SharjahModel.cs" />
+    <Compile Include="Data\ITAdmin\StationDetailsModel.cs" />
+    <Compile Include="Data\ITAdmin\StationTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\UserRoleslModel.cs" />
+    <Compile Include="Data\ITAdmin\ReleaseDrugOrderModel.cs" />
+    <Compile Include="Data\ITAdmin\IPTariffModel.cs" />
+    <Compile Include="Data\ITAdmin\PatientOrderCancelationModel.cs" />
+    <Compile Include="Data\ITAdmin\CutoffRoomRentModel.cs" />
+    <Compile Include="Data\ITAdmin\RelationShipModel.cs" />
+    <Compile Include="Data\ITAdmin\CutOffTimePharmacyModel.cs" />
+    <Compile Include="Data\ITAdmin\OrganisationModel.cs" />
+    <Compile Include="Data\ITAdmin\TitleModel.cs" />
+    <Compile Include="Data\ITAdmin\NationalityModel.cs" />
+    <Compile Include="Data\ITAdmin\OccupationModel.cs" />
+    <Compile Include="Data\ITAdmin\MaritalStatusModel.cs" />
+    <Compile Include="Data\ITAdmin\ReligionModel.cs" />
+    <Compile Include="Data\ITAdmin\ORTrackingModel.cs" />
+    <Compile Include="Data\ITAdmin\TransferDepositTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\MachineSetupDAL.cs" />
+    <Compile Include="Data\ITAdmin\MachineSetupModel.cs" />
+    <Compile Include="Data\ITAdmin\UserRegistrationModel.cs" />
+    <Compile Include="Data\ITAdmin\ForceInPatientTransferModel.cs" />
+    <Compile Include="Data\ITAdmin\PharmacyCancelSetupModel.cs" />
+    <Compile Include="Data\ITAdmin\LaundryItemModel.cs" />
+    <Compile Include="Data\ITAdmin\GenCashierTransTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\LocationModel.cs" />
+    <Compile Include="Data\ITAdmin\EmployeeDiscountAuthorizationModel.cs" />
+    <Compile Include="Data\ITAdmin\NonDiscountItemModel.cs" />
+    <Compile Include="Data\ITAdmin\DiscountTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\ItemCodeModel.cs" />
+    <Compile Include="Data\ITAdmin\RecoveryRoomChargesModel.cs" />
+    <Compile Include="Data\ITAdmin\OTNursingAdminModel.cs" />
+    <Compile Include="Data\ITAdmin\ORChargesModel.cs" />
+    <Compile Include="Data\ITAdmin\OREmployeeTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\MapOtherPackageProcedModel.cs" />
+    <Compile Include="Data\ITAdmin\ORSurgeryModel.cs" />
+    <Compile Include="Data\ITAdmin\OPDoctorClinicModel.cs" />
+    <Compile Include="Data\ITAdmin\MappingCombinedDocCodeModel.cs" />
+    <Compile Include="Data\ITAdmin\DocRecepMappingModel.cs" />
+    <Compile Include="Data\ITAdmin\DocSpecMapModel.cs" />
+    <Compile Include="Data\ITAdmin\ReroutingORderModel.cs" />
+    <Compile Include="Data\ITAdmin\InventoryItemMarkupModel.cs" />
+    <Compile Include="Data\ITAdmin\TransacInvModel.cs" />
+    <Compile Include="Data\ITAdmin\ItemMappingModel.cs" />
+    <Compile Include="Data\ITAdmin\VatProfileModel.cs" />
+    <Compile Include="Data\ITAdmin\WardPharModel.cs" />
+    <Compile Include="Data\ITAdmin\SubStoreModel.cs" />
+    <Compile Include="Data\ITAdmin\HoldingStoreModel.cs" />
+    <Compile Include="Data\ITAdmin\PTProcedureModel.cs" />
+    <Compile Include="Data\ITAdmin\OtherProcedureModel.cs" />
+    <Compile Include="Data\ITAdmin\NursingAdminisModel.cs" />
+    <Compile Include="Data\ITAdmin\OPRevisitModel.cs" />
+    <Compile Include="Data\ITAdmin\CopyTariffModel.cs" />
+    <Compile Include="Data\ITAdmin\TariffModel.cs" />
+    <Compile Include="Data\ITAdmin\IpOpMarkUpModel.cs" />
+    <Compile Include="Data\ITAdmin\CSTZeroItemModel.cs" />
+    <Compile Include="Data\ITAdmin\IpPharmacyServiceModel.cs" />
+    <Compile Include="Data\ITAdmin\IPCashMarkUpConfigModel.cs" />
+    <Compile Include="Data\ITAdmin\CSTBedTypeModel.cs" />
+    <Compile Include="Data\ITAdmin\CSTMarkupModel.cs" />
+    <Compile Include="Data\ITAdmin\HCModel.cs" />
+    <Compile Include="Data\ITAdmin\PackageModifyVisitModel.cs" />
+    <Compile Include="Common\DBHelper.cs" />
+    <Compile Include="Common\EncryptDecrypt.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Common\HISSecurity.cs" />
+    <Compile Include="Data\GIA\GenericDAL.cs" />
+    <Compile Include="Data\GIA\PunchingDAL.cs" />
+    <Compile Include="Data\ITAdmin\HealthCheckupModel.cs" />
+    <Compile Include="Data\ITAdmin\IPTariff.cs" />
+    <Compile Include="Data\ITAdmin\OPTariffModel.cs" />
+    <Compile Include="Data\ITAdmin\TransOrderModel.cs" />
+    <Compile Include="Data\ITAdmin\ModuleAccessDAL.cs" />
+    <Compile Include="Data\ITAdmin\PackageVisitModel.cs" />
+    <Compile Include="Data\ITAdmin\WebRoles.cs" />
+    <Compile Include="Data\ITAdmin\WebSecurityAdminModel.cs" />
+    <Compile Include="Model\ITAdmin\CancellationTypeMappingModel.cs" />
+    <Compile Include="Model\ITAdmin\GenericModel.cs" />
+    <Compile Include="Model\GIA\PunchingModel.cs" />
+    <Compile Include="Model\ITAdmin\IPTariff.cs" />
+    <Compile Include="Model\ITAdmin\SghUtilities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

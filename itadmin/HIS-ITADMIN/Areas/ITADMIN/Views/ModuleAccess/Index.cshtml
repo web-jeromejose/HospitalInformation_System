@@ -1,0 +1,665 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-5">
+                <h4><b class="navbar-header">Module Access</b></h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs col-sm-12" role="tablist">
+                    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">User Modules Access</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Removal of Modules Access</a></li>
+                    <li role="presentation"><a href="#ustation" aria-controls="ustation" role="tab" data-toggle="tab">User Station Access</a></li>
+
+                    <li role="presentation"><a href="#newmodulepage" aria-controls="newmodulepage" role="tab" data-toggle="tab">Modules</a></li>
+                    @*<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Module Menu</a></li>*@
+                    <li role="presentation"><a href="#sync" aria-controls="sync" role="tab" data-toggle="tab">Synchronize</a></li>
+
+
+                    @*for IT JEROME JOSE ONLY*@
+                    @if (Request.ServerVariables["REMOTE_ADDR"] == "130.1.8.232" || Request.ServerVariables["REMOTE_ADDR"] == "130.1.8.244" || Request.ServerVariables["REMOTE_ADDR"] == "::1")
+                    {
+                        @Request.ServerVariables["REMOTE_ADDR"]
+                        @*<li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Modules</a></li>*@
+                        <li role="presentation"><a href="#newmodulepage" aria-controls="newmodulepage" role="tab" data-toggle="tab">Modules</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Module Menu</a></li>
+
+                        <li role="presentation"><a href="#sync" aria-controls="sync" role="tab" data-toggle="tab">Synchronize</a></li>
+                    }
+                    @*for IT JEROME JOSE ONLY*@
+
+                </ul>
+                <div class="tab-content col-sm-12">
+                    <hr />
+                    <div role="tabpanel" class="tab-pane" id="home">
+                        <div class="row">
+                            <div class="col-sm-12" style="overflow: auto; height: 400px; width: 98%;">
+                                <table id="tblmodules" class="table table-bordered  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Save</th>
+                                            <th>ModuleID</th>
+                                            <th>ModuleName</th>
+                                            <th>URLLink</th>
+                                            <th>ImgSrc</th>
+                                            <th>StationSpecific</th>
+                                            <th>TPwdRequired</th>
+                                            <th>Deleted</th>
+                                            <th>VirtualPoolName</th>
+                                            <th>IncludeVPoolName</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <button class="btn btn-success" onclick="btnaddnewmodule();">Add New Module?</button>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border box-warning">
+                                            <h3 class="box-title">MODULE - PARENT - FUNCTION</h3>
+                                        </div>
+
+                                        <div style="overflow: auto; width: 100%; height: 400px;">
+                                            <table id="tblmenumodules" class="table table-bordered  table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ModuleID</th>
+                                                        <th>ModuleName</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="modal fade" id="modal-feat">
+                                    <div class="modal-dialog modal-lg" style="width: AUTO;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title">Default Modal</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-sm-8">
+
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">New Feature</label>
+                                                            <div class="col-sm-5">
+                                                                <input type="text" id="txtfeatnew" class="form-control" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">Parent Menu</label>
+                                                            <div class="col-sm-5">
+                                                                <input type="text" id="txtNew_ParentMenu" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">Menu URL</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" id="txtNew_MenuUrl" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-group">
+                                                        <br />
+                                                        <div class="col-sm-12">
+                                                            <button class="btn btn-info btn-md col-sm-12" data-funcid="4" onclick="AddNewFearture();" id="btnnewfeature">Add New Feature</button>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                            <br />
+                                            <div class="row" style="overflow: auto; height: 430px; width: 98%;">
+                                                <table id="tblmenu" class="table table-bordered  table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th></th>
+                                                            <th></th>
+                                                            <th>Feature ID</th>
+                                                            <th>Name</th>
+                                                            <th>ParentID</th>
+                                                            <th>Parent Name</th>
+                                                            <th>MenuURL</th>
+                                                            <th>Deleted</th>
+                                                            <th>SequenceNo</th>
+                                                            <th>Bar</th>
+                                                            <th>NewWindow</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="profile">
+
+                        <div class="col-md-12">
+                            <div class="box box-warning collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><b>Copy Employee to Employee </b></h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+
+
+                                    </div>
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="display: block;">
+                                    <div class="form">
+
+                                        <div class="form-group">
+
+                                            <div class="row">
+                                                <label class="col-xs-2 control-label">FROM Employee ID</label>
+                                                <div class="col-xs-5">
+                                                    <input id="fromCopyEmployee" type="text" class="sel _emp" />
+                                                </div>
+                                                <label class="col-xs-2 control-label">Module</label>
+                                                <div class="col-xs-5">
+                                                    <input id="txtCopytomodule" type="text" class="sel" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-xs-2 control-label">TO Employee ID</label>
+                                                <div class="col-xs-5">
+                                                    <input id="toCopyEmployee" type="text" class="sel _emp" />
+                                                </div>
+                                                <br />
+                                                <!-- radio -->
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-offset-2 col-xs-10">
+                                                    <div class="form-group">
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="copyemptoempradio" id="optionsRadios1" value="0" checked>
+
+                                                                <p class="margin"><b>Add-On Permission  </b><code>remain existing access of (To Employee) and copy the access of (From Emp)</code></p>
+
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="copyemptoempradio" id="copyemptoempradiodeleteold" value="1">
+                                                                <p class="margin"><b>Delete Old  </b><code>Remove Existing and Copy the new one ( From Emp - To Emp )</code></p>
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <button class="btn btn-success btn-sm" onclick="CopyFromToEmployee();">Copy Module/Feature/Function </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="box box-warning collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><b>Employee Access </b></h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="display: block;">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-4">
+                                            <div class="alert  alert-dismissible" style="background-color: #dd4b39 !important;">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                                                You can see the BULK Employee Module Access HERE.
+                                                <br />
+                                                <a href="/HISITADMIN/ITADMIN/ModuleBulkAccess" class="btn btn-info btn-xs">Module Bulk User Page </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+
+                                            <label class="col-sm-1 control-label">Employee ID</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" id="txtemp" class="sel" />
+                                            </div>
+                                            <label class="col-sm-1 control-label">Add Module</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" id="txtmodule" class="sel" />
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <button id="btnAddAccess" class="btn btn-success" onclick="AddUserModule();">Add Access</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3" style="overflow: auto; height: 350px;">
+                                            <table id="tblmoduleslist" class="table table-condensed table-responsive no-footer _tabledt">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ModuleName</th>
+                                                        <th style="width: 70px;">Remove Access</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+
+                                        <div class="col-sm-9" style="overflow: auto; height: 350px;">
+                                            <table id="tblmenulist" class="table table-condensed table-responsive no-footer">
+                                                <thead>
+                                                    <tr>
+                                                        <th>FeatureID</th>
+                                                        <th>Parent Name</th>
+                                                        <th>Feature Name</th>
+                                                        <th>Has Access</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-4">
+                                    <div class="alert  alert-dismissible" style="background-color: #dd4b39 !important;">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                                        You can have the BULK VIEWING/REMOVAL of EMPLOYEE ACCESS for FEATURE and FUNCTION HERE.
+                                        <br />
+                                        <a href="/HISITADMIN/ITADMIN/ModuleView" class="btn btn-info btn-xs">Module View Page </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div style="overflow: auto; width: 100%; height: 400px;">
+                                        <table id="tblmoduleuser" class="table table-condensed table-responsive no-footer">
+                                            <thead>
+                                                <tr>
+                                                    <th>ModuleID</th>
+                                                    <th>ModuleName</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <br />
+                                        <div style="overflow: auto; height: 400px;">
+                                            <table id="tblmoduleuserlist" class="table table-condensed table-responsive no-footer _table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Remove</th>
+                                                        <th>User ID</th>
+                                                        <th>Employee ID</th>
+                                                        <th>Name</th>
+                                                        <th>Department Name</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="sync">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                @* NOTE :TRANSFER PAGE TO  /ModuleAccess/SyncModulePage  *@
+
+                                <div class="callout callout-danger">
+                                    <h4><i class="icon fa fa-ban"></i>Alert!</h4>
+
+                                    <p>
+                                        You can see the PARENT AND FUNCTION list here.
+                                        <br />The Module Synchronize  here.
+                                    </p>
+                                </div>
+
+                                <input class="btn  btn-warning" style="width:600px;" value="Go to Sync / Add Parent or Function " onclick="window.location='@Url.Action("SyncModulePage")    '" />
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="ustation">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Employee - Module - Station </h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+
+                                    <div class="box-body">
+
+                                        <div class="form">
+                                            <div class="form-horizontal">
+
+                                                <div class="form-group">
+                                                    <label for="txtempstation" class="col-sm-2 control-label">Employee ID</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input id="txtempstation" type="text" class="sel  ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtstationmodule" class="col-sm-2 control-label">Module</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input id="txtstationmodule" type="text" class="sel  ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtstation" class="col-sm-2 control-label">Station</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input id="txtstation" type="text" class="sel  ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <div class="col-sm-6">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*<hr /> separate this is for doctors module only by jericho --jfj dec 20 2017
+                                                    <div class="form-group">
+                                                        <label for="txtstationdoc" class="col-sm-2 control-label">Doctor Access</label>
+
+                                                        <div class="col-sm-6">
+                                                            <input id="txtstationdoc" type="text" class="sel form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <div class="col-sm-6">
+                                                                <button class="btn btn-success btn-sm" onclick="AddDoctorStation();">Add Doctor Access</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <button class="btn btn-primary btn-sm" onclick="AddStation();">Add Station</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="box box-info">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Module - Station (Global)</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- form start -->
+
+                                    <div class="box-body">
+                                        <div class="form">
+                                            <div class="form-horizontal">
+
+
+                                                <div class="form-group">
+                                                    <label for="txtmoduletostationModuleId" class="col-sm-2 control-label">Module</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input id="txtmoduletostationModuleId" type="text" class="sel  ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="txtmoduletostationStatId" class="col-sm-2 control-label">Station</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input id="txtmoduletostationStatId" type="text" class="sel  ">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <div class="col-sm-6">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.box-body -->
+
+                                    <div class="box-footer">
+                                        <button class="btn btn-info btn-sm" onclick="AddStationtoDataInfo();">Add Module to Station </button>
+                                        <button class="btn btn-warning btn-sm" onclick="RemoveStationtoDataInfo();">Remove Module to Station </button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <hr />
+                        <div style="height: 400px; overflow: auto;">
+                            <table id="tblmodules-station" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 50px;">ID</th>
+                                        <th>Name</th>
+                                        <th style="width: 50px;">Remove</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="newmodulepage">
+
+                        <!-- Default box -->
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Module Access 2.0</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                            title="Collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <br />
+                                <div class="row">
+                                    <div class="col-xs-12 text-center">
+                                        <button type="button" class="btn  btn-sm btn-danger  " onclick='window.location = "@Url.Action("ModuleModifier", "HISGLOBAL")"' title="Newer version but same old sh..">
+                                            <i class="fa fa-spin fa-refresh"></i>&nbsp; Go to Module Access 2.0
+                                        </button>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                              
+                            </div>
+                            <!-- /.box-footer-->
+                        </div>
+                        <!-- /.box -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="modal-func" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style=" ">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Add Function</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="txtfunction" class="sel" />
+
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-success" onclick="AddFeatureFunction();">Add Function</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Add NEW Function</label>
+
+                                <div class="col-sm-5">
+                                    <a href="/HISITADMIN/ITADMIN/ModuleAccess/SyncModulePage" class="btn btn-info">Go to Function PAGE </a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <table id="tblfeaturefunc" class="table table-condensed table-responsive no-footer">
+                            <thead>
+                                <tr>
+                                    <th>Add</th>
+                                    <th>Remove</th>
+                                    <th>ID</th>
+                                    <th>Function Name</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" id="url"
+       data-emp="@Url.Action("EmployeeList")"
+       data-mod="@Url.Action("ModuleList")"
+       data-svmod="@Url.Action("UpdateModule")"
+       data-modaccess="@Url.Action("ModuleAccessList")"
+       data-modaccessfeat="@Url.Action("ModuleAccessListFeat")"
+       data-moduseraccess="@Url.Action("GetModuleUser")"
+       data-menu="@Url.Action("GetMenu")"
+       data-srcmenu="@Url.Action("GetMenuSearch")"
+       data-svmenu="@Url.Action("UpdateMenu")"
+       data-addmenu="@Url.Action("AddModMenu")"
+       data-delmenu="@Url.Action("RemModMenu")"
+       data-newmenu="@Url.Action("NewModMenu")"
+       data-addusermod="@Url.Action("UpdateUserModule")"
+       data-adduserfeat="@Url.Action("UpdateUserFeature")"
+       data-delusermod="@Url.Action("DeleteUserMod")"
+       data-funclist="@Url.Action("GetFunctions")"
+       data-funcfeat="@Url.Action("GetFunctionsFeat")"
+       data-addnewfunc="@Url.Action("AddNewFeatureFunction")"
+       data-addfuncfeat="@Url.Action("GetFunctionsAddFeat")"
+       data-getusrfuncfeat="@Url.Action("GetUserFunctionsFeat")"
+       data-upduserfunc="@Url.Action("UpdateUserFunction")"
+       data-createmoduleid="@Url.Action("CreateModuleId")"
+       data-modidfeat=""
+       data-modidusr=""
+       data-funcfeatadd=""
+       data-allstation="@Url.Action("GetALLStation")"
+       data-station="@Url.Action("GetStation")"
+       data-modstation="@Url.Action("GetModuleStation")"
+       data-insmodstation="@Url.Action("InsertModuleStation")"
+       data-insmodstationdatainfotbl="@Url.Action("InserttoDataInfoModulePermission")"
+       data-syncmod="@Url.Action("SynchModules")"
+       data-syncfeat="@Url.Action("SynchFeatures")"
+       data-syncmodfeat="@Url.Action("SynchModFeatures")"
+       data-syncfunc="@Url.Action("SynchFunctions")"
+       data-sync="@Url.Action("SynchPerModFeatures")"
+       data-addparent="@Url.Action("AddNewParent")"
+       data-addfunction="@Url.Action("AddNewFunction")"
+       data-showparentlist="@Url.Action("GetParentList")"
+       data-showfunctionlist="@Url.Action("GetFunctionList")"
+       data-savecopyemployeeaccess="@Url.Action("SaveCopyEmployeeAccess")" />
+
+@Scripts.Render("~/Scripts/jqreports")
+<script src="~/Scripts/itadmin/jqmoduleaccess.js"></script>
+<link href="~/Content/plugins/datepicker/css/datepicker.css" rel="stylesheet" />

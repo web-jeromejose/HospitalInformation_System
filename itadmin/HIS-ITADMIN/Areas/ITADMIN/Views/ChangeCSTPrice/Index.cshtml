@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Change CST PRICE";
+}
+
+<input type="hidden" id="url"
+data-getitem="@Url.Action("Select2ItemList")"
+data-getchangecstview="@Url.Action("GetChangeCSTView")"
+data-getview="@Url.Action("FetchInvetoryItemMarkUp")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+/>
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Change CST Price</b></h4>
+             </div>
+
+                 <div class="col-sm-3">
+                    <input type="text" id="txtTotalItemEffected" class="form-control" />
+                </div>
+     </div>
+    </div>
+       <div class="panel-body">
+            <div class="form-horizontal">
+             <div class="row">
+            <div class="form-group">
+                <label class="control-label col-sm-1">ItemCode</label>
+                    <div class="col-sm-3">
+                    <input type="text" id="select2ItemCode" class="sel" />
+                </div>
+            </div>
+           <div class="form-group">
+                <label class="control-label col-sm-1">Item Name</label>
+                    <div class="col-sm-3">
+                    <input type="text" id="txtItemname" class="form-control" />
+                </div>
+              </div>
+               <div class="form-group">
+                <label class="control-label col-sm-1">Old Price</label>
+                    <div class="col-sm-2">
+                    <input type="number" id="txtOldPrice" class="form-control" />
+                </div>
+            
+              </div>
+                <div class="form-group">
+                <label class="control-label col-sm-1">New Price</label>
+                    <div class="col-sm-2">
+                    <input type="number" id="txtNewPrice" class="form-control" /> 
+                    </div>
+                       <div class="pull-left">
+                      <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk" data-dismiss="modal"> Save</button>
+                      <button id="btnClear" type="button" class="btn btn-sm btn-warning AR_custom_btn_fixed_width glyphicon glyphicon-remove" data-dismiss="modal"> Clear</button>
+                    
+                       </div>
+            
+              
+              </div>  
+                   
+              </div>
+          </div>
+     </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/ChangeCST.js"></script>
+}

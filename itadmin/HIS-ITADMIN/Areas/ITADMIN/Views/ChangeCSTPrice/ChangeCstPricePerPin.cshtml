@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Change CST Zero Price Per PIN";
+}
+
+
+
+<!-- BEGIN PORTLET-->
+<div class="portlet box blue  ">
+    <div class="portlet-title bg-blue">
+        <div class="caption">
+            <i class="fa icon-pencil"></i>Change Zero Price Items  Less than 0.01 Price
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+            <a href="javascript:;" class="reload"></a>
+            <a href="javascript:;" class="remove"></a>
+        </div>
+    </div>
+    <div class="portlet-body  ">
+        <div class="row">
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3">Registration No</label>
+                <div class="col-sm-3">
+                    <input type="text" id="select2Pin" class="sel" />
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+
+
+                <div id="DIVviewVatItemTablList" class="">
+                    <table id="DTviewZeroPriceList" class="table table-bordered table-hover" style="width: auto !important; margin-left: 0px;">
+                        <thead class="ColumnHeader">
+                            <tr></tr>
+                        </thead>
+                    </table>
+                </div>
+
+
+
+                <!-- END SAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<input type="hidden" id="url"    
+data-getpatientlist="@Url.Action("Select2InPatientList")"
+data-getorderlist="@Url.Action("GetZeroPriceList")"
+data-zeropricesave="@Url.Action("ZeroPriceSave")"
+ 
+    
+/>
+
+
+@section scripts{
+    <script src="~/Scripts/itadmin/ChangeCstPriceperPin.js"></script>
+}

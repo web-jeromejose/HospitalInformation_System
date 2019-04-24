@@ -1,0 +1,1002 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<input type="hidden" id="url"
+data-getall="@Url.Action("GetFormList")"
+
+data-save="@Url.Action("Save")"
+/>
+<h2>Index</h2>
+
+<div class="row">
+   <div class="col-xs-10">
+          <table id="gridFormList" class="table table-bordered table-hover dataTable no-footer;">
+             <thead class="AR_custom_table_header expanded-group">
+                <tr>
+                    
+                       @*<th colspan="7" class="centertext compressedtableheader" style="text-align:center">List of Items</th>*@
+                 
+                   <th></th>
+                   <th>Patient File Content</th>
+                   <th>Header</th>
+                   <th># of Pages</th>
+                   <th>Inclusive Dates</th>
+                   <th>Status</th>
+                   <th>Remarks</th>
+                
+       
+                </tr>
+             </thead>
+          </table>
+        </div>
+        </div>
+
+<div class="row">
+    <div class="col-xs-8">
+
+
+    
+<table class="table table-bordered table-condensed table-responsive">
+    <thead >
+        <tr class="info">
+             <Th>PATIENT FILE CONTENT</Th>
+             <Th># of Pages</Th>
+             <Th>Inclusive dates</Th>
+             <Th>STATUS</Th>
+             <Th>REMARKS</Th>
+        </tr>
+       
+
+    </thead>
+    <tbody class="table-hover">
+        <tr>
+            <td class="info center" colspan="5">
+                ADMISSION RECORDS
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Admission Advice sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+        <tr>
+            <td>
+               Indemnity form
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+        <tr>
+            <td>
+                Letter from Company
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+        <tr>
+            <td>
+              Package Deal
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+        <tr>
+            <td>
+               Property and Valuables Consent
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+        <tr>
+            <td class="info center right" colspan="5">
+                DISCHARGE RECORDS
+            </td>
+        </tr>
+         <tr>
+            <td>
+             Discharge Status Report
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+              Discharge Checklist
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+              Discharge Orders
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+             FILE IN RANK (as per Section C Electronic Records)
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+             History and Physical Assessment Records / Additional Assessment
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+            Medical Care Plan
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+           Doctor's Order Sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+             Consultations
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+         Progress Notes
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+         <tr>
+            <td>
+             Nurses Notes
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+
+          <tr>
+            <td class="info center right"  colspan="5">
+               NURSING CHARTS
+            </td>
+ 
+        </tr>
+         <tr>
+            <td>
+             Medication sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             ER Assessment sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             GW Initial Screening
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Comprehensive Nursing Assessment
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Intensive Vital Signs
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Intensive I & O sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             IVF sheet ( if applicable)
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Diabetic Worksheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             BT & Vital Signs sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Nursing Care Plan
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Pressure Ulcer Assessment ( Prevention & Management)
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Critical Care sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Fall Screening
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Restraint Monitoring sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Transfer Summary sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Kardex
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Pain Flow sheet
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Social Worker Service Records
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Referrals (PT,RT.Dietitian, Patient Educator)
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+
+
+          <tr>
+            <td class="info center right"  colspan="5">
+               OPERATIVE RECORDS
+            </td>
+ 
+        </tr>
+          <tr>
+            <td>
+             Consent (Surgical, High Risk, ANA, Bt, Diagnostic) 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Preoperative Records (Preop checklist, Lab Results, ECG) 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Anaesthesia Records 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Operative Records 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+           <tr>
+            <td>
+             Recovery Records 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+
+           <tr>
+            <td class="info center right"  colspan="5" >
+              OTHER DEPT RECORDS
+            </td>
+ 
+        </tr>
+          <tr>
+            <td>
+             ICU Records 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+          <tr>
+            <td>
+             New Born Records 
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+          <tr>
+            <td>
+             Delivery Room Records (Partogram, Post Partum checklist)
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+
+
+
+
+
+           <tr>
+            <td class="info center right"  colspan="5">
+               OTHERS
+            </td>
+ 
+        </tr>
+         <tr>
+            <td>
+           Death Note
+            </td>
+            <td><input type="number"  id="" /></td>
+            <td><input type="text"  id=""  /></td>
+            <td> 
+                <select id="">
+                    <option> ---</option>
+                    <option> Complete</option>
+                    <option> Incomplete</option>
+                    <option> Not Applicable</option>
+                </select>
+
+            </td>
+            <td><input type="text"  id=""  /></td>
+        </tr>
+
+
+
+    </tbody>
+
+</table>
+
+        </div>
+
+</div>
+
+<div class="row">
+    <div class="col-xs-8">
+        <table class="table">
+            <tr>
+                <td>
+                    Checked by : ____________________________
+                   
+
+                </td>
+                <td>
+                    Date : ____________________________
+
+                </td>
+            </tr>
+            <tr>
+                <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name / Signature / ID. No</td>
+                <td></td>
+            </tr>
+             <tr>
+                <td>
+                    Received by : ____________________________
+                  
+
+                </td>
+                <td>
+                    Date : ____________________________
+
+                </td>
+            </tr>
+              <tr>
+                <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  MRD Staff / Signature / ID. No</td>
+                <td></td>
+            </tr>
+
+        </table>
+
+        </div>
+
+
+</div>
+
+<script>
+    var c = new Common();
+
+
+    var tblFormList;
+    var tblFormListId = '#gridFormList'
+    var tblNoItemsListDataRow;
+    ShowListFormAll();
+    function ShowListFormAll() {
+        var Url = $("#url").data("getall");
+        var param = {
+            //TariffID: TariffID,
+            //ServiceID: ServiceID,
+            //DepartmentID: DepartmentID,
+            //TableExists: TableExists
+        };
+
+        $('#preloader').show();
+        //$("#grid").css("visibility", "hidden");
+
+        $.ajax({
+            url: Url,
+            data: param,
+            type: 'get',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            cache: false,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                $('#preloader').hide();
+                //if (TblGridCrossMatchAvail.rows('.selected').data().length == 0) {
+                //    c.MessageBoxErr("Empty...", "No Bags Reserved.", null);
+                //    return;
+                //}
+                BindListofItem(data.list);
+                //$("#grid").css("visibility", "visible");
+            },
+            error: function (xhr, desc, err) {
+                $('#preloader').hide();
+                var errMsg = err + "<br>" + desc;
+                c.MessageBoxErr(errMsg);
+            }
+        });
+
+    }
+
+
+    function BindListofItem(data) {
+
+        tblFormList = $(tblFormListId).DataTable({
+            cache: false,
+            destroy: true,
+            data: data,
+            paging: false,
+            ordering: false,
+            searching: true,
+            info: false,
+            scrollY: 400,
+            //scrollX: true,
+            processing: false,
+            autoWidth: false,
+            dom: 'Rlfrtip',
+            scrollCollapse: false,
+            pageLength: 150,
+            lengthChange: false,
+            columns: ShowListNoitemsColumns()
+            //fnRowCallback: ShowCompatabilityRowCallBack()
+        });
+
+        InitSelectedPrice();
+    }
+
+    function ShowListNoitemsColumns() {
+        var cols = [
+        //{ targets: [0], data: "ctr", className: '', visible: true, searchable: false, width: "0%" },
+          { targets: [0], data: "Id", className: '', visible: false, searchable: true, width: "0%" },
+          { targets: [1], data: "Name", className: '', visible: true, searchable: true, width: "0%" },
+          { targets: [2], data: "Header", className: '', visible: false, searchable: true, width: "0%" },
+          { targets: [3], data: "NoOfPages", className: '', visible: true, searchable: true, width: "0%" },
+          { targets: [4], data: "InclusiveDates", className: '', visible: true, searchable: true, width: "0%" },
+          { targets: [5], data: "Status", className: 'ClassPrice', visible: true, searchable: true, width: "0%" },
+          { targets: [6], data: "Remarks", className: 'ClassRefPrice', visible: true, searchable: true, width: "0%" },
+        ];
+        return cols;
+    }
+
+
+    function InitSelectedPrice() {
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        $('.ClassPrice', tblFormList.rows().nodes()).editable(function (sVal, settings) {
+            var cell = tblFormList.cell($(this).closest('td')).index();
+           // tblFormList.cell(cell.row, 3).data(sVal);
+
+            //tblFormList.cell(cell.row, 4).data('1');
+            return sVal;
+        },
+        {
+            "type": 'text', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+            "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+        });
+        // Resize all rows.
+        $(tblFormListId + ' tr').addClass('trclass');
+
+
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //$('.ClassRefPrice', tblFormList.rows().nodes()).editable(function (sVal, settings) {
+        //    var cell = tblFormList.cell($(this).closest('td')).index();
+        //    tblFormList.cell(cell.row, 5).data(sVal);
+
+        //    //tblItemsWithPriceList.cell(cell.row, 4).data('1');
+        //    return sVal;
+        //},
+        //{
+        //    "type": 'txtPrice', "style": 'display: inline;', "onblur": 'submit', "onreset": function () { setTimeout(function () { keys.block = false; }, 0); },
+        //    "event": 'click', "submit": '', "cancel": '', "placeholder": '', "cssclass": "coleditor"
+        //});
+        //// Resize all rows.
+        //$(tblFormListId + ' tr').addClass('trclass');
+
+    }
+
+</script>

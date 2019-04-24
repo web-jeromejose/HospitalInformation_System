@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+
+data-getnursingadminis="@Url.Action("NursAdmnProcedboard")"
+data-getdeparlist="@Url.Action("DepartmentList")"
+data-getfetvcnlopdiscount="@Url.Action("FetchCanlOPDiscount")"
+data-save="@Url.Action("Save")"
+
+@*data-getdefaultmarkup="@Url.Action("GetDefaultMarkUp")"*@
+/>
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">Cancel OP Discount Approval</b></h4>
+         </div>
+             <div class="form-group col-sm-9">
+                <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-file  pull-right"> Save</button>
+            </div>
+      </div>
+   </div>
+           <div class="panel-body">
+                 <div class="form-horizontal">
+                         <div class="form-group">
+              <label class="control-label col-sm-1">Pin:</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="txtPin"/>
+                </div>
+                 <label class="control-label col-sm-1">Patient Name:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="txtPatientName"/>
+                </div>
+            </div>
+                  </div>
+             <div class="col-sm-12">
+                <table id="gridCancelOPtbl" class="table table-bordered table-hover dataTable no-footer;">
+                    <thead class="AR_custom_table_header expanded-group">
+                    <tr>
+                    @*<th class="centertext compressedtableheader" style="text-align:center"><input id="iChkAllTest" type="checkbox" value="false"/></th>*@
+                    <th></th>
+                    <th>ID</th>
+                    <th>Visit Date</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    </tr>
+                    </thead>
+                </table>
+           
+            </div>  
+        </div>
+
+    
+
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/cnclopdisaprl.js"></script>
+}

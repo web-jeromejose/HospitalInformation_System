@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<input type="hidden" id="url"
+data-getpahar="@Url.Action("Select2Pharm")"
+data-fetchreoutingitem="@Url.Action("FetchReReoutingItem")"
+data-getstationlist="@Url.Action("Select2StationList")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+/>
+
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">ReRouting of Orders</b></h4>
+             </div>
+   
+       </div>
+    </div>
+           <div class="panel-body">
+                <div class="form-horizontal">
+                        <label class="control-label col-sm-1">Pharmacy</label>
+                    <div class="col-sm-3">
+                            <input type="text" id="Select2Pharmacy" class="sel" />
+                        </div>
+                    <button id="btnAdd" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-save ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Add</button>
+                </div>
+               <div class="col-sm-12">
+                   <table id="gridReouringItem" class="table table-bordered table-hover dataTable no-footer;">
+                            <thead class="AR_custom_table_header expanded-group">
+                            <tr>
+                            @* <th><input id="iChkAllTestIP" type="checkbox" value="false"/ style="flex-item-align:center"></th>*@
+                            <th>Station</th>
+                            <th>From Time</th>
+                            <th>To Time</th>
+                            <th></th>
+                            <th></th>
+                            </tr>
+                            </thead>
+                        </table>
+                     </div>
+                   <div class="pull-right">
+     <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-share ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+    </div>
+      </div>
+
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/ReroutingOrderItem.js"></script>
+}

@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Inventory Item MarkUp";
+}
+
+
+<input type="hidden" id="url"
+data-getcateg="@Url.Action("Select2Category")"
+data-gettypes="@Url.Action("Select2Types")"
+data-getview="@Url.Action("FetchInvetoryItemMarkUp")"
+data-save="@Url.Action("Save")"
+@*data-getfetchvisit="@Url.Action("FetchPacakgeVisit")"*@
+
+/>
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Invetory Item MarkUp</b></h4>
+             </div>
+   
+       </div>
+    </div>
+        <div class="panel-body">
+                <div class="form-horizontal">
+                     <label class="control-label col-sm-1">Category</label>
+                    <div class="col-sm-3">
+                            <input type="text" id="Select2DeptStation" class="sel" />
+                        </div>
+                      <label class="control-label col-sm-1">Type</label>
+                    <div class="col-sm-2">
+                            <input type="text" id="Select2Type" class="sel" />
+                        </div>
+                </div>
+              <div class="col-sm-12">
+                              <table id="gridInvetoryItemMarkup" class="table table-bordered table-hover dataTable no-footer;">
+                                 <thead class="AR_custom_table_header expanded-group">
+                                    <tr>
+                                   @* <th><input id="iChkAllTestIP" type="checkbox" value="false"/ style="flex-item-align:center"></th>*@
+                                    <th>SNo</th>
+                                    <th>Min Range</th>
+                                    <th>Max Range</th>
+                                    <th>Percentage</th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                       <div class="pull-right">
+                     <button id="btnAdd" type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-save ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Add</button>
+                      <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-share ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                   @*   <button id="btnRemove" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove-sign ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Remove</button>*@
+                     
+                   @*  <button id="btnRefesh" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-refresh ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Refresh</button>*@
+                     </div>
+               </div>
+        </div>
+</div>
+@section scripts{
+<script src="~/Scripts/itadmin/InventoryMarkItem.js"></script>
+}

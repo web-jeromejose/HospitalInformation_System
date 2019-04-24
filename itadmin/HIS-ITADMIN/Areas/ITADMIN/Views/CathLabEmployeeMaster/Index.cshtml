@@ -1,0 +1,87 @@
+﻿ 
+<input type="hidden" id="url"
+    data-dashboard="@Url.Action("Dashboard")"
+    data-adduser="@Url.Action("AddEmployee")"
+    data-removeuser="@Url.Action("RemoveEmployee")"
+ 
+/>
+<div class="panel panel-default">
+       <div class="panel-heading">
+          <div class="row">
+             <div class="col-xs-5">
+                <h4><b class="navbar-header">Cath Lab Employee Mapping</b></h4>
+             </div>
+     </div>
+    </div>
+ <div class="panel-body">
+         <div class="form-horizontal">
+             <div class="form-group">
+                        <label class="control-label col-sm-1">Employee Type</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="Select2EmployeeType" class="sel" />
+                        </div>
+         @* <div class="pull-left">
+            <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>
+           
+         </div>*@
+                 
+              </div>
+             <hr />
+
+<br />             <hr />
+
+             <div class="col-xs-12">
+                                  <div id="WrapperDashboard" style="width:70%; min-height:650px;">
+                                                  <table id="TblDashboard" class="table table-bordered table-hover dataTable no-footer;">
+                                                     <thead class="AR_custom_table_header expanded-group">
+                                                        <tr>
+ 
+                                                         @* <th>
+                                                              <input id="iChkAllTest" type="checkbox" value="false"/>
+                                                          </th>*@
+                                                          <th>Sno</th>
+                                                           <th>Employee Id</th>
+                                                           <th>Employee Name</th>
+                                                           <th>Department</th>
+                                                           <th>Has Access</th>
+                                                           <th>Add </th>
+                                                           <th>Remove</th>
+                                                      
+ 
+                                                        </tr>
+                                                     </thead>
+                                                  </table>
+                               </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+         </div>
+    
+          
+    
+    </div>    
+</div>
+
+@section scripts{
+<script src="~/Scripts/itadmin/CathLabEmployeeMaster.js"></script>
+<script>
+CathLabEmployeeMaster.init();
+</script>
+}

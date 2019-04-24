@@ -1,0 +1,222 @@
+﻿@using DataLayer.ITAdmin.Model
+@model IPTariff
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*@section scripts
+
+{
+    <script src="@Url.Content("~/Scripts/messagebox.js")"type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ajaxWrapper.js")"type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-jqvalidation/jqBootstrapValidation.js")"type="text/javascript"></script>
+    
+ }*@
+
+@section styles
+    {
+
+    <link href="~/Content/css/SGHLayout/plugins/icheck3/skins/square/_all.css" rel="stylesheet" />
+     
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/select2/select2.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/icheck2/all.min.css")" />
+    <link rel="Stylesheet" href="@Url.Content("~/Content/styles/itadmin/iptariff.css")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />    
+    @*<link href="@Url.Content("~/Content/Wards/bootstrap.min.css")" rel="stylesheet" type="text/css" />*@
+    
+    <link href="@Url.Content("~/Content/datatable/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datatable/css/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/toastr/content/toastr.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/glyphicons/glyphicons.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/pluginsnew/datepicker/datepicker.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.eot")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.ttf")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff")" />
+@*    <link rel="stylesheet" href="@Url.Content("~/Areas/ITADMIN/Images/tri.png")" />*@
+ @*    <link rel="stylesheet" href="@Url.Content("~/Content/css/font/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff")" />
+     <img src="" />*@
+     @*<link href="../../Content/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Wards/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Wards/boot.css" rel="stylesheet" type="text/css" />*@
+}
+@*<a href="~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff">~/Content/css/SGHLayout/fonts/glyphicons-halflings-regular.woff</a>*@
+
+@section scripts{   
+  
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/Wards/jquery-1.9.1.min.js")"></script>*@
+    <script type="text/javascript" src="@Url.Content("~/scripts/jquery-ui-1.10.4.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/icheck/jquery.icheck.js")"></script>
+  @*  <script type="text/javascript" src="@Url.Content("~/content/select2/select2.js")"></script>*@
+   
+   @* <script src="@Url.Content("~/Content/datatable/js/jquery.dataTables.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/scripts/ajaxWrapper.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/scripts/messagebox.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/blockui/jquery.blockUI.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/bootbox/jquery.bootbox.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/keytable/keytable.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/keytable/jquery.jeditable.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/keytable/jquery.dataTables.editable.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/inputmask/jquery.inputmask.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/plugins/datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/Wards/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/toastr/scripts/toastr.min.js")" type="text/javascript"></script>*@
+  @*  <script type="text/javascript" src="@Url.Content("~/scripts/itadmin/iptariff.js")"></script>*@
+
+  <script src="~/Content/plugins/icheck3/icheck.js"></script>
+  <script src="~/Content/js/dataTables.bootstrap.js"></script>
+  <script src="~/Scripts/itadmin/IPTariff.js"></script>
+  <script src="~/Content/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+  <script src="~/Content/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+@*<script src="~/Scripts/messagebox.js"></script>*@
+}
+
+
+
+<div class="panel panel-default">
+       <div class="panel-heading">
+      <div class="row">
+         <div class="col-xs-5">
+            <h4><b class="navbar-header">IP Tariff</b></h4>
+         </div>
+   
+   </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <form id="frmIPTariff" class="form-horizontal" action="@Url.Action("IPGetItemPrice", "IPTariff")" method="get">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label class="control-label col-xs-2">Tariff</label>
+                    <div class="col-xs-10">
+                        <select id="cboTariff" name="cboTariff" data-placeholder="Select the Tariff" style="width: 100%;">
+                            <option></option>
+                            @foreach (var item in Model.TariffList )
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">Service</label>
+                    <div class="controls-row col-xs-10">
+                        <select id="cboService" name="cboService" data-placeholder="Select the Service" style="width: 100%;">
+                            <option></option>
+                            @foreach (var item in Model.ServicesList )
+                            {
+                                <option value="@item.ID">@item.ServiceName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="pull-left">
+                    <div class="form-group">
+                        <div class="icheckbox"><input type="checkbox" id="chkTariffRevisedBy" data-skin="square" disabled="disabled" data-color="green"/></div>
+                        <div class="icheckbox-label"><label for="chkTariffRevisedBy">Tariff Revised By</label></div>
+                        <div class="icheckbox-label"> <input type="text" class="input-sm tariffrevised" id="txtPercent" disabled="disabled" style="width: 45px;"/> %</div>
+                        <div class="icheckbox-label"> <input type="text" class="input-sm tariffrevised datepicker" disabled="disabled"/></div>
+                        @*<div class="check-line">
+                            <input type="checkbox" id="chkTariffRevisedBy" data-skin="square" data-color="green"/>
+                            <label class="inline" for="chkTariffRevisedBy">Tariff Revised By</label>
+                            <input type="text" class="input-sm" style="width: 50px;"/> %
+                         </div>*@
+                    </div>                    
+                    <div class="form-group">
+                       @* <button id="btnFind" type="button" data-find="@Url.Action("IPSearchItem")" class="btn btn-success buttongroups" disabled="disabled"><span class="glyphicon glyphicon-search"></span> Find Item</button>*@
+                        <button data-actiontype="previous" type="button" class="btn btn-success recordset buttongroups" disabled="disabled"><span class="glyphicon glyphicon-left_arrow"></span> Previous</button>
+                        <button data-actiontype="next" type="button" class="btn btn-success recordset buttongroups" disabled="disabled"><span class="glyphicon glyphicon-right_arrow"></span> Next</button>
+                    </div>                    
+                </div>
+                <div class="pull-right">
+                    <div class="form-group">
+                        
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-xs-12">        
+        <div id="itemPriceList">
+            @Html.Partial("_IPTariffPrice", new TariffItemPriceList())
+        </div>
+
+        <br />
+        <div class="pull-left">
+            <div class="icheckbox"><input type="checkbox" id="chkSelectAll" class='icheck-me' data-checkall="1" data-skin="square" data-color="green"/></div>
+            <div class="icheckbox-label"><label for="chkSelectAll">Select All</label></div>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-primary" id='btnSave' data-saveaction="@Url.Action("IPTariffSaveItemPrice")" data-saveactionbypercent="@Url.Action("IPTariffSaveItemPriceByPercent")">
+                <span class="glyphicon-half glyphicon-half-floppy-disk"> Save</span> 
+
+            </button>
+            <button class="btn btn-primary"><span class="glyphicon-half glyphicon-half-remove"></span> Clear</button>
+        </div> 
+    </div>
+</div>
+
+
+</div>
+<div class="modal" id="modalEntry" tabindex="-1" style="overflow-y: auto;" role="dialog" aria-labelledby="myModalLabel">
+   <input id="Id" name="" type="hidden" class="form-control">
+  
+   <div class="modal-dialog modal-lg" style=" " role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @*<h3 class="modal-title" id="opbmyModalLabel">Find Item</h3>*@
+                <h3 class="modal-title" id="opbmyModalLabel">Find Item</h3>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+              <table id ="tblSearch">
+                <thead>
+                    <tr>
+            
+                        <th>
+                            
+                        </th>
+                        <th>
+                            Code
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            </div>
+            <div class="modal-footer">
+               @*<button id="btnModify" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-pencil ShowOnEdit HideOnAdd" data-dismiss="modal">Modify</button>*@
+             @*  <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal">Save</button>*@
+               @*   <button id="btnReportGen" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-th-list ShowOnEdit HideOnAdd" data-dismiss="modal">Preview</button>*@
+               <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+@*<table id ="tbltest">
+    <thead>
+        <tr>
+            
+            <th>
+                ID
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+</table>*@

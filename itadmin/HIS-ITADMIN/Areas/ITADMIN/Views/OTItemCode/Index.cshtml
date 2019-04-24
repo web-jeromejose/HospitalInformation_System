@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<input type="hidden" id="url"
+data-otlist="@Url.Action("ORNOListDal")"
+data-deprt="@Url.Action("DepartmentList")"
+data-fetchforceinpatienttransfer="@Url.Action("FetchForceInPatientTransfer")"
+data-getasstsurgeon="@Url.Action("GetITemCodeAsstSurgeonList")"
+data-getitemcodepatientprep="@Url.Action("GetITemCodeResult")"
+data-fetchrecoveryroomcharges="@Url.Action("RecoveryRoomCharges")"
+data-save="@Url.Action("Save") "
+/>
+
+
+
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class="row">
+         <div class="col-sm-3">
+            <h4><b class="navbar-header">OT Item Codes</b></h4>
+         </div>
+      </div>
+   </div>
+     <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+                       <ul class="nav nav-tabs col-sm-12" role="tablist">
+                    <li role="presentation" class="active" ><a href="#sectionA" aria-controls="profile" role="tab" data-toggle="tab"><span  class="glyphicon glyphicon-user"></span> Preparation Fee</a></li>
+                    <li role="presentation"><a href="#sectionB" aria-controls="settings" role="tab" data-toggle="tab"><span  class="glyphicon glyphicon-tag"></span>Recovery Room Charges</a></li>
+                    <li role="presentation"><a href="#sectionC" aria-controls="ustation" role="tab" data-toggle="tab"><span  class="glyphicon glyphicon-flag"></span> OT Charges</a></li>
+                    <li role="presentation"  class="active" ><a href="#sectionD" aria-controls="ustation" role="tab" data-toggle="tab"><span  class="glyphicon glyphicon-cog"></span> Assistant Surgeon</a></li>
+             
+                    </ul>
+               <div class="tab-content">
+                     <div id="sectionA" class="tab-pane fade in">
+               
+                  
+                      <div class="panel-body">
+                             <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                  <div class="form-group">
+                                          <label class="control-label col-sm-1">Code:</label>
+                                        <div class="col-sm-2">
+                                           <input type="text" class="form-control" id="txtPatientPreCode"/>
+                                        </div>
+
+                                  </div>
+                               <div class="pull-left">
+                                <button id="btnSavePatientprefee" type="button" class="btn btn-sm btn-info AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                                <button type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove" data-dismiss="modal"> Cancel</button>
+                                    @* <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                             </div>
+                            </form>
+                        </div>
+                  
+             
+                     </div>
+
+                     <div id="sectionB" class="tab-pane fade in">
+                        <div class="panel-body">
+                               <div class="form-group">
+                                     <label class="control-label col-sm-1">OT:</label>
+                                    <div class="col-sm-3">
+                                       <input type="text" class="sel" id="Select2OTRecove"/>
+                                    </div>
+                              </div>
+                               <div class="form-group">
+                                     <label class="control-label col-sm-1">Code:</label>
+                                    <div class="col-sm-3">
+                                       <input type="text" class="form-control" id="txtRecovCode"/>
+                                    </div>
+                              </div>
+                              <div class="form-group">
+                                     <label class="control-label col-sm-1">Department:</label>
+                                    <div class="col-sm-3">
+                                       <input type="text" class="sel" id="Select2RecovDepartment"/>
+                                    </div>
+                              </div>
+                                  <div class="pull-left">
+                                <button id="btnSaveRecovcharge" type="button" class="btn btn-sm btn-info AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                                <button type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove" data-dismiss="modal"> Cancel</button>
+                                    @* <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                             </div>
+                     </div>
+                 </div>
+                     <div id="sectionC" class="tab-pane fade in">
+                        <div class="panel-body">
+                             <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                <div class="form-group">
+                                     <label class="control-label col-sm-1">OT:</label>
+                                    <div class="col-sm-3">
+                                       <input type="text" class="sel" id="Select2OTCharge"/>
+                                    </div>
+                                      <label class="control-label col-sm-1">Department:</label>
+                                    <div class="col-sm-3">
+                                       <input type="text" class="sel" id="Select2DepartmentOTcharge"/>
+                                    </div>
+                                 </div>
+                                  <div class="form-group">
+                                          <label class="control-label col-sm-1">Code:</label>
+                                        <div class="col-sm-2">
+                                           <input type="text" class="form-control" id="txtOTCodecharge"/>
+                                        </div>
+
+                                  </div>
+                                 <div class="pull-left">
+                                <button id="btnSaveOTCharge" type="button" class="btn btn-sm btn-info AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                                <button type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove" data-dismiss="modal"> Cancel</button>
+                                    @* <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                             </div>
+                            </form>
+                        </div>
+                     </div>
+
+                   <div id="sectionD" class="tab-pane fade in active">
+                        <div class="panel-body">
+                  
+                                 <div class="panel-body">
+                             <form role="form" class="form-horizontal AR_custom_label_left_align">
+                                  <div class="form-group">
+                                          <label class="control-label col-sm-1">Code:</label>
+                                        <div class="col-sm-2">
+                                           <input type="text" class="form-control" id="txtAsstCode"/>
+                                        </div>
+
+                                  </div>
+                                <div class="pull-left">
+                                <button id="btnSaveAsstCode" type="button" class="btn btn-sm btn-info AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit" data-dismiss="modal"> Save</button>
+                                <button type="button" class="btn btn-sm btn-danger AR_custom_btn_fixed_width glyphicon glyphicon-remove" data-dismiss="modal"> Cancel</button>
+                                    @* <button id="btnCancelcomlvl" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-remove ShowOnEdit HideOnAdd" data-dismiss="modal">Cancel</button>*@
+                             </div>
+                            </form>
+                        </div>
+                  
+                        </div>
+                     </div>
+                  </div>
+                 </div>
+            </div>
+       
+     </div>
+
+</div>
+@section scripts{
+<script src="~/Scripts/itadmin/OTItemCodes.js"></script>
+}

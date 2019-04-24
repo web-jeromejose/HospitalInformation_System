@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<input type="hidden" id="url"
+ 
+data-save="@Url.Action("RamadanCutOffSave")"
+data-branchname ="@ViewBag.IssueAuthorityCode"
+/>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-3">
+                <h4><b class="navbar-header">Ramadan Cut Off</b></h4>
+            </div>
+            <div class="form-group col-sm-9">
+                <button id="btnSave" type="button" class="btn btn-sm btn-primary AR_custom_btn_fixed_width glyphicon glyphicon-floppy-disk ShowOnAdd ShowOnView HideOnEdit pull-right" data-dismiss="modal ">Save</button>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-3">
+                <label class="form-control col-sm-3 label-info"><b>Hours:</b>  </label>
+                <select class=" form-control" id="Hours">
+                    @for (var i = 0; i < 24; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-xs-3">
+                <label class="form-control col-sm-3 label-info"><b>Minutes:</b> </label>
+                <select class=" form-control" id="Mins">
+                    @for (var i = 0; i < 60; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/itadmin/RamadanCutoff.js"></script>
+
+}
