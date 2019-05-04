@@ -1,0 +1,608 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BloodBank/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden" id="url"
+    data-getissues="@Url.Action("IssueIPDashboard")"
+    data-printpreview="@Url.Action("Report")"
+/>
+
+<input id="Action" name="" type="hidden" class="form-control">
+<input id="Id" name="" type="hidden" class="form-control">
+<input id="IPID" name="" type="hidden" class="form-control">
+<input id="OrderNo" name="" type="hidden" class="form-control">
+<input id="bedid" name="" type="hidden" class="form-control">
+<input id="DoctorId" name="" type="hidden" class="form-control">
+<input id="reqtype" name="" type="hidden" class="form-control">
+<input id="transtype" name="" type="hidden" class="form-control">
+@*<input id="status" name="" type="hidden" class="form-control">*@
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pushpin" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">ISSUE - IP</label>
+    
+         </div>
+        <div class="col-sm-3">
+                <input type="text" class="form-control ShowOnEdit HideOnAdd HideOnView" id="Select2Option"/>
+            </div>      
+            
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top:3px;display:none;">
+        <a id="btnNewEntry" class="btn btn-sm btn-success button-width NotUse" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnView" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+      @*  <a id="btnFilter" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-filter"></span> Filter
+        </a>*@
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top:3px; display:none;">
+
+@*        <a id="btnNew" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit NotUse">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>*@
+       <a id="btnSave" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnEdit ">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a>  
+        @* <a id="btnSave" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnEdit">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a> *@
+       @* <a id="btnPreviousTest" class="btn btn-sm btn-success HideOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-th-list"></span> Previous Test Results
+        </a>  *@          
+        <a id="btnPreview" class="btn btn-sm btn-success  button-width ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-print"></span> Preview
+        </a>
+@*        <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        <a id="btnDelete" class="btn btn-sm btn-success button-width ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+        </a>
+        <a id="btnClear" class="btn btn-sm btn-success button-width ShowOnAdd ShowOnView ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-stop"></span> Clear
+        </a>*@
+        <a id="btnClose" class="btn btn-sm btn-danger button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-remove"></span> Close
+        </a>
+
+    </div>
+
+</div>
+
+<div id="DashBoard" style="display:none;" class="col-xs-12 form-horizontal standardborder HideOnView HideOnAdd HideOnEdit HideOnDelete">
+    <div class="form-group">
+    @*          <div class="col-sm-1">
+                    <label class="control-label col-sm-2">Select</label>
+              </div>*@
+     
+         </div>
+    <div class="panel-body border-below">
+        <div class="row">  
+        
+            <div id="grid" class="col-xs-12">
+                <table id="gridListIssuesIP" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:1800px !important;">
+                    <thead class="cAR-tlist-header">
+                        <tr>
+                           <th>OrderNo</th>
+                           <th>Oder DateTime</th>
+                           <th>PIN</th>
+                           <th>Bed</th>
+                           <th>Patient Name</th>
+                           <th>Operator Name</th>
+                           <th>Status</th>
+                           <th>RegNo</th>
+                           <th>IPID</th>
+                           <th>AuthorityCode</th>
+                           <th>id</th>
+                           <th>boperatorid</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:white;text-align:center; width:100%;">
+                    Ward Demands
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#f5b044;text-align:center; width:100%;">
+                    Partial Issues
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#d7ffea;text-align:center; width:100%;">
+                    Issued
+                </label>
+            </div>
+  
+        </div>
+    </div>
+    
+</div>
+
+<div id="Entry" style="display:none; height: 650px; overflow-y: scroll;" class="col-xs-12 form-horizontal standardborder ShowOnView ShowOnAdd ShowOnEdit">
+    <div id="GoOnTop" class="GoOnTop">
+        Ç
+    </div>
+    <div class="panel-body border-below panel-bg">
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">PIN</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtPIN" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Name</label>
+            </div>    
+            <div class="col-xs-5">
+                <input id="txtName" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Sl. No.</label>
+            </div>    
+            <div class="col-xs-2">
+                <input id="txtSlNo" name="" type="text" class="form-control">
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">Bed No</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtBedNo" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Age</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtAge" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Sex</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtSex" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">DateTime</label>
+            </div>   
+                <div class="col-sm-2">
+                 <input type="text" class="form-control" id="dtDateTime"/>
+               </div>                                     
+      @*      <div class="col-xs-2">
+                <div id="dtDateTime" class="input-group date">
+                    <input data-date-format="DD-MMM-YYYY" type='text' class="form-control DisableOnView"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div> *@ 
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">B Group</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtBGroup" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Doctor</label>
+            </div>                                        
+            <div class="col-xs-5">
+                <input id="txtDoctor" name="" type="text" class="form-control">
+            </div> 
+            <div class="col-xs-1">
+                <label class="control-label">Operator</label>
+            </div> 
+            <div class="col-xs-2">
+                <input id="txtOperator" name="" type="text" class="form-control">
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">F Allergy</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="select2FAllergy" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">D Allergy</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="select2DAllergy" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Ward</label>
+            </div>      
+            <div class="col-xs-2">
+                <input id="txtWard" name="" type="text" class="form-control">
+            </div>
+               <div class="col-xs-2">
+                <input id="txtOtherAllergies" name="" type="text" class="form-control">
+            </div>  
+        </div>
+    </div>
+    <div class="panel-body border-below panel-bg">
+        <div class="row">
+@*            <div class="col-xs-2">
+                <input id="iChkChangeBloodIssue" type="checkbox" value="false"/>
+                <label class="control-label">Change blood issue</label>
+            </div>*@
+            <div class="col-xs-2">
+                <label class="control-label">Type of Transfusion</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="select2TypeofTransfusion" name="" type="text" class="form-control">
+        @*    </div>
+            <div id="AntiBodyScreeningCode" class="col-xs-1 ColorCodeWhite">
+            </div>*@
+
+        </div>
+            <div class="col-xs-1">
+                <label class="control-label">Ward</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="select2Ward" name="" type="text" class="form-control">
+        @*    </div>
+            <div id="AntiBodyScreeningCode" class="col-xs-1 ColorCodeWhite">
+            </div>*@
+
+        </div>
+              <div class="col-xs-1">
+                <label class="control-label">Issued By</label>
+            </div>
+            <div class="col-xs-3">
+                <input id="select2IssuedBy" name="" type="text" class="form-control">
+        @*    </div>
+            <div id="AntiBodyScreeningCode" class="col-xs-1 ColorCodeWhite">
+            </div>*@
+
+        </div>
+
+    </div>
+
+    <div class="panel-body border-below panel-bg">
+
+        <ul class="nav nav-tabs" style="border: 1px solid #c9c9c9;">
+            <li class="active"><a data-toggle="tab" href="#sectionA">Info1</a></li>
+            <li><a data-toggle="tab" href="#sectionB">Info2</a></li>            
+        </ul>
+        <div class="tab-content" id="tabs" style="border: 1px solid #c9c9c9;">
+
+            <div id="sectionA" class="tab-pane fade in active">
+                <div class="row rowMarginTop">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">W.B.C</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtWBC" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label">/cu.mm.</label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">HCT</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtHCT" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label">%</label>
+                            </div>    
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">R.B.C</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtRBC" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label"></label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">Platelets</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtPlatelets" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label">/cu.mm.</label>
+                            </div>    
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">Hb</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtHb" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label">gm/dl</label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">Others</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtOthers" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label"></label>
+                            </div>    
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">PT</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtPT" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label">sec</label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">PTTK</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtPTTK" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label">sec</label>
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">ClinicalDiagnosis</label>
+                            </div>                                        
+                            <div class="col-xs-8">
+                                <input id="txtClinicalDiagnosis" name="" type="text" class="form-control">
+                            </div>             
+                        </div>
+                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row">
+
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkTransfusion" type="checkbox" value="false"/>
+                                        <label class="control-label">Transfusion</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkMiscarriage" type="checkbox" value="false"/>
+                                        <label class="control-label">Miscarriage</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkStillBirth" type="checkbox" value="false"/>
+                                        <label class="control-label">Still Birth</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkReaction" type="checkbox" value="false"/>
+                                        <label class="control-label">Reaction</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkPregnancies" type="checkbox" value="false"/>
+                                        <label class="control-label">Pregnancies</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkErythroblastosis" type="checkbox" value="false"/>
+                                        <label class="control-label">Erythroblastosis</label>
+                                    </div>
+                                </div>
+                            </div>
+                  @*          <div class="col-xs-4">
+                                <table id="gridCrossMatchType" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                                    <thead class="cAR-tlist-header">
+                                        <tr>
+                                            <th></th>
+                                            <th>isChk</th>
+                                            <th>Cross Match Type</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>*@
+                            <div class="col-xs-8">
+                                <table id="gridReplacementDonor" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                                    <thead class="cAR-tlist-header">
+                                        <tr>
+                                            <th colspan="8" class="centertext compressedtableheader" style="text-align:center">REPLACEMENT DONOR</th>
+                                        </tr>   
+                                        <tr> 
+                                            @*<th></th>*@
+                                            <th>Issued</th>
+                                            <th>Donated</th>
+                                            <th>DonorRegistrationNO</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sectionB" class="tab-pane fade">
+                <div class="row rowMarginTop">
+                    <div class="col-xs-4 griddisable">
+                        <table id="gridWardsOrder" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                            <thead class="cAR-tlist-header">
+                                        <tr>
+                                            <th colspan="9" class="centertext compressedtableheader" style="text-align:center">Ward Demand Order</th>
+                                        </tr> 
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Blood/Component</th>
+                                    <th>BloodOrderID</th>
+                                    <th>Quantity</th>
+                                    <th>OQty</th>
+                                    <th>ComponentID</th>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>replacementcount</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-xs-4 griddisable">
+                        <table id="gridAvailableCrossMatch" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                            <thead class="cAR-tlist-header">
+                                  <tr>
+                                      <th colspan="12" class="centertext compressedtableheader" style="text-align:center">Available/Cross Matched Bags</th>
+                                  </tr> 
+                                <tr>
+                                    @*<th>#</th>*@
+                                    <th>UnitNo</th>
+                                    <th>B.Grp</th>
+                                    <th>Expirydate</th>
+                                    <th>ID</th>
+                                    <th>componentid</th>
+                                    <th>bagId</th>
+                                    <th>replacementcount</th>
+                                    <th>Qty</th>
+                                    <th>IssueCode</th>
+                                    <th>bloodgroupId</th>
+                                    <th>ComponentTypeId</th>
+                                    <th>transtype</th>
+                                    <th>patbloodgroup</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-xs-4 griddisable">
+                        <table id="gridIssueingQuantity" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                            <thead class="cAR-tlist-header">
+                                  <tr>
+                                      <th colspan="12" class="centertext compressedtableheader" style="text-align:center">Issue Bags</th>
+                                  </tr> 
+                                <tr>
+                                   <th>UnitNo</th>
+                                    <th>B.Grp</th>
+                                    <th>Expirydate</th>
+                                    <th>ID</th>
+                                    <th>componentid</th>
+                                    <th>bagId</th>
+                                    <th>replacementcount</th>
+                                    <th>Qty</th>
+                                    <th>IssueCode</th>
+                                    <th>bloodgroupId</th>
+                                    <th>ComponentTypeId</th>
+                                    <th>transtype</th>
+                                    <th>patbloodgroup</th>                          
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body panel-bg">
+        <div class="row"> 
+            <div class="col-xs-2">
+                <label class="control-label">Collected By</label>
+            </div>
+            <div class="col-xs-5">
+                <input id="txtCollectedBy" name="" type="text" class="form-control">
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Remarks</label>
+            </div>
+            <div class="col-xs-4">
+                <textarea id="txtRemarks" class="form-control DisableOnView" rows="3" cols="5"></textarea>
+            </div>
+        </div>
+    </div>    
+</div>
+</div>
+
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg" style="width:98% !important;">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Report Generated</h4>
+         </div>
+         <div class="modal-body">
+            @*                
+            <div id="report-container">
+               <iframe id="myReport2" ></iframe>
+            </div>
+            <div class="clear-botn"></div>
+            *@
+            <form role="form" class="form-horizontal">
+               <div class="col-xs-12">
+                  <div class = "form-group">
+                     <div id="loadingpdf" class="col-xs-12" style="background-color: white; display:none; z-index: 999; position:absolute; height:100%; width:100%; opacity: .50;">
+                        <div style="width: 200px; height: 200px; position: absolute; left: 50%; top: 50%; background-repeat: no-repeat; background-position: center; margin: -100px 0 0 -100px;">
+                           <div id="spinningSquaresG">
+                              <div id="spinningSquaresG_1" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_2" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_3" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_4" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_5" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_6" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_7" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_8" class="spinningSquaresG">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div  id="PreviewInPDF" class="col-xs-12 border" style="background-color:Gray; height:600px;">
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+@section scripts {    
+    <script defer src="@Url.Content("~/Scripts/BloodBank/IssuesIP.js")" type="text/javascript"></script>
+}  

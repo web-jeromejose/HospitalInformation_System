@@ -1,0 +1,898 @@
+﻿@{
+    
+   Layout = "~/Areas/BloodBank/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden" id="url"
+    data-printpreview="@Url.Action("Report")"
+    data-printpreviews="@Url.Action("Report1")"
+/>
+
+
+
+<input id="Action" name="" type="hidden" class="form-control">
+<input id="Id" name="" type="hidden" class="form-control">
+<input id="Ipid" name="" type="hidden" class="form-control">
+<input id="bedid" name="" type="hidden" class="form-control">
+<input id="DoctorId" name="" type="hidden" class="form-control">
+<input id="reqtype" name="" type="hidden" class="form-control">
+<input id="transtype" name="" type="hidden" class="form-control">
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-pushpin" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">CROSSMATCH - IP</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top:3px;display:none;">
+        <a id="btnNewEntry" class="btn btn-sm btn-success button-width NotUse" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnView" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+@*        <a id="btnFilter" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-filter"></span> Filter
+        </a>*@
+         <a id="btnRcvExtnd" class="btn btn-sm btn-success ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-list"></span> UnReserved/Extended
+        </a>
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+
+
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top:3px; display:none;">
+
+@*        <a id="btnNew" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit NotUse">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>*@
+        <a id="btnSave" class="btn btn-sm btn-success  button-width ShowOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a>  
+        <a id="btnPreviousTest" class="btn btn-sm btn-success ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-th-list"></span> Previous Test Results
+        </a>            
+        <a id="btnPreview" class="btn btn-sm btn-success  button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-print"></span> Preview
+        </a>
+@*        <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        <a id="btnDelete" class="btn btn-sm btn-success button-width ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+        </a>
+        <a id="btnClear" class="btn btn-sm btn-success button-width ShowOnAdd ShowOnView ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-stop"></span> Clear
+        </a>*@
+     
+        <a id="btnClose" class="btn btn-sm btn-danger button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-remove"></span> Close
+        </a>
+
+       
+    </div>
+
+</div>
+
+<div id="DashBoard" style="display:none;" class="col-xs-12 form-horizontal standardborder HideOnView HideOnAdd HideOnEdit HideOnDelete">
+    <div class="panel-body border-below">
+        <div class="row">        
+            <div id="grid1" class="col-xs-12">
+                <table id="gridList" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:1800px !important;">
+                    <thead class="cAR-tlist-header">
+                        <tr>
+                            <th>#</th>
+                            <th>OrderNo</th>
+                            <th>RequestedDateTime</th>
+                            <th>Ipid</th>
+                            <th>PIN</th>
+                            <th>Bed</th>
+                            <th>Patientname</th>
+                            <th>OperatorName</th>
+                            <th>reqtype</th>
+                            <th>status</th>
+                            <th>Acknowledge</th>
+                            <th>AcknowledgeDateTime</th>
+                            <th>SlNo</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#fcc9c9;text-align:center; width:100%;">
+                    New Order
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#b7f5ff;text-align:center; width:100%;">
+                    Crossmatched/Reserved
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#ffffd9;text-align:center; width:100%;">
+                    Sample Acknowledge
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#d3d3d2;text-align:center; width:100%;">
+                    Incompatible unit(s) order
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#ffffff;text-align:center; width:100%;">
+                    Unreserved Units
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#02b230;text-align:center; width:100%;">
+                    Stat Request Type
+                </label>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div id="Entry" style="display:none; height: 650px; overflow-y: scroll;" class="col-xs-12 form-horizontal standardborder ShowOnView ShowOnAdd ShowOnEdit">
+    <div id="GoOnTop" class="GoOnTop">
+        Ç
+    </div>
+    <div class="panel-body border-below panel-bg">
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">PIN</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtPIN" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Name</label>
+            </div>    
+            <div class="col-xs-5">
+                <input id="txtName" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Sl. No.</label>
+            </div>    
+            <div class="col-xs-2">
+                <input id="txtSlNo" name="" type="text" class="form-control">
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">Bed No</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtBedNo" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Age</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtAge" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Sex</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="txtSex" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">DateTime</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <div id="dtDateTime" class="input-group date">
+                    <input data-date-format="DD-MMM-YYYY hh:mm" type='text' class="form-control DisableOnView"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">B Group</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="select2BGroup" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Doctor</label>
+            </div>                                        
+            <div class="col-xs-5">
+                <input id="txtDoctor" name="" type="text" class="form-control">
+            </div> 
+            <div class="col-xs-1">
+                <label class="control-label">Operator</label>
+            </div> 
+            <div class="col-xs-2">
+                <input id="txtOperator" name="" type="text" class="form-control">
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">F Allergy</label>
+            </div>                                        
+            <div class="col-xs-2">
+                <input id="select2FAllergy" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">D Allergy</label>
+            </div>                                        
+            <div class="col-xs-3">
+                <input id="select2DAllergy" name="" type="text" class="form-control">
+            </div>  
+            <div class="col-xs-1">
+                <label class="control-label">Ward</label>
+            </div>      
+            <div class="col-xs-4">
+                <input id="txtWard" name="" type="text" class="form-control">
+            </div>      
+        </div>
+    </div>
+    <div class="panel-body border-below panel-bg">
+        <div class="row">
+@*            <div class="col-xs-2">
+                <input id="iChkChangeBloodIssue" type="checkbox" value="false"/>
+                <label class="control-label">Change blood issue</label>
+            </div>*@
+            <div class="col-xs-2">
+                <label class="control-label">Anti Body Screeening</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="select2AntiBodyScreening" name="" type="text" class="form-control">
+            </div>
+            <div id="AntiBodyScreeningCode" class="col-xs-1 ColorCodeWhite">
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">CrossMatchType</label>
+            </div>
+            <div class="col-xs-3">
+                <input id="select2CrossmatchedType" name="" type="text" class="form-control">
+            </div>
+               <div class="col-xs-1">
+                <label class="control-label">Compatability</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="select2CompatabilityDetails" name="" type="text" class="form-control">
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-body border-below panel-bg">
+
+        <ul class="nav nav-tabs" style="border: 1px solid #c9c9c9;">
+            <li ><a data-toggle="tab" href="#sectionA">Info1</a></li>
+            <li class="active"><a data-toggle="tab" href="#sectionB">Info2</a></li>            
+        </ul>
+        <div class="tab-content" id="tabs" style="border: 1px solid #c9c9c9;">
+
+            <div id="sectionA" class="tab-pane fade in ">
+                <div class="row rowMarginTop">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">W.B.C</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtWBC" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label">/cu.mm.</label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">HCT</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtHCT" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label">%</label>
+                            </div>    
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">R.B.C</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtRBC" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label"></label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">Platelets</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtPlatelets" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label">/cu.mm.</label>
+                            </div>    
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">Hb</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtHb" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label">gm/dl</label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">Others</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtOthers" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label"></label>
+                            </div>    
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">PT</label>
+                            </div>                                        
+                            <div class="col-xs-3">
+                                <input id="txtPT" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-2">
+                                <label class="control-label">sec</label>
+                            </div>    
+                            <div class="col-xs-1">
+                                <label class="control-label">PTTK</label>
+                            </div>    
+                            <div class="col-xs-3">
+                                <input id="txtPTTK" name="" type="text" class="form-control">
+                            </div>  
+                            <div class="col-xs-1">
+                                <label class="control-label"></label>
+                            </div>    
+                        </div>
+                
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row">
+
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkTransfusion" type="checkbox" value="false"/>
+                                        <label class="control-label">Transfusion</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkMiscarriage" type="checkbox" value="false"/>
+                                        <label class="control-label">Miscarriage</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkStillBirth" type="checkbox" value="false"/>
+                                        <label class="control-label">Still Birth</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkReaction" type="checkbox" value="false"/>
+                                        <label class="control-label">Reaction</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkPregnancies" type="checkbox" value="false"/>
+                                        <label class="control-label">Pregnancies</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <input id="iChkErythroblastosis" type="checkbox" value="false"/>
+                                        <label class="control-label">Erythroblastosis</label>
+                                    </div>
+                                </div>
+                            </div>
+                         <div class="col-xs-8">
+
+                                     <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">ClinicalDiagnosis</label>
+                            </div>                                        
+                            <div class="col-xs-8">
+                                <input id="txtClinicalDiagnosis" name="" type="text" class="form-control">
+                            </div>             
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Request Type</label>
+                            </div>                                                      
+                            <div class="col-xs-5">
+                                <input id="txtRequestType" name="" type="text" class="form-control">
+                            </div>  
+                            <div id="RequestType" class="col-xs-1 ColorCodeWhite">
+                            </div>                         
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">TransfusionType</label>
+                            </div>                                        
+                            <div class="col-xs-8">
+                                <input id="txtTransfusionType" name="" type="text" class="form-control">
+                            </div>  
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Replacement</label>
+                            </div>                                        
+                            <div class="col-xs-8">
+                                <input id="txtReplacement" name="" type="text" class="form-control">
+                            </div>  
+                        </div>
+                                @*<table id="gridCrossMatchType" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                                    <thead class="cAR-tlist-header">
+                                        <tr>
+                                            <th></th>
+                                            <th>isChk</th>
+                                            <th>Cross Match Type</th>
+                                        </tr>
+                                    </thead>
+                                </table>*@
+                            </div>
+                @*            <div class="col-xs-4">
+                                <table id="gridCompatability" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                                    <thead class="cAR-tlist-header">
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Compatibility</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sectionB" class="tab-pane fade in active">
+                <div class="row rowMarginTop">
+                    <div class="col-xs-4">
+                        <table id="gridWardsOrder" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100%!important;">
+                            <thead class="cAR-tlist-header">
+                                  <tr>
+                                      <th colspan="8" class="centertext compressedtableheader" style="text-align:center">Wards Order</th>
+                                  </tr> 
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Rq</th>
+                                    <th>RqDateTime</th>
+                                    <th>tempname</th>
+                                    <th>componentid</th>
+                                    <th>type</th>
+                                    <th>OrderNo</th>
+                                    <th>demandqty</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-xs-4">
+                        <table id="gridQuantityAvailable" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                            <thead class="cAR-tlist-header">
+                                  <tr>
+                                      <th colspan="15" class="centertext compressedtableheader" style="text-align:center;width:auto;">Quantity Available</th>
+                                  </tr> 
+                                <tr>
+                                    <th>#</th>
+                                    <th>bagid</th>
+                                    <th>UnitNo</th>
+                                    <th>ddate</th>
+                                    <th>ExpiryDate</th>
+                                    <th>BName</th>
+                                    <th>bloodid</th>
+                                    <th>crossstate</th>
+                                    <th>Cvolume</th>
+                                    <th>BGroup</th>
+                                    <th>BCode</th>
+                                    <th>IsExpired</th>
+                                    <th>TempidBGroup</th>
+                                    <th>BGId</th>
+                                    <th>Status</th>
+                                    <th>patbloodgroup</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-xs-4">
+                        <table id="gridIssueingQuantity" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                            <thead class="cAR-tlist-header">
+                                   <tr>
+                                      <th colspan="8" class="centertext compressedtableheader" style="text-align:center">Issueing Quantity</th>
+                                  </tr> 
+                                    <tr>
+                                    <th>#</th>
+                                    <th>UnitNo</th>
+                                    <th>BGroup</th>
+                                    <th>IssueCode</th>
+                                    <th>bagid</th>
+                                    <th>ddate</th>
+                                    <th>ExpiryDate</th>
+                                    <th>bloodname</th>
+                                    <th>bloodid</th>
+                                    <th>crossstate</th>
+                                    <th>Cvolume</th>
+                       @*             <th>BCode</th>*@
+                                    <th>IsExpired</th>
+                                    <th>TempId</th>
+                                    <th>BGId</th>
+                                     <th>Status</th>
+                                     <th>patbloodgroup</th>
+                                                                            
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body panel-bg">
+        <div class="row"> 
+            <div class="col-xs-2">
+                <label class="control-label">Crossmatched By</label>
+            </div>
+            <div class="col-xs-5">
+                <input id="select2CrossmatchedBy" name="" type="text" class="form-control">
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Remarks</label>
+            </div>
+            <div class="col-xs-4">
+                <textarea id="txtRemarks" class="form-control DisableOnView" rows="3" cols="5"></textarea>
+            </div>
+        </div>
+        <div class="row">
+              <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#e5b4fc;text-align:center; width:100%;">
+                    CrossMatched
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#fb7373;text-align:center; width:100%;">
+                    Near ToExpiryDate
+                </label>
+            </div>
+              <div class="col-xs-2">
+                <label class="control-label border" style="background-color:#c9c9c9;text-align:center; width:100%;">
+                    Incompatible Unit
+                </label>
+            </div>
+
+        </div>
+    </div>    
+
+</div>
+
+<div class="modal modalSmall" id="modalFilter" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-filter" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel2" style="color:Green;">FILTER</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label class="control-label">ID / Name</label>
+                        </div>
+                        <div class="col-xs-4" style="display:none;">
+                            <input id="select2EmployeeIDFilter" name="" type="text" class="form-control DisableOnView">
+                        </div>
+                        <div class="col-xs-9">
+                            <input id="select2NameFilter" name="" type="text" class="form-control DisableOnView">
+                        </div>                        
+                    </div>
+                    <div class="row rowMarginTop">
+                        
+                    </div>     
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnCloseFilter" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span> Close
+                    </a>
+                    <a id="btnViewFilter" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                        <span class="glyphicon glyphicon-th-list"></span> Show
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div> 
+    
+
+<div class="modal modalSmall" id="modalBReceived" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-filter" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel3" style="color:Green;">Blood Bank</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-xs-4">
+                         <label class="control-label">SAMPLE RECEIVED FOR PATIENT:</label>
+                        </div>
+                           <div class="col-xs-6">
+                                <input id="txtPatientNameRecieved" name="" type="text" class="form-control">
+                            </div> 
+                
+               @*         <div class="col-xs-9">
+                            <input id="select2NameFilter" name="" type="text" class="form-control DisableOnView">
+                        </div>    *@                    
+                    </div>
+                    <div class="row rowMarginTop">
+                        
+                    </div>     
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnCancelReceived" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </a>
+                    <a id="btnRecieved" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                        <span class="glyphicon glyphicon-th-list"></span> Received
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="modal modalSmall" id="ModalUnReserved" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-filter" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel4" style="color:Green;">UnReserved/Extend</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-xs-2">
+                         <label class="control-label">PatienName:</label>
+                        </div>
+                           <div class="col-xs-6">
+                                <input id="txtUnRsvexPatienName" name="" type="text" class="form-control">
+                            </div> 
+                 
+               @*         <div class="col-xs-9">
+                            <input id="select2NameFilter" name="" type="text" class="form-control DisableOnView">
+                        </div>    *@                    
+                    </div>
+                    <div class ="row">
+                          <div class="col-xs-12">
+                        <table id="gridReservedExtend" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                            <thead class="cAR-tlist-header">
+                                   <tr>
+                                      <th colspan="8" class="centertext compressedtableheader" style="text-align:center">Reserved Blood</th>
+                                  </tr> 
+                                    <tr>
+                                    <th>#</th>
+                                    <th>UnitNo</th>
+                                    <th>BGroup</th>      
+                                   <th>IssueCode</th>                                      
+                                </tr>
+                            </thead>
+                        </table>
+                    </div> 
+
+                     </div>
+                    <div class="row rowMarginTop">
+                        
+                    </div>     
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnCancelRC" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </a>
+                    <a id="btnExtend" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-th-list"></span> Extend
+                    </a>
+           @*            <a id="btnReserved" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-th-list"></span> UnReserved
+                    </a>*@
+                         <a id="btnUnReserved" class="btn btn-sm btn-success">
+                            <span class="glyphicon glyphicon-th-list"></span> UnReserved
+                        </a>   
+                </div>                
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+
+
+
+<div class="modal modalSmall" id="modalPrevResult" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+@*                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-filter" style="font-size:25px;color:Green;"></span>
+                    </div>*@
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;">Previous Teset Results</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div id="grid" class="col-xs-12">
+                            <table id="gridPrevResults" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                                <thead class="cAR-tlist-header">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Test</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>                      
+                    </div>
+ 
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnClosePrev" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span> close
+                    </a>
+@*                    <a id="btnViewPrev" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                        <span class="glyphicon glyphicon-th-list"></span> Show
+                    </a>*@
+                </div>                
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="modal modalPortrait" id="modalReport" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-print" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-8">                        
+                        <h4 class="modal-title" id="myModalLabel1" style="color:Green;"> PREVIEW</h4>
+                    </div>
+                    <div class="col-xs-3 pull-right">
+
+                        <a id="btnCloseReport" class="btn btn-sm btn-danger pull-right pull-right-margin ShowOnAdd ShowOnView ShowOnEdit">
+                            <span class="glyphicon glyphicon-remove"></span> Close
+                        </a>
+                                               
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg" style="width:98% !important;">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabelc">Report Generated</h4>
+         </div>
+         <div class="modal-body">
+            @*                
+            <div id="report-container">
+               <iframe id="myReport2" ></iframe>
+            </div>
+            <div class="clear-botn"></div>
+            *@
+            <form role="form" class="form-horizontal">
+               <div class="col-xs-12">
+                  <div class = "form-group">
+                     <div id="loadingpdf" class="col-xs-12" style="background-color: white; display:none; z-index: 999; position:absolute; height:100%; width:100%; opacity: .50;">
+                        <div style="width: 200px; height: 200px; position: absolute; left: 50%; top: 50%; background-repeat: no-repeat; background-position: center; margin: -100px 0 0 -100px;">
+                           <div id="spinningSquaresG">
+                              <div id="spinningSquaresG_1" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_2" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_3" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_4" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_5" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_6" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_7" class="spinningSquaresG">
+                              </div>
+                              <div id="spinningSquaresG_8" class="spinningSquaresG">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div  id="PreviewInPDF" class="col-xs-12 border" style="background-color:Gray; height:600px;">
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-sm btn-default AR_custom_btn_fixed_width" data-dismiss="modal">Cancel</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+@section scripts {    
+    <script defer src="@Url.Content("~/Scripts/BloodBank/CrossmatchIP.js")" type="text/javascript"></script>
+}  

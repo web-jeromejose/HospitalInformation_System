@@ -1,0 +1,1297 @@
+﻿@using HIS_BloodBank.App_Start;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BloodBank/Views/Shared/_Layout.cshtml";
+}
+@Html.PrinterHubSetting((string)ViewBag.MyIp)
+
+<input id="Action" name="" type="hidden" class="form-control">
+<input id="Id" name="" type="hidden" class="form-control">
+<input id="ipid" name="" type="hidden" class="form-control">
+<input id="bedid" name="" type="hidden" class="form-control">
+<input id="PatientRegistrationNO" name="" type="hidden" class="form-control">
+<div id="dtToday" class="hide input-group date">
+    <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+    <span class="input-group-addon">
+        <span class="glyphicon-calendar glyphicon"></span>
+    </span>
+</div>
+
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">DONOR REGISTRATION</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top: 3px; display: none;">
+        <a id="btnNewEntry" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span>New
+        </a>
+        <a id="btnView" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span>View
+        </a>
+        @*       <a id="btnPreview" class="btn btn-sm btn-success  button-width">
+                <span class="glyphicon glyphicon-print"></span> Preview
+            </a>*@
+        <a id="btnFilter" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-filter"></span>Filter
+        </a>
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span>Refresh
+        </a>
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top: 3px; display: none;">
+
+        <a id="btnNew" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-file"></span>New
+        </a>
+        <a id="btnSave" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnView ShowOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-floppy-disk"></span>Save
+        </a>
+        <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-edit"></span>Edit
+        </a>
+        <a id="btnDelete" class="btn btn-sm btn-success HideOnAdd ShowOnView HideOnEdit HideOnDelete NotUse">
+            <span class="glyphicon glyphicon-trash"></span>Delete
+        </a>
+        @*  <a id="btnClear" class="btn btn-sm btn-success button-width ShowOnAdd ShowOnView ShowOnEdit HideOnDelete">
+                <span class="glyphicon glyphicon-stop"></span> Clear
+            </a>*@
+        @*        <a id="btnPrint" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit">
+                <span class="glyphicon glyphicon-print"></span> Print
+            </a>*@
+        @*  <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-success button-width ">
+                    <span class="glyphicon glyphicon-print"></span> Print
+                </button>
+                <button type="button" data-toggle="dropdown" class="btn btn-sm btn-success dropdown-toggle"><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a id="btnPrintGrouping">Grouping</a></li>
+                    <li><a id="btnPrintScreening">Screening</a></li>
+                </ul>
+            </div>*@
+        @*<a id="btnPrintLabel" class="btn btn-sm btn-success HideOnAdd ShowOnView HideOnEdit">
+                <span class="glyphicon glyphicon-print"></span> Print Label
+            </a>*@
+        @* <a id="btnPrintReceipt" class="btn btn-sm btn-success button-width HideOnAdd ShowOnView HideOnEdit">
+                <span class="glyphicon glyphicon-print"></span> Receipt
+            </a>*@
+        <a id="btnClose" onclick="close()" class="btn btn-sm btn-danger button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-remove"></span>Close
+        </a>
+
+    </div>
+
+</div>
+<div id="DashBoard" style="display: none;" class="col-xs-12 standardborder HideOnView HideOnAdd HideOnEdit HideOnDelete">
+    <div class="row">
+        <div id="grid" class="col-xs-12">
+            <table id="gridList" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width: 2200px !important;">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        @*                        <th>#</th>
+                            <th>W</th>
+                            <th>UnitNo</th>
+                            <th>RegNo</th>
+                            <th>Name</th>
+                            <th>DonatedDate</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>BloodGroup</th>
+                            <th>Iqama</th>
+                            <th>address1</th>
+                            <th>address2</th>
+                            <th>PPhone</th>
+                            <th>DonorType</th>
+                            <th>PIN</th>
+                            <th>idd</th>*@
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <label class="control-label border" style="background-color: #fcc9c9; text-align: center; width: 100%;">Rejected</label>
+        </div>
+        <div class="col-xs-2">
+            <label class="control-label border" style="background-color: #fff68b; text-align: center; width: 100%;">Accepted</label>
+        </div>
+        <div class="col-xs-2">
+            <label class="control-label border" style="background-color: #fff; text-align: center; width: 100%;">Donated</label>
+        </div>
+
+    </div>
+</div>
+
+<div id="Entry" class="col-xs-12 standardborder ShowOnView ShowOnAdd ShowOnEdit" style="display: none;">
+
+
+    <div class="panel-body form-horizontal border-below">
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">Type of ID</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="select2TypeOfID" type="text" class="form-control" />
+            </div>
+            <div class="col-xs-2">
+                <input id="txtID" type="text" class="form-control RequiredField" />
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Date of Issue</label>
+            </div>
+            <div class="col-xs-2">
+                <div id="dtDateOfIssue" class="input-group date">
+                    <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView" readonly>
+                    <span class="input-group-addon">
+                        <span class="glyphicon-calendar glyphicon"></span>
+                    </span>
+                </div>
+            </div>
+            @*<div class="col-xs-1">
+                    <label class="control-label">PlaceOfIssue</label>
+                </div>
+                <div class="col-xs-2">
+                    <input id="txtPlaceOfIssue" type="text" class="form-control" />
+                </div>
+                <div class="col-xs-1">
+                    <input id="txtRegistration" type="text" class="form-control" />
+                </div>*@
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label class="control-label">BB.Reg No</label>
+            </div>
+            <div class="col-xs-3">
+                <input id="txtBBRegNo" type="text" class="form-control" />
+            </div>
+            <div class="col-xs-1" style="padding: 0;">
+                <a id="btnCheckBBRegNo" class="btn btn-sm btn-success">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Unit No</label>
+            </div>
+            <div class="col-xs-2">
+                <input id="txtUnitNo" type="text" class="form-control" />
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">DonationDT</label>
+            </div>
+            <div class="col-xs-2">
+                <div id="dtDonationDate" class="input-group date">
+                    <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView" readonly>
+                    <span class="input-group-addon">
+                        <span class="glyphicon-calendar glyphicon"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body form-horizontal border-below">
+        <div class="row">
+            <div class="col-xs-2">
+                <label class="control-label">Title</label>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label">Donor Name</label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label">Date Of Birth</label>
+            </div>
+            <div class="col-xs-1">
+                <label class="control-label">Age</label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label">Gender</label>
+            </div>
+            <div class="col-xs-2">
+                <label class="control-label">Nationality</label>
+            </div>
+            @*<div class="col-xs-2">
+                    <label class="control-label">BloodGroup</label>
+                </div>*@
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <input id="select2Title" type="text" class="form-control" />
+            </div>
+            <div class="col-xs-3">
+                <input id="txtDonorName" type="text" class="form-control RequiredField uppercase" />
+            </div>
+            <div class="col-xs-2">
+                @*<div id="dtDateOfBirth2" class="input-group date RequiredField">
+                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView" readonly>
+                        <span class="input-group-addon">
+                            <span class="glyphicon-calendar glyphicon"></span>
+                        </span>
+                    </div>*@
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input id="dtDateOfBirth" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                </div>
+
+            </div>
+            <div class="col-xs-1">
+                <input id="txtAge" type="text" class="form-control RequiredField" />
+            </div>
+            <div class="col-xs-2">
+                <input id="select2Gender" type="text" class="form-control" />
+            </div>
+            <div class="col-xs-2">
+                <input id="select2Nationality" type="text" class="form-control" />
+            </div>
+            @*<div class="col-xs-2">
+                    <input id="select2BloodGroup" type="text" class="form-control " />
+                </div>*@
+        </div>
+    </div>
+    <div class="panel-body form-horizontal">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#sectionA">Donor Address</a></li>
+                <li><a data-toggle="tab" href="#sectionTypeDonor">Type of Donor</a></li>
+                <li><a data-toggle="tab" href="#sectionhealthcond">Medical Examinations</a></li> @*Health Conditions*@
+                <li><a data-toggle="tab" href="#sectionhealthbackground">Interview</a></li> @*Health Background*@
+                <li><a data-toggle="tab" href="#sectionQuestionnaires">Questionaires</a></li>
+                <li><a data-toggle="tab" href="#sectiondonorstate">Phlebotomy</a></li> @*Donor State*@
+            </ul>
+            <div class="tab-content">
+                <div id="sectionA" class="tab-pane fade in active">
+                    <div class="col-xs-6">
+                        <div class="row rowMarginTop">
+                            <div class="col-xs-3">
+                                <label class="control-label">Address 1</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <textarea id="txtAddress1" class="form-control" rows="3" cols="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Cell No</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtCellNo" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">PO Box</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtPOBox" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">City</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="select2City" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Country</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="select2Country" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Zip Code</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtZipCode" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Phone</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtPhone" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row rowMarginTop">
+                            <div class="col-xs-3">
+                                <label class="control-label">Address 2</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <textarea id="txtAddress2" class="form-control" rows="3" cols="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Email</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtEmail" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Pager No</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="txtPagerNo" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Religion</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="select2Religion" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Occupation</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <input id="select2Occupation" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Last Donated</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <div id="dtLastDonated" class="input-group date">
+                                    <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon-calendar glyphicon"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Marital Status</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <input id="select2MaritalStatus" type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sectionTypeDonor" class="tab-pane fade in ">
+                    <div class="panel-body form-horizontal">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">Type of Donor</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input id="select2TypeOfDonor" type="text" class="form-control" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="DonatingFor" class="panel-body form-horizontal border" style="padding: 0px 15px 0 15px">
+                        <div class="row">
+                            <div class="col-xs-12" style="background-color: #bcbcbc; height: 27px;">
+                                <label class="control-label" style="color: black;">Donating For...</label>
+                            </div>
+                        </div>
+                        <div class="row rowMarginTop">
+                            <div class="col-xs-2">
+                                <label class="control-label">PIN 1</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input id="txtPIN1" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-1">
+                                <label class="control-label">Admit Date</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <div id="dtAdmitDate" class="input-group date">
+                                    <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon-calendar glyphicon"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">Name</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input id="select2DonatingFor" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-1">
+                                <label class="control-label">Blood Group</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input id="txtBloodGroup" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">PIN 2</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input id="txtPIN2" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-1">
+                                <label class="control-label">Bed No</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input id="select2BedNo" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label class="control-label">Issue Bags</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input id="select2IssueBags" type="text" class="form-control" />
+                            </div>
+                            <div class="col-xs-1">
+                                <label id="ReplacementCount" class="control-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sectionhealthcond" class="tab-pane fade in">
+                    <div class="col-xs-5">
+                        <div class="row rowMarginTop">
+                            <div class="col-xs-3">
+                                <label class="control-label">BP</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="input-group">
+                                    <input type="text" id="txtBP" class="form-control RequiredField">
+                                    <span class="input-group-addon">mmHg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Temp</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="input-group">
+                                    <input type="number" id="txtTemp" class="form-control RequiredField">
+                                    <span class="input-group-addon">°C</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Weight</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="input-group">
+                                    <input type="number" id="txtWeight" class="form-control">
+                                    <span class="input-group-addon">Kg</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Pulse</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="input-group">
+                                    <input type="number" id="txtPulse" class="form-control RequiredField">
+                                    <span class="input-group-addon">per min.</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Reaction</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input id="select2Reaction" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Venipuncture</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input id="select2Venipuncture" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row rowMarginTop">
+                            <div class="col-xs-3">
+                            </div>
+                            <div class="col-xs-7">
+                                <input id="iChkWilling" type="checkbox" value="false" style="border-color: black" />
+                                <label class="control-label">Willing to donate in future.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-5">
+                        <div class="row rowMarginTop">
+                            <div class="col-xs-3">
+                                <label class="control-label">Vol. of Blood</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <input id="select2VolOfBlood" type="text" class="form-control " />
+                            </div>
+                            <div class="col-xs-1">
+                                <label class="control-label">ml</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Hemoglobin</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <input type="number" id="txtHemoglobin" class="form-control RequiredField">
+                                    <span class="input-group-addon">g/dl</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <label class="control-label">
+                                    <small>
+                                        > 12.5
+                                        <br />
+                                        < 17.5
+                                    </small>
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">PLt</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <input type="number" id="txtPLt" class="form-control">
+                                    <span class="input-group-addon">/cmm</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">HCT</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <input type="number" id="txtHCT" class="form-control">
+                                    <span class="input-group-addon">%</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Bilrubin</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <input type="number" id="txtBilrubin" class="form-control">
+                                    <span class="input-group-addon">mg/dl</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">SGPT</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <input type="number" id="txtSGPT" class="form-control">
+                                    <span class="input-group-addon">U/L</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label class="control-label">Ausab</label>
+                            </div>
+                            <div class="col-xs-5">
+                                <input id="txtAusab" type="text" class="form-control" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="sectionhealthbackground" class="tab-pane fade in">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#sectionhealthbackgroundA">Allergies</a></li>
+                        <li><a data-toggle="tab" href="#sectionhealthbackgroundB">Surgeries</a></li>
+                        <li><a data-toggle="tab" href="#sectionhealthbackgroundC">Suffers</a></li>
+                        <li><a data-toggle="tab" href="#sectionhealthbackgroundD">Anti Drugs</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="sectionhealthbackgroundA" class="tab-pane fade in active">
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-3" style="width: 120px;">
+                                        <label class="control-label">Other Allergies</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <textarea id="txtOtherAllergies" class="form-control" rows="2" cols="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-3" style="width: 120px;">
+                                        <label class="control-label">Drug Allergies</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <input id="select2DrugAllergies" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-3" style="width: 120px;">
+                                        <label class="control-label">Food Allergies</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <input id="select2FoodAllergies" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sectionhealthbackgroundB" class="tab-pane fade in">
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-3" style="width: 120px;">
+                                        <label class="control-label">Surgeries</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <input id="select2Surgeries" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sectionhealthbackgroundC" class="tab-pane fade in">
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-3" style="width: 120px;">
+                                        <label class="control-label">Suffers</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <input id="select2DonorSuffers" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="sectionhealthbackgroundD" class="tab-pane fade in">
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label">During the last 4 weeks</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input id="select2DonorVaccination" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body form-horizontal border-below">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <label class="control-label">Donor had</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input id="select2DonorAntiDrugs" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="sectiondonorstate" class="tab-pane fade in">
+                    <div class="panel-body form-horizontal border-below">
+                        <div class="col-xs-5">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Donor Status</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="select2DonorStatus" type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="row cancelreason" hidden>
+                                <div class="col-xs-2" style="padding: 2px !important;">
+                                    <label class="control-label">Reason</label>
+                                </div>
+                                <div class="col-xs-10">
+                                    <textarea id="txtreason" type="text" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body form-horizontal">
+                        <div class="col-xs-5">
+                            <div class="row clstypeofdonation">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Type of Donations</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="select2SDPLRProcedures" type="text" class="form-control RequiredField" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Phlebotomist</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="select2Phlebotomist" type="text" class="form-control RequiredField" />
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xs-4">
+                                        <label class="control-label">Blood Bag Company</label>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <input id="select2BBBagCompany" type="text" class="form-control" />
+                                    </div>
+                                </div>*@
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Donor Number </label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <textarea id="txtRemarksDonorState" class="form-control RequiredField " rows="3" cols="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            @* <div class="row">
+
+                                    <div class="col-xs-12">
+
+                                        <table id="gridScreenResult" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100% !important;">
+                                            <thead class="cAR-tlist-header">
+                                                <tr>
+                                                    <th><input id="iChkAllSelScreenRes" type="checkbox" value="false"/></th>
+                                                    <th>ScreenResults</th>
+                                                    <th>id</th>
+                                                    <th>chk</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="row clsbleeding">
+                                <div class="col-xs-5" style="padding: 2px !important;">
+                                    @*<label class="control-label hideBleedingDate">Bleeding Date</label>*@
+                                    <label class="control-label">Bleeding Date</label>
+                                    @*<label class="control-label hideExpiryDate">Expiry Date</label>*@
+                                </div>
+                                <div class="col-xs-7" style="padding: 2px !important;">
+                                    @*<div id="dtBleedingDate" class=" input-group date hideBleedingDate">
+                                            <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon-calendar glyphicon"></span>
+                                            </span>
+                                        </div>*@
+                                    <div id="dtBleedingDate" class=" input-group date">
+                                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon-calendar glyphicon"></span>
+                                        </span>
+                                    </div>
+                                    @*<div id="dtExpiryDate" class=" input-group date hideExpiryDate">
+                                            <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon-calendar glyphicon"></span>
+                                            </span>
+                                        </div>*@
+                                </div>
+                                <div class="col-xs-5" style="padding: 2px !important;">
+                                    <label class="control-label">BloodGroup</label>
+                                </div>
+                                <div class="col-xs-7" style="padding: 2px !important;">
+                                    <input id="select2BloodGroup" type="text" class="form-control" />
+                                </div>
+                                @*<div class="col-xs-5" style="padding: 2px !important;">
+                                        <label class="control-label">Bag Type</label>
+                                    </div>
+                                    <div class="col-xs-7" style="padding: 2px !important;">
+                                        <input id="select2BagType" type="text" class="form-control RequiredField" />
+                                    </div>
+                                    <div class="col-xs-5" style="padding: 2px !important;">
+                                        <label class="control-label hideExpiryDate">Expiry Date</label>
+                                    </div>
+                                    <div class="col-xs-7" style="padding: 2px !important;">
+                                        <div id="dtExpiryDate" class=" input-group date hideExpiryDate">
+                                            <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon-calendar glyphicon"></span>
+                                            </span>
+                                        </div>
+                                    </div>*@
+                            </div>
+                            <div class="row" style="display: none;">
+                                <div class="col-xs-5" style="padding: 2px !important;">
+                                    <label class="control-label">Screen Date</label>
+                                </div>
+                                <div class="col-xs-7" style="padding: 2px !important;">
+                                    <div id="dtScreenDate" class="input-group date">
+                                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon-calendar glyphicon"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sectionQuestionnaires" class="tab-pane fade in">
+                    <div class="panel-body form-horizontal">
+                        <div class="row ">
+                            <div class="col-xs-8">
+                                <table id="gridQuestionaire" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width: 800px!important;">
+                                    <thead class="cAR-tlist-header">
+                                        <tr>
+                                            <th>
+                                                @*<input id="iChkQuestionaire" type="checkbox" value="false"/>*@
+                                                Status
+                                            </th>
+                                            <th>isChk</th>
+                                            <th>SlNo.</th>
+                                            <th>Questionaire</th>
+                                            <th>id</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div class="modal modalMedium" id="modalFilter1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width: 10px;">
+                        <span class="glyphicon glyphicon-filter" style="font-size: 25px; color: Green;"></span>
+                    </div>
+                    <div class="col-xs-5">
+                        <h4 class="modal-title" id="myModalLabel" style="color: Green;">FILTER</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body border-below">
+                    <div class="row ">
+                        <div class="col-xs-3">
+                            <label class="control-label">Rows per page</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input id="txtRowsPerPage1" name="" type="text" class="form-control DisableOnView">
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="control-label">Get page #</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input id="txtGetPage1" name="" type="text" class="form-control DisableOnView">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row RowMarginTop">
+                        <div class="col-xs-6">
+                            <input id="iChkCustom1" type="checkbox" value="false" />
+                            <label class="control-label">Custom advance filter</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table id="gridFilter" class="table table-nomargin table-condensed fahad" style="cursor: pointer; width: 100%!important;">
+                                <thead class="cAR-tlist-header">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>
+                                            <input type="checkbox" id="chkAll" />
+                                        </th>
+                                        <th>SearchForId</th>
+                                        <th>SearchFor</th>
+                                        <th>OperatorId</th>
+                                        <th>Operator</th>
+                                        <th>Value1</th>
+                                        <th>Value2</th>
+                                        <th>ActualValue1</th>
+                                        <th>ActualValue2</th>
+                                        <th>ichk</th>
+                                        <th>Column</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnCloseFilter1" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span>Close
+                    </a>
+                    <a id="btnViewFilter1" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                        <span class="glyphicon glyphicon-th-list"></span>Show
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modalMedium" id="modalFilter" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width: 10px;">
+                        <span class="glyphicon glyphicon-filter" style="font-size: 25px; color: Green;"></span>
+                    </div>
+                    <div class="col-xs-5">
+                        <h4 class="modal-title" id="myModalLabel" style="color: Green;">FILTER</h4>
+                    </div>
+                    <div class="col-xs-6 pull-right">
+                        <a id="btnCloseFilter" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-remove"></span>Close
+                        </a>
+                        <a id="btnViewFilter" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                            <span class="glyphicon glyphicon-th-list"></span>Show
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body border-below">
+                    <div class="row ">
+                        <div class="col-xs-2">
+                            <label class="control-label">Rows per page</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input id="txtRowsPerPage" name="" type="text" class="form-control DisableOnView">
+                        </div>
+                        <div class="col-xs-1">
+                            <label class="control-label">Get page #</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input id="txtGetPage" name="" type="text" class="form-control DisableOnView">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="panel-body">
+                    <div class="row RowMarginTop">
+                        <div class="col-xs-2">
+                            <input id="iChkCustom" type="checkbox" value="false" />
+                            <label class="control-label">Custom advance filter</label>
+                        </div>
+                        <div class="col-xs-1">
+                            <a id="btnFilterClear" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                                <span class="glyphicon glyphicon-stop"></span>Clear
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="CustomFilter" class="row RowMarginTop">
+                        <div class="col-xs-7">
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-3">
+                                    <label class="control-label">PIN</label>
+                                </div>
+                                <div class="col-xs-9">
+                                    <input id="txtFindPIN" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-3">
+                                    <label class="control-label">Registration#</label>
+                                </div>
+                                <div class="col-xs-3">
+                                    <input id="txtFindCondition01" name="" type="text" class="form-control">
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <input id="txtFindRegistrationNo1" name="" type="text" class="form-control DecimalOnly">
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <input id="txtFindRegistrationNo2" name="" type="text" class="hide form-control DecimalOnly">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-3">
+                                    <label class="control-label">RegistrationDate</label>
+                                </div>
+                                <div class="col-xs-3">
+                                    <input id="txtFindCondition02" name="" type="text" class="form-control">
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <div id="dtFindRegistrationDate1" class=" input-group date">
+                                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control ">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon-calendar glyphicon"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <div id="dtFindRegistrationDate2" class="hide input-group date">
+                                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control ">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon-calendar glyphicon"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-3">
+                                    <label class="control-label">Donation Date</label>
+                                </div>
+                                <div class="col-xs-3">
+                                    <input id="txtFindCondition03" name="" type="text" class="form-control">
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <div id="dtFindDonationDate1" class=" input-group date">
+                                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control ">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon-calendar glyphicon"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <div id="dtFindDonationDate2" class="hide input-group date">
+                                        <input data-date-format="DD-MMM-YYYY" type="text" class="form-control">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon-calendar glyphicon"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-3">
+                                    <label class="control-label">Age</label>
+                                </div>
+                                <div class="col-xs-3">
+                                    <input id="txtFindCondition04" name="" type="text" class="form-control">
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <input id="txtFindAge1" name="" type="text" class="form-control DecimalOnly">
+                                </div>
+                                <div class="col-xs-3" style="padding-left: 0px;">
+                                    <input id="txtFindAge2" name="" type="text" class="hide form-control DecimalOnly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Donor Name</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindDonorName" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Gender</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindGender" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Adress1</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindAddress1" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Adress2</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindAddress2" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">BagNo</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindBagNo" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Donor Type</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindDonorType" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Blood Group</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindBloodGroup" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Donor Status</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindDonorStatus" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row RowMarginTop">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Iqama / SaudiNo</label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="txtFindIqama" name="" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="modalReport" class="modal modalPortrait" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div class="row">
+                    <div class="col-xs-1" style="width: 10px;">
+                        <span class="glyphicon glyphicon-print" style="font-size: 25px; color: Green;"></span>
+                    </div>
+                    <div class="col-xs-7">
+                        <h4 id="ReportCaption" class="modal-title" @*id="myModalLabel" *@ style="color:Green;">BLOOD DONOR SCREENING</h4>
+                    </div>
+                    <div class="col-xs-4 pull-right">
+
+                        <a class="btnCloseReport button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-remove"></span>Close
+                        </a>
+                        @*                        <a id="btnPrintingDonorRegList"  class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                                <span class="glyphicon glyphicon-print"></span> Print
+                            </a>*@
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <div class="row">
+                    <div class="loading" style="height: 100%;">
+                        <div class="loadingImg">
+                            <div id="spinningSquaresG">
+                                <div id="spinningSquaresG_1" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_2" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_3" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_4" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_5" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_6" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_7" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_8" class="spinningSquaresG">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="reportBorder" class="">
+
+                        <iframe id="myReport" style="background-color: #fff; width: 100%; overflow: auto !important; height: 100%; border: 1px solid #D4D0C8;"></iframe>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="url"
+       data-getvolumeblood="@Url.Action("Select2DonorVolume")"
+       data-getsdlprod="@Url.Action("Select2SDPLR")" 
+       data-savebarcode="@Url.Action("SaveBarcodeAndPrint")" />
+
+@section scripts {
+
+    <script defer src="@Url.Content("~/Scripts/BloodBank/DonorRegistration.js")" type="text/javascript"></script>
+}

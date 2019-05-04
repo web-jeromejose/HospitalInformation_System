@@ -1,0 +1,209 @@
+﻿/*.AR_Menu_Container {
+    position:fixed;
+    left:0;
+    top:0;
+    height:100%;
+    width:60px;
+    border-right:1px solid #eee;
+}*/
+
+/* OVERRIDE */
+.navbar-nav > li > a { padding-top:5px !important; padding-bottom:5px !important; }
+.navbar { min-height:54px !important; }
+.navbar-fixed-top {
+    height: 54px; /* Whatever you want. */
+    z-index:1049;
+}
+.dropdown-menu{
+    margin-top:0px !important;
+}
+.navbar-header a{
+    padding-top:5px !important;
+}
+
+a.navbar-brand{
+    height:30px !important;
+    color:#F2784B !important;
+    border-right:1px solid #ddd;
+}
+
+.navbar-header{
+    text-align:center !important;
+}
+.ar-module-title {
+    margin-left:20px;
+    font-size:14px !important;
+    color:#fff; 
+}
+.navbar a, .nav a{
+    text-decoration: none !important;
+    font-size: 12px;
+}
+
+.cAR-margin-top{
+    margin-top:56px;
+}
+/*[ OVERRIDE ]*/
+
+li.dropdown-submenu{
+    /*min-width:250px !important;*/
+}
+li.dropdown-submenu:hover ul{
+    display: block;
+    left: 100%;
+}
+
+li.dropdown-submenu ul.dropdown-menu li ul{
+    display:none;
+}
+
+li.dropdown-submenu ul.dropdown-menu li:hover ul{
+    display: block;
+}
+
+.dropdown-submenu{
+    position:relative;
+}
+
+.dropdown-submenu:hover .dropdown-menu{
+    top:0;
+}
+.caret-right{
+      position:absolute;
+      right:10px;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      margin-top:5px;
+      border-left: 4px solid;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-right: 4px solid transparent;
+}
+
+/*Yamm Override*/
+.cAR-menu-col
+{
+    height:100%;
+    float:left;
+    margin-right:0px;
+}
+.cAR-menu-col li a
+{
+    color:#333;
+}
+.cAR-menu-col li a:hover, .navbar li a:hover
+{
+    color:#0094ff;
+}
+.yamm-pad-fix
+{
+    padding:10px !important;
+    padding-right:35px !important;
+}
+
+/* APPS */
+div.application-title {
+    height: 24px;
+    background-color: #1BA39C;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 15px;
+    line-height: 24px;
+    color: #fff;
+}
+
+div.application-title .cAR-title
+{
+    color: #fff;
+    font-family: Calibri;
+    font-size: 20px;
+}
+.cAR-uname
+{
+    height: 24px;
+    line-height: 24px;
+    font-size:12px;
+    color:#fff;
+    margin-right:20px;
+}
+.clear-both
+{
+    clear:both;
+}
+
+.ar-modtitle-sep {
+    color: rgba(255,255,255, 1);
+    margin-top:6px;
+    position:absolute;
+    font-size:12px;
+    margin-left:3px;
+}
+
+/* AR MINI top MENU*/
+.ar_mini_top_menu {
+    height:24px !important;
+    margin-right:0px;
+    line-height:24px !important;
+    background-color:#03C9A9 !important;
+}
+    .ar_mini_top_menu ul li, .ar_mini_top_menu ul li .dropdown  {
+        height:24px !important;
+        line-height:24px !important;
+        
+    }
+        .ar_mini_top_menu li a {
+            height:26px !important;
+            font-size:14px !important;
+            margin-top:-2px;
+            color:#ffffff !important;
+        }
+
+    .ar_mini_top_menu > .open > a {
+        color:#666666 !important;
+        background-color:#ffffff !important;
+    }
+
+    .ar_mini_top_menu .dropdown-menu {
+        margin-top:-29px !important;
+        position:absolute;
+        border-top:none !important;
+    }
+        .ar_mini_top_menu .dropdown-menu > li > a {
+            color:#333 !important;
+            margin-top:1px;
+            font-size:12px !important;
+        }
+
+.AR_user_cont {
+    background-color:#333;
+    padding-right:40px;
+    height:24px;
+}
+.AR_user_cont user{
+    font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+    font-size:13px !important;
+    margin-left:5px;
+    color:#ccc;
+}
+
+.AR_custom_status_bar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index:999999;
+    background-color: #333;
+    height: 20px;
+    line-height: 20px;
+    color: #777;
+    font-size: 10px;
+    text-align:right;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+    padding-left:5px;
+    padding-right:5px;
+}

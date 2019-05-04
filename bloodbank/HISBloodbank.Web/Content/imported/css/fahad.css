@@ -1,0 +1,1369 @@
+﻿.cAR-form-combo
+{
+    font-size:12px !important;
+    background-color:#FAF4D2 !important;
+}
+
+.cAR-table td
+{
+    font-family: sans-serif !important;
+    font-size:12px !important;
+    /*font-weight:bold !important;*/
+}
+
+.cAR-main-bg
+{
+    background-color:#ddd !important;
+}
+.cAR-field-bg
+{
+    background-color:#fff !important;
+}
+.cAR-field-bg2
+{
+    background-color:#f1f1f1;
+}
+.cAR-field-legend-sm
+{
+    font-size:12px !important;
+}
+
+/*Resize Legen Item*/
+.cAR-resize-legend-item
+{
+    width:18px !important;
+    height:18px !important;
+    -webkit-border-radius:10%;
+    -moz-border-radius:10%;
+    -ms-border-radius:10%;
+    border-radius:10%;
+    /*border:none !important;*/
+    /*border:1px solid rgba(11,11,11,0.2) !important;*/
+}
+.cAR-legend-cont
+{
+    background-color:rgba(255,255,255, 0.3);
+    float:left;
+    width:300px;
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    -ms-border-radius:30px;
+    border-radius:30px;
+}
+.cAR-legend-cont td
+{
+    font-style:italic;
+    color:#6C7A89 !important;
+    font-weight:500 !important;
+    font-size:11px !important;
+}
+/* fieled set legend */
+.cAR-opt-title
+{
+    font-size:14px !important;
+    color:#666;
+}
+.cAR-opt-title-sm
+{
+    font-size:12px !important;
+    border-bottom:1px solid rgba(108, 122, 137, 0.15);
+}
+/*field alignment*/
+.cAR-field-align td
+{
+    width:100px !important;
+}
+.cAR-half-width
+{
+    width:50%;
+    float:left;
+    padding:10px !important;
+    font-size:12px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cAR-row-height{
+    height:28px !important;
+    border-right:none !important;
+}
+.cAR-table-tdH
+{
+    font-size:12px !important;
+    height:28px !important;
+}
+
+/* Company Profile */
+.cAR-CP-left
+{
+    width:70%;
+    float:left;
+}
+.cAR-CP-right
+{
+    width:30%;
+    float:left;
+}
+.cAR-clear
+{
+    clear:both;
+}
+.cAR-CP-cont1
+{
+    margin-top:10px;
+    border:1px solid #ccc;
+    background-color:#fff;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:10px;
+}
+
+/* AR Default Filter Container */
+
+.cAR-filter-container
+{
+    width:100%;
+    padding:5px;
+    background-color:#f9f9f9;
+    border:1px solid #ccc;
+    font-weight:bold;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.cAR-panel-cont, .cAR-panel-cont-bg
+{
+    font-weight:normal;
+    margin:0;
+    margin-bottom:5px;
+    background-color:rgba(108, 122, 137, 0.25);
+}
+.cAR-panel-cont
+{
+    padding:10px;
+    border:1px solid rgba(108, 122, 137, 0.5);
+}
+.cAR-panel-cont-bg-2
+{
+    background-color:none !important;
+    font-weight:normal !important;
+}
+.cAR-panel-cont-bg-2 input
+{    
+    font-size:12px !important;
+}
+
+.cAR-panel-cont label
+{
+    font-size:12px !important;
+}
+.cAR-panel-cont-2
+{
+    background-color:#f9f9f9;
+    border:1px solid #888;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:5px;
+}
+
+/* Default Override Button*/
+
+.cAR-btn-or
+{
+    text-decoration:none !important;
+    font-size:12px !important;
+    color:#fff !important;
+}
+.cAR-btn-group-padding
+{
+    padding:10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.cAR-panel-top
+{
+    margin-top:10px;    
+}
+.cAR-cont-bg3
+{
+    background-color:rgba(218, 223, 225, 0.6) !important;
+
+}
+.cAR-cont-bg4
+{
+    background-color:#f9f9f9;
+}
+/* Grid Header */
+.cAR-grid-header
+{
+    font-size:12px !important;
+    background-color: #ddd !important;
+    height:32px;
+}
+
+.cAR-floatcb
+{
+    display:inline-table;
+}
+
+/* AR Batch Transfer of PIN */
+
+.cAR-btranspin
+{
+    overflow: auto; 
+    height: 200px; 
+    width: 100%;
+    background-color:#fff;
+    border:1px solid #555;
+    margin-top:10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* button fixed with */
+.cAR-btn-fixed-width
+{
+    min-width:75px !important;
+}
+/* Arabic Confir Font Size*/
+.cAR-font-size-lg
+{
+    font-size:16px !important;
+}
+
+/* for filter row input */
+
+.dxic input{
+    height:26px !important;
+    /*background-color:#FDE3A7 !important;*/
+}
+
+/* Panel Title */
+
+.SGH-panel-title
+{
+    color:#6C7A89 !important;
+    font-family: san-serif !important;
+}
+/* Block Reason font */
+#BlockReason, #BlockRemarks
+{
+    font-size:12px !important;
+    font-weight:normal !important;
+    max-height:60px !important;
+}
+#BlockRemarks
+{
+    height:30px !important;
+    resize:none !important;
+}
+.cAR-tabs
+{
+    color:#444 !important;
+    font-weight: bold !important;
+}
+.cAR-tabs a
+{
+    color:#555 !important;
+}
+.cAR-tab-height-1
+{
+    float:left;
+    width:100%;
+    /*min-height:400px;*/
+    background-color: #eee;
+    border:1px solid #ddd;
+    border-top:none;
+     -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:10px;
+}
+#Remarks
+{
+    height:155px;
+}
+
+/* List Container */
+#ptasktable
+{
+    float:left;
+}
+#ptasktable thead
+{
+    background-color:#D2D7D3;
+    color:#222;
+    font-size:12px !important;
+}
+#ptasktable tbody td, .cAR-label-agent
+{
+    font-size:12px !important;
+}
+/* icheck OR */
+.cAR-icheck
+{
+    background-color:#fff;
+    outline:1px solid #6C7A89;
+
+}
+.cAR-iradio
+{
+    background-color:#fff;
+    -webkit-border-radius: 50%;
+    -mox-border-radius: 50%;
+    border-radius: 50%;
+}
+/*
+
+.cAR-iradio
+{
+    background-color:#fff;
+    -webkit-border-radius: 50%;
+    -mox-border-radius: 50%;
+    border-radius: 50%;
+    border:2px solid #6C7A89;
+    width:22px !important;
+    height:22px !important;
+}
+
+.cAR-iradio:hover, .hover:hover > .cAR-iradio
+{
+    background-image:none !important;
+    border:2px solid rgba(37, 116, 169, 0.7);
+}
+
+.icheckbox_minimal-blue
+{
+    border:1px solid #888;
+    width:20px !important;
+    height:20px !important;
+}*/
+/* required field indicator */
+
+.cAR-required
+{
+    background-color:#FFF8D1;
+    font-size:12px !important;
+}
+
+.cAR-combo
+{
+    width:100%;
+    max-width:215px !important;
+    overflow:hidden;
+}
+
+/* Cutom panel width */
+.cAR-cus-panel-width
+{
+    width:33.3%;
+}
+
+#ptasktable th, .cAR-tlist-header tr th
+{
+    background-color:#049372 !important;
+    color:#fff;
+    font-size:12px;
+    border-color:#019875 !important;
+    font-weight: 100 !important;
+}
+
+.cAR-legend-fix
+{
+    width:230px;
+    height:26px;
+    position:absolute;
+    z-index:999999;
+    margin-top:344px;
+    background-color: rgba(45, 45, 45, 0);
+}
+
+#dvGrid .dataTables_scrollBody table tr th,
+#itemlistcont .dataTables_scrollBody table tr th,
+#deptlistcont .dataTables_scrollBody table tr th,
+#seldeptlistcont .dataTables_scrollBody table tr th, 
+#selitemlistcont .dataTables_scrollBody table tr th,
+#grademastertable .dataTables_scrollBody table tr th,
+#grademastertable .dataTables_scrollBody tr th,
+#eligibilitymastertable .dataTables_scrollBody table tr th,
+#ExServiceLevelTableIP .dataTables_scrollBody table tr th,
+#ExServiceLevelTableIP .dataTables_scrollBody tr th,
+#ExServiceLevelTableOP .dataTables_scrollBody table tr th,
+#ExServiceLevelTableOP .dataTables_scrollBody tr th,
+#ExDeptLevelTableIP .dataTables_scrollBody tr th,
+#ExDeptLevelTableIP .dataTables_scrollBody table tr th,
+#ExDeptLevelTableOP .dataTables_scrollBody tr th,
+#ExDeptLevelTableOP .dataTables_scrollBody table tr th,
+#ExItemLevelTableIP .dataTables_scrollBody table tr th,
+#ExItemLevelTableOP .dataTables_scrollBody table tr th,
+.sgh-his-tables .dataTables_scrollBody table tr th,
+#thirdpartymastertbl .dataTables_scrollBody table tr th,
+#thirdpartymastertbl .dataTables_scrollBody tr th,
+#PEvaccination .dataTables_scrollBody tr th,
+#PEvaccination .dataTables_scrollBody table tr th,
+#PEvaccinationSel .dataTables_scrollBody tr th,
+#PEvaccinationSel .dataTables_scrollBody table tr th,
+#pinwiseicdupdationtbl .dataTables_scrollBody tr th,
+#pinwiseicdupdationtbl .dataTables_scrollBody table tr th,
+#tarifftable .dataTables_scrollBody table tr th,
+#arapmaintenancetbl .dataTables_scrollBody table tr th,
+#arapmaintenancetbl .dataTables_scrollBody tr th
+/*
+#itemlist-table .dataTables_scrollBody table tr th,
+#itemlist-table .dataTables_scrollBody tr th,
+#deptlist-table .dataTables_scrollBody table tr th,
+#deptlist-table .dataTables_scrollBody tr th*/
+{
+    padding-bottom:0 !important;
+    padding-top:0 !important;
+}
+
+#eligibilitymastertable .dataTables_scrollBody table tr,
+#selitemlist-table, #seldeptlist-table, #tarifftable, #arapmaintenancetbl
+{
+    background-color:#fff;
+}
+
+/* Fix for bug header */
+#eligibilitymastertable .cAR-tlist-header tr,
+#ExServiceLevelTableIP .cAR-tlist-header tr th,
+#ExServiceLevelTableOP .cAR-tlist-header tr th,
+#ExDeptLevelTableIP .cAR-tlist-header tr th,
+#ExDeptLevelTableOP .cAR-tlist-header tr th,
+#ExItemLevelTableIP .cAR-tlist-header tr th,
+#ExItemLevelTableOP .cAR-tlist-header tr th,
+.sgh-his-tables .cAR-tlist-header tr th,
+#thirdpartymastertbl .cAR-tlist-header tr th,
+#PEvaccination .cAR-tlist-header tr th,
+#PEvaccinationSel .cAR-tlist-header tr th,
+#grademastertable .cAR-tlist-header tr th,
+#pinwiseicdupdationtbl .cAR-tlist-header tr th,
+#tarifftable .cAR-tlist-header tr th,
+#dischistory .cAR-tlist-header tr th,
+#payhistory .cAR-tlist-header tr th,
+#arapmaintenancetbl .cAR-tlist-header tr th
+/*
+#itemlist-table .cAR-tlist-header tr th,
+#deptlist-table .cAR-tlist-header tr th */
+{
+    height:0px !important;
+    padding:0px !important;
+}
+
+#loalisttable tr td, 
+#pbpd-table tr td,
+#categoryprofilemastertable tr td,
+#companyprofilemastertable tr td,
+#grademastertable tr td,
+#eligibilitymastertable tr td,
+#ExServiceLevelTableIP tr td,
+#ExServiceLevelTableOP tr td,
+#ExDeptLevelTableOP tr td,
+#ExDeptLevelTableIP tr td,
+#ExItemLevelTableIP tr td,
+#ExItemLevelTableOP tr td,
+.sgh-his-tables tr td,
+#DeServiceLevelTableIP tr td,
+#DeServiceLevelTableOP tr td,
+#thirdpartymastertbl tr td,
+#PEvaccination tr td,
+#PEvaccinationSel tr td,
+#pinwiseicdupdationtbl tr td,
+#itemlist-table tr td,
+#deptlist-table tr td,
+#tarifftable tr td,
+#arapmaintenancetbl tr td
+{
+    font-size:12px;
+   /* padding:3px !important;
+    height:10px !important;*/
+}
+
+#loalisttable_wrapper .dataTables_length,
+#categoryprofilemastertable_wrapper .dataTables_length,
+#companyprofilemastertable_wrapper .dataTables_length,
+#ExServiceLevelTableIP_wrapper .dataTables_length,
+#ExServiceLevelTableOP_wrapper .dataTables_length,
+#ExDeptLevelTableOP_wrapper .dataTables_length,
+#ExDeptLevelTableIP_wrapper .dataTables_length,
+#ExItemLevelTableIP_wrapper .dataTables_length,
+#ExItemLevelTableOP_wrapper .dataTables_length,
+.sgh-his-tables_wrapper .dataTables_length,
+#DeServiceLevelTableIP_wrapper .dataTables_length,
+#DeServiceLevelTableOP_wrapper .dataTables_length,
+#thirdpartymastertbl_wrapper .dataTables_length,
+#PEvaccination_wrapper .dataTables_length,
+#PEvaccinationSel_wrapper .dataTables_length,
+#pinwiseicdupdationtbl_wrapper .dataTables_length,
+#itemlist-table_wrapper .dataTables_length,
+#deptlist-table_wrapper .dataTables_length,
+#selitemlist-table_wrapper .dataTables_length,
+#seldeptlist-table_wrapper .dataTables_length,
+#tarifftable_wrapper .dataTables_length,
+#arapmaintenancetbl_wrapper .dataTables_length
+{
+    width:auto; 
+    float: right;
+    font-size:12px;
+}
+
+#loalisttable_wrapper .dataTables_filter,
+#categoryprofilemastertable_wrapper .dataTables_filter,
+#companyprofilemastertable_wrapper .dataTables_filter,
+#ExServiceLevelTableIP_wrapper .dataTables_filter,
+#ExServiceLevelTableOP_wrapper .dataTables_filter,
+#ExDeptLevelTableOP_wrapper .dataTables_filter,
+#ExDeptLevelTableIP_wrapper .dataTables_filter,
+#ExItemLevelTableIP_wrapper .dataTables_filter,
+#ExItemLevelTableOP_wrapper .dataTables_filter,
+.sgh-his-tables_wrapper .dataTables_filter,
+#thirdpartymastertbl_wrapper .dataTables_filter,
+#PEvaccination_wrapper .dataTables_filter,
+#PEvaccinationSel_wrapper .dataTables_filter,
+#pinwiseicdupdationtbl_wrapper .dataTables_filter,
+#deptlist-table_wrapper .dataTables_filter,
+#itemlist-table_wrapper .dataTables_filter,
+#seldeptlist-table_wrapper .dataTables_filter,
+#selitemlist-table_wrapper .dataTables_filter,
+#tarifftable_wrapper .dataTables_filter,
+#dischistory_wrapper .dataTables_filter,
+#payhistory_wrapper .dataTables_filter,
+#arapmaintenancetbl_wrapper .dataTables_filter,
+#DeServiceLevelTableIP_wrapper .dataTables_filter,
+#DeServiceLevelTableOP_wrapper .dataTables_filter
+{
+    width:auto;
+    float:left;
+    font-size:12px !important;
+}
+
+#DeServiceLevelTableIP_wrapper .dataTables_filter,
+#DeServiceLevelTableOP_wrapper .dataTables_filter,
+#thirdpartymastertbl_wrapper .dataTables_filter,
+#PEvaccinationSel_wrapper .dataTables_filter,
+#PEvaccination_wrapper .dataTables_filter,
+#pinwiseicdupdationtbl_wrapper .dataTables_filter,
+#itemlist-table_wrapper .dataTables_filter,
+#deptlist-table_wrapper .dataTables_filter,
+#selitemlist-table_wrapper .dataTables_filter,
+#seldeptlist-table_wrapper .dataTables_filter,
+#tarifftable_wrapper .dataTables_filter,
+#dischistory_wrapper .dataTables_filter,
+#payhistory_wrapper .dataTables_filter,
+#arapmaintenancetbl_wrapper .dataTables_filter
+{
+    font-size:12px !important;
+}
+
+#loalisttable, 
+#categoryprofilemastertable,
+#companyprofilemastertable,
+#grademastertable,
+#eligibilitymastertable,
+#ExServiceLevelTableIP,
+#ExServiceLevelTableOP,
+#ExItemLevelTableIP,
+#ExItemLevelTableOP,
+#ExDeptLevelTableOP,
+#ExDeptLevelTableIP,
+.sgh-his-tables,
+#DeServiceLevelTableIP,
+#DeServiceLevelTableOP,
+#thirdpartymastertbl,
+#PEvaccination,
+#PEvaccinationSel,
+#pinwiseicdupdationtbl,
+#itemlist-table,
+#deptlist-table,
+#seldeptlist-table,
+#selitemlist-table,
+#tarifftable,
+#dischistory,
+#payhistory,
+#arapmaintenancetbl
+{
+    /*border-collapse: separate !important;*/
+    cursor:pointer;
+}
+
+#eligibilitymastertable,
+#ExServiceLevelTableIP,
+#ExServiceLevelTableOP,
+#ExItemLevelTableIP,
+#ExItemLevelTableOP,
+#ExDeptLevelTableIP,
+#ExDeptLevelTableOP,
+.sgh-his-tables,
+#DeServiceLevelTableIP,
+#DeServiceLevelTableOP,
+#thirdpartymastertbl,
+#PEvaccination,
+#PEvaccinationSel,
+#pinwiseicdupdationtbl,
+#itemlist-table,
+#deptlist-table,
+#tarifftable,
+#arapmaintenancetbl
+{
+    background-color:#fff;
+    width: 100% !important;
+}
+
+/*Info*/
+.dataTables_info, 
+#ExItemLevelTableOP_info, 
+#ExItemLevelTableIP_info,
+#tarifftable_info,
+#dischistory_info,
+#payhistory_info,
+#arapmaintenancetbl_info
+{
+    font-size:11px !important;
+    color:#555 !important;
+    font-weight:normal !important;
+}
+
+#ExItemLevelTableOP_paginate .paginate_button,
+#ExItemLevelTableIP_paginate .paginate_button,
+#thirdpartymastertbl_paginate .paginate_button,
+#PEvaccination_paginate .paginate_button,
+#PEvaccinationSel_paginate .paginate_button,
+#pinwiseicdupdationtbl_paginate .paginate_button,
+#itemlist-table_paginate .paginate_button,
+#deptlist-table_paginate .paginate_button,
+#selitemlist-table_paginate .paginate_button,
+#seldeptlist-table_paginate .paginate_button,
+#tarifftable_paginate .paginate_button,
+#tarifftable_paginate .paginate_button,
+#arapmaintenancetbl_paginate .paginate_button
+{
+    font-weight:normal !important;
+}
+
+#ExItemLevelTableOP_paginate .active a,
+#ExItemLevelTableIP_paginate .active a,
+#ExDeptLevelTableIP_paginate .active a,
+#ExDeptLevelTableOP_paginate .active a,
+#thirdpartymastertbl_paginate .active a,
+#PEvaccinationSel_paginate .active a,
+#PEvaccination_paginate .active a,
+#pinwiseicdupdationtbl_paginate .active a,
+#itemlist-table_paginate .active a,
+#deptlist-table_paginate .active a,
+#selitemlist-table_paginate .active a,
+#seldeptlist-table_paginate .active a,
+#tarifftable_paginate .active a,
+#arapmaintenancetbl_paginate .active a
+{
+    color:#fff !important;
+}
+
+.btcheck
+{
+    color:green;
+}
+
+#itemlist-table,
+#deptlist-table,
+#seldeptlist-table,
+#selitemlist-table,
+#tarifftable,
+#arapmaintenancetbl
+{
+    width:100% !important;    
+}
+
+#loalisttable td:hover,
+#categoryprofilemastertable td:hover,
+#companyprofilemastertable td:hover,
+#grademastertable td:hover,
+#DeServiceLevelTableIP td:hover,
+#DeServiceLevelTableOP td:hover,
+#thirdpartymastertbl td:hover,
+#PEvaccination td:hover,
+#PEvaccinationSel td:hover,
+#pinwiseicdupdationtbl td:hover,
+#itemlist-table td:hover,
+#deptlist-table td:hover,
+#seldeptlist-table td:hover,
+#selitemlist-table td:hover,
+#tarifftable td:hover,
+#dischistory td:hover,
+#payhistory td:hover,
+#arapmaintenancetbl td:hover
+{
+    outline:2px solid rgba(42, 187, 155, 1) !important;
+    outline-style:dotted !important;
+    border-color:transparent !important;
+}
+
+/* [ Editable Fix ] */
+#grademastertable tbody td,
+#DeServiceLevelTableIP tbody td,
+#DeServiceLevelTableOP tbody td,
+#pinwiseicdupdationtbl  tbody td
+{
+  padding: 0px !important;
+  height:34px;
+  line-height:34px;
+  background-color:#fff;
+  padding-left:5px !important;
+  padding-right:5px !important;
+  padding-top:3px !important;
+  /*color:#019875;*/
+  color:#222;
+}
+#grademastertable tbody td input[type="text"],
+#DeServiceLevelTableIP tbody td input[type="text"],
+#DeServiceLevelTableOP tbody td input[type="text"],
+#pinwiseicdupdationtbl tbody td input[type="text"]
+{
+    width: 100% !important;
+    color:#333;
+    background-color:rgba(245, 215, 110, 0.3);
+    margin: 0 !important;
+    -webkit-border-radius:0px !important;
+    -moz-border-radius:0px !important;
+    -ms-border-radius:0px !important;
+    border-radius:0px !important;
+    border:none !important;
+    outline:none !important;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline:1px solid #049372 !important;
+    /*outline:1px solid #16A085 !important;*/
+}
+#grademastertable tbody td input[type="text"]::-ms-clear,
+#DeServiceLevelTableIP tbody td input[type="text"]::-ms-clear,
+#DeServiceLevelTableOP tbody td input[type="text"]::-ms-clear,
+#pinwiseicdupdationtbl tbody td input[type="text"]::-ms-clear
+ {
+     display:none;
+ }
+
+.select2-drop {
+    z-index: 9999999 !important;
+    font-size:12px !important;
+}
+
+table.KeyTable th.focus,
+table.KeyTable td.focus {
+    /*border: 2px solid #3366FF;
+    padding: 3px 3px 2px 5px;*/
+    /*padding: 0px 3px 0px 5px;*/
+    /*outline: 2px solid #3366FF;
+    outline-offset: -2px;*/
+    background-color: rgba(42, 187, 155, 1) !important;
+    color:#fff !important;
+    border-color:transparent !important;
+}
+/* Branch Code */
+#bcode
+{
+    font-weight:bold;
+    color:#fff;
+    background-color:#2574A9 !important;
+    -webkit-border-radius:3px 0 0 3px !important;
+    -moz-border-radius:3px 0 0 3px !important;
+    -ms-border-radius:3px 0 0 3px !important;
+    border-radius:3px 0 0 3px !important;
+    border-color:#2574A9 !important;
+}
+
+/*contbg*/
+.cAR-bg-3
+{
+    background-color:#f8f8f8;
+}
+
+/* disabled input */
+input[type="text"]:disabled
+{
+    /*background-color:#336E7B !important;*/
+    background-color: rgba(51, 110, 123, 0.7);
+    color:#fff;
+}
+.cAR-lnr-cont
+{
+    float:left;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border:1px solid #bbb;
+    background-color:#D2D7D3;
+    margin-bottom:10px;
+}
+
+.cAR-padding-sm
+{
+    padding:5px !important;
+}
+.cAR-padding-sm-box
+{
+    padding:5px !important;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+.cAR-padding-md
+{
+    padding:10px !important;
+}
+.cAR-padding-lg
+{
+    padding:15px !important;
+}
+.cAR-padding-sm, 
+.cAR-padding-md, 
+.cAR-padding-lg
+{
+    font-size:12px;
+}
+
+/* tbg */
+.cAR-half-width .dataTables_scrollBody
+{
+    background-color:rgba(255,255,255, 0.7) !important;
+}
+.cAR-tbg td
+{
+    font-size:12px;
+    font-weight:normal;
+}
+/*Exclusions Container*/
+#deptlistcont,
+#seldeptlistcont, 
+#itemlistcont, 
+#selitemlistcont
+{
+    width:100%;
+    /*min-height:100px;*/
+    height:480px;
+}
+
+/* OR HR */
+.SGH-panel-body fieldset
+{
+    border: none !important;
+}
+/* Report Container */
+.cAR-ReportContainer
+{
+    width:100%;
+    height: 350px;
+    overflow:auto;
+    margin-top:10px;
+}
+.cAR-ReportContainer2
+{
+    width:100%;
+    max-height:400px;
+    border:1px solid #ccc;
+    padding:0;
+}
+
+
+/* ALIGN */
+.cAR-align-right
+{
+    text-align:right !important;
+}
+.cAR-align-left
+{
+    text-align:left !important;
+}
+.cAR-align-center
+{
+    text-align:center !important;
+}
+
+/* Report POP COntainer */
+
+.cAR-RP-BG
+{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.7);
+    position:fixed;
+    z-index:9999999;
+}
+.cAR-RP-Container
+{
+    width:90%;
+    height:96%;
+    background-color:#fff;
+    margin:auto;
+    margin-top:1%;
+    border:1px solid #999;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.cAR-RP-Container .RP-title
+{
+    width:100%;
+    padding:10px;
+    height:40px;
+    font-size:12px;
+    font-weight:bold;
+    background-color:#e9e9e9;
+    border-bottom:1px solid #ccc;
+    color:#222;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.cAR-RP-Container .RP-content
+{
+    height:calc(100% - 90px);
+    overflow:hidden;
+    padding:10px;
+    padding-top:-10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cAR-RP-Container .RP-menu
+{
+    width:100%;
+    padding:10px;
+    height:50px;
+    font-size:12px;
+    background-color:#eee;
+    text-align:center;
+    font-weight:bold;
+    border-top:1px solid #aaa;
+    color:#222;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* for HR */
+/* Label */
+#catlist label, 
+#deptlist label,
+#applist label
+{
+    color:#03A678;
+}
+.cHR-RP-container
+{
+    width:100%;
+    height:350px;
+    background-color:#333;
+    border:1px solid #555;
+}
+/*
+#dvGrid
+{
+    padding-left:10px !important;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}*/
+.dataTables_paginate
+{
+    margin-top:10px !important;
+    font-size:12px !important;
+    padding-right:40px !important;
+}
+
+/* LEGEND */
+.cAR-legend-box
+{
+    background-color:#fff;
+    /*border:2px solid #999;*/
+    width:18px;
+    height:18px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    border-radius:50%;
+}
+.cAR-legend-blocked
+{
+    background-color:rgba(210, 77, 87, 0.7);
+    color:#96281B;
+}
+.cAR-legend-expired
+{
+    background-color:rgba(245, 215, 110, 0.7);
+    color:#D35400;
+}
+.cAR-legend-active
+{
+    background-color:rgba(255, 255, 255, 1);
+    color:#019875;
+}
+
+/* [Menu Container] */
+
+.cAR-menu-container-1
+{
+    width:100%;
+    padding:5px;
+    font-size:12px !important;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: rgba(103, 128, 159, 0.3);
+    /*
+    border: 1px solid rgba(103, 128, 159, 0.65);
+    
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    -ms-border-radius:2px;
+    border-radius:2px; */
+}
+
+.SGH-panel-default .SGH-panel-heading
+{
+    background-color: rgba(210, 215, 211, 0.5) !important;
+}
+
+/* [SGH Select2] */
+.sgh-his-sel2-normal
+{
+    max-width:340px;
+    font-size:12px;
+    font-weight:normal;
+}
+
+/* [ TAB PANELS ] */
+#cAR-comp-profile-tab ul li a, #cAR-geninfo ul li a
+{
+    font-size:12px !important;
+    color:#222 !important;
+    font-weight:bold;
+}
+
+.sgh-his-grade
+{
+    max-width:800px;
+    font-size:12px;
+    font-weight:normal;
+}
+ 
+.cAR-editable-input
+{
+    height:32px;
+    padding-right:10px;
+    padding-left:10px;
+}
+
+
+/* [datatable header resize fix] 
+div.dataTables_sort_wrapper
+{
+    white-space:nowrap !important;
+} 
+th  {   white-space:nowrap !important;  }
+
+
+.dt-max-width
+{
+    width:100% !important;
+    box-sizing: content-box !important;
+    margin-left:0px !important;
+}
+.dt-min-width
+{
+    width:auto !important;
+}
+.dt-min-width
+{
+    width:auto !important;
+}*/
+.sgh-his-scrolledTable
+{
+    overflow:hidden;
+    overflow:scroll;
+    overflow:auto;
+    clear:both;
+}
+.sgh-his-tableFixedHead
+{
+    width:100% !important;
+    position:fixed !important;
+}
+
+/* [Exclusions] */
+.sgh-his-exclusion-filter 
+{
+    display:inline-block;
+    text-align:left;
+    padding:3px;
+    color:#555555 !important;
+    padding-right:10px;
+    padding-left:10px;
+    margin-left:5px;
+    font-size:12px !important;
+    -webkit-border-radius:25px !important;
+    -moz-border-radius:25px !important;
+    -ms-border-radius:25px !important;
+    border-radius:25px !important;
+    /*background-color:rgba(103, 128, 159, 0.5);*/
+}
+
+.sgh-his-exclusion-filter label, .sgh-his-exclusion-filter input[type="radio"]
+{
+    margin-top:6px !important;
+}
+
+#extabservice label
+{
+    font-size:12px;
+}
+
+.sgh-toolbarIP, .sgh-toolbarOP
+{
+    float:left; margin-top:5px;
+}
+
+#exptIP,
+#exptOP,
+#exService,
+#exItemDept
+{
+    position:absolute;
+    margin-top:10px !important;
+}
+
+/* [ grid system vertical align] */
+.vcenter {
+    line-height:34px;
+}
+.tab-pane
+{
+    /*background-color:rgba(174, 168, 211,0.1);*/
+    padding:5px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cAR-tab-height-1 .tab-pane
+{
+    padding: 0 !important;
+    border: none !important;
+    background-color:#ddd !important;
+}
+
+.row
+{
+    margin-bottom:5px;
+}
+
+.cAR-CLfix .control-label
+{ 
+    text-align:left !important;
+}
+
+.control-label
+{
+    font-weight:normal;
+    font-size:12px;
+}
+
+.form-control
+{
+    font-size:12px !important;
+}
+
+.cAR-panel-cont label
+{
+    font-weight:normal;
+}
+
+/* Mini Logout */
+.sgh-his-minilogout
+{
+    height:24px !important;
+    z-index:9999999999;
+    margin-right:5px;
+}
+.sgh-his-minilogout li, .sgh-his-minilogout a
+{
+    height: 24px;
+    line-height:24px;    
+}
+.sgh-his-minilogout a
+{
+    margin-top:-2px;
+    height:26px;
+    color:#fff !important;
+}
+.sgh-his-minilogout .open a
+{
+    color:#6C7A89 !important;
+}
+
+.sgh-his-minilogout .dropdown-menu
+{
+    margin-top:-50px !important;
+}
+
+#cAR-menu-col
+{
+    position:relative !important;
+}
+
+.cAR-EX-filter, .checkbox label
+{
+    font-size:12px;
+}
+
+input[type="checkbox"]
+{
+    width:16px;
+    height:16px;
+}
+
+/* [ DEDUCTABLES ]  */
+.sgh-de-left
+{
+    width:80%;
+    float:left;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:5px;
+    background-color:#dcdcdc;
+    /*background-color:rgba(236, 240, 241, 1);*/
+    height:100% !important;
+    border:1px solid #ccc;
+}
+
+.sgh-de-right
+{
+    width:20%;
+    float:right;
+    height:100% !important;
+    
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:5px;
+    padding-left:10px;
+}
+.sgh-fix-pane
+{
+    border: 1px solid #bbb;
+    /*border-top:none !important;*/
+    background-color:#DADFE1;
+    padding:10px;
+    margin-top:-1px;
+}
+
+
+table > tbody tr > .sgh-disabled-cell
+{
+    background-color:#e1e1e1 !important;
+    color:#999 !important;
+}
+
+/* Input disabled */
+.cAR-disabled
+{
+    border:none !important;
+    background-color:#e1e1e1 !important;
+    color:#888 !important;
+}
+
+
+/* TABLE BORDER 
+.sgh-table-border-fix
+{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 2px solid #049372 !important;
+}
+ td:first-child
+{
+    border-left:none !important;
+}
+.sgh-table-border-fix td:last-child
+{
+    border-right:none !important;
+}*/
+
+.radio-inline label
+{
+    font-weight:normal;
+}
+.oploalabel
+{
+    text-align:left !important;
+}
+.sgh-border-box
+{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* [ Modal overflow ] */
+.sgh-modal-table-cont
+{
+    width:100%;
+    height:400px;
+    overflow:auto;
+    overflow-x:hidden;
+    margin-top:10px;
+}
+
+.sgh-his-menu-filter-container {
+    background-color:#DADFE1;
+    width:100%;
+    padding:10px;
+    /*border:1px solid #BFBFBF;*/
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -ms-border-radius:3px;
+    border-radius:3px;
+}
+    .sgh-his-menu-filter-container label {
+        font-size:12px !important;
+    }
+.transparent {
+    background-color:transparent;
+}
+.content-align-right{
+    text-align:right;
+}
+
+/**/
+/*.sgh-his-row-hover tbody > tr:hover{
+    outline:2px solid rgba(42, 187, 155, 1) !important;
+    outline-style:dotted !important;
+    background-color:rgba(42, 187, 155, 0.2);
+    border-color:transparent !important;
+}*/
+.sgh-his-module-title{
+    font-size:15px;
+    color:#fff;
+    line-height:24px;
+    margin-top:1px;
+    position:absolute;
+    margin-left:5px;
+}
+.sgh-his-sep 
+{
+    line-height:20px;
+    position:absolute;
+    color:#fff !important;
+    margin-left:5px;
+}
+
+/* Date: March 04, 2015
+   SGH - table container Temp Fix for header bugs of datatables 
+*/
+.sgh-dt-container
+{
+    width: 100% !important;
+    background-color: #eee;
+    overflow:auto;
+    overflow-x:hidden;
+    border:1px solid rgba(108, 122, 137, 0.5);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:5px;
+}
+
+
+

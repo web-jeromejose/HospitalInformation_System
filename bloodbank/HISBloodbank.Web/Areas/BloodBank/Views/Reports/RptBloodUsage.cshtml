@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BloodBank/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal modalLandScape" id="modalReport" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-print" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-7">                        
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;"> BLOOD USAGE</h4>
+                    </div>
+                    <div class="col-xs-4 pull-right">
+
+                        <a id="btnCloseReport" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-remove"></span> Close
+                        </a>
+                        <a id="btnFilterReport" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-filter"></span> Filter
+                        </a>
+@*                        <a id="btnRefreshEmpAppConfig" class="button-width btn btn-sm btn-success pull-right pull-right-margin">
+                            <span class="glyphicon glyphicon-refresh"></span> Refresh
+                        </a>*@
+                                               
+                    </div>
+                </div>   
+
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <div class="row">
+                    <div class="col-xs-12 loading">
+                        <div class="loadingImg">
+                            <div id="spinningSquaresG">
+                                <div id="spinningSquaresG_1" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_2" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_3" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_4" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_5" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_6" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_7" class="spinningSquaresG">
+                                </div>
+                                <div id="spinningSquaresG_8" class="spinningSquaresG">
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div id="reportBorder" class="">
+
+                        <iframe id="myReport" style="background-color:#fff; width:100%; overflow: auto !important;height:100%;border: 1px solid #D4D0C8;">
+                        </iframe>                    
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal modalSmall" id="FrmFilterReport" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width:10px;">                        
+                        <span class="glyphicon glyphicon-filter" style="font-size:25px;color:Green;"></span>
+                    </div>
+                    <div class="col-xs-5">                        
+                        <h4 class="modal-title" id="myModalLabel" style="color:Green;">FILTER</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <label class="control-label">Month -  Year</label>
+                        </div>
+                        <div class="col-xs-5">
+                            <div id="dtFromDate" class="input-group date">
+                                <input data-date-format="DD-MMM-YYYY" type='text' class="form-control DisableOnView RequiredField"/>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+   
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnCloseFilterReport" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span> Close
+                    </a>
+                    <a id="btnViewFilterReport" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                        <span class="glyphicon glyphicon-th-list"></span> View
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/BloodBank/RptBloodUsage.js")" type="text/javascript"></script>
+}

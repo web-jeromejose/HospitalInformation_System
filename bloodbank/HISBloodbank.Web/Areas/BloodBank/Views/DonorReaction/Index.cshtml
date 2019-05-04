@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BloodBank/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size:25px;color:Green; margin:2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size:18px; color:Green; margin:2px 0 0 5px;">DONOR REACTION</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top:3px; display:none;">
+        <a id="btnNewEntry" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnView" class="btn btn-sm btn-success button-width" data-target="#modalEntry">
+            <span class="glyphicon glyphicon-file"></span> View
+        </a>
+@*        <a id="btnFilter" class="btn btn-sm btn-success NotUse">
+            <span class="glyphicon glyphicon-filter"></span> Filter
+        </a>*@
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+    </div>
+    <div id="ButtonsOnEntry" class="pull-right ShowOnView ShowOnAdd ShowOnEdit" style="margin-top:3px;display:none;">
+
+        <a id="btnNew" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-file"></span> New
+        </a>
+        <a id="btnSave" class="btn btn-sm btn-success  button-width ShowOnAdd HideOnView ShowOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </a>
+        <a id="btnPrint" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView ShowOnEdit NotUse">
+            <span class="glyphicon glyphicon-print"></span> Print
+        </a>
+        <a id="btnEdit" class="btn btn-sm btn-success  button-width HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-edit"></span> Edit
+        </a>
+        <a id="btnDelete" class="btn btn-sm btn-success HideOnAdd ShowOnView HideOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+        </a>
+        <a id="btnClear" class="btn btn-sm btn-success button-width ShowOnAdd ShowOnView ShowOnEdit HideOnDelete">
+            <span class="glyphicon glyphicon-stop"></span> Clear
+        </a>
+        <a id="btnClose" class="btn btn-sm btn-danger button-width ShowOnAdd ShowOnView ShowOnEdit">
+            <span class="glyphicon glyphicon-remove"></span> Close
+        </a>
+
+    </div>
+
+</div>
+<div id="DashBoard" style="display:none;" class="col-xs-12 standardborder HideOnView HideOnAdd HideOnEdit HideOnDelete">
+    <div class="row">
+        @*<div id="grid" class="col-xs-12" style="visibility:hidden;">*@
+        <div id="grid" class="col-xs-12">
+            <table id="gridList" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer; width:100%!important;">
+                <thead class="cAR-tlist-header">
+                    <tr>
+                        <th>#</th>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Arabic Code</th>
+                        <th>Name</th>
+                        <th>Arabic Name</th>
+                        <th>Last Modified</th>
+                        <th>Modified By</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="Entry" class="col-xs-12 standardborder ShowOnView ShowOnAdd ShowOnEdit" style="display:none;">
+    <input id="Action" name="" type="hidden" class="form-control">
+    <input id="Id" name="" type="hidden" class="form-control">
+
+    <div class="row">
+
+        <div class="panel-body form-horizontal"> 
+
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Code</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input id="txtCode" name="" type="text" class="form-control RequiredField">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Arabic Code</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input id="txtArabicCode" name="" type="text" class="form-control RequiredField">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Name</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input id="txtName" name="" type="text" class="form-control RequiredField">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Arabic Name</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input id="txtArabicName" name="" type="text" class="form-control RequiredField">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Department</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input id="select2Department" name="" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/BloodBank/DonorReaction.js")" type="text/javascript"></script>
+}

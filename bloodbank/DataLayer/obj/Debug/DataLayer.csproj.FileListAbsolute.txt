@@ -1,0 +1,15 @@
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\DataLayer.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\DataLayer.pdb
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\Microsoft.CSharp.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.Configuration.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.Data.DataSetExtensions.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.Data.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.Web.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.Xml.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\bin\Debug\System.Xml.Linq.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\obj\Debug\DataLayer.dll
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\obj\Debug\DataLayer.pdb
+D:\PROJECTS\Bloodbank\Staging2018\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache

@@ -1,0 +1,13 @@
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\HisBloodbankEf.dll.config
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\HisBloodbankEf.dll
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\HisBloodbankEf.pdb
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\EntityFramework.dll
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\System.Data.SqlServerCe.dll
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\EntityFramework.xml
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\obj\Debug\HIS-Bloodbank.Ef.csproj.CoreCompileInputs.cache
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\obj\Debug\HIS-Bloodbank.Ef.csproj.CopyComplete
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\obj\Debug\HisBloodbankEf.dll
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\obj\Debug\HisBloodbankEf.pdb
+D:\PROJECTS\Bloodbank\Staging2018\HIS-Bloodbank.Ef\obj\Debug\HIS-Bloodbank.Ef.csprojAssemblyReference.cache

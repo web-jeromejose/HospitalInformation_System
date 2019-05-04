@@ -1,0 +1,324 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BloodBank/Views/Shared/_Layout.cshtml";
+}
+
+<input id="Action" name="" type="hidden" class="form-control">
+<input id="Id" name="" type="hidden" class="form-control">
+<input id="registrationno" name="" type="hidden" class="form-control">
+<div id="dtToday" class="hide input-group date">
+    <input data-date-format="DD-MMM-YYYY" type="text" class="form-control DisableOnView">
+    <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span>
+    </span>
+</div>
+
+<div id="headerMain" class="col-xs-12 standardborder">
+    <div class="pull-left">
+        <span class="glyphicon glyphicon-time" style="font-size: 25px; color: Green; margin: 2px 0 0 5px;"></span>
+        <label class="control-label" style="font-size: 18px; color: Green; margin: 2px 0 0 5px;">OUTSIDE BLOOD ISSUE</label>
+    </div>
+
+    <div id="ButtonsOnBoard" class="pull-right HideOnView HideOnAdd HideOnEdit HideOnDelete" style="margin-top: 3px;">
+
+        <a id="btnSave" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-file"></span>Save
+        </a>
+
+        <a id="btnRefresh" class="btn btn-sm btn-success button-width">
+            <span class="glyphicon glyphicon-refresh"></span>Refresh
+        </a>
+    </div>
+
+
+</div>
+<br />
+<br />
+<div id="DashBoard" style="" class=" form-horizontal standardborder">
+    <div class="panel-body border-below">
+
+
+        <div class="panel-body form-horizontal border-below">
+            <div class="row">
+                <div class="col-xs-1">
+                    <label class="  control-label">Hospital</label>
+                </div>
+                <div class="col-xs-4">
+                    <input id="select2Hospital" type="text" class="form-control" />
+                </div>
+
+                <div class="col-xs-1">
+                    <label class="control-label">Bill No</label>
+                </div>
+                <div class="col-xs-2">
+                    <input id="billno" type="text" class="form-control" />
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-xs-1">
+                    <label class="control-label">Patient Name</label>
+                </div>
+                <div class="col-xs-4">
+                    <input id="patientname" type="text" class="form-control" />
+                </div>
+
+
+                <div class="col-xs-1">
+                    <label class="control-label">Outside Bag</label>
+                </div>
+                <div class="col-xs-4">
+                    <input id="select2outsidebag" type="text" class="form-control" disabled />
+                </div>
+                <div class="col-xs-1">
+                    <label class="control-label"></label>
+                </div>
+                <div class="col-xs-2 rowMarginTop">
+                    <input id="completed" type="checkbox" value="false" style="border-color: black" />
+                    <label class="control-label">Completed</label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">BLOOD</div>
+                    <div class="panel-body">
+                        <table id="DTBlood" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer;">
+                            <thead class="ColumnHeader cAR-tlist-header">
+                                <tr></tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">COMPONENT</div>
+                    <div class="panel-body">
+                        <table id="DTComponent" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer;">
+                            <thead class="ColumnHeader cAR-tlist-header">
+                                <tr></tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">SDPLR</div>
+                    <div class="panel-body">
+                        <table id="DTSDPLR" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer;">
+                            <thead class="ColumnHeader cAR-tlist-header">
+                                <tr></tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+           
+
+
+        </div>
+
+
+
+
+    </div>
+    <div class="row">
+        <div id="grid" class="col-xs-12">
+            <table id="DTScreenDashboard" class="Hide Show table table-nomargin table-condensed fahad" style="cursor: pointer;">
+                <thead class="ColumnHeader cAR-tlist-header">
+                    <tr></tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2">
+            <label class="control-label border" style="background-color: #27bd61; text-align: center; width: 100%;">
+                <input type="checkbox" id="labelcheck" checked />
+                Unit Selected
+            </label>
+        </div>
+
+
+
+    </div>
+    <br />
+    <br />
+</div>
+
+<div class="modal modalMedium" id="screendetails" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-xs-1" style="width: 10px;">
+                        <span class="glyphicon glyphicon-filter" style="font-size: 25px; color: Green;"></span>
+                    </div>
+                    <div class="col-xs-5">
+                        <h4 class="modal-title" id="myModalLabel3" style="color: Green;">Screening 
+                            
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body form-horizontal">
+
+                <div class="panel-body">
+
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label">Unit No.:</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input id="bagidtitle" name="" type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label">Blood Group Type:</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input id="scrnbloodgroup" name="" type="text" class="form-control select2">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label">Registration No:</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input id="scrnRegno" name="" type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label">Screen Type:</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="checkbox" class="control-center iCheck-helper highlight" id="scrnScreenType" style="" />
+                                <label>Rapid</label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label">Screen Result :</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <select id="scrnScreenResult" class="form-control input-xs select2me input-sm" data-placeholder="Select...">
+                                    <option value="1" selected>NEGATIVE</option>
+                                    <option value="2">POSITIVE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label">Screen Result Value:  </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="checkbox" class="control-center iCheck-helper highlight" id="scrnScreenResultValueIS" style="" />
+
+                                <input id="scrnScreenResultValue" name="" type="text" class="form-control select2" readonly>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="control-label"><b>Verified : </b></label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="checkbox" class="control-center iCheck-helper highlight" id="scrnVerified" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="col-md-5">
+                        <div id="DivComponent">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label class="control-label">Component: </label>
+
+                                </div>
+                                <div class="col-xs-6">
+
+                                    <input type="checkbox" class="control-center iCheck-helper highlight" id="scrnComponentIS" style="" />
+                                    <input id="scrnComponent" name="" type="text" class="form-control select2" readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label class="control-label"><b>Screening : </b></label>
+                            </div>
+                            <div class="col-xs-6">
+
+                                <input type="checkbox" class="control-center iCheck-helper highlight" id="scrnIsScreen" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-xs-6">
+                                <label class="control-label"><b>Screening Verify : </b></label>
+                            </div>
+                            <div class="col-xs-6">
+
+                                <input type="checkbox" class="control-center iCheck-helper highlight" id="scrnIsScreenVerify" />
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-6 pull-right">
+                    <a id="btnclose" class="button-width btn btn-sm btn-danger pull-right pull-right-margin">
+                        <span class="glyphicon glyphicon-remove"></span>Cancel
+                    </a>
+                    <a id="btnUpdate" class="button-width btn btn-sm btn-success pull-right pull-right-margin ">
+                        <span class="glyphicon glyphicon-th-list"></span>Update
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<input type="hidden" id="url"    
+data-bloodcategory="@Url.Action("BloodCategory")"
+data-sdplrcategory="@Url.Action("SDPLRCategory")"
+data-componentcategory="@Url.Action("ComponentCategory")"
+ 
+data-save="@Url.Action("Save")"
+/>
+
+@section scripts {
+    <script defer src="@Url.Content("~/Scripts/BloodBank/OutSideBloodIssue.js")" type="text/javascript"></script>
+}
